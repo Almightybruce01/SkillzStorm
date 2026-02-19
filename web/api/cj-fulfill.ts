@@ -1,39 +1,101 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 
-// CJ Dropshipping product mapping
-// After you find products on CJ, add their variant IDs here
-const CJ_PRODUCT_MAP: Record<string, { cjProductId: string; cjVariantId: string; name: string }> = {
-  // Tech & VR
-  vr_lite:        { cjProductId: '', cjVariantId: '', name: 'VR Phone Headset' },
-  vr_pro:         { cjProductId: '', cjVariantId: '', name: 'Standalone VR Headset' },
-  vr_ultra:       { cjProductId: '', cjVariantId: '', name: 'Premium VR Headset' },
-  '3d_basic':     { cjProductId: '', cjVariantId: '', name: '3D Glasses 5-pack Red/Cyan' },
-  '3d_polarized': { cjProductId: '', cjVariantId: '', name: 'Polarized 3D Glasses' },
-  '3d_clip':      { cjProductId: '', cjVariantId: '', name: 'Clip-On 3D Glasses' },
-  controller:     { cjProductId: '', cjVariantId: '', name: 'Bluetooth Game Controller' },
-  headphones:     { cjProductId: '', cjVariantId: '', name: 'Wireless Gaming Earbuds' },
-  stand:          { cjProductId: '', cjVariantId: '', name: 'Phone/Tablet Stand' },
-  // School Supplies
-  pencil_case:    { cjProductId: '', cjVariantId: '', name: 'Cartoon Pencil Case Pouch' },
-  gel_pens:       { cjProductId: '', cjVariantId: '', name: 'Kawaii Gel Pens 12-pack' },
-  sticker_pack:   { cjProductId: '', cjVariantId: '', name: 'Vinyl Sticker Pack 50pcs' },
-  backpack:       { cjProductId: '', cjVariantId: '', name: 'Cartoon School Backpack Kids' },
-  erasers:        { cjProductId: '', cjVariantId: '', name: 'Mini Animal Erasers Set 20pcs' },
-  notebook:       { cjProductId: '', cjVariantId: '', name: 'Holographic Notebook A5 3-pack' },
-  // Toys
-  labubu:         { cjProductId: '', cjVariantId: '', name: 'Labubu Blind Box Figure' },
-  mini_figures:   { cjProductId: '', cjVariantId: '', name: 'Mini Collectible Figures Pack' },
-  squishy_toy:    { cjProductId: '', cjVariantId: '', name: 'Kawaii Squishy Toy Animal' },
-  blind_bag:      { cjProductId: '', cjVariantId: '', name: 'Mystery Toy Blind Bag Kids' },
-  // Fidgets
-  pop_it:         { cjProductId: '', cjVariantId: '', name: 'Rainbow Pop It Fidget' },
-  fidget_cube:    { cjProductId: '', cjVariantId: '', name: 'Fidget Cube 6-sided' },
-  fidget_spinner: { cjProductId: '', cjVariantId: '', name: 'LED Fidget Spinner Light Up' },
-  magnetic_rings: { cjProductId: '', cjVariantId: '', name: 'Magnetic Fidget Rings 3-pack' },
-  stress_ball:    { cjProductId: '', cjVariantId: '', name: 'Mesh Stress Ball Neon 4-pack' },
-  fidget_slug:    { cjProductId: '', cjVariantId: '', name: 'Articulated Fidget Slug 3D' },
-  infinity_cube:  { cjProductId: '', cjVariantId: '', name: 'Infinity Cube Fidget Toy' },
+const CJ_PRODUCT_MAP: Record<string, { name: string; searchQuery: string }> = {
+  vr_lite:        { name: 'VR Phone Headset', searchQuery: 'VR headset phone 3D glasses' },
+  vr_pro:         { name: 'Standalone VR Headset', searchQuery: 'standalone VR headset 6DOF' },
+  vr_ultra:       { name: 'Premium VR Headset', searchQuery: 'VR headset 4K eye tracking' },
+  '3d_basic':     { name: '3D Glasses 5-pack', searchQuery: 'red cyan 3D glasses 5 pack' },
+  '3d_polarized': { name: 'Polarized 3D Glasses', searchQuery: 'polarized 3D glasses' },
+  '3d_clip':      { name: 'Clip-On 3D Glasses', searchQuery: 'clip on 3D glasses' },
+  controller:     { name: 'Bluetooth Controller', searchQuery: 'bluetooth game controller mobile' },
+  headphones:     { name: 'Wireless Earbuds', searchQuery: 'wireless earbuds low latency gaming' },
+  stand:          { name: 'Phone Stand', searchQuery: 'adjustable phone tablet stand' },
+  pencil_case:    { name: 'Pencil Case', searchQuery: 'cartoon pencil case pouch kids' },
+  gel_pens:       { name: 'Gel Pens 12-pack', searchQuery: 'kawaii gel pens 12 pack' },
+  sticker_pack:   { name: 'Sticker Pack 50pc', searchQuery: 'vinyl sticker pack 50pcs gaming' },
+  backpack:       { name: 'School Backpack', searchQuery: 'cartoon school backpack kids' },
+  erasers:        { name: 'Erasers Set 20pc', searchQuery: 'mini animal erasers set cute' },
+  notebook:       { name: 'Notebook 3-pack', searchQuery: 'holographic notebook A5 lined' },
+  labubu:         { name: 'Labubu Figure', searchQuery: 'labubu blind box figure' },
+  mini_figures:   { name: 'Mini Figures 5-Pack', searchQuery: 'mini collectible figures surprise' },
+  squishy_toy:    { name: 'Squishy Set 3pc', searchQuery: 'kawaii squishy toy slow rise' },
+  blind_bag:      { name: 'Mystery Blind Bag', searchQuery: 'mystery toy blind bag kids' },
+  pop_it:         { name: 'Pop-It Fidget', searchQuery: 'pop it fidget rainbow' },
+  fidget_cube:    { name: 'Fidget Cube', searchQuery: 'fidget cube 6 sided' },
+  fidget_spinner: { name: 'LED Spinner', searchQuery: 'LED fidget spinner light up' },
+  magnetic_rings: { name: 'Magnetic Rings 3pc', searchQuery: 'magnetic fidget rings 3 pack' },
+  stress_ball:    { name: 'Stress Balls 4pc', searchQuery: 'mesh stress ball neon squeeze' },
+  fidget_slug:    { name: 'Fidget Slug', searchQuery: 'articulated fidget slug 3D' },
+  infinity_cube:  { name: 'Infinity Cube', searchQuery: 'infinity cube fidget toy' },
 };
+
+async function getCJAccessToken(apiKey: string): Promise<string> {
+  const resp = await fetch('https://developers.cjdropshipping.com/api2.0/v1/authentication/getAccessToken', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ apiKey }),
+  });
+  const data = await resp.json();
+  if (data.code !== 200 || !data.data?.accessToken) {
+    throw new Error(`CJ auth failed: ${data.message}`);
+  }
+  return data.data.accessToken;
+}
+
+async function searchCJProduct(token: string, query: string): Promise<{ pid: string; vid: string; name: string; image: string; sellPrice: number } | null> {
+  const resp = await fetch(`https://developers.cjdropshipping.com/api2.0/v1/product/list?pageNum=1&pageSize=1&productNameEn=${encodeURIComponent(query)}`, {
+    method: 'GET',
+    headers: { 'CJ-Access-Token': token },
+  });
+  const data = await resp.json();
+  if (data.code === 200 && data.data?.list?.length > 0) {
+    const p = data.data.list[0];
+    const variant = p.variants?.[0];
+    return {
+      pid: p.pid,
+      vid: variant?.vid || '',
+      name: p.productNameEn,
+      image: p.productImage,
+      sellPrice: variant?.variantSellPrice || p.sellPrice || 0,
+    };
+  }
+  return null;
+}
+
+async function placeCJOrder(token: string, order: {
+  orderNum: string;
+  name: string;
+  address: string;
+  city: string;
+  province: string;
+  zip: string;
+  country: string;
+  phone: string;
+  email: string;
+  products: { vid: string; quantity: number }[];
+}): Promise<any> {
+  const resp = await fetch('https://developers.cjdropshipping.com/api2.0/v1/shopping/order/createOrder', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'CJ-Access-Token': token,
+    },
+    body: JSON.stringify({
+      orderNumber: order.orderNum,
+      shippingZip: order.zip,
+      shippingCountryCode: order.country,
+      shippingCountry: order.country,
+      shippingProvince: order.province,
+      shippingCity: order.city,
+      shippingAddress: order.address,
+      shippingCustomerName: order.name,
+      shippingPhone: order.phone || '0000000000',
+      remark: `SkillzStorm | ${order.email}`,
+      products: order.products.map(p => ({ vid: p.vid, quantity: p.quantity })),
+    }),
+  });
+  return resp.json();
+}
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method !== 'POST') {
@@ -46,74 +108,81 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   }
 
   const { sessionId, items, shippingName, shippingAddress, shippingCity, shippingState, shippingZip, shippingCountry, email } = req.body;
-
   const cjApiKey = process.env.CJ_API_KEY;
 
-  // If CJ API key is configured, auto-place the order
-  if (cjApiKey) {
-    try {
-      const orderProducts = items
-        .map((id: string) => CJ_PRODUCT_MAP[id])
-        .filter((p: { cjVariantId: string } | undefined) => p && p.cjVariantId);
-
-      if (orderProducts.length === 0) {
-        console.log(`[CJ] No mapped CJ products for ${items.join(', ')} — manual fulfillment needed`);
-        return res.status(200).json({
-          status: 'manual',
-          reason: 'Products not mapped to CJ variants yet',
-          sessionId,
-          items,
-          shipping: { name: shippingName, address: shippingAddress, city: shippingCity, state: shippingState, zip: shippingZip, country: shippingCountry },
-        });
-      }
-
-      // CJ Dropshipping Create Order API
-      const cjOrder = await fetch('https://developers.cjdropshipping.com/api2.0/v1/shopping/order/createOrder', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'CJ-Access-Token': cjApiKey,
-        },
-        body: JSON.stringify({
-          orderNumber: sessionId.slice(-12),
-          shippingZip,
-          shippingCountryCode: shippingCountry,
-          shippingCountry: shippingCountry,
-          shippingProvince: shippingState,
-          shippingCity,
-          shippingAddress,
-          shippingCustomerName: shippingName,
-          shippingPhone: '',
-          remark: `SkillzStorm order | ${email}`,
-          products: orderProducts.map((p: { cjVariantId: string }) => ({
-            vid: p.cjVariantId,
-            quantity: 1,
-          })),
-        }),
-      });
-
-      const cjResult = await cjOrder.json();
-      console.log(`[CJ] Order placed: ${JSON.stringify(cjResult)}`);
-      return res.status(200).json({ status: 'auto', cj: cjResult });
-    } catch (err) {
-      console.error(`[CJ] API error:`, err);
-      return res.status(200).json({ status: 'error', error: String(err) });
-    }
+  if (!cjApiKey) {
+    console.log(`[CJ] No CJ_API_KEY set — manual fulfillment needed for ${sessionId}`);
+    return res.status(200).json({
+      status: 'manual',
+      reason: 'CJ_API_KEY not configured',
+      sessionId,
+      items: items.map((id: string) => ({ id, name: CJ_PRODUCT_MAP[id]?.name || id })),
+      shipping: { name: shippingName, address: shippingAddress, city: shippingCity, state: shippingState, zip: shippingZip, country: shippingCountry },
+    });
   }
 
-  // No CJ API key — log for manual fulfillment
-  console.log(`[FULFILL] Manual order needed:`);
-  console.log(`  Session: ${sessionId}`);
-  console.log(`  Items: ${items.join(', ')}`);
-  console.log(`  Ship to: ${shippingName}, ${shippingAddress}, ${shippingCity}, ${shippingState} ${shippingZip}, ${shippingCountry}`);
-  console.log(`  Email: ${email}`);
+  try {
+    const token = await getCJAccessToken(cjApiKey);
+    console.log(`[CJ] Authenticated. Processing ${items.length} items for ${sessionId}`);
 
-  return res.status(200).json({
-    status: 'manual',
-    reason: 'CJ_API_KEY not set — fulfill manually via CJ dashboard or /api/orders',
-    sessionId,
-    items: items.map((id: string) => ({ id, search: CJ_PRODUCT_MAP[id]?.name || id })),
-    shipping: { name: shippingName, address: shippingAddress, city: shippingCity, state: shippingState, zip: shippingZip, country: shippingCountry },
-    email,
-  });
+    // Search CJ for matching products and collect variant IDs
+    const orderProducts: { vid: string; quantity: number; name: string; cost: number }[] = [];
+    const unmapped: string[] = [];
+
+    for (const itemId of items as string[]) {
+      const mapping = CJ_PRODUCT_MAP[itemId];
+      if (!mapping) { unmapped.push(itemId); continue; }
+
+      const cjProduct = await searchCJProduct(token, mapping.searchQuery);
+      if (cjProduct && cjProduct.vid) {
+        orderProducts.push({ vid: cjProduct.vid, quantity: 1, name: cjProduct.name, cost: cjProduct.sellPrice });
+        console.log(`[CJ] Found: ${itemId} → ${cjProduct.name} ($${cjProduct.sellPrice}) vid:${cjProduct.vid}`);
+      } else {
+        unmapped.push(itemId);
+        console.log(`[CJ] Not found on CJ: ${itemId} (${mapping.searchQuery})`);
+      }
+    }
+
+    if (orderProducts.length === 0) {
+      return res.status(200).json({
+        status: 'manual',
+        reason: 'No matching CJ products found — fulfill manually',
+        sessionId,
+        unmapped,
+        shipping: { name: shippingName, address: shippingAddress, city: shippingCity, state: shippingState, zip: shippingZip, country: shippingCountry },
+      });
+    }
+
+    // Place the order on CJ
+    const cjResult = await placeCJOrder(token, {
+      orderNum: sessionId.slice(-12),
+      name: shippingName,
+      address: shippingAddress,
+      city: shippingCity,
+      province: shippingState,
+      zip: shippingZip,
+      country: shippingCountry,
+      phone: '',
+      email,
+      products: orderProducts.map(p => ({ vid: p.vid, quantity: p.quantity })),
+    });
+
+    console.log(`[CJ] Order result: ${JSON.stringify(cjResult)}`);
+
+    return res.status(200).json({
+      status: cjResult.code === 200 ? 'auto' : 'partial',
+      cjResponse: cjResult,
+      itemsOrdered: orderProducts.map(p => ({ name: p.name, cost: p.cost })),
+      unmapped: unmapped.length > 0 ? unmapped : undefined,
+    });
+  } catch (err) {
+    console.error(`[CJ] Error:`, err);
+    return res.status(200).json({
+      status: 'error',
+      error: err instanceof Error ? err.message : String(err),
+      sessionId,
+      items: items.map((id: string) => ({ id, name: CJ_PRODUCT_MAP[id]?.name || id })),
+      shipping: { name: shippingName, address: shippingAddress, city: shippingCity, state: shippingState, zip: shippingZip, country: shippingCountry },
+    });
+  }
 }
