@@ -172,6 +172,9 @@ const coreGames: GameInfo[] = [
 /** SKILLZSTORM_COMPLETE.md seed (178) merged; skips slugs already in coreGames */
 const completeSeedOnly = getCompleteSeedGames().filter((g) => !coreGames.some((c) => c.id === g.id));
 
+/** Titles that only exist in the imported seed (shown under Games → New tab) */
+export const seedCatalogGames: GameInfo[] = completeSeedOnly;
+
 export const allGames: GameInfo[] = [...coreGames, ...completeSeedOnly];
 
 export function getGamesForCategory(category: GameCategory): GameInfo[] {

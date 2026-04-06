@@ -1,27 +1,50 @@
-import { useCallback, useEffect, useRef } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { getGameEngine } from './getGameEngine';
 import type { NeonEngineInstance } from './types';
+import { CompactHorizontalAd } from '../../components/ads/AdBanner';
+
+function PlayIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+      <path d="M8 5v14l11-7L8 5z" />
+    </svg>
+  );
+}
 
 interface Props {
   engineKey: string;
   gameTitle: string;
   onClose: (finalScore: number) => void;
+  /** Shown on the idle / insert-coin screen */
+  description?: string;
+  rating?: number;
+  /** e.g. "1–4 players" */
+  playersLabel?: string;
 }
 
 /**
  * Full-width neon canvas player: rAF loop, keyboard set + prevKeys, resize-aware.
+ * Replit-style idle overlay (INSERT COIN / PRESS START) with logo + ad before the run loop starts.
  */
-export function NeonCanvasGame({ engineKey, gameTitle, onClose }: Props) {
+export function NeonCanvasGame({
+  engineKey,
+  gameTitle,
+  onClose,
+  description,
+  rating,
+  playersLabel,
+}: Props) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const engineRef = useRef<NeonEngineInstance | null>(null);
   const keysRef = useRef(new Set<string>());
   const prevKeysRef = useRef(new Set<string>());
   const rafRef = useRef(0);
-  const lastRef = useRef(performance.now());
+  const lastRef = useRef(0);
   const endedRef = useRef(false);
   const onCloseRef = useRef(onClose);
   const sizeRef = useRef({ w: 400, h: 360 });
   const dprRef = useRef(1);
+  const [gameStarted, setGameStarted] = useState(false);
   onCloseRef.current = onClose;
 
   const resize = useCallback(() => {
@@ -44,6 +67,7 @@ export function NeonCanvasGame({ engineKey, gameTitle, onClose }: Props) {
   }, []);
 
   useEffect(() => {
+    if (!gameStarted) return;
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
@@ -113,7 +137,7 @@ export function NeonCanvasGame({ engineKey, gameTitle, onClose }: Props) {
       ro.disconnect();
       engineRef.current = null;
     };
-  }, [engineKey, gameTitle, resize]);
+  }, [engineKey, gameTitle, resize, gameStarted]);
 
   const exit = () => {
     if (endedRef.current) return;
@@ -122,26 +146,111 @@ export function NeonCanvasGame({ engineKey, gameTitle, onClose }: Props) {
     onCloseRef.current(s);
   };
 
+  const startGame = () => setGameStarted(true);
+
+  const idle = !gameStarted;
+
   return (
     <div className="neon-canvas-shell w-full rounded-xl overflow-hidden border border-cyan-500/40 shadow-[0_0_32px_rgba(0,255,204,0.12)] bg-[#050810]">
       <div className="flex items-center justify-between gap-2 px-3 py-2 border-b border-cyan-500/25 bg-black/40">
-        <span className="text-[10px] sm:text-xs text-cyan-300/90 truncate tracking-wide font-semibold">
+        <span className="text-[10px] sm:text-xs text-cyan-300/90 truncate tracking-wide font-semibold font-display">
           {gameTitle}
         </span>
         <button
           type="button"
           onClick={exit}
-          className="text-[10px] sm:text-xs px-3 py-1 rounded-lg border border-fuchsia-500/50 text-fuchsia-200 hover:bg-fuchsia-500/10 transition-colors"
+          className="text-[10px] sm:text-xs px-3 py-1 rounded-lg border border-fuchsia-500/50 text-fuchsia-200 hover:bg-fuchsia-500/10 transition-colors font-display"
         >
           Exit
         </button>
       </div>
-      <div className="relative w-full min-h-[280px] max-h-[480px]">
-        <canvas ref={canvasRef} className="block w-full h-full touch-none" />
+      <div className="relative w-full min-h-[280px] max-h-[480px] bg-[#010008]">
+        <canvas
+          ref={canvasRef}
+          className={`block w-full h-full touch-none ${idle ? 'opacity-0 pointer-events-none absolute inset-0' : ''}`}
+          aria-hidden={idle}
+        />
+
+        {idle && (
+          <div
+            className="absolute inset-0 flex items-center justify-center bg-black/85 z-10"
+            style={{ backdropFilter: 'blur(4px)' }}
+          >
+            <div
+              className="flex flex-col items-center gap-4 p-8 sm:p-10 border-2 border-[#ff0066]/50 bg-slate-900/90 max-w-lg w-full mx-4 relative text-slate-100"
+              style={{
+                boxShadow: '0 0 40px rgba(255,0,102,0.2), inset 0 0 40px rgba(255,0,102,0.02)',
+                clipPath: 'polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 14px 100%, 0 calc(100% - 14px))',
+              }}
+            >
+              <div className="absolute top-2 right-2 w-4 h-4 border-t-2 border-r-2 border-[#ff0066]/50" />
+              <div className="absolute bottom-2 left-2 w-4 h-4 border-b-2 border-l-2 border-[#ff0066]/50" />
+
+              <img
+                src="/images/logo.png"
+                alt="SkillzStorm"
+                className="h-10 sm:h-12 w-auto object-contain drop-shadow-[0_0_20px_rgba(255,0,102,0.35)]"
+              />
+
+              <h2 className="text-xl md:text-3xl font-display text-white text-center leading-tight neon-text-arcade-primary">
+                {gameTitle.toUpperCase() || 'LOADING...'}
+              </h2>
+
+              <div className="w-full max-w-[320px]">
+                <CompactHorizontalAd />
+              </div>
+
+              <div className="font-display text-[9px] text-[#ff0066]/80 flex items-center gap-2">
+                <PlayIcon className="w-3 h-3" /> INSERT COIN
+              </div>
+
+              {description && (
+                <p className="text-slate-400 text-xs text-center leading-relaxed max-w-xs">{description}</p>
+              )}
+
+              <div className="grid grid-cols-2 gap-2 w-full text-[8px] font-display text-slate-500 border-t border-b border-slate-700/80 py-4">
+                <div className="flex items-center gap-1.5">
+                  <span className="text-cyan-400">MOVE</span> ARROWS / WASD
+                </div>
+                <div className="flex items-center gap-1.5">
+                  <span className="text-cyan-400">ACTION</span> SPACE / Z
+                </div>
+                <div className="flex items-center gap-1.5">
+                  <span className="text-cyan-400">SELECT</span> 1 / 2 / 3 / 4
+                </div>
+                <div className="flex items-center gap-1.5">
+                  <span className="text-cyan-400">PAUSE</span> P / ESC
+                </div>
+              </div>
+
+              <button
+                type="button"
+                onClick={startGame}
+                className="arcade-btn arcade-btn-primary text-sm px-12 py-4 w-full justify-center flex items-center"
+              >
+                <PlayIcon className="w-5 h-5 mr-2 shrink-0" /> PRESS START
+              </button>
+
+              {(typeof rating === 'number' || playersLabel) && (
+                <div className="font-display text-[8px] text-slate-500 flex items-center gap-2 flex-wrap justify-center">
+                  {typeof rating === 'number' && (
+                    <>
+                      <span className="text-amber-400">★</span> {rating.toFixed(1)} RATING
+                    </>
+                  )}
+                  {typeof rating === 'number' && playersLabel && <span className="mx-2 opacity-30">·</span>}
+                  {playersLabel && <span>{playersLabel}</span>}
+                </div>
+              )}
+            </div>
+          </div>
+        )}
       </div>
-      <p className="text-[9px] text-slate-500 px-3 py-2 border-t border-cyan-500/15">
-        Arrows / Space · 1–4 for quizzes · letter keys for typing
-      </p>
+      {!idle && (
+        <p className="text-[9px] text-slate-500 px-3 py-2 border-t border-cyan-500/15 font-display">
+          Arrows / Space · 1–4 for quizzes · letter keys for typing
+        </p>
+      )}
     </div>
   );
 }

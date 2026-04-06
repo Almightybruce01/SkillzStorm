@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
-import { allGames, categories, gradeLevels, type GameCategory, type GradeLevel } from '../engine/gameData';
+import { Link, useParams, useSearchParams } from 'react-router-dom';
+import { allGames, categories, gradeLevels, seedCatalogGames, type GameCategory, type GradeLevel } from '../engine/gameData';
 import { TopBannerAd, SidebarAd } from '../components/ads/AdBanner';
 
 const catColorMap: Record<string, string> = {
@@ -19,13 +19,25 @@ const catColorMap: Record<string, string> = {
 
 export function GamesPage() {
   const { category } = useParams<{ category?: string }>();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const catalogTab = searchParams.get('view') === 'new' ? 'new' : 'all';
+
+  const setTab = (tab: 'all' | 'new') => {
+    const next = new URLSearchParams(searchParams);
+    if (tab === 'new') next.set('view', 'new');
+    else next.delete('view');
+    setSearchParams(next, { replace: true });
+  };
+
   const [selectedGrade, setSelectedGrade] = useState<GradeLevel | 'all'>('all');
   const [selectedCategory, setSelectedCategory] = useState<GameCategory | 'all'>(
     (category as GameCategory) || 'all'
   );
   const [search, setSearch] = useState('');
 
-  const filteredGames = allGames.filter((game) => {
+  const baseList = catalogTab === 'new' ? seedCatalogGames : allGames;
+
+  const filteredGames = baseList.filter((game) => {
     if (selectedCategory !== 'all' && game.category !== selectedCategory) return false;
     if (selectedGrade !== 'all' && !game.supportedGrades.includes(selectedGrade)) return false;
     if (search && !game.name.toLowerCase().includes(search.toLowerCase()) && !game.description.toLowerCase().includes(search.toLowerCase())) return false;
@@ -36,7 +48,7 @@ export function GamesPage() {
     <div className="pt-20 sm:pt-24 min-h-[100vh] w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20 page-enter text-slate-100">
       <TopBannerAd />
       {/* Header */}
-      <div className="text-center mb-10 animate-slide-up">
+      <div className="text-center mb-8 animate-slide-up">
         <h1 className="text-5xl sm:text-6xl font-black text-slate-100 mb-3">
           {selectedCategory !== 'all'
             ? <span style={{ color: catColorMap[selectedCategory] || '#3b82f6' }}>{categories.find(c => c.value === selectedCategory)?.label || 'Games'}</span>
@@ -48,10 +60,40 @@ export function GamesPage() {
               </span>
             )}
         </h1>
-        <p className="text-slate-400 text-sm">
+        <p className="text-slate-400 text-sm mb-6">
           <span className="font-black text-lg" style={{ color: catColorMap[selectedCategory] || '#3b82f6' }}>{filteredGames.length}</span>
-          <span className="ml-1">games available — all free to play</span>
+          <span className="ml-1">games {catalogTab === 'new' ? 'in the new catalog' : 'available'} — all free to play</span>
         </p>
+
+        <div className="flex flex-wrap justify-center gap-2 mb-2">
+          <button
+            type="button"
+            onClick={() => setTab('all')}
+            className={`font-display text-[11px] tracking-wider px-5 py-2.5 rounded-lg border transition-all ${
+              catalogTab === 'all'
+                ? 'border-cyan-500/60 bg-cyan-500/15 text-cyan-200 shadow-[0_0_20px_rgba(34,211,238,0.15)]'
+                : 'border-slate-600/60 text-slate-400 hover:border-slate-500 hover:text-slate-300'
+            }`}
+          >
+            ALL GAMES
+          </button>
+          <button
+            type="button"
+            onClick={() => setTab('new')}
+            className={`font-display text-[11px] tracking-wider px-5 py-2.5 rounded-lg border transition-all ${
+              catalogTab === 'new'
+                ? 'border-fuchsia-500/60 bg-fuchsia-500/15 text-fuchsia-200 shadow-[0_0_20px_rgba(232,121,249,0.15)]'
+                : 'border-slate-600/60 text-slate-400 hover:border-slate-500 hover:text-slate-300'
+            }`}
+          >
+            NEW GAMES ({seedCatalogGames.length})
+          </button>
+        </div>
+        {catalogTab === 'new' && (
+          <p className="text-slate-500 text-xs max-w-xl mx-auto">
+            Titles from the expanded SkillzStorm library (seed catalog). Same neon engines map by game style — browse here so they are easy to find.
+          </p>
+        )}
       </div>
 
       {/* Search */}

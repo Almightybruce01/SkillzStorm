@@ -127,3 +127,14 @@ export function FooterAd() {
     />
   );
 }
+
+/** Compact horizontal strip (e.g. arcade idle overlay) */
+export function CompactHorizontalAd() {
+  return (
+    <AdBanner
+      slot={ADSENSE_CONFIG.slots.betweenGames}
+      format="horizontal"
+      className="w-full max-w-[320px] mx-auto min-h-[50px] my-1"
+    />
+  );
+}

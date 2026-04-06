@@ -1,6 +1,13 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
+function gamesNavActive(pathname: string, search: string) {
+  if (pathname.startsWith('/game/')) return true;
+  if (!pathname.startsWith('/games')) return false;
+  if (pathname === '/games' && search.includes('view=new')) return false;
+  return true;
+}
+
 export function Navbar() {
   const location = useLocation();
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -20,7 +27,14 @@ export function Navbar() {
           {/* Desktop Nav Links */}
           <div className="hidden sm:flex items-center gap-1">
             <NavLink to="/" active={location.pathname === '/'} icon="🏠">Home</NavLink>
-            <NavLink to="/games" active={location.pathname.startsWith('/games') || location.pathname.startsWith('/game/')} icon="🎮">Games</NavLink>
+            <NavLink to="/games" active={gamesNavActive(location.pathname, location.search)} icon="🎮">Games</NavLink>
+            <NavLink
+              to="/games?view=new"
+              active={location.pathname === '/games' && location.search.includes('view=new')}
+              icon="✨"
+            >
+              New
+            </NavLink>
             <NavLink to="/arcade" active={location.pathname === '/arcade'} icon="🕹️" highlight>Arcade</NavLink>
             <NavLink to="/learn" active={location.pathname === '/learn' || location.pathname.startsWith('/learn/')} icon="📘">Learn</NavLink>
             <NavLink to="/vr" active={location.pathname === '/vr'} icon="🥽">VR</NavLink>
@@ -57,7 +71,8 @@ export function Navbar() {
       <div className={`sm:hidden overflow-hidden transition-all duration-300 ease-in-out ${mobileOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
         <div className="px-4 pb-4 pt-2 space-y-1 bg-slate-950/98 backdrop-blur-xl border-t border-cyan-500/15">
           <MobileNavLink to="/" active={location.pathname === '/'} icon="🏠" onClick={() => setMobileOpen(false)}>Home</MobileNavLink>
-          <MobileNavLink to="/games" active={location.pathname.startsWith('/games')} icon="🎮" onClick={() => setMobileOpen(false)}>Games</MobileNavLink>
+          <MobileNavLink to="/games" active={gamesNavActive(location.pathname, location.search)} icon="🎮" onClick={() => setMobileOpen(false)}>Games</MobileNavLink>
+          <MobileNavLink to="/games?view=new" active={location.search.includes('view=new')} icon="✨" onClick={() => setMobileOpen(false)}>New games</MobileNavLink>
           <MobileNavLink to="/arcade" active={location.pathname === '/arcade'} icon="🕹️" onClick={() => setMobileOpen(false)}>Arcade</MobileNavLink>
           <MobileNavLink to="/learn" active={location.pathname === '/learn' || location.pathname.startsWith('/learn/')} icon="📘" onClick={() => setMobileOpen(false)}>Learn</MobileNavLink>
           <MobileNavLink to="/schools" active={location.pathname === '/schools'} icon="🏫" onClick={() => setMobileOpen(false)}>For Schools</MobileNavLink>

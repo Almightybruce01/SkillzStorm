@@ -57,6 +57,7 @@ export function GameSession({ game, grade }: Props) {
             <NeonCanvasGame
               engineKey={neonKey}
               gameTitle={game.name}
+              description={game.description}
               onClose={(s) => handleGameClose(s)}
             />
           )}
