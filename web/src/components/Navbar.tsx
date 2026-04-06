@@ -6,7 +6,7 @@ export function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   
   return (
-    <nav className="fixed top-0 left-0 right-0 w-full z-50 bg-white/80 backdrop-blur-2xl border-b border-gray-200/60 shadow-sm">
+    <nav className="fixed top-0 left-0 right-0 w-full z-50 bg-slate-950/90 backdrop-blur-xl border-b border-cyan-500/20 shadow-[0_0_40px_rgba(0,0,0,0.35)]">
       {/* Animated gradient line at top */}
       <div className="absolute top-0 left-0 right-0 h-[2px] gradient-rainbow animate-rainbow opacity-80" />
       
@@ -22,14 +22,15 @@ export function Navbar() {
             <NavLink to="/" active={location.pathname === '/'} icon="🏠">Home</NavLink>
             <NavLink to="/games" active={location.pathname.startsWith('/games') || location.pathname.startsWith('/game/')} icon="🎮">Games</NavLink>
             <NavLink to="/arcade" active={location.pathname === '/arcade'} icon="🕹️" highlight>Arcade</NavLink>
+            <NavLink to="/learn" active={location.pathname === '/learn' || location.pathname.startsWith('/learn/')} icon="📘">Learn</NavLink>
             <NavLink to="/vr" active={location.pathname === '/vr'} icon="🥽">VR</NavLink>
             <NavLink to="/store" active={location.pathname === '/store'} icon="🛒">Store</NavLink>
             <Link
               to="/premium"
-              className={`relative px-4 py-2 rounded-xl text-sm font-bold transition-all duration-300 btn-shimmer overflow-hidden ${
+              className={`relative px-4 py-2 rounded-xl text-sm font-bold transition-all duration-300 overflow-hidden ${
                 location.pathname === '/premium'
-                  ? 'bg-gradient-to-r from-amber-100 to-orange-100 text-amber-700 border border-amber-300 shadow-md'
-                  : 'bg-gradient-to-r from-amber-50 to-orange-50 text-amber-600 hover:from-amber-100 hover:to-orange-100 border border-amber-200 hover:border-amber-300 hover:shadow-md'
+                  ? 'bg-gradient-to-r from-amber-500/30 to-orange-500/25 text-amber-200 border border-amber-400/40 shadow-md'
+                  : 'bg-gradient-to-r from-amber-500/15 to-orange-500/10 text-amber-200/90 hover:from-amber-500/25 hover:to-orange-500/20 border border-amber-400/25 hover:border-amber-300/40'
               }`}
             >
               <span className="relative z-10 flex items-center gap-1">
@@ -41,7 +42,7 @@ export function Navbar() {
           {/* Mobile hamburger */}
           <button 
             onClick={() => setMobileOpen(!mobileOpen)} 
-            className="sm:hidden text-gray-400 hover:text-gray-700 p-2 rounded-lg hover:bg-gray-100 transition-all active:scale-90"
+            className="sm:hidden text-slate-400 hover:text-cyan-200 p-2 rounded-lg hover:bg-white/5 transition-all active:scale-90"
           >
             <div className="space-y-1.5">
               <div className={`w-5 h-0.5 bg-current transition-all duration-300 ${mobileOpen ? 'rotate-45 translate-y-2' : ''}`} />
@@ -54,10 +55,11 @@ export function Navbar() {
 
       {/* Mobile menu */}
       <div className={`sm:hidden overflow-hidden transition-all duration-300 ease-in-out ${mobileOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
-        <div className="px-4 pb-4 pt-2 space-y-1 bg-white/95 backdrop-blur-2xl border-t border-gray-100">
+        <div className="px-4 pb-4 pt-2 space-y-1 bg-slate-950/98 backdrop-blur-xl border-t border-cyan-500/15">
           <MobileNavLink to="/" active={location.pathname === '/'} icon="🏠" onClick={() => setMobileOpen(false)}>Home</MobileNavLink>
           <MobileNavLink to="/games" active={location.pathname.startsWith('/games')} icon="🎮" onClick={() => setMobileOpen(false)}>Games</MobileNavLink>
           <MobileNavLink to="/arcade" active={location.pathname === '/arcade'} icon="🕹️" onClick={() => setMobileOpen(false)}>Arcade</MobileNavLink>
+          <MobileNavLink to="/learn" active={location.pathname === '/learn' || location.pathname.startsWith('/learn/')} icon="📘" onClick={() => setMobileOpen(false)}>Learn</MobileNavLink>
           <MobileNavLink to="/schools" active={location.pathname === '/schools'} icon="🏫" onClick={() => setMobileOpen(false)}>For Schools</MobileNavLink>
           <MobileNavLink to="/store" active={location.pathname === '/store'} icon="🛒" onClick={() => setMobileOpen(false)}>Store</MobileNavLink>
           <MobileNavLink to="/vr" active={location.pathname === '/vr'} icon="🥽" onClick={() => setMobileOpen(false)}>VR</MobileNavLink>
@@ -75,14 +77,14 @@ function NavLink({ to, active, icon, children, highlight }: { to: string; active
       to={to}
       className={`relative px-4 py-2 rounded-xl text-sm font-bold transition-all duration-300 group ${
         active
-          ? 'bg-blue-50 text-blue-600 shadow-sm'
+          ? 'bg-cyan-500/15 text-cyan-300 shadow-sm border border-cyan-500/25'
           : highlight
-            ? 'text-purple-600 hover:text-purple-700 hover:bg-purple-50 font-extrabold'
-            : 'text-gray-500 hover:text-gray-900 hover:bg-gray-50'
+            ? 'text-fuchsia-300 hover:text-fuchsia-200 hover:bg-fuchsia-500/10 font-extrabold'
+            : 'text-slate-400 hover:text-cyan-200 hover:bg-white/5'
       }`}
     >
       {active && (
-        <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-blue-500 shadow-sm" />
+        <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-cyan-400 shadow-[0_0_8px_rgba(34,211,238,0.8)]" />
       )}
       <span className="flex items-center gap-1.5">
         <span className={`text-xs transition-transform duration-300 ${active ? '' : 'group-hover:scale-125'}`}>{icon}</span>
@@ -99,8 +101,8 @@ function MobileNavLink({ to, active, icon, onClick, children }: { to: string; ac
       onClick={onClick}
       className={`flex items-center gap-3 px-4 py-3 rounded-xl font-bold transition-all duration-200 active:scale-[0.98] ${
         active
-          ? 'bg-blue-50 text-blue-600'
-          : 'text-gray-500 hover:text-gray-900 hover:bg-gray-50'
+          ? 'bg-cyan-500/15 text-cyan-300'
+          : 'text-slate-400 hover:text-cyan-200 hover:bg-white/5'
       }`}
     >
       <span className="text-lg">{icon}</span>

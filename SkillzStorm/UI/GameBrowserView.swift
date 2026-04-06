@@ -239,7 +239,7 @@ struct GameCard: View {
                 if !game.isAvailable {
                     StormBadge(text: "SOON", color: .gray)
                 } else if game.isPremium {
-                    StormBadge(text: "PREMIUM", color: StormColors.neonYellow)
+                    StormBadge(text: "BONUS", color: StormColors.neonYellow)
                 } else {
                     StormBadge(text: "FREE", color: StormColors.neonGreen)
                 }

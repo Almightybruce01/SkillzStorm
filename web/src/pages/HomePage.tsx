@@ -12,23 +12,23 @@ export function HomePage() {
 
         {/* HERO */}
         <section className="text-center pt-8 sm:pt-12 pb-16 sm:pb-24 relative">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[300px] bg-gradient-to-r from-blue-200/30 via-purple-200/20 to-orange-200/30 blur-[100px] rounded-full color-shift-slow pointer-events-none" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[520px] h-[320px] neon-hero-glow blur-[80px] rounded-full pointer-events-none" />
 
-          <div className="animate-slide-up inline-flex items-center gap-2.5 px-5 py-2 rounded-full bg-blue-50 border border-blue-200 mb-8">
+          <div className="animate-slide-up inline-flex items-center gap-2.5 px-5 py-2 rounded-full bg-cyan-500/10 border border-cyan-500/30 mb-8">
             <span className="relative flex h-2.5 w-2.5">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
               <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500" />
             </span>
-            <span className="text-gray-500 text-xs font-bold tracking-[0.15em]">LIVE NOW — {allGames.filter(g => g.isAvailable).length} GAMES FREE TO PLAY</span>
+            <span className="text-slate-300 text-xs font-bold tracking-[0.15em]">LIVE NOW — {allGames.filter(g => g.isAvailable).length} GAMES FREE TO PLAY</span>
           </div>
 
           <div className="animate-slide-up delay-100 mb-6">
-            <img src="/images/logo.png" alt="SkillzStorm — Play Hard. Think Harder." className="h-20 sm:h-32 md:h-40 w-auto mx-auto drop-shadow-lg" />
+            <img src="/images/logo.png" alt="SkillzStorm — Play Hard. Think Harder." className="h-20 sm:h-32 md:h-40 w-auto mx-auto drop-shadow-[0_0_40px_rgba(34,211,238,0.25)]" />
           </div>
 
-          <p className="text-gray-500 max-w-lg mx-auto mb-12 text-base sm:text-lg leading-relaxed animate-slide-up delay-300">
-            The arcade learning platform with <span className="text-gray-800 font-semibold">{allGames.length}+ games</span>,
-            K-12 difficulty scaling, and knowledge gates that make you <span className="text-gray-800 font-semibold">smarter while you play</span>.
+          <p className="text-slate-400 max-w-lg mx-auto mb-12 text-base sm:text-lg leading-relaxed animate-slide-up delay-300">
+            The arcade learning platform with <span className="text-cyan-200 font-semibold">{allGames.length}+ games</span>,
+            K-12 difficulty scaling, and knowledge gates that make you <span className="text-fuchsia-200/90 font-semibold">smarter while you play</span>.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate-slide-up delay-400">
@@ -48,16 +48,35 @@ export function HomePage() {
         </section>
 
         {/* STATS */}
-        <section className="bg-white rounded-2xl border border-gray-200 shadow-sm p-8 grid grid-cols-2 sm:grid-cols-4 gap-6 mb-20 animate-slide-up delay-500">
+        <section className="game-card rounded-2xl border border-cyan-500/20 shadow-lg p-8 grid grid-cols-2 sm:grid-cols-4 gap-6 mb-20 animate-slide-up delay-500">
           <StatItem label="Games" value={`${allGames.length + arcadeGames.length}+`} color="#3b82f6" icon="🎮" />
           <StatItem label="Grades" value="K – 12" color="#10b981" icon="📚" />
           <StatItem label="Categories" value="6" color="#8b5cf6" icon="🎯" />
           <StatItem label="Price" value="$0" color="#f59e0b" icon="🆓" />
         </section>
 
+        <section className="mb-20 animate-slide-up">
+          <div className="bg-gradient-to-r from-emerald-500/10 to-cyan-500/10 rounded-2xl border border-cyan-500/25 p-8 sm:p-10">
+            <div className="flex flex-col sm:flex-row items-center gap-6">
+              <div className="text-6xl">📘</div>
+              <div className="flex-1 text-center sm:text-left">
+                <h2 className="text-xl font-black text-slate-100 mb-2">New: Learning Hub for Parents and Teachers</h2>
+                <p className="text-slate-400 text-sm max-w-2xl">
+                  Explore 10 education topic pages with trusted readings, video playlists, practice activities, and
+                  individual assignments. Includes an AI lesson-plan builder for targeted support like adjectives,
+                  fractions, and reading comprehension.
+                </p>
+              </div>
+              <Link to="/learn" className="btn-elite btn-elite-primary text-sm flex-shrink-0">
+                Open Learning Hub →
+              </Link>
+            </div>
+          </div>
+        </section>
+
         {/* FEATURED GAMES */}
         <section className="mb-20">
-          <h2 className="section-heading text-lg font-black tracking-[0.15em] text-gray-700">
+          <h2 className="section-heading text-lg font-black tracking-[0.15em] text-slate-400">
             <span className="text-xl">⭐</span> FEATURED GAMES
           </h2>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-5">
@@ -129,7 +148,7 @@ export function HomePage() {
 
         {/* GAME MODES */}
         <section className="mb-20">
-          <h2 className="section-heading text-lg font-black tracking-[0.15em] text-gray-700">
+          <h2 className="section-heading text-lg font-black tracking-[0.15em] text-slate-400">
             <span className="text-xl">🎯</span> GAME MODES
           </h2>
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-5">
@@ -164,17 +183,17 @@ export function HomePage() {
 
         {/* HOW IT WORKS */}
         <section className="mb-20">
-          <h2 className="section-heading text-lg font-black tracking-[0.15em] text-gray-700">HOW IT WORKS</h2>
+          <h2 className="section-heading text-lg font-black tracking-[0.15em] text-slate-400">HOW IT WORKS</h2>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
             <Step num="01" title="Choose Your Grade" desc="Select K-2, 3-5, 6-8, or 9-12. Difficulty scales automatically across all games." color="#3b82f6" icon="📚" delay="0s" />
-            <Step num="02" title="Pick a Game" desc="50+ arcade-style games across 6 categories. Every game is completely free." color="#8b5cf6" icon="🎮" delay="0.15s" />
+            <Step num="02" title="Pick a Game" desc="Arcade-style games across multiple modes including StormNeon signature titles. Every game is completely free." color="#8b5cf6" icon="🎮" delay="0.15s" />
             <Step num="03" title="Play & Learn" desc="Knowledge Gates test your skills between levels. Fun first — learning is hidden inside." color="#f97316" icon="🧠" delay="0.3s" />
           </div>
         </section>
 
         {/* KNOWLEDGE GATES */}
         <section className="mb-20">
-          <h2 className="section-heading text-lg font-black tracking-[0.15em] text-gray-700">
+          <h2 className="section-heading text-lg font-black tracking-[0.15em] text-slate-400">
             <span className="text-xl">🔒</span> KNOWLEDGE GATES
           </h2>
           <p className="text-gray-400 text-center text-sm mb-8 -mt-4 max-w-lg mx-auto">
@@ -238,7 +257,7 @@ export function HomePage() {
 
         {/* GET THE APP */}
         <section className="mb-20 animate-slide-up">
-          <h2 className="section-heading text-lg font-black tracking-[0.15em] text-gray-700">GET THE APP</h2>
+          <h2 className="section-heading text-lg font-black tracking-[0.15em] text-slate-400">GET THE APP</h2>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 max-w-2xl mx-auto">
             <AppCard icon="🍎" store="App Store" sub="iPhone & iPad" color="#3b82f6" />
             <AppCard icon="💻" store="Mac App Store" sub="macOS" color="#8b5cf6" />

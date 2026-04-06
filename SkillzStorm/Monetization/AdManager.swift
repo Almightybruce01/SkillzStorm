@@ -1,5 +1,6 @@
 import SwiftUI
 import Combine
+import UIKit
 import GoogleMobileAds
 
 // ═══════════════════════════════════════════════════════════════
@@ -136,8 +137,7 @@ class AdManager: NSObject, ObservableObject {
             return
         }
         
-        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-           let rootVC = windowScene.windows.first?.rootViewController {
+        if let rootVC = UIApplication.shared.topMostViewController() {
             ad.present(from: rootVC)
         }
     }
@@ -146,11 +146,14 @@ class AdManager: NSObject, ObservableObject {
     // MARK: - Rewarded Ad (Watch for Power-ups)
     // ─────────────────────────────────────────
     
-    private func loadRewarded() {
+    private func loadRewarded(completion: (() -> Void)? = nil) {
         let request = GoogleMobileAds.Request()
         RewardedAd.load(with: rewardedAdID, request: request) { [weak self] ad, error in
             if let error = error {
                 print("[AdManager] Rewarded load error: \(error.localizedDescription)")
+                Task { @MainActor in
+                    completion?()
+                }
                 return
             }
             guard let self else { return }
@@ -159,27 +162,47 @@ class AdManager: NSObject, ObservableObject {
                 self.rewardedAd?.fullScreenContentDelegate = self
                 self.isRewardedReady = true
                 print("[AdManager] Rewarded ready")
+                completion?()
             }
         }
     }
     
     /// Shows a rewarded video ad. Completion returns true if user earned reward.
     func showRewardedAd(completion: @escaping (Bool) -> Void) {
-        guard let ad = rewardedAd else {
-            loadRewarded()
+        guard !PlayerProgress.shared.isAdFree else {
             completion(false)
             return
         }
-        
-        rewardCompletion = completion
-        
-        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-           let rootVC = windowScene.windows.first?.rootViewController {
-            ad.present(from: rootVC) {
-                // User earned reward
+
+        func presentLoadedAd(_ ad: RewardedAd) {
+            guard let rootVC = UIApplication.shared.topMostViewController() else {
+                print("[AdManager] No view controller to present rewarded ad")
+                completion(false)
+                return
+            }
+            rewardCompletion = completion
+            ad.present(from: rootVC) { [weak self] in
                 let reward = ad.adReward
                 print("[AdManager] User earned reward: \(reward.amount) \(reward.type)")
-                completion(true)
+                self?.rewardCompletion?(true)
+                self?.rewardCompletion = nil
+            }
+        }
+
+        if let ad = rewardedAd {
+            presentLoadedAd(ad)
+        } else {
+            loadRewarded { [weak self] in
+                guard let self else {
+                    completion(false)
+                    return
+                }
+                guard let ad = self.rewardedAd else {
+                    print("[AdManager] Rewarded ad still not available after load")
+                    completion(false)
+                    return
+                }
+                presentLoadedAd(ad)
             }
         }
     }
@@ -249,8 +272,7 @@ class AdManager: NSObject, ObservableObject {
             return
         }
         
-        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-           let rootVC = windowScene.windows.first?.rootViewController {
+        if let rootVC = UIApplication.shared.topMostViewController() {
             ad.present(from: rootVC)
         }
     }
@@ -264,7 +286,13 @@ extension AdManager: FullScreenContentDelegate {
             isInterstitialReady = false
             loadInterstitial()
         } else if ad is RewardedAd {
+            // User closed the ad without earning (or after earn — completion already cleared).
+            if let cb = rewardCompletion {
+                cb(false)
+                rewardCompletion = nil
+            }
             isRewardedReady = false
+            rewardedAd = nil
             loadRewarded()
         } else if ad is AppOpenAd {
             loadAppOpenAd()
@@ -340,6 +368,7 @@ struct RewardedAdButton: View {
     @ObservedObject var adManager = AdManager.shared
     @State private var isLoading = false
     @State private var showSuccess = false
+    @State private var showAdUnavailable = false
     
     var body: some View {
         Button(action: {
@@ -351,6 +380,8 @@ struct RewardedAdButton: View {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                         showSuccess = false
                     }
+                } else {
+                    showAdUnavailable = true
                 }
             }
         }) {
@@ -400,6 +431,11 @@ struct RewardedAdButton: View {
             )
         }
         .disabled(isLoading)
+        .alert("Video unavailable", isPresented: $showAdUnavailable) {
+            Button("OK", role: .cancel) {}
+        } message: {
+            Text("The ad could not load. Check your connection and try again in a moment.")
+        }
     }
 }
 
@@ -476,6 +512,8 @@ struct FreeRewardsView: View {
                 }
             }
         }
+        .presentationDetents([.large])
+        .presentationDragIndicator(.visible)
         .preferredColorScheme(.dark)
     }
 }

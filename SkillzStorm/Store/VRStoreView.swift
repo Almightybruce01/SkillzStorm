@@ -1,4 +1,5 @@
 import SwiftUI
+import UIKit
 
 // MARK: - VR & 3D Store
 
@@ -11,7 +12,7 @@ struct StoreItem: Identifiable {
     let category: String
     let features: [String]
     let inStock: Bool
-    let isPhysicalGood: Bool // Physical goods → Stripe website. Digital → StoreKit IAP.
+    let isPhysicalGood: Bool
 }
 
 struct VRStoreView: View {
@@ -19,10 +20,19 @@ struct VRStoreView: View {
     @ObservedObject var progress = PlayerProgress.shared
     @State private var selectedCategory = "All"
     @State private var cart: [StoreItem] = []
-    @State private var showCheckout = false
-    @State private var showFreeRewards = false
+    private enum StoreSheet: Identifiable {
+        case checkout
+        case freeRewards
+        var id: Int {
+            switch self {
+            case .checkout: return 0
+            case .freeRewards: return 1
+            }
+        }
+    }
+    @State private var activeSheet: StoreSheet?
     
-    let categories = ["All", "VR Headsets", "3D Glasses", "Accessories", "School Supplies", "Toys", "Fidgets", "Premium"]
+    let categories = ["All", "VR Headsets", "3D Glasses", "Accessories", "School Supplies", "Toys", "Fidgets"]
     
     let storeItems: [StoreItem] = [
         // VR Headsets
@@ -66,7 +76,6 @@ struct VRStoreView: View {
     
     var filteredItems: [StoreItem] {
         if selectedCategory == "All" { return storeItems }
-        if selectedCategory == "Premium" { return [] }
         return storeItems.filter { $0.category == selectedCategory }
     }
     
@@ -79,11 +88,6 @@ struct VRStoreView: View {
                     storeHeader
                     categoryPills
                     
-                    // If "Premium" is selected, show IAP button
-                    if selectedCategory == "Premium" || selectedCategory == "All" {
-                        premiumSection
-                    }
-                    
                     // Free Rewards (watch ads)
                     if !progress.isAdFree {
                         freeRewardsCard
@@ -95,17 +99,15 @@ struct VRStoreView: View {
                     }
                     
                     // Physical products
-                    if selectedCategory != "Premium" {
-                        LazyVStack(spacing: 16) {
-                            ForEach(filteredItems) { item in
-                                StoreItemCard(item: item) {
-                                    cart = cart + [item]
-                                    SoundManager.shared.playButtonTap()
-                                }
+                    LazyVStack(spacing: 16) {
+                        ForEach(filteredItems) { item in
+                            StoreItemCard(item: item) {
+                                cart = cart + [item]
+                                SoundManager.shared.playButtonTap()
                             }
                         }
-                        .padding(.horizontal)
                     }
+                    .padding(.horizontal)
                     
                     vrDistributionInfo
                     
@@ -124,15 +126,16 @@ struct VRStoreView: View {
                     .foregroundColor(StormColors.neonBlue)
             }
         }
-        .sheet(isPresented: $showCheckout) {
-            CheckoutView(items: cart) {
-                cart = []
-                showCheckout = false
+        .sheet(item: $activeSheet) { sheet in
+            switch sheet {
+            case .checkout:
+                CheckoutView(items: cart) {
+                    cart = []
+                    activeSheet = nil
+                }
+            case .freeRewards:
+                FreeRewardsView()
             }
-        }
-        
-        .sheet(isPresented: $showFreeRewards) {
-            FreeRewardsView()
         }
     }
     
@@ -177,58 +180,21 @@ struct VRStoreView: View {
     }
     
     // ──────────────────────────────────────────
-    // MARK: - Premium Section (Website)
-    // ──────────────────────────────────────────
-    
-    private var premiumSection: some View {
-        VStack(spacing: 12) {
-            Link(destination: URL(string: "https://skillzstorm.com/premium")!) {
-                HStack {
-                    VStack(alignment: .leading, spacing: 4) {
-                        HStack(spacing: 6) {
-                            Text("👑").font(.title2)
-                            Text("GET PREMIUM")
-                                .font(.headline.bold())
-                                .foregroundColor(.white)
-                        }
-                        Text("Ad-free, coins, season pass, and more on skillzstorm.com")
-                            .font(.caption)
-                            .foregroundColor(.white.opacity(0.5))
-                    }
-                    Spacer()
-                    VStack(spacing: 4) {
-                        Image(systemName: "arrow.up.right.square.fill")
-                            .font(.title2)
-                            .foregroundColor(StormColors.neonYellow)
-                        Text("Visit Website")
-                            .font(.caption2)
-                            .foregroundColor(.white.opacity(0.5))
-                    }
-                }
-                .padding(16)
-                .background(
-                    LinearGradient(colors: [Color.purple.opacity(0.2), Color.blue.opacity(0.1)],
-                                  startPoint: .topLeading, endPoint: .bottomTrailing)
-                )
-                .glassCard()
-            }
-        }
-        .padding(.horizontal)
-    }
-    
-    // ──────────────────────────────────────────
     // MARK: - Free Rewards Card
     // ──────────────────────────────────────────
     
     private var freeRewardsCard: some View {
-        Button(action: { showFreeRewards = true }) {
+        Button(action: {
+            SoundManager.shared.playButtonTap()
+            activeSheet = .freeRewards
+        }) {
             HStack(spacing: 14) {
                 Text("🎬").font(.title)
                 VStack(alignment: .leading, spacing: 2) {
                     Text("FREE REWARDS")
                         .font(.subheadline.bold())
                         .foregroundColor(StormColors.neonYellow)
-                    Text("Watch short videos → earn power-ups & coins")
+                    Text("Watch short videos to earn bonus rewards")
                         .font(.caption)
                         .foregroundColor(.white.opacity(0.5))
                 }
@@ -239,7 +205,9 @@ struct VRStoreView: View {
             .padding(14)
             .background(StormColors.neonYellow.opacity(0.08))
             .glassCard()
+            .contentShape(Rectangle())
         }
+        .buttonStyle(.plain)
         .padding(.horizontal)
     }
     
@@ -255,7 +223,7 @@ struct VRStoreView: View {
                 .font(.subheadline.bold())
                 .foregroundColor(.white)
             Spacer()
-            Button(action: { showCheckout = true }) {
+            Button(action: { activeSheet = .checkout }) {
                 Text("Checkout")
                     .font(.subheadline.bold())
                     .foregroundColor(.white)
@@ -494,7 +462,7 @@ struct CheckoutView: View {
     let onComplete: () -> Void
     @Environment(\.dismiss) var dismiss
     @State private var isProcessing = false
-    @State private var showWebCheckout = false
+    @State private var showParentalGateForPayment = false
     
     var total: Double {
         items.compactMap { item in
@@ -555,9 +523,7 @@ struct CheckoutView: View {
                         }
                         
                         Button(action: {
-                            if let url = URL(string: "https://skillzstorm.com/store") {
-                                UIApplication.shared.open(url)
-                            }
+                            showParentalGateForPayment = true
                         }) {
                             HStack {
                                 Image(systemName: "creditcard.fill")
@@ -592,6 +558,17 @@ struct CheckoutView: View {
                     Button("Cancel") { dismiss() }
                         .foregroundColor(StormColors.neonBlue)
                 }
+            }
+            .sheet(isPresented: $showParentalGateForPayment) {
+                ParentalGateView(
+                    onSuccess: {
+                        showParentalGateForPayment = false
+                        if let url = URL(string: "https://skillzstorm.com/store") {
+                            UIApplication.shared.open(url)
+                        }
+                    },
+                    onCancel: { showParentalGateForPayment = false }
+                )
             }
         }
         .preferredColorScheme(.dark)

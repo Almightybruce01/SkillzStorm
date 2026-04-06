@@ -290,10 +290,10 @@ struct GameCoverArt: View {
     
     private var titleSize: CGFloat {
         switch size {
-        case .card: return 11
-        case .featured: return 16
-        case .detail: return 22
-        case .mini: return 8
+        case .card: return 13
+        case .featured: return 18
+        case .detail: return 24
+        case .mini: return 10
         }
     }
     
@@ -307,9 +307,9 @@ struct GameCoverArt: View {
                 if size != .mini {
                     HStack(spacing: 3) {
                         Image(systemName: game.category.iconName)
-                            .font(.system(size: 8))
+                            .font(.system(size: 10))
                         Text(game.category.displayName)
-                            .font(.system(size: 7).bold())
+                            .font(.system(size: 9).bold())
                     }
                     .foregroundColor(.white.opacity(0.8))
                     .padding(.horizontal, 6)
@@ -394,12 +394,12 @@ struct EnhancedGameCard: View {
             HStack {
                 VStack(alignment: .leading, spacing: 2) {
                     Text(game.name)
-                        .font(.caption.bold())
+                        .font(.subheadline.bold())
                         .foregroundColor(.white)
                         .lineLimit(1)
                     
                     Text(game.description)
-                        .font(.system(size: 9))
+                        .font(.caption)
                         .foregroundColor(.white.opacity(0.45))
                         .lineLimit(1)
                 }
@@ -409,12 +409,12 @@ struct EnhancedGameCard: View {
                 if !game.isAvailable {
                     StormBadge(text: "SOON", color: .gray)
                 } else if game.isPremium {
-                    Image(systemName: "crown.fill")
-                        .font(.system(size: 10))
+                    Image(systemName: "sparkles")
+                        .font(.system(size: 12))
                         .foregroundColor(StormColors.neonYellow)
                 } else {
                     Image(systemName: "play.circle.fill")
-                        .font(.system(size: 14))
+                        .font(.system(size: 16))
                         .foregroundColor(StormColors.neonGreen)
                 }
             }

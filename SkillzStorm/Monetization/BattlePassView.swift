@@ -10,7 +10,6 @@ struct BattlePassView: View {
     @ObservedObject var battlePass = BattlePassManager.shared
     @ObservedObject var cosmetics = CosmeticsManager.shared
     @State private var selectedTier: Int? = nil
-    @State private var showPurchaseConfirm = false
     @State private var showClaimAnimation = false
     @State private var claimedRewardName = ""
     @State private var scrollOffset: CGFloat = 0
@@ -33,12 +32,6 @@ struct BattlePassView: View {
                             .padding(.horizontal, 20)
                             .padding(.bottom, 24)
                         
-                        if !battlePass.isPremium {
-                            premiumUpgradeCard
-                                .padding(.horizontal, 20)
-                                .padding(.bottom, 24)
-                        }
-                        
                         tierList
                             .padding(.horizontal, 16)
                         
@@ -60,7 +53,7 @@ struct BattlePassView: View {
                     }
                 }
                 ToolbarItem(placement: .principal) {
-                    Text("SEASON PASS")
+                    Text("SEASON TRACK")
                         .font(.headline.bold())
                         .foregroundColor(.white)
                 }
@@ -132,7 +125,7 @@ struct BattlePassView: View {
                 HStack(spacing: 6) {
                     Image(systemName: "crown.fill")
                         .foregroundColor(StormColors.neonYellow)
-                    Text("PREMIUM ACTIVE")
+                    Text("BONUS TRACK ACTIVE")
                         .font(.caption.bold())
                         .foregroundColor(StormColors.neonYellow)
                 }
@@ -233,63 +226,43 @@ struct BattlePassView: View {
         )
     }
     
-    // MARK: - Premium Upgrade Card
+    // MARK: - Season Info Card
     
     private var premiumUpgradeCard: some View {
-        Button(action: { showPurchaseConfirm = true }) {
-            VStack(spacing: 12) {
-                HStack {
-                    VStack(alignment: .leading, spacing: 4) {
-                        HStack(spacing: 6) {
-                            Image(systemName: "crown.fill")
-                                .foregroundColor(StormColors.neonYellow)
-                            Text("UPGRADE TO PREMIUM")
-                                .font(.headline.bold())
-                                .foregroundColor(.white)
-                        }
-                        
-                        Text("Unlock exclusive avatars, themes, titles & 1.5x XP boost")
-                            .font(.caption)
-                            .foregroundColor(.white.opacity(0.6))
-                    }
-                    
-                    Spacer()
-                    
-                    Text("$4.99")
-                        .font(.title2.bold())
-                        .foregroundColor(StormColors.neonYellow)
-                }
-                
-                HStack(spacing: 16) {
-                    premiumPerk(icon: "person.crop.circle.fill", text: "Avatars")
-                    premiumPerk(icon: "paintpalette.fill", text: "Themes")
-                    premiumPerk(icon: "textformat", text: "Titles")
-                    premiumPerk(icon: "bolt.fill", text: "1.5x XP")
-                }
+        VStack(spacing: 12) {
+            HStack(spacing: 6) {
+                Image(systemName: "sparkles")
+                    .foregroundColor(StormColors.neonYellow)
+                Text("SEASON REWARDS")
+                    .font(.headline.bold())
+                    .foregroundColor(.white)
             }
-            .padding(16)
-            .background(
-                LinearGradient(
-                    colors: [StormColors.neonYellow.opacity(0.15), StormColors.neonOrange.opacity(0.1)],
-                    startPoint: .topLeading,
-                    endPoint: .bottomTrailing
-                )
-            )
-            .cornerRadius(16)
-            .overlay(
-                RoundedRectangle(cornerRadius: 16)
-                    .stroke(StormColors.neonYellow.opacity(0.3), lineWidth: 1)
-            )
-        }
-        .alert("Upgrade to Premium Pass", isPresented: $showPurchaseConfirm) {
-            Button("Buy for $4.99") {
-                battlePass.isPremium = true
-                PlayerProgress.shared.hasSeasonPass = true
+            
+            Text("Play daily challenges and complete games to unlock season rewards.")
+                .font(.caption)
+                .foregroundColor(.white.opacity(0.7))
+                .multilineTextAlignment(.center)
+            
+            HStack(spacing: 16) {
+                premiumPerk(icon: "person.crop.circle.fill", text: "Avatars")
+                premiumPerk(icon: "paintpalette.fill", text: "Themes")
+                premiumPerk(icon: "textformat", text: "Titles")
+                premiumPerk(icon: "bolt.fill", text: "XP Boost")
             }
-            Button("Cancel", role: .cancel) {}
-        } message: {
-            Text("Unlock exclusive rewards, 1.5x XP boost, and cosmetic items for this season!")
         }
+        .padding(16)
+        .background(
+            LinearGradient(
+                colors: [StormColors.neonYellow.opacity(0.15), StormColors.neonOrange.opacity(0.1)],
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            )
+        )
+        .cornerRadius(16)
+        .overlay(
+            RoundedRectangle(cornerRadius: 16)
+                .stroke(StormColors.neonYellow.opacity(0.3), lineWidth: 1)
+        )
     }
     
     private func premiumPerk(icon: String, text: String) -> some View {

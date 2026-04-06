@@ -13,7 +13,7 @@ export function PrivacyPage() {
       </div>
 
       <h1 className="text-3xl font-black text-gray-800 mb-2 animate-slide-up">Privacy Policy</h1>
-      <p className="text-gray-400 text-sm mb-8 animate-slide-up delay-100">Last updated: February 13, 2026</p>
+      <p className="text-gray-400 text-sm mb-8 animate-slide-up delay-100">Last updated: March 2026</p>
 
       <div className="space-y-8 text-gray-600 text-sm leading-relaxed animate-slide-up delay-200">
         <Section title="Overview">
@@ -82,21 +82,27 @@ export function PrivacyPage() {
             <li>No remarketing or retargeting</li>
             <li>Ads are contextual only (based on app content, not user behavior)</li>
             <li>Google's child-directed treatment tag is enabled</li>
+            <li>Google Mobile Ads max content rating is configured to General (G)</li>
+          </ul>
+          <p className="mt-3">Publicly documented policy links:</p>
+          <ul className="list-disc list-inside mt-2 space-y-1">
+            <li><a href="https://support.google.com/admob/answer/6219315" className="text-[#3b82f6] underline" target="_blank" rel="noopener noreferrer">AdMob child-directed treatment (COPPA)</a></li>
+            <li><a href="https://support.google.com/admob/answer/6223431" className="text-[#3b82f6] underline" target="_blank" rel="noopener noreferrer">AdMob Families policy compliance</a></li>
+            <li><a href="https://support.google.com/adspolicy/answer/13584894" className="text-[#3b82f6] underline" target="_blank" rel="noopener noreferrer">Google ad moderation process (automation + human reviewers)</a></li>
+            <li><a href="https://support.google.com/adspolicy/answer/1722120" className="text-[#3b82f6] underline" target="_blank" rel="noopener noreferrer">Google ad review process</a></li>
           </ul>
           <p className="mt-3">
-            Users can remove all ads permanently by purchasing the "Ad-Free" option ($2.99).
+            Additional disclosure page: <Link to="/kids-ad-safety" className="text-[#3b82f6] underline">Kids Ad Safety Policy</Link>.
           </p>
         </Section>
 
         <Section title="In-App Purchases">
           <p>
-            Our app offers optional in-app purchases (coins, ad-free, premium bundle, season pass).
-            On iOS, purchases go through Apple's App Store which requires the device owner's
-            password/Face ID. On the web, purchases go through Stripe.
+            SkillzStorm does not offer in-app purchases in the iOS app.
+            There is no StoreKit checkout flow and no Apple ID billing prompt presented inside the app.
           </p>
           <p className="mt-2">
-            We recommend parents enable "Ask to Buy" or purchase restrictions on their child's device
-            to manage in-app purchase access.
+            Website purchases for optional physical products are processed through Stripe at skillzstorm.com.
           </p>
         </Section>
 
@@ -121,7 +127,6 @@ export function PrivacyPage() {
           <p>We use the following third-party services:</p>
           <ul className="list-disc list-inside mt-2 space-y-1">
             <li><strong className="text-gray-800">Google AdMob/AdSense</strong> — Advertising (child-directed mode enabled)</li>
-            <li><strong className="text-gray-800">Apple StoreKit</strong> — In-app purchases on iOS</li>
             <li><strong className="text-gray-800">Stripe</strong> — Payment processing for website purchases</li>
           </ul>
           <p className="mt-2">

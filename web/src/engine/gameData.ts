@@ -1,5 +1,18 @@
+import { getCompleteSeedGames } from './completeCatalog';
+
 export type GradeLevel = 'K-2' | '3-5' | '6-8' | '9-12';
-export type GameCategory = 'StormBattle' | 'StormDash' | 'StormPuzzle' | 'StormQuick' | 'Storm3D' | 'StormVR';
+export type GameCategory =
+  | 'StormBattle'
+  | 'StormDash'
+  | 'StormPuzzle'
+  | 'StormQuick'
+  | 'Storm3D'
+  | 'StormVR'
+  | 'StormNeon'
+  | 'StormMario'
+  | 'StormRetro'
+  | 'StormEduPlus'
+  | 'StormElite';
 
 export interface GameInfo {
   id: string;
@@ -12,6 +25,10 @@ export interface GameInfo {
   isAvailable: boolean;
   isFeatured: boolean;
   isPremium: boolean;
+  /** When set, overrides automatic neon canvas engine mapping */
+  neonEngine?: string;
+  /** Use legacy React GameLauncher instead of neon canvas (opt-in per game) */
+  useReactEngine?: boolean;
 }
 
 export const gradeLevels: { value: GradeLevel; label: string; subtitle: string; color: string }[] = [
@@ -28,9 +45,14 @@ export const categories: { value: GameCategory; label: string; subtitle: string;
   { value: 'StormQuick', label: 'StormQuick', subtitle: 'Quick Play Mini Games', icon: '⚡', colors: ['#ff3366', '#cc1980'] },
   { value: 'Storm3D', label: 'Storm3D', subtitle: '3D Immersive Games', icon: '🎮', colors: ['#8000ff', '#cc00cc'] },
   { value: 'StormVR', label: 'StormVR', subtitle: 'VR Experience', icon: '🥽', colors: ['#00cccc', '#0066cc'] },
+  { value: 'StormNeon', label: 'StormNeon', subtitle: 'Signature neon arcade', icon: '✨', colors: ['#22d3ee', '#e879f9'] },
+  { value: 'StormMario', label: 'StormMario', subtitle: 'Mario & Kart style', icon: '🍄', colors: ['#ef4444', '#f97316'] },
+  { value: 'StormRetro', label: 'StormRetro', subtitle: 'Arcade classics', icon: '👾', colors: ['#a855f7', '#6366f1'] },
+  { value: 'StormEduPlus', label: 'StormEduPlus', subtitle: 'Extra learning titles', icon: '📚', colors: ['#22c55e', '#14b8a6'] },
+  { value: 'StormElite', label: 'StormElite', subtitle: 'Elite & flagship', icon: '💎', colors: ['#f43f5e', '#eab308'] },
 ];
 
-export const allGames: GameInfo[] = [
+const coreGames: GameInfo[] = [
   // StormBattle
   { id: 'astromath_wars', name: 'AstroMath Wars', description: 'Space shooter — destroy asteroids containing wrong answers. Boss fights are word problems.', category: 'StormBattle', iconEmoji: '🚀', coverArt: '/images/covers/cover-astromath-wars.png', supportedGrades: ['K-2','3-5','6-8','9-12'], isAvailable: true, isFeatured: true, isPremium: false },
   { id: 'multiplication_meteors', name: 'Multiplication Meteors', description: 'Meteors rain down with multiplication problems. Shoot the correct answer before they hit your base.', category: 'StormBattle', iconEmoji: '☄️', supportedGrades: ['K-2','3-5','6-8'], isAvailable: true, isFeatured: false, isPremium: false },
@@ -100,10 +122,57 @@ export const allGames: GameInfo[] = [
   { id: 'vr_science_lab', name: 'VR Science Lab', description: 'Virtual science experiments.', category: 'StormVR', iconEmoji: '🧫', supportedGrades: ['6-8','9-12'], isAvailable: false, isFeatured: false, isPremium: true },
   { id: 'vr_history_explorer', name: 'VR History Explorer', description: 'Walk through history in VR.', category: 'StormVR', iconEmoji: '🏺', supportedGrades: ['6-8','9-12'], isAvailable: false, isFeatured: false, isPremium: true },
 
+  // StormNeon — 40 Replit signature slugs (see cursor-guide/SKILLZSTORM_CURSOR_PROMPT.md)
+  { id: 'typing-storm', name: 'Typing Storm', description: 'Neon typing racer — hit keys fast and climb the score.', category: 'StormNeon', iconEmoji: '⌨️', supportedGrades: ['K-2','3-5','6-8','9-12'], isAvailable: true, isFeatured: true, isPremium: false },
+  { id: 'speed-typer', name: 'Speed Typer', description: 'Speed typing challenge — words fall as you race the clock.', category: 'StormNeon', iconEmoji: '⚡', supportedGrades: ['K-2','3-5','6-8','9-12'], isAvailable: true, isFeatured: false, isPremium: false },
+  { id: 'word-blitz', name: 'Word Blitz', description: 'Blitz through vocabulary — type each word before it escapes.', category: 'StormNeon', iconEmoji: '📝', supportedGrades: ['K-2','3-5','6-8','9-12'], isAvailable: true, isFeatured: false, isPremium: false },
+  { id: 'math-storm', name: 'Math Storm', description: 'Math battle mode — pick the right answer under pressure.', category: 'StormNeon', iconEmoji: '🧮', supportedGrades: ['K-2','3-5','6-8','9-12'], isAvailable: true, isFeatured: false, isPremium: false },
+  { id: 'number-battle', name: 'Number Battle', description: 'Rapid-fire sums — keys 1–4 lock in your answer.', category: 'StormNeon', iconEmoji: '🔢', supportedGrades: ['K-2','3-5','6-8','9-12'], isAvailable: true, isFeatured: false, isPremium: false },
+  { id: 'times-table-titan', name: 'Times Table Titan', description: 'Master multiplication tables in neon math combat.', category: 'StormNeon', iconEmoji: '✖️', supportedGrades: ['K-2','3-5','6-8','9-12'], isAvailable: true, isFeatured: false, isPremium: false },
+  { id: 'math-elite', name: 'Math Elite', description: 'Elite difficulty math — only perfect picks advance.', category: 'StormNeon', iconEmoji: '🏆', supportedGrades: ['6-8','9-12'], isAvailable: true, isFeatured: false, isPremium: false },
+  { id: 'fraction-fighter', name: 'Fraction Fighter', description: 'Fight through fraction drills with quick multiple choice.', category: 'StormNeon', iconEmoji: '🥊', supportedGrades: ['3-5','6-8','9-12'], isAvailable: true, isFeatured: false, isPremium: false },
+  { id: 'geography-quest', name: 'Geography Quest', description: 'Quiz voyage — geography questions with four choices.', category: 'StormNeon', iconEmoji: '🌍', supportedGrades: ['3-5','6-8','9-12'], isAvailable: true, isFeatured: false, isPremium: false },
+  { id: 'world-explorer', name: 'World Explorer', description: 'Explore the map one quiz at a time.', category: 'StormNeon', iconEmoji: '🗺️', supportedGrades: ['3-5','6-8','9-12'], isAvailable: true, isFeatured: false, isPremium: false },
+  { id: 'science-quest', name: 'Science Quest', description: 'Science trivia neon quiz — lab coat optional.', category: 'StormNeon', iconEmoji: '🔬', supportedGrades: ['3-5','6-8','9-12'], isAvailable: true, isFeatured: false, isPremium: false },
+  { id: 'history-blast', name: 'History Blast', description: 'Blast through history questions at arcade speed.', category: 'StormNeon', iconEmoji: '📜', supportedGrades: ['3-5','6-8','9-12'], isAvailable: true, isFeatured: false, isPremium: false },
+  { id: 'vocab-blast', name: 'Vocab Blast', description: 'Vocabulary quiz arena — definitions and synonyms.', category: 'StormNeon', iconEmoji: '📖', supportedGrades: ['3-5','6-8','9-12'], isAvailable: true, isFeatured: false, isPremium: false },
+  { id: 'brain-blitz', name: 'Brain Blitz', description: 'Mixed trivia blitz — general knowledge at neon pace.', category: 'StormNeon', iconEmoji: '🧠', supportedGrades: ['K-2','3-5','6-8','9-12'], isAvailable: true, isFeatured: false, isPremium: false },
+  { id: 'code-quest', name: 'Code Quest', description: 'Coding-flavored quiz — logic and patterns.', category: 'StormNeon', iconEmoji: '💻', supportedGrades: ['6-8','9-12'], isAvailable: true, isFeatured: false, isPremium: false },
+  { id: 'memory-matrix', name: 'Memory Matrix (Neon)', description: 'Flip and match pairs — classic memory with neon tiles.', category: 'StormNeon', iconEmoji: '🧩', supportedGrades: ['K-2','3-5','6-8','9-12'], isAvailable: true, isFeatured: false, isPremium: false },
+  { id: 'pattern-storm', name: 'Pattern Storm', description: 'Pattern memory storm — match the pairs before time runs out.', category: 'StormNeon', iconEmoji: '🔲', supportedGrades: ['K-2','3-5','6-8','9-12'], isAvailable: true, isFeatured: false, isPremium: false },
+  { id: 'word-scramble-x', name: 'Word Scramble X', description: 'Unscramble the word — type the solution from jumbled letters.', category: 'StormNeon', iconEmoji: '🔤', supportedGrades: ['K-2','3-5','6-8','9-12'], isAvailable: true, isFeatured: false, isPremium: false },
+  { id: 'anagram-storm', name: 'Anagram Storm', description: 'Anagram arcade — rebuild the hidden word.', category: 'StormNeon', iconEmoji: '🌀', supportedGrades: ['3-5','6-8','9-12'], isAvailable: true, isFeatured: false, isPremium: false },
+  { id: 'spelling-quest', name: 'Spelling Quest', description: 'Spelling scramble quest — letters await your order.', category: 'StormNeon', iconEmoji: '✏️', supportedGrades: ['K-2','3-5','6-8','9-12'], isAvailable: true, isFeatured: false, isPremium: false },
+  { id: 'snake-neon', name: 'Snake Neon', description: 'Classic snake — eat, grow, don’t bite yourself.', category: 'StormNeon', iconEmoji: '🐍', supportedGrades: ['K-2','3-5','6-8','9-12'], isAvailable: true, isFeatured: true, isPremium: false },
+  { id: 'python-pro', name: 'Python Pro', description: 'Snake pro variant — tight grid, high speed.', category: 'StormNeon', iconEmoji: '🐍', supportedGrades: ['3-5','6-8','9-12'], isAvailable: true, isFeatured: false, isPremium: false },
+  { id: 'neon-viper', name: 'Neon Viper', description: 'Viper snake — neon trails and sharp turns.', category: 'StormNeon', iconEmoji: '💜', supportedGrades: ['K-2','3-5','6-8','9-12'], isAvailable: true, isFeatured: false, isPremium: false },
+  { id: 'neon-viper-xl', name: 'Neon Viper XL', description: 'Extra-large board viper — room to roam.', category: 'StormNeon', iconEmoji: '🟣', supportedGrades: ['6-8','9-12'], isAvailable: true, isFeatured: false, isPremium: false },
+  { id: 'neon-breakout', name: 'Neon Breakout', description: 'Break bricks with a glowing paddle and ball.', category: 'StormNeon', iconEmoji: '🧱', supportedGrades: ['K-2','3-5','6-8','9-12'], isAvailable: true, isFeatured: false, isPremium: false },
+  { id: 'brick-crusher', name: 'Brick Crusher', description: 'Crush every layer — breakout with combo scoring.', category: 'StormNeon', iconEmoji: '🎯', supportedGrades: ['K-2','3-5','6-8','9-12'], isAvailable: true, isFeatured: false, isPremium: false },
+  { id: 'arkanoid-x', name: 'Arkanoid X', description: 'Arkanoid-style breakout — clear the wall.', category: 'StormNeon', iconEmoji: '🎮', supportedGrades: ['K-2','3-5','6-8','9-12'], isAvailable: true, isFeatured: false, isPremium: false },
+  { id: 'space-raiders', name: 'Space Raiders', description: 'Space invaders style — shoot the grid before they land.', category: 'StormNeon', iconEmoji: '👾', supportedGrades: ['K-2','3-5','6-8','9-12'], isAvailable: true, isFeatured: false, isPremium: false },
+  { id: 'galaxy-storm', name: 'Galaxy Storm', description: 'Galaxy shooter — waves of neon enemies.', category: 'StormNeon', iconEmoji: '🌌', supportedGrades: ['K-2','3-5','6-8','9-12'], isAvailable: true, isFeatured: false, isPremium: false },
+  { id: 'alien-blitz', name: 'Alien Blitz', description: 'Alien blitz invasion — fast sideways march.', category: 'StormNeon', iconEmoji: '☄️', supportedGrades: ['K-2','3-5','6-8','9-12'], isAvailable: true, isFeatured: false, isPremium: false },
+  { id: 'tetris-neon', name: 'Tetris Neon', description: 'Neon falling blocks — stack and clear lines.', category: 'StormNeon', iconEmoji: '🟦', supportedGrades: ['K-2','3-5','6-8','9-12'], isAvailable: true, isFeatured: true, isPremium: false },
+  { id: 'block-storm', name: 'Block Storm', description: 'Block stack storm — single-piece drops, pure speed.', category: 'StormNeon', iconEmoji: '📦', supportedGrades: ['K-2','3-5','6-8','9-12'], isAvailable: true, isFeatured: false, isPremium: false },
+  { id: 'stack-attack', name: 'Stack Attack', description: 'Stack attack mode — clear rows for big points.', category: 'StormNeon', iconEmoji: '🏗️', supportedGrades: ['3-5','6-8','9-12'], isAvailable: true, isFeatured: false, isPremium: false },
+  { id: 'grid-master', name: 'Grid Master', description: 'Grid master tetris — minimal board, max focus.', category: 'StormNeon', iconEmoji: '⬛', supportedGrades: ['6-8','9-12'], isAvailable: true, isFeatured: false, isPremium: false },
+  { id: 'neon-jump', name: 'Neon Jump', description: 'Auto-runner jumps — spikes, gaps, and rhythm.', category: 'StormNeon', iconEmoji: '🦘', supportedGrades: ['K-2','3-5','6-8','9-12'], isAvailable: true, isFeatured: false, isPremium: false },
+  { id: 'platform-storm', name: 'Platform Storm', description: 'Platform runner storm — time your jumps.', category: 'StormNeon', iconEmoji: '🏃', supportedGrades: ['K-2','3-5','6-8','9-12'], isAvailable: true, isFeatured: false, isPremium: false },
+  { id: 'sky-runner', name: 'Sky Runner', description: 'Sky-high runner — dodge obstacles in the clouds.', category: 'StormNeon', iconEmoji: '☁️', supportedGrades: ['K-2','3-5','6-8','9-12'], isAvailable: true, isFeatured: false, isPremium: false },
+  { id: 'asteroid-storm', name: 'Asteroid Storm', description: 'Asteroids-style flight — thrust, rotate, shoot rocks.', category: 'StormNeon', iconEmoji: '🪨', supportedGrades: ['6-8','9-12'], isAvailable: true, isFeatured: false, isPremium: false },
+  { id: 'space-rock', name: 'Space Rock', description: 'Space rocks everywhere — blast and survive.', category: 'StormNeon', iconEmoji: '🛸', supportedGrades: ['6-8','9-12'], isAvailable: true, isFeatured: false, isPremium: false },
+  { id: 'cosmic-blast', name: 'Cosmic Blast', description: 'Cosmic blast — wrap screen, split asteroids, score big.', category: 'StormNeon', iconEmoji: '✨', supportedGrades: ['6-8','9-12'], isAvailable: true, isFeatured: false, isPremium: false },
+
   // Storm Defenders (Tower Defense)
   { id: 'storm_defenders', name: 'Storm Defenders', description: 'Tower defense where you place Brain Turrets to fight zombie waves. Answer questions to place and upgrade 10 unique defenders. Survive endless waves, unlock new turrets, and outsmart boss zombies.', category: 'StormBattle', iconEmoji: '🛡️', coverArt: '/images/covers/cover-storm-defenders.png', supportedGrades: ['K-2','3-5','6-8','9-12'], isAvailable: true, isFeatured: true, isPremium: false },
   { id: 'storm_defenders_vr', name: 'Storm Defenders VR', description: 'Immersive 3D tower defense. Look down at the battlefield from above, place defenders by answering questions, and watch zombies march in real-time 3D.', category: 'Storm3D', iconEmoji: '🥽', supportedGrades: ['K-2','3-5','6-8','9-12'], isAvailable: true, isFeatured: true, isPremium: false },
 ];
+
+/** SKILLZSTORM_COMPLETE.md seed (178) merged; skips slugs already in coreGames */
+const completeSeedOnly = getCompleteSeedGames().filter((g) => !coreGames.some((c) => c.id === g.id));
+
+export const allGames: GameInfo[] = [...coreGames, ...completeSeedOnly];
 
 export function getGamesForCategory(category: GameCategory): GameInfo[] {
   return allGames.filter(g => g.category === category);

@@ -24,7 +24,7 @@ struct PrivacyPolicyView: View {
                             Text("Privacy Policy")
                                 .font(.system(size: 28, weight: .black, design: .rounded))
                                 .foregroundColor(.white)
-                            Text("Last Updated: February 14, 2026")
+                            Text("Last Updated: March 2026")
                                 .font(.caption)
                                 .foregroundColor(.white.opacity(0.5))
                         }
@@ -55,7 +55,7 @@ struct PrivacyPolicyView: View {
                             • Game progress (scores, levels completed, coins earned)
                             • Grade level selection
                             • Settings preferences (sound, haptics)
-                            • Purchase history (managed by Apple's StoreKit)
+                            • Optional ad reward usage flags
                             
                             WE DO NOT COLLECT:
                             • Names, email addresses, or any personal identifiers
@@ -99,8 +99,22 @@ struct PrivacyPolicyView: View {
                             • Clearly marked as advertisements
                             • Dismissible with a visible close button
                             
-                            Users can remove all ads by purchasing the "Ad-Free" option through Apple's \
-                            In-App Purchase system.
+                            Ad content policies and practices are publicly documented by Google:
+                            • AdMob child-directed treatment (COPPA):
+                              https://support.google.com/admob/answer/6219315
+                            • AdMob Families policy compliance:
+                              https://support.google.com/admob/answer/6223431
+                            • Google ad moderation process (AI + human evaluation, including
+                              trained operators and analysts):
+                              https://support.google.com/adspolicy/answer/13584894
+                            • About the ad review process:
+                              https://support.google.com/adspolicy/answer/1722120
+                            
+                            Additional public policy page:
+                            https://skillzstorm.com/kids-ad-safety
+                            
+                            We use Google AdMob directly and configure ad requests in child-directed mode with
+                            max content rating set to General (G).
                             
                             We do NOT use third-party analytics that collect personal data from children.
                             """
@@ -110,20 +124,10 @@ struct PrivacyPolicyView: View {
                             title: "In-App Purchases",
                             icon: "cart.fill",
                             content: """
-                            All in-app purchases are processed securely through Apple's App Store payment system. \
-                            We do not collect or store any payment information. Available purchases include:
+                            SkillzStorm does not offer in-app purchases in the iOS app.
                             
-                            • Ad-Free experience
-                            • Season Pass (cosmetic rewards)
-                            • Coin packs (in-game currency)
-                            • Premium game modes
-                            
-                            All purchases require Apple ID authentication. Parents can restrict purchases \
-                            using Screen Time parental controls on their device.
-                            
-                            In-game currency (Storm Coins) can be earned for free by playing games and \
-                            watching optional rewarded ads. No purchase is required to enjoy the full \
-                            educational experience.
+                            There is no in-app purchase flow and no Apple ID billing \
+                            prompts presented inside the app.
                             """
                         )
                         
@@ -154,7 +158,7 @@ struct PrivacyPolicyView: View {
                             • You can reset all progress in Settings > Reset Progress
                             • No data is stored on our servers — there is nothing for us to delete
                             
-                            Apple manages purchase history through your Apple ID account.
+                            If you uninstall the app, all local progress data is removed.
                             """
                         )
                         
@@ -165,7 +169,6 @@ struct PrivacyPolicyView: View {
                             We use the following third-party services:
                             
                             • Google AdMob — Child-directed, non-personalized advertising
-                            • Apple StoreKit — Secure in-app purchase processing
                             • Apple Game Center — Anonymous multiplayer matchmaking
                             
                             Each service has its own privacy policy. We ensure all third-party services \
@@ -289,12 +292,9 @@ struct TermsOfServiceView: View {
                         """)
                         
                         termsSection(title: "4. In-App Purchases", content: """
-                        The App offers optional in-app purchases processed through Apple's App Store. All purchases \
-                        are final and governed by Apple's refund policies. Prices are displayed before purchase. \
-                        In-game currency (Storm Coins) has no real-world monetary value and cannot be exchanged, \
-                        transferred, or refunded outside of Apple's policies.
+                        SkillzStorm does not offer in-app purchases in the iOS app.
                         
-                        Parents can restrict in-app purchases using Screen Time settings on their device.
+                        The app can be fully used without any purchase flow, billing prompt, or account setup.
                         """)
                         
                         termsSection(title: "5. Intellectual Property", content: """
@@ -323,15 +323,14 @@ struct TermsOfServiceView: View {
                         """)
                         
                         termsSection(title: "8. Advertising", content: """
-                        The free version of SkillzStorm displays non-personalized, child-safe advertisements. \
-                        By using the free version, you acknowledge and accept the display of such ads. Ads can \
-                        be permanently removed through the Ad-Free in-app purchase.
+                        SkillzStorm displays non-personalized, child-safe advertisements through Google AdMob. \
+                        Ad requests are tagged as child-directed and use a General content rating.
                         """)
                         
                         termsSection(title: "9. Limitation of Liability", content: """
                         TO THE MAXIMUM EXTENT PERMITTED BY LAW, SKILLZSTORM SHALL NOT BE LIABLE FOR ANY INDIRECT, \
                         INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES ARISING FROM YOUR USE OF THE APP. \
-                        OUR TOTAL LIABILITY SHALL NOT EXCEED THE AMOUNT YOU PAID FOR THE APP OR IN-APP PURCHASES \
+                        OUR TOTAL LIABILITY SHALL NOT EXCEED THE AMOUNT YOU PAID FOR THE APP \
                         IN THE 12 MONTHS PRECEDING THE CLAIM.
                         """)
                         
@@ -382,133 +381,6 @@ struct TermsOfServiceView: View {
         .frame(maxWidth: .infinity, alignment: .leading)
         .background(StormColors.surface.opacity(0.5))
         .cornerRadius(16)
-    }
-}
-
-// ═══════════════════════════════════════════════════════════════
-// PARENTAL GATE — Required for Kids Category (Guideline 1.3)
-// Prevents children from accidentally accessing external links,
-// purchases, or multiplayer without parental awareness.
-// ═══════════════════════════════════════════════════════════════
-
-struct ParentalGateView: View {
-    let title: String
-    let description: String
-    let onSuccess: () -> Void
-    let onCancel: () -> Void
-    
-    @State private var answer = ""
-    @State private var num1 = Int.random(in: 12...29)
-    @State private var num2 = Int.random(in: 12...29)
-    @State private var showError = false
-    @State private var attempts = 0
-    
-    var correctAnswer: Int { num1 * num2 }
-    
-    var body: some View {
-        ZStack {
-            Color.black.opacity(0.85)
-                .ignoresSafeArea()
-                .onTapGesture { onCancel() }
-            
-            VStack(spacing: 20) {
-                // Lock icon
-                Image(systemName: "lock.shield.fill")
-                    .font(.system(size: 40))
-                    .foregroundStyle(StormColors.heroGradient)
-                
-                Text("Parental Verification")
-                    .font(.system(size: 22, weight: .black, design: .rounded))
-                    .foregroundColor(.white)
-                
-                Text(title)
-                    .font(.headline)
-                    .foregroundColor(StormColors.neonBlue)
-                    .multilineTextAlignment(.center)
-                
-                Text(description)
-                    .font(.subheadline)
-                    .foregroundColor(.white.opacity(0.6))
-                    .multilineTextAlignment(.center)
-                    .padding(.horizontal, 20)
-                
-                Divider().background(Color.white.opacity(0.2))
-                
-                Text("To continue, solve this math problem:")
-                    .font(.caption)
-                    .foregroundColor(.white.opacity(0.5))
-                
-                Text("What is \(num1) x \(num2)?")
-                    .font(.system(size: 24, weight: .bold, design: .rounded))
-                    .foregroundColor(.white)
-                
-                TextField("Enter answer", text: $answer)
-                    .keyboardType(.numberPad)
-                    .font(.title2.bold())
-                    .foregroundColor(.white)
-                    .multilineTextAlignment(.center)
-                    .padding(14)
-                    .background(StormColors.surface)
-                    .cornerRadius(12)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 12)
-                            .stroke(showError ? StormColors.neonRed : Color.white.opacity(0.1), lineWidth: 1)
-                    )
-                    .frame(width: 200)
-                
-                if showError {
-                    Text("Incorrect answer. Please try again.")
-                        .font(.caption)
-                        .foregroundColor(StormColors.neonRed)
-                }
-                
-                HStack(spacing: 16) {
-                    Button(action: { onCancel() }) {
-                        Text("Cancel")
-                            .font(.headline)
-                            .foregroundColor(.white.opacity(0.6))
-                            .padding(.horizontal, 28)
-                            .padding(.vertical, 12)
-                            .background(StormColors.surface)
-                            .cornerRadius(12)
-                    }
-                    
-                    Button(action: verify) {
-                        Text("Verify")
-                            .font(.headline.bold())
-                            .foregroundColor(.white)
-                            .padding(.horizontal, 28)
-                            .padding(.vertical, 12)
-                            .background(StormColors.heroGradient)
-                            .cornerRadius(12)
-                    }
-                }
-            }
-            .padding(28)
-            .background(StormColors.surface)
-            .cornerRadius(24)
-            .overlay(
-                RoundedRectangle(cornerRadius: 24)
-                    .stroke(StormColors.neonBlue.opacity(0.3), lineWidth: 1)
-            )
-            .shadow(color: StormColors.neonBlue.opacity(0.2), radius: 20)
-            .padding(30)
-        }
-    }
-    
-    private func verify() {
-        if Int(answer) == correctAnswer {
-            onSuccess()
-        } else {
-            showError = true
-            answer = ""
-            attempts += 1
-            if attempts >= 3 {
-                num1 = Int.random(in: 12...29)
-                num2 = Int.random(in: 12...29)
-                attempts = 0
-            }
-        }
     }
 }
 

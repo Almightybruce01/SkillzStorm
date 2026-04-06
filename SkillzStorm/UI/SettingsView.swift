@@ -1,16 +1,24 @@
 import SwiftUI
+import UIKit
 
 struct SettingsView: View {
     @Environment(\.dismiss) var dismiss
     @ObservedObject var progress = PlayerProgress.shared
     @ObservedObject var sound = SoundManager.shared
     @State private var showResetConfirm = false
+    @State private var showWebPrivacyGate = false
     
-    @State private var showLinkAccount = false
-    
-    @State private var showFreeRewards = false
-    @State private var showPrivacy = false
-    @State private var showTerms = false
+    private enum SettingsSheet: Identifiable {
+        case freeRewards, privacy, terms
+        var id: Int {
+            switch self {
+            case .freeRewards: return 0
+            case .privacy: return 1
+            case .terms: return 2
+            }
+        }
+    }
+    @State private var activeSheet: SettingsSheet?
     
     var body: some View {
         NavigationStack {
@@ -82,66 +90,27 @@ struct SettingsView: View {
                         .tint(StormColors.neonBlue)
                     }
                     
-                    // Premium
-                    Section("Premium") {
-                        Link(destination: URL(string: "https://skillzstorm.com/premium")!) {
-                            HStack {
-                                Label("Get Premium", systemImage: "star.fill")
-                                    .foregroundColor(StormColors.neonYellow)
-                                Spacer()
-                                if progress.isPremium {
-                                    Text("ACTIVE")
-                                        .font(.caption.bold())
-                                        .foregroundColor(StormColors.neonGreen)
-                                } else {
-                                    Text("Visit Website")
-                                        .font(.caption)
-                                        .foregroundColor(.white.opacity(0.5))
-                                    Image(systemName: "arrow.up.right.square")
-                                        .foregroundColor(.white.opacity(0.5))
-                                }
-                            }
-                        }
-                        .listRowBackground(StormColors.surface)
-                        
-                        
-                        
+                    // Rewards
+                    Section("Rewards") {
                         if !progress.isAdFree {
-                            Button(action: { showFreeRewards = true }) {
+                            Button(action: {
+                                SoundManager.shared.playButtonTap()
+                                activeSheet = .freeRewards
+                            }) {
                                 HStack {
                                     Label("Free Rewards", systemImage: "play.rectangle.fill")
                                         .foregroundColor(StormColors.neonGreen)
                                     Spacer()
-                                    Text("Watch & Earn")
+                                    Text("Watch & Play")
                                         .font(.caption)
                                         .foregroundColor(.white.opacity(0.5))
                                 }
                             }
+                            .buttonStyle(.borderless)
                             .listRowBackground(StormColors.surface)
                         }
                         
                         
-                    }
-                    
-                    // Account Linking
-                    Section("Account") {
-                        Button(action: { showLinkAccount = true }) {
-                            HStack {
-                                Label("Link to Website", systemImage: "link.circle.fill")
-                                    .foregroundColor(StormColors.neonCyan)
-                                Spacer()
-                                if CrossPlatformLink.shared.isLinked {
-                                    Text("LINKED")
-                                        .font(.caption.bold())
-                                        .foregroundColor(StormColors.neonGreen)
-                                } else {
-                                    Text("Connect")
-                                        .font(.caption)
-                                        .foregroundColor(.white.opacity(0.5))
-                                }
-                            }
-                        }
-                        .listRowBackground(StormColors.surface)
                     }
                     
                     // Stats
@@ -156,7 +125,7 @@ struct SettingsView: View {
                     
                     // Legal (Required by App Store & COPPA)
                     Section("Legal") {
-                        Button(action: { showPrivacy = true }) {
+                        Button(action: { activeSheet = .privacy }) {
                             HStack {
                                 Label("Privacy Policy", systemImage: "hand.raised.fill")
                                     .foregroundColor(.white)
@@ -166,9 +135,10 @@ struct SettingsView: View {
                                     .foregroundColor(.white.opacity(0.3))
                             }
                         }
+                        .buttonStyle(.borderless)
                         .listRowBackground(StormColors.surface)
                         
-                        Button(action: { showTerms = true }) {
+                        Button(action: { activeSheet = .terms }) {
                             HStack {
                                 Label("Terms of Service", systemImage: "doc.text.fill")
                                     .foregroundColor(.white)
@@ -178,9 +148,10 @@ struct SettingsView: View {
                                     .foregroundColor(.white.opacity(0.3))
                             }
                         }
+                        .buttonStyle(.borderless)
                         .listRowBackground(StormColors.surface)
                         
-                        Link(destination: URL(string: "https://skillzstorm.com/privacy")!) {
+                        Button(action: { showWebPrivacyGate = true }) {
                             HStack {
                                 Label("Privacy on Web", systemImage: "globe")
                                     .foregroundColor(.white)
@@ -190,6 +161,7 @@ struct SettingsView: View {
                                     .foregroundColor(.white.opacity(0.3))
                             }
                         }
+                        .buttonStyle(.borderless)
                         .listRowBackground(StormColors.surface)
                     }
                     
@@ -252,18 +224,26 @@ struct SettingsView: View {
                 Text("This will delete all your scores, coins, and progress. This cannot be undone.")
             }
             
-            .sheet(isPresented: $showLinkAccount) {
-                LinkAccountView()
+            .sheet(item: $activeSheet) { sheet in
+                switch sheet {
+                case .freeRewards:
+                    FreeRewardsView()
+                case .privacy:
+                    PrivacyPolicyView()
+                case .terms:
+                    TermsOfServiceView()
+                }
             }
-            
-            .sheet(isPresented: $showFreeRewards) {
-                FreeRewardsView()
-            }
-            .sheet(isPresented: $showPrivacy) {
-                PrivacyPolicyView()
-            }
-            .sheet(isPresented: $showTerms) {
-                TermsOfServiceView()
+            .sheet(isPresented: $showWebPrivacyGate) {
+                ParentalGateView(
+                    onSuccess: {
+                        showWebPrivacyGate = false
+                        if let url = URL(string: "https://skillzstorm.com/privacy") {
+                            UIApplication.shared.open(url)
+                        }
+                    },
+                    onCancel: { showWebPrivacyGate = false }
+                )
             }
         }
         .preferredColorScheme(.dark)

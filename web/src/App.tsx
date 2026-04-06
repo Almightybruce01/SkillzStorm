@@ -14,6 +14,10 @@ import { SchoolsPage } from './pages/SchoolsPage'
 import { AccessibilityPage } from './pages/AccessibilityPage'
 import { ArcadePage } from './pages/ArcadePage'
 import { DashboardPage } from './pages/DashboardPage'
+import { LearningHubPage } from './pages/LearningHubPage'
+import { LearningTopicPage } from './pages/LearningTopicPage'
+import { EditorialPolicyPage } from './pages/EditorialPolicyPage'
+import { KidsAdsSafetyPage } from './pages/KidsAdsSafetyPage'
 import { Navbar } from './components/Navbar'
 import { Footer } from './components/Footer'
 import { BottomStickyAd } from './components/ads/AdBanner'
@@ -21,21 +25,15 @@ import { BottomStickyAd } from './components/ads/AdBanner'
 function App() {
   return (
     <Router>
-      <div className="min-h-screen w-full bg-white flex flex-col relative">
-        {/* Global animated pastel color-shifting background */}
+      <div className="skillzstorm-neon min-h-screen w-full bg-slate-950 flex flex-col relative">
         <div className="bg-aurora-global" />
         <div className="bg-grid-overlay" />
 
-        {/* Floating pastel accent particles */}
-        <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-          <div className="absolute w-2 h-2 rounded-full bg-blue-400 top-[20%] left-[15%] animate-float opacity-15" style={{ animationDuration: '5s' }} />
-          <div className="absolute w-2.5 h-2.5 rounded-full bg-purple-400 top-[40%] left-[75%] animate-float opacity-10" style={{ animationDuration: '7s', animationDelay: '1s' }} />
-          <div className="absolute w-2 h-2 rounded-full bg-cyan-400 top-[60%] left-[35%] animate-float opacity-12" style={{ animationDuration: '4s', animationDelay: '2s' }} />
-          <div className="absolute w-2.5 h-2.5 rounded-full bg-pink-400 top-[15%] left-[85%] animate-float opacity-10" style={{ animationDuration: '6s', animationDelay: '0.5s' }} />
-          <div className="absolute w-2 h-2 rounded-full bg-amber-400 top-[75%] left-[10%] animate-float opacity-12" style={{ animationDuration: '5.5s', animationDelay: '1.5s' }} />
-          <div className="absolute w-2 h-2 rounded-full bg-emerald-400 top-[35%] left-[55%] animate-float opacity-10" style={{ animationDuration: '4.5s', animationDelay: '3s' }} />
-          <div className="absolute w-2 h-2 rounded-full bg-orange-400 top-[85%] left-[65%] animate-float opacity-08" style={{ animationDuration: '6.5s', animationDelay: '2.5s' }} />
-          <div className="absolute w-2.5 h-2.5 rounded-full bg-blue-300 top-[50%] left-[90%] animate-float opacity-12" style={{ animationDuration: '5s', animationDelay: '4s' }} />
+        <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden opacity-40">
+          <div className="absolute w-2 h-2 rounded-full bg-cyan-400 top-[20%] left-[15%] animate-float opacity-40" style={{ animationDuration: '5s' }} />
+          <div className="absolute w-2.5 h-2.5 rounded-full bg-fuchsia-400 top-[40%] left-[75%] animate-float opacity-35" style={{ animationDuration: '7s', animationDelay: '1s' }} />
+          <div className="absolute w-2 h-2 rounded-full bg-amber-300 top-[60%] left-[35%] animate-float opacity-35" style={{ animationDuration: '4s', animationDelay: '2s' }} />
+          <div className="absolute w-2 h-2 rounded-full bg-emerald-400 top-[75%] left-[10%] animate-float opacity-30" style={{ animationDuration: '5.5s', animationDelay: '1.5s' }} />
         </div>
 
         <Navbar />
@@ -57,6 +55,10 @@ function App() {
             <Route path="/accessibility" element={<AccessibilityPage />} />
             <Route path="/arcade" element={<ArcadePage />} />
             <Route path="/dashboard" element={<DashboardPage />} />
+            <Route path="/learn" element={<LearningHubPage />} />
+            <Route path="/learn/:slug" element={<LearningTopicPage />} />
+            <Route path="/editorial-policy" element={<EditorialPolicyPage />} />
+            <Route path="/kids-ad-safety" element={<KidsAdsSafetyPage />} />
           </Routes>
         </main>
         <Footer />

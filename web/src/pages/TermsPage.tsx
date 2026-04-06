@@ -8,7 +8,7 @@ export function TermsPage() {
       </Link>
 
       <h1 className="text-3xl font-black text-gray-800 mb-2 animate-slide-up">Terms of Service</h1>
-      <p className="text-gray-400 text-sm mb-8 animate-slide-up delay-100">Last updated: February 13, 2026</p>
+      <p className="text-gray-400 text-sm mb-8 animate-slide-up delay-100">Last updated: March 2026</p>
 
       <div className="space-y-8 text-gray-600 text-sm leading-relaxed animate-slide-up delay-200">
         <Section title="1. Acceptance of Terms">
@@ -25,7 +25,7 @@ export function TermsPage() {
           </p>
           <ul className="list-disc list-inside mt-2 space-y-1">
             <li>50+ educational arcade games accessible without an account</li>
-            <li>Optional in-app purchases (coins, ad removal, premium features)</li>
+            <li>No in-app purchase flow inside the iOS app</li>
             <li>Optional physical product purchases (VR headsets, 3D glasses, accessories)</li>
             <li>Ad-supported free play</li>
           </ul>
@@ -46,20 +46,16 @@ export function TermsPage() {
             <li>We comply with COPPA (Children's Online Privacy Protection Act)</li>
             <li>No personal data is collected</li>
             <li>All ads are child-directed (no behavioral targeting)</li>
-            <li>In-app purchases require device owner authentication (password/Face ID)</li>
             <li>Parents should supervise physical product purchases</li>
           </ul>
         </Section>
 
         <Section title="5. Purchases & Payments">
-          <p><strong className="text-gray-800">In-App Purchases (iOS):</strong> Processed through Apple's App Store.
-            Subject to Apple's terms and refund policies. Apple's parental controls and "Ask to Buy"
-            features apply.</p>
+          <p><strong className="text-gray-800">iOS App:</strong> SkillzStorm does not provide in-app purchases inside the iOS app.</p>
           <p className="mt-2"><strong className="text-gray-800">Website Purchases (Stripe):</strong> Physical products
             and web premium features are processed through Stripe. Subject to Stripe's terms.
             Shipping for physical items is 2-3 business days with a 30-day return policy.</p>
-          <p className="mt-2"><strong className="text-gray-800">Refunds:</strong> Digital purchases are non-refundable
-            except as required by applicable law or platform policies. Physical products may be returned
+          <p className="mt-2"><strong className="text-gray-800">Refunds:</strong> Physical products may be returned
             within 30 days in original condition.</p>
         </Section>
 

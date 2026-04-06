@@ -2,14 +2,22 @@ import SwiftUI
 
 struct HomeView: View {
     @ObservedObject var progress = PlayerProgress.shared
-    @State private var showGradeSelection = false
     @State private var showDailyChallenge = false
-    @State private var showSettings = false
-    @State private var showStore = false
-    @State private var showFreeRewards = false
     
-    @State private var showBattlePass = false
-    @State private var showCosmeticsShop = false
+    /// Single sheet avoids SwiftUI bugs when multiple `.sheet(isPresented:)` are stacked (can block presentation on iPad/iOS 18+).
+    private enum HomeSheet: Identifiable {
+        case gradeSelection, settings, store, freeRewards, cosmeticsShop
+        var id: Int {
+            switch self {
+            case .gradeSelection: return 0
+            case .settings: return 1
+            case .store: return 2
+            case .freeRewards: return 3
+            case .cosmeticsShop: return 4
+            }
+        }
+    }
+    @State private var activeSheet: HomeSheet?
     @State private var logoScale: CGFloat = 0.5
     @State private var logoOpacity: Double = 0
     @State private var taglineOffset: CGFloat = 30
@@ -51,7 +59,7 @@ struct HomeView: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                    Button(action: { showSettings = true }) {
+                    Button(action: { activeSheet = .settings }) {
                         Image(systemName: "gearshape.fill")
                             .foregroundColor(StormColors.neonBlue)
                     }
@@ -68,31 +76,26 @@ struct HomeView: View {
                         }
                         
                         // Store
-                        Button(action: { showStore = true }) {
+                        Button(action: { activeSheet = .store }) {
                             Image(systemName: "cart.fill")
                                 .foregroundColor(StormColors.neonPink)
                         }
                     }
                 }
             }
-            .sheet(isPresented: $showGradeSelection) {
-                GradeSelectionView()
-            }
-            .sheet(isPresented: $showSettings) {
-                SettingsView()
-            }
-            .sheet(isPresented: $showStore) {
-                VRStoreView()
-            }
-            .sheet(isPresented: $showFreeRewards) {
-                FreeRewardsView()
-            }
-            
-            .sheet(isPresented: $showBattlePass) {
-                BattlePassView()
-            }
-            .sheet(isPresented: $showCosmeticsShop) {
-                CosmeticsShopView()
+            .sheet(item: $activeSheet) { sheet in
+                switch sheet {
+                case .gradeSelection:
+                    GradeSelectionView()
+                case .settings:
+                    SettingsView()
+                case .store:
+                    VRStoreView()
+                case .freeRewards:
+                    FreeRewardsView()
+                case .cosmeticsShop:
+                    CosmeticsShopView()
+                }
             }
             .onAppear {
                 withAnimation(.spring(response: 0.8, dampingFraction: 0.6)) {
@@ -110,13 +113,16 @@ struct HomeView: View {
         .preferredColorScheme(.dark)
     }
     
-    // MARK: - Monetization Cards (Rewards + Premium)
+    // MARK: - Rewards Cards
     
     private var monetizationCards: some View {
         VStack(spacing: 12) {
             // Free Rewards (watch ads for power-ups)
             if !progress.isAdFree {
-                Button(action: { showFreeRewards = true }) {
+                Button(action: {
+                    SoundManager.shared.playButtonTap()
+                    activeSheet = .freeRewards
+                }) {
                     HStack(spacing: 14) {
                         Text("🎬")
                             .font(.title2)
@@ -141,48 +147,16 @@ struct HomeView: View {
                     .padding(14)
                     .background(StormColors.neonYellow.opacity(0.06))
                     .glassCard()
+                    .contentShape(Rectangle())
                 }
-            }
-            
-            // Season Pass
-            Button(action: { showBattlePass = true }) {
-                HStack(spacing: 14) {
-                    Text(BattlePassManager.shared.currentSeason.iconEmoji)
-                        .font(.title2)
-                        .frame(width: 44, height: 44)
-                        .background(StormColors.neonCyan.opacity(0.15))
-                        .cornerRadius(12)
-                    
-                    VStack(alignment: .leading, spacing: 2) {
-                        Text("SEASON PASS")
-                            .font(.subheadline.bold())
-                            .foregroundColor(StormColors.neonCyan)
-                        Text("\(BattlePassManager.shared.currentSeason.name) • Tier \(BattlePassManager.shared.currentTier)/\(BattlePassManager.maxTier)")
-                            .font(.caption)
-                            .foregroundColor(.white.opacity(0.5))
-                    }
-                    
-                    Spacer()
-                    
-                    if BattlePassManager.shared.unclaimedFreeCount > 0 {
-                        Text("\(BattlePassManager.shared.unclaimedFreeCount)")
-                            .font(.caption.bold())
-                            .foregroundColor(.white)
-                            .frame(width: 22, height: 22)
-                            .background(StormColors.neonRed)
-                            .clipShape(Circle())
-                    }
-                    
-                    Image(systemName: "chevron.right.circle.fill")
-                        .foregroundColor(StormColors.neonCyan)
-                }
-                .padding(14)
-                .background(StormColors.neonCyan.opacity(0.06))
-                .glassCard()
+                .buttonStyle(.plain)
             }
             
             // Cosmetics Shop
-            Button(action: { showCosmeticsShop = true }) {
+            Button(action: {
+                SoundManager.shared.playButtonTap()
+                activeSheet = .cosmeticsShop
+            }) {
                 HStack(spacing: 14) {
                     Text("🎨")
                         .font(.title2)
@@ -207,7 +181,9 @@ struct HomeView: View {
                 .padding(14)
                 .background(StormColors.neonPink.opacity(0.06))
                 .glassCard()
+                .contentShape(Rectangle())
             }
+            .buttonStyle(.plain)
             
             
         }
@@ -308,7 +284,7 @@ struct HomeView: View {
     private var quickActions: some View {
         VStack(spacing: 12) {
             // Main Play Button
-            Button(action: { showGradeSelection = true }) {
+            Button(action: { activeSheet = .gradeSelection }) {
                 HStack {
                     Image(systemName: "play.fill")
                         .font(.title2)
@@ -327,7 +303,7 @@ struct HomeView: View {
             // Secondary buttons
             HStack(spacing: 12) {
                 quickActionButton(title: "Random", icon: "shuffle", gradient: StormColors.fireGradient) {
-                    showGradeSelection = true
+                    activeSheet = .gradeSelection
                 }
                 
                 quickActionButton(title: "Daily", icon: "calendar", gradient: StormColors.successGradient) {
@@ -335,7 +311,7 @@ struct HomeView: View {
                 }
                 
                 quickActionButton(title: "Trending", icon: "chart.line.uptrend.xyaxis", gradient: StormColors.goldGradient) {
-                    showGradeSelection = true
+                    activeSheet = .gradeSelection
                 }
             }
         }

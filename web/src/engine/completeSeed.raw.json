@@ -1,0 +1,3309 @@
+[
+  {
+    "id": "mario-1",
+    "title": "Super Skillz Bros",
+    "slug": "super-skillz-bros",
+    "description": "Classic side-scrolling platformer. Run, jump, stomp enemies, collect coins across exciting levels!",
+    "category": "Mario & Kart",
+    "players": "1-2 players",
+    "tags": [
+      "platformer",
+      "mario",
+      "classic"
+    ],
+    "featured": true,
+    "rating": 4.9,
+    "playCount": 158432,
+    "releaseYear": 2024,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "mario-2",
+    "title": "Kart Storm",
+    "slug": "kart-storm",
+    "description": "High-speed top-down kart racing with power-ups, drifting, and competitive lap racing!",
+    "category": "Mario & Kart",
+    "players": "1-4 players",
+    "tags": [
+      "racing",
+      "kart",
+      "multiplayer"
+    ],
+    "featured": true,
+    "rating": 4.8,
+    "playCount": 134211,
+    "releaseYear": 2024,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "mario-3",
+    "title": "Mushroom Dash",
+    "slug": "mushroom-dash",
+    "description": "Endless side-scrolling madness with mushroom power-ups and escalating obstacles!",
+    "category": "Mario & Kart",
+    "players": "1-2 players",
+    "tags": [
+      "endless",
+      "runner",
+      "mushroom"
+    ],
+    "featured": true,
+    "rating": 4.7,
+    "playCount": 98765,
+    "releaseYear": 2024,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "mario-4",
+    "title": "Castle Siege",
+    "slug": "castle-siege",
+    "description": "Storm the castle! Vertical platformer with challenging enemies and a massive boss fight.",
+    "category": "Mario & Kart",
+    "players": "1 player",
+    "tags": [
+      "platformer",
+      "castle",
+      "boss"
+    ],
+    "featured": false,
+    "rating": 4.6,
+    "playCount": 67543,
+    "releaseYear": 2024,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "mario-5",
+    "title": "Coin Blitz",
+    "slug": "coin-blitz",
+    "description": "Race against the clock! Collect as many coins as possible before time runs out!",
+    "category": "Mario & Kart",
+    "players": "1-2 players",
+    "tags": [
+      "coins",
+      "time-attack",
+      "platformer"
+    ],
+    "featured": false,
+    "rating": 4.5,
+    "playCount": 54321,
+    "releaseYear": 2024,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "mario-6",
+    "title": "Pipe Escape",
+    "slug": "pipe-escape",
+    "description": "Navigate through a labyrinth of pipes. Think Pac-Man meets Mario in this maze classic!",
+    "category": "Mario & Kart",
+    "players": "1 player",
+    "tags": [
+      "maze",
+      "pipes",
+      "puzzle"
+    ],
+    "featured": false,
+    "rating": 4.4,
+    "playCount": 43210,
+    "releaseYear": 2024,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "mario-7",
+    "title": "Star Power",
+    "slug": "star-power",
+    "description": "Race through levels while a limited star power makes you invincible — use it wisely!",
+    "category": "Mario & Kart",
+    "players": "1 player",
+    "tags": [
+      "star",
+      "power-up",
+      "speed"
+    ],
+    "featured": false,
+    "rating": 4.6,
+    "playCount": 38765,
+    "releaseYear": 2024,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "mario-8",
+    "title": "Shell Shock",
+    "slug": "shell-shock",
+    "description": "Throw bouncing shells to eliminate all targets on each level. Timing is everything!",
+    "category": "Mario & Kart",
+    "players": "1-2 players",
+    "tags": [
+      "shells",
+      "puzzle",
+      "action"
+    ],
+    "featured": false,
+    "rating": 4.3,
+    "playCount": 29876,
+    "releaseYear": 2024,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "mario-9",
+    "title": "World 8 Rush",
+    "slug": "world-8-rush",
+    "description": "The ultimate speed run challenge. Navigate the hardest levels ever designed at max speed!",
+    "category": "Mario & Kart",
+    "players": "1 player",
+    "tags": [
+      "speedrun",
+      "challenge",
+      "hard"
+    ],
+    "featured": false,
+    "rating": 4.7,
+    "playCount": 45678,
+    "releaseYear": 2024,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "mario-10",
+    "title": "Princess Rescue",
+    "slug": "princess-rescue",
+    "description": "Classic platformer adventure. Fight through 5 worlds to rescue the princess from the final boss!",
+    "category": "Mario & Kart",
+    "players": "1 player",
+    "tags": [
+      "platformer",
+      "boss",
+      "adventure"
+    ],
+    "featured": true,
+    "rating": 4.8,
+    "playCount": 89012,
+    "releaseYear": 2024,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "arc-1",
+    "title": "Space Invaders X",
+    "slug": "space-invaders-x",
+    "description": "The classic alien shooter reborn with neon visuals and modern powerups!",
+    "category": "Arcade Classics",
+    "players": "1-2 players",
+    "tags": [
+      "shooter",
+      "space",
+      "classic"
+    ],
+    "featured": true,
+    "rating": 4.9,
+    "playCount": 203456,
+    "releaseYear": 2024,
+    "thumbnailUrl": "/covers/space-invaders-x.png"
+  },
+  {
+    "id": "arc-2",
+    "title": "Pac Maze",
+    "slug": "pac-maze",
+    "description": "Navigate the maze, eat pellets, dodge ghosts in this timeless arcade legend!",
+    "category": "Arcade Classics",
+    "players": "1 player",
+    "tags": [
+      "maze",
+      "classic",
+      "pac-man"
+    ],
+    "featured": true,
+    "rating": 4.8,
+    "playCount": 187654,
+    "releaseYear": 2024,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "arc-3",
+    "title": "Breakout Blitz",
+    "slug": "breakout-blitz",
+    "description": "Smash through rows of bricks with your paddle and ball in this addictive classic!",
+    "category": "Arcade Classics",
+    "players": "1 player",
+    "tags": [
+      "breakout",
+      "paddle",
+      "classic"
+    ],
+    "featured": false,
+    "rating": 4.7,
+    "playCount": 145678,
+    "releaseYear": 2024,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "arc-4",
+    "title": "Galaga Storm",
+    "slug": "galaga-storm",
+    "description": "Face endless waves of alien formations in this intense space shooter!",
+    "category": "Arcade Classics",
+    "players": "1-2 players",
+    "tags": [
+      "shooter",
+      "galaga",
+      "arcade"
+    ],
+    "featured": true,
+    "rating": 4.8,
+    "playCount": 167890,
+    "releaseYear": 2024,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "arc-5",
+    "title": "Frogger Rush",
+    "slug": "frogger-rush",
+    "description": "Cross busy roads and rushing rivers to get your frog home safely!",
+    "category": "Arcade Classics",
+    "players": "1-2 players",
+    "tags": [
+      "frogger",
+      "crossing",
+      "classic"
+    ],
+    "featured": false,
+    "rating": 4.6,
+    "playCount": 123456,
+    "releaseYear": 2024,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "arc-6",
+    "title": "Tetris Storm",
+    "slug": "tetris-storm",
+    "description": "Stack falling blocks and clear lines in this legendary puzzle game!",
+    "category": "Puzzle",
+    "players": "1-2 players",
+    "tags": [
+      "tetris",
+      "puzzle",
+      "blocks"
+    ],
+    "featured": true,
+    "rating": 4.9,
+    "playCount": 234567,
+    "releaseYear": 2024,
+    "thumbnailUrl": "/covers/tetris-storm.png"
+  },
+  {
+    "id": "arc-7",
+    "title": "Snake XL",
+    "slug": "snake-xl",
+    "description": "Grow your snake by eating, but don't hit the walls or your own tail!",
+    "category": "Arcade Classics",
+    "players": "1 player",
+    "tags": [
+      "snake",
+      "classic",
+      "mobile"
+    ],
+    "featured": false,
+    "rating": 4.5,
+    "playCount": 98765,
+    "releaseYear": 2024,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "arc-8",
+    "title": "Pong Duel",
+    "slug": "pong-duel",
+    "description": "The original 2-player paddle battle! First to 11 points wins!",
+    "category": "Arcade Classics",
+    "players": "1-2 players",
+    "tags": [
+      "pong",
+      "duel",
+      "classic"
+    ],
+    "featured": false,
+    "rating": 4.4,
+    "playCount": 87654,
+    "releaseYear": 2024,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "arc-9",
+    "title": "Asteroids Blast",
+    "slug": "asteroids-blast",
+    "description": "Blast through asteroid fields in your spacecraft in this iconic space shooter!",
+    "category": "Arcade Classics",
+    "players": "1 player",
+    "tags": [
+      "asteroids",
+      "space",
+      "shooter"
+    ],
+    "featured": false,
+    "rating": 4.6,
+    "playCount": 112345,
+    "releaseYear": 2024,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "arc-10",
+    "title": "Donkey Run",
+    "slug": "donkey-run",
+    "description": "Jump over barrels and climb ladders to rescue your friend from the gorilla!",
+    "category": "Arcade Classics",
+    "players": "1-2 players",
+    "tags": [
+      "donkey",
+      "classic",
+      "platformer"
+    ],
+    "featured": false,
+    "rating": 4.7,
+    "playCount": 134567,
+    "releaseYear": 2024,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "arc-11",
+    "title": "Centipede Rush",
+    "slug": "centipede-rush",
+    "description": "Shoot the centipede as it winds down the screen in this frantic arcade shooter!",
+    "category": "Arcade Classics",
+    "players": "1 player",
+    "tags": [
+      "centipede",
+      "shooter",
+      "classic"
+    ],
+    "featured": false,
+    "rating": 4.5,
+    "playCount": 78901,
+    "releaseYear": 2024,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "arc-12",
+    "title": "Missile Command X",
+    "slug": "missile-command-x",
+    "description": "Defend your cities from incoming missiles with your ABM battery!",
+    "category": "Action",
+    "players": "1 player",
+    "tags": [
+      "missile",
+      "defense",
+      "classic"
+    ],
+    "featured": false,
+    "rating": 4.4,
+    "playCount": 65432,
+    "releaseYear": 2024,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "arc-13",
+    "title": "Defender Wave",
+    "slug": "defender-wave",
+    "description": "Protect humans on the surface from alien abduction in this high-speed shooter!",
+    "category": "Action",
+    "players": "1 player",
+    "tags": [
+      "defender",
+      "shooter",
+      "retro"
+    ],
+    "featured": false,
+    "rating": 4.3,
+    "playCount": 54321,
+    "releaseYear": 2024,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "arc-14",
+    "title": "Dig Dug X",
+    "slug": "dig-dug-x",
+    "description": "Dig underground tunnels and inflate enemies to defeat them!",
+    "category": "Arcade Classics",
+    "players": "1 player",
+    "tags": [
+      "dig-dug",
+      "underground",
+      "classic"
+    ],
+    "featured": false,
+    "rating": 4.5,
+    "playCount": 67890,
+    "releaseYear": 2024,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "arc-15",
+    "title": "Q*Bert Jump",
+    "slug": "qbert-jump",
+    "description": "Hop on cubes to change their color while avoiding enemies on this isometric puzzle board!",
+    "category": "Puzzle",
+    "players": "1 player",
+    "tags": [
+      "qbert",
+      "isometric",
+      "puzzle"
+    ],
+    "featured": false,
+    "rating": 4.3,
+    "playCount": 43210,
+    "releaseYear": 2024,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "arc-16",
+    "title": "Tron Cycles",
+    "slug": "tron-cycles",
+    "description": "Light cycle battle — leave walls and trap opponents before they trap you!",
+    "category": "Action",
+    "players": "1-4 players",
+    "tags": [
+      "tron",
+      "cycles",
+      "multiplayer"
+    ],
+    "featured": true,
+    "rating": 4.7,
+    "playCount": 145678,
+    "releaseYear": 2024,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "arc-17",
+    "title": "Lunar Lander X",
+    "slug": "lunar-lander-x",
+    "description": "Carefully pilot your lunar module to a safe landing with limited fuel!",
+    "category": "Puzzle",
+    "players": "1 player",
+    "tags": [
+      "lunar",
+      "landing",
+      "physics"
+    ],
+    "featured": false,
+    "rating": 4.4,
+    "playCount": 56789,
+    "releaseYear": 2024,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "arc-18",
+    "title": "Tempest Blast",
+    "slug": "tempest-blast",
+    "description": "Shoot enemies crawling up the edges of geometric shapes in this vector classic!",
+    "category": "Arcade Classics",
+    "players": "1 player",
+    "tags": [
+      "tempest",
+      "vector",
+      "shooter"
+    ],
+    "featured": false,
+    "rating": 4.5,
+    "playCount": 67890,
+    "releaseYear": 2024,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "arc-19",
+    "title": "Joust Storm",
+    "slug": "joust-storm",
+    "description": "Mount your flying ostrich and joust against enemy knights to claim their eggs!",
+    "category": "Arcade Classics",
+    "players": "1-2 players",
+    "tags": [
+      "joust",
+      "flying",
+      "classic"
+    ],
+    "featured": false,
+    "rating": 4.6,
+    "playCount": 78901,
+    "releaseYear": 2024,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "arc-20",
+    "title": "Robotron 2084 X",
+    "slug": "robotron-2084-x",
+    "description": "Last human vs robot uprising — shoot in all directions to survive!",
+    "category": "Action",
+    "players": "1-2 players",
+    "tags": [
+      "robotron",
+      "shoot-em-up",
+      "survival"
+    ],
+    "featured": false,
+    "rating": 4.7,
+    "playCount": 89012,
+    "releaseYear": 2024,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "arc-21",
+    "title": "Zaxxon X",
+    "slug": "zaxxon-x",
+    "description": "Isometric space shooter — navigate through fortress walls and shoot everything!",
+    "category": "Action",
+    "players": "1 player",
+    "tags": [
+      "zaxxon",
+      "isometric",
+      "shooter"
+    ],
+    "featured": false,
+    "rating": 4.3,
+    "playCount": 45678,
+    "releaseYear": 2024,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "arc-22",
+    "title": "Burger Time X",
+    "slug": "burger-time-x",
+    "description": "Build burgers by walking over ingredients while dodging angry hot dogs!",
+    "category": "Arcade Classics",
+    "players": "1 player",
+    "tags": [
+      "burger",
+      "food",
+      "classic"
+    ],
+    "featured": false,
+    "rating": 4.4,
+    "playCount": 54321,
+    "releaseYear": 2024,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "arc-23",
+    "title": "Moon Patrol X",
+    "slug": "moon-patrol-x",
+    "description": "Drive your buggy across the moon surface, shooting enemies and jumping craters!",
+    "category": "Racing",
+    "players": "1 player",
+    "tags": [
+      "moon",
+      "buggy",
+      "shooter"
+    ],
+    "featured": false,
+    "rating": 4.5,
+    "playCount": 65432,
+    "releaseYear": 2024,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "arc-24",
+    "title": "Scramble X",
+    "slug": "scramble-x",
+    "description": "Horizontally-scrolling shooter — bomb fuel depots and fight waves of enemies!",
+    "category": "Action",
+    "players": "1-2 players",
+    "tags": [
+      "scramble",
+      "scrolling",
+      "shooter"
+    ],
+    "featured": false,
+    "rating": 4.3,
+    "playCount": 43210,
+    "releaseYear": 2024,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "arc-25",
+    "title": "Phoenix X",
+    "slug": "phoenix-x",
+    "description": "Blast through five waves of alien birds in this Space Invaders cousin!",
+    "category": "Arcade Classics",
+    "players": "1 player",
+    "tags": [
+      "phoenix",
+      "birds",
+      "shooter"
+    ],
+    "featured": false,
+    "rating": 4.4,
+    "playCount": 52341,
+    "releaseYear": 2024,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "arc-26",
+    "title": "Galaxian X",
+    "slug": "galaxian-x",
+    "description": "Shoot diving aliens in formation in this predecessor to Galaga!",
+    "category": "Arcade Classics",
+    "players": "1-2 players",
+    "tags": [
+      "galaxian",
+      "aliens",
+      "shooter"
+    ],
+    "featured": false,
+    "rating": 4.5,
+    "playCount": 61234,
+    "releaseYear": 2024,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "arc-27",
+    "title": "Battlezone X",
+    "slug": "battlezone-x",
+    "description": "First-person tank combat in a vector-graphics battlefield!",
+    "category": "Action",
+    "players": "1-2 players",
+    "tags": [
+      "tank",
+      "3d",
+      "vector"
+    ],
+    "featured": false,
+    "rating": 4.4,
+    "playCount": 47890,
+    "releaseYear": 2024,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "arc-28",
+    "title": "Neon Pong",
+    "slug": "neon-pong",
+    "description": "Pong reimagined with neon glow effects, power-ups, and speed escalation!",
+    "category": "Arcade Classics",
+    "players": "1-2 players",
+    "tags": [
+      "pong",
+      "neon",
+      "power-ups"
+    ],
+    "featured": false,
+    "rating": 4.6,
+    "playCount": 89012,
+    "releaseYear": 2024,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "arc-29",
+    "title": "Pixel Racer",
+    "slug": "pixel-racer",
+    "description": "Top-down pixel art racing with drifting mechanics and turbo boosts!",
+    "category": "Racing",
+    "players": "1-4 players",
+    "tags": [
+      "racing",
+      "pixel",
+      "top-down"
+    ],
+    "featured": true,
+    "rating": 4.7,
+    "playCount": 134567,
+    "releaseYear": 2024,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "arc-30",
+    "title": "Brick Storm",
+    "slug": "brick-storm",
+    "description": "Advanced brick-breaking with special bricks, power-ups, and boss stages!",
+    "category": "Arcade Classics",
+    "players": "1-2 players",
+    "tags": [
+      "bricks",
+      "paddle",
+      "power-ups"
+    ],
+    "featured": false,
+    "rating": 4.5,
+    "playCount": 76543,
+    "releaseYear": 2024,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "arc-31",
+    "title": "Gravity Well",
+    "slug": "gravity-well",
+    "description": "Navigate your ship using gravity wells — a unique physics-based space puzzle!",
+    "category": "Puzzle",
+    "players": "1 player",
+    "tags": [
+      "gravity",
+      "physics",
+      "space"
+    ],
+    "featured": false,
+    "rating": 4.6,
+    "playCount": 54321,
+    "releaseYear": 2024,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "arc-32",
+    "title": "Color Match",
+    "slug": "color-match",
+    "description": "Match falling colored blocks as fast as possible in this addictive reflex game!",
+    "category": "Puzzle",
+    "players": "1-2 players",
+    "tags": [
+      "color",
+      "match",
+      "reflex"
+    ],
+    "featured": false,
+    "rating": 4.4,
+    "playCount": 67890,
+    "releaseYear": 2024,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "arc-33",
+    "title": "Memory Flash",
+    "slug": "memory-flash",
+    "description": "Watch the pattern, repeat it. How far can your memory take you?",
+    "category": "Puzzle",
+    "players": "1 player",
+    "tags": [
+      "memory",
+      "simon",
+      "pattern"
+    ],
+    "featured": false,
+    "rating": 4.3,
+    "playCount": 45678,
+    "releaseYear": 2024,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "arc-34",
+    "title": "Reflex Blitz",
+    "slug": "reflex-blitz",
+    "description": "Hit the targets as they appear — the fastest reflex wins!",
+    "category": "Action",
+    "players": "1-2 players",
+    "tags": [
+      "reflex",
+      "speed",
+      "targets"
+    ],
+    "featured": false,
+    "rating": 4.5,
+    "playCount": 78901,
+    "releaseYear": 2024,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "arc-35",
+    "title": "Vector Maze",
+    "slug": "vector-maze",
+    "description": "Navigate your vector ship through procedurally-generated maze corridors!",
+    "category": "Puzzle",
+    "players": "1 player",
+    "tags": [
+      "vector",
+      "maze",
+      "navigation"
+    ],
+    "featured": false,
+    "rating": 4.4,
+    "playCount": 56789,
+    "releaseYear": 2024,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "arc-36",
+    "title": "Type Speed X",
+    "slug": "type-speed-x",
+    "description": "Type the falling words before they reach the bottom! A typing game with high score chase!",
+    "category": "Arcade Classics",
+    "players": "1 player",
+    "tags": [
+      "typing",
+      "words",
+      "speed"
+    ],
+    "featured": false,
+    "rating": 4.3,
+    "playCount": 43210,
+    "releaseYear": 2024,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "arc-37",
+    "title": "Reaction Time",
+    "slug": "reaction-time",
+    "description": "The ultimate test — see how fast you can react to sudden color changes!",
+    "category": "Action",
+    "players": "1-4 players",
+    "tags": [
+      "reaction",
+      "speed",
+      "test"
+    ],
+    "featured": false,
+    "rating": 4.4,
+    "playCount": 65432,
+    "releaseYear": 2024,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "arc-38",
+    "title": "Color Rush",
+    "slug": "color-rush",
+    "description": "Guide the colored ball through matching colored gates at maximum speed!",
+    "category": "Action",
+    "players": "1-2 players",
+    "tags": [
+      "color",
+      "rush",
+      "speed"
+    ],
+    "featured": false,
+    "rating": 4.5,
+    "playCount": 76543,
+    "releaseYear": 2024,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "arc-39",
+    "title": "Pattern Match",
+    "slug": "pattern-match",
+    "description": "A 6-round Wordle-style pattern matching game with retro visuals!",
+    "category": "Puzzle",
+    "players": "1 player",
+    "tags": [
+      "pattern",
+      "logic",
+      "puzzle"
+    ],
+    "featured": false,
+    "rating": 4.4,
+    "playCount": 54321,
+    "releaseYear": 2024,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "arc-40",
+    "title": "Sequence Storm",
+    "slug": "sequence-storm",
+    "description": "Remember and repeat ever-growing sequences of lights and sounds!",
+    "category": "Puzzle",
+    "players": "1-2 players",
+    "tags": [
+      "sequence",
+      "memory",
+      "lights"
+    ],
+    "featured": false,
+    "rating": 4.3,
+    "playCount": 43210,
+    "releaseYear": 2024,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "arc-41",
+    "title": "Logic Blast",
+    "slug": "logic-blast",
+    "description": "Solve logic puzzles under time pressure — deduction meets arcade action!",
+    "category": "Puzzle",
+    "players": "1 player",
+    "tags": [
+      "logic",
+      "puzzle",
+      "brain"
+    ],
+    "featured": false,
+    "rating": 4.5,
+    "playCount": 56789,
+    "releaseYear": 2024,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "arc-42",
+    "title": "Maze Runner X",
+    "slug": "maze-runner-x",
+    "description": "Find the exit through increasingly complex mazes before the timer runs out!",
+    "category": "Puzzle",
+    "players": "1-2 players",
+    "tags": [
+      "maze",
+      "runner",
+      "puzzle"
+    ],
+    "featured": false,
+    "rating": 4.4,
+    "playCount": 67890,
+    "releaseYear": 2024,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "arc-43",
+    "title": "Trivia Blitz",
+    "slug": "trivia-blitz",
+    "description": "Fast-fire trivia questions across gaming, pop culture, and science categories!",
+    "category": "Puzzle",
+    "players": "1-4 players",
+    "tags": [
+      "trivia",
+      "quiz",
+      "knowledge"
+    ],
+    "featured": false,
+    "rating": 4.6,
+    "playCount": 89012,
+    "releaseYear": 2024,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "arc-44",
+    "title": "Number Storm",
+    "slug": "number-storm",
+    "description": "Math meets arcade — solve equations and shoot the correct answers!",
+    "category": "Puzzle",
+    "players": "1 player",
+    "tags": [
+      "math",
+      "numbers",
+      "educational"
+    ],
+    "featured": false,
+    "rating": 4.2,
+    "playCount": 34567,
+    "releaseYear": 2024,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "arc-45",
+    "title": "Word Storm",
+    "slug": "word-storm",
+    "description": "Find as many words as possible from a set of scrambled letters before time runs out!",
+    "category": "Puzzle",
+    "players": "1-2 players",
+    "tags": [
+      "words",
+      "scramble",
+      "vocabulary"
+    ],
+    "featured": false,
+    "rating": 4.3,
+    "playCount": 45678,
+    "releaseYear": 2024,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "arc-46",
+    "title": "Crystal Castles X",
+    "slug": "crystal-castles-x",
+    "description": "Collect gems across isometric crystal platforms while avoiding evil witches!",
+    "category": "Arcade Classics",
+    "players": "1-2 players",
+    "tags": [
+      "crystal",
+      "isometric",
+      "gems"
+    ],
+    "featured": false,
+    "rating": 4.4,
+    "playCount": 43210,
+    "releaseYear": 2024,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "arc-47",
+    "title": "Mr Do X",
+    "slug": "mr-do-x",
+    "description": "Dig tunnels to collect cherries while throwing power balls at monsters!",
+    "category": "Arcade Classics",
+    "players": "1 player",
+    "tags": [
+      "mr-do",
+      "digging",
+      "classic"
+    ],
+    "featured": false,
+    "rating": 4.3,
+    "playCount": 38765,
+    "releaseYear": 2024,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "arc-48",
+    "title": "Joust Fighter",
+    "slug": "joust-fighter",
+    "description": "2D fighting game with aerial jousting mechanics — lance your opponents!",
+    "category": "Fighting",
+    "players": "1-2 players",
+    "tags": [
+      "fighting",
+      "joust",
+      "aerial"
+    ],
+    "featured": false,
+    "rating": 4.5,
+    "playCount": 56789,
+    "releaseYear": 2024,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "arc-49",
+    "title": "Turbo Track",
+    "slug": "turbo-track",
+    "description": "Overhead racing with nitro boosts, oil slicks, and dynamic weather!",
+    "category": "Racing",
+    "players": "1-4 players",
+    "tags": [
+      "racing",
+      "turbo",
+      "top-down"
+    ],
+    "featured": true,
+    "rating": 4.7,
+    "playCount": 123456,
+    "releaseYear": 2024,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "arc-50",
+    "title": "Storm Fighter",
+    "slug": "storm-fighter",
+    "description": "Classic 2D street fighter with special moves and combos!",
+    "category": "Fighting",
+    "players": "1-2 players",
+    "tags": [
+      "fighting",
+      "street",
+      "combos"
+    ],
+    "featured": true,
+    "rating": 4.8,
+    "playCount": 145678,
+    "releaseYear": 2024,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "arc-51",
+    "title": "Punch Arena",
+    "slug": "punch-arena",
+    "description": "Boxing simulation with realistic physics and stamina management!",
+    "category": "Sports",
+    "players": "1-2 players",
+    "tags": [
+      "boxing",
+      "sports",
+      "fighting"
+    ],
+    "featured": false,
+    "rating": 4.5,
+    "playCount": 67890,
+    "releaseYear": 2024,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "arc-52",
+    "title": "Retro Soccer",
+    "slug": "retro-soccer",
+    "description": "Classic top-down soccer with power shots and bicycle kicks!",
+    "category": "Sports",
+    "players": "1-4 players",
+    "tags": [
+      "soccer",
+      "sports",
+      "top-down"
+    ],
+    "featured": false,
+    "rating": 4.6,
+    "playCount": 89012,
+    "releaseYear": 2024,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "arc-53",
+    "title": "Slam Dunk X",
+    "slug": "slam-dunk-x",
+    "description": "Pixel basketball with trick shots, dunks, and overtime drama!",
+    "category": "Sports",
+    "players": "1-2 players",
+    "tags": [
+      "basketball",
+      "sports",
+      "pixel"
+    ],
+    "featured": false,
+    "rating": 4.5,
+    "playCount": 76543,
+    "releaseYear": 2024,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "arc-54",
+    "title": "Cyber Sprint",
+    "slug": "cyber-sprint",
+    "description": "Cyberpunk infinite runner — dodge obstacles and hack barriers at light speed!",
+    "category": "Action",
+    "players": "1-2 players",
+    "tags": [
+      "cyberpunk",
+      "runner",
+      "infinite"
+    ],
+    "featured": true,
+    "rating": 4.8,
+    "playCount": 156789,
+    "releaseYear": 2024,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "arc-55",
+    "title": "Tower Blitz",
+    "slug": "tower-blitz",
+    "description": "Defend your tower from waves of enemies with strategic placement!",
+    "category": "Puzzle",
+    "players": "1-2 players",
+    "tags": [
+      "tower-defense",
+      "strategy",
+      "waves"
+    ],
+    "featured": false,
+    "rating": 4.7,
+    "playCount": 112345,
+    "releaseYear": 2024,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "arc-56",
+    "title": "Pixel Punch",
+    "slug": "pixel-punch",
+    "description": "8-bit brawler with 4 characters, special moves, and a final boss!",
+    "category": "Fighting",
+    "players": "1-2 players",
+    "tags": [
+      "brawler",
+      "pixel",
+      "8-bit"
+    ],
+    "featured": false,
+    "rating": 4.6,
+    "playCount": 98765,
+    "releaseYear": 2024,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "arc-57",
+    "title": "Sky Assault",
+    "slug": "sky-assault",
+    "description": "Vertical scrolling aerial combat — dogfight enemies and collect stars!",
+    "category": "Action",
+    "players": "1-2 players",
+    "tags": [
+      "aerial",
+      "scrolling",
+      "dogfight"
+    ],
+    "featured": false,
+    "rating": 4.6,
+    "playCount": 87654,
+    "releaseYear": 2024,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "arc-58",
+    "title": "Dungeon Crawl",
+    "slug": "dungeon-crawl",
+    "description": "Roguelike dungeon explorer — fight monsters, find loot, survive!",
+    "category": "Action",
+    "players": "1 player",
+    "tags": [
+      "dungeon",
+      "roguelike",
+      "rpg"
+    ],
+    "featured": true,
+    "rating": 4.9,
+    "playCount": 234567,
+    "releaseYear": 2024,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "arc-59",
+    "title": "Neon Racer",
+    "slug": "neon-racer",
+    "description": "Tron-inspired neon racing through futuristic circuits!",
+    "category": "Racing",
+    "players": "1-4 players",
+    "tags": [
+      "neon",
+      "racing",
+      "tron"
+    ],
+    "featured": true,
+    "rating": 4.8,
+    "playCount": 167890,
+    "releaseYear": 2024,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "arc-60",
+    "title": "Pixel Warfare",
+    "slug": "pixel-warfare",
+    "description": "8-bit tactical combat — command pixel troops across battlefield maps!",
+    "category": "Action",
+    "players": "1-2 players",
+    "tags": [
+      "tactical",
+      "pixel",
+      "warfare"
+    ],
+    "featured": false,
+    "rating": 4.5,
+    "playCount": 78901,
+    "releaseYear": 2024,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "sp-1",
+    "title": "Flappy Storm",
+    "slug": "flappy-storm",
+    "description": "Tap to flap through neon pipes in this addictive one-button classic!",
+    "category": "Arcade Classics",
+    "players": "1 player",
+    "tags": [
+      "flappy",
+      "one-button",
+      "classic"
+    ],
+    "featured": true,
+    "rating": 4.8,
+    "playCount": 312456,
+    "releaseYear": 2024,
+    "thumbnailUrl": "/covers/flappy-storm.png"
+  },
+  {
+    "id": "sp-2",
+    "title": "Geometry Dash Storm",
+    "slug": "geometry-dash-storm",
+    "description": "Jump, dodge spikes, and ride orbs through mind-bending neon levels!",
+    "category": "Action",
+    "players": "1 player",
+    "tags": [
+      "geometry",
+      "rhythm",
+      "dash",
+      "auto-run"
+    ],
+    "featured": true,
+    "rating": 4.9,
+    "playCount": 287654,
+    "releaseYear": 2024,
+    "thumbnailUrl": "/covers/geometry-dash-storm.png"
+  },
+  {
+    "id": "edu-math-1",
+    "title": "Math Quest",
+    "slug": "math-quest",
+    "description": "Solve math problems to defeat enemies and level up through magic kingdoms!",
+    "category": "Educational",
+    "players": "1 player",
+    "tags": [
+      "math",
+      "quiz",
+      "educational"
+    ],
+    "featured": true,
+    "rating": 4.7,
+    "playCount": 89012,
+    "releaseYear": 2024,
+    "thumbnailUrl": "/covers/math-quest.png"
+  },
+  {
+    "id": "edu-math-2",
+    "title": "Number Ninja",
+    "slug": "number-ninja",
+    "description": "Slice the correct answer out of the air with ninja precision! Fast arithmetic action.",
+    "category": "Educational",
+    "players": "1 player",
+    "tags": [
+      "math",
+      "speed",
+      "ninja"
+    ],
+    "featured": false,
+    "rating": 4.5,
+    "playCount": 54321,
+    "releaseYear": 2024,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "edu-math-3",
+    "title": "Fraction Frenzy",
+    "slug": "fraction-frenzy",
+    "description": "Match equivalent fractions before time runs out in this colorful fraction showdown!",
+    "category": "Educational",
+    "players": "1-2 players",
+    "tags": [
+      "fractions",
+      "math",
+      "matching"
+    ],
+    "featured": false,
+    "rating": 4.4,
+    "playCount": 43210,
+    "releaseYear": 2024,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "edu-math-4",
+    "title": "Algebra Attack",
+    "slug": "algebra-attack",
+    "description": "Shoot the correct value of X to defeat waves of equation enemies!",
+    "category": "Educational",
+    "players": "1 player",
+    "tags": [
+      "algebra",
+      "math",
+      "shooter"
+    ],
+    "featured": false,
+    "rating": 4.5,
+    "playCount": 56789,
+    "releaseYear": 2024,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "edu-math-5",
+    "title": "Geometry Dash Edu",
+    "slug": "algebra-dash",
+    "description": "Learn geometry concepts while navigating through shape-based levels!",
+    "category": "Educational",
+    "players": "1 player",
+    "tags": [
+      "geometry",
+      "shapes",
+      "math"
+    ],
+    "featured": false,
+    "rating": 4.6,
+    "playCount": 67890,
+    "releaseYear": 2024,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "edu-word-1",
+    "title": "Word Wizard",
+    "slug": "word-wizard",
+    "description": "Cast word spells by spelling correctly! Master vocabulary to defeat the word dragon.",
+    "category": "Educational",
+    "players": "1 player",
+    "tags": [
+      "spelling",
+      "vocabulary",
+      "words"
+    ],
+    "featured": true,
+    "rating": 4.8,
+    "playCount": 98765,
+    "releaseYear": 2024,
+    "thumbnailUrl": "/covers/word-wizard.png"
+  },
+  {
+    "id": "edu-word-2",
+    "title": "Spell Storm",
+    "slug": "spell-storm",
+    "description": "Letters rain from the sky — arrange them into words before the storm hits!",
+    "category": "Educational",
+    "players": "1-2 players",
+    "tags": [
+      "spelling",
+      "storm",
+      "words"
+    ],
+    "featured": false,
+    "rating": 4.5,
+    "playCount": 54321,
+    "releaseYear": 2024,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "edu-word-3",
+    "title": "Vocab Blitz",
+    "slug": "vocab-blitz",
+    "description": "Speed through vocabulary flashcards — match definitions faster than your opponent!",
+    "category": "Educational",
+    "players": "1-2 players",
+    "tags": [
+      "vocabulary",
+      "blitz",
+      "definitions"
+    ],
+    "featured": false,
+    "rating": 4.4,
+    "playCount": 43210,
+    "releaseYear": 2024,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "edu-word-4",
+    "title": "Grammar Quest",
+    "slug": "grammar-quest",
+    "description": "Fix grammar errors across enchanted sentences to free the language kingdom!",
+    "category": "Educational",
+    "players": "1 player",
+    "tags": [
+      "grammar",
+      "sentences",
+      "educational"
+    ],
+    "featured": false,
+    "rating": 4.3,
+    "playCount": 38765,
+    "releaseYear": 2024,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "edu-word-5",
+    "title": "Reading Rush",
+    "slug": "reading-rush",
+    "description": "Race through reading comprehension questions in this high-speed literary adventure!",
+    "category": "Educational",
+    "players": "1 player",
+    "tags": [
+      "reading",
+      "comprehension",
+      "educational"
+    ],
+    "featured": false,
+    "rating": 4.5,
+    "playCount": 52341,
+    "releaseYear": 2024,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "edu-sci-1",
+    "title": "Science Lab",
+    "slug": "science-lab",
+    "description": "Mix elements, run experiments, and discover the laws of physics in this virtual lab!",
+    "category": "Educational",
+    "players": "1 player",
+    "tags": [
+      "science",
+      "experiments",
+      "educational"
+    ],
+    "featured": true,
+    "rating": 4.7,
+    "playCount": 76543,
+    "releaseYear": 2024,
+    "thumbnailUrl": "/covers/science-lab.png"
+  },
+  {
+    "id": "edu-sci-2",
+    "title": "Atom Smash",
+    "slug": "atom-smash",
+    "description": "Collide atoms to create elements — learn the periodic table through high-speed particle physics!",
+    "category": "Educational",
+    "players": "1-2 players",
+    "tags": [
+      "atoms",
+      "chemistry",
+      "physics"
+    ],
+    "featured": false,
+    "rating": 4.6,
+    "playCount": 65432,
+    "releaseYear": 2024,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "edu-sci-3",
+    "title": "Physics Blast",
+    "slug": "physics-blast",
+    "description": "Solve physics puzzles using real-world forces, momentum, and gravity!",
+    "category": "Educational",
+    "players": "1 player",
+    "tags": [
+      "physics",
+      "puzzles",
+      "forces"
+    ],
+    "featured": false,
+    "rating": 4.5,
+    "playCount": 54321,
+    "releaseYear": 2024,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "edu-sci-4",
+    "title": "Bio Burst",
+    "slug": "bio-burst",
+    "description": "Navigate through human body systems, defeating viruses and learning biology along the way!",
+    "category": "Educational",
+    "players": "1 player",
+    "tags": [
+      "biology",
+      "body",
+      "health"
+    ],
+    "featured": false,
+    "rating": 4.4,
+    "playCount": 43210,
+    "releaseYear": 2024,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "edu-sci-5",
+    "title": "Chemistry Quest",
+    "slug": "chemistry-quest",
+    "description": "Balance chemical equations and avoid dangerous reactions in this explosive puzzle game!",
+    "category": "Educational",
+    "players": "1 player",
+    "tags": [
+      "chemistry",
+      "equations",
+      "puzzle"
+    ],
+    "featured": false,
+    "rating": 4.5,
+    "playCount": 52341,
+    "releaseYear": 2024,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "edu-geo-1",
+    "title": "Geography Hero",
+    "slug": "geography-hero",
+    "description": "Race the clock to place countries on the world map — become the ultimate geography champion!",
+    "category": "Educational",
+    "players": "1-4 players",
+    "tags": [
+      "geography",
+      "maps",
+      "countries"
+    ],
+    "featured": true,
+    "rating": 4.7,
+    "playCount": 87654,
+    "releaseYear": 2024,
+    "thumbnailUrl": "/covers/geography-hero.png"
+  },
+  {
+    "id": "edu-geo-2",
+    "title": "Capital Clash",
+    "slug": "capital-clash",
+    "description": "Match capitals to countries faster than your rivals in this global trivia showdown!",
+    "category": "Educational",
+    "players": "1-4 players",
+    "tags": [
+      "capitals",
+      "countries",
+      "trivia"
+    ],
+    "featured": false,
+    "rating": 4.5,
+    "playCount": 67890,
+    "releaseYear": 2024,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "edu-geo-3",
+    "title": "Map Master",
+    "slug": "map-master",
+    "description": "Conquer continents by correctly identifying geographic features under time pressure!",
+    "category": "Educational",
+    "players": "1-2 players",
+    "tags": [
+      "maps",
+      "geography",
+      "continents"
+    ],
+    "featured": false,
+    "rating": 4.4,
+    "playCount": 56789,
+    "releaseYear": 2024,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "edu-geo-4",
+    "title": "Flag Frenzy",
+    "slug": "flag-frenzy",
+    "description": "Identify country flags at lightning speed — over 195 flags to master!",
+    "category": "Educational",
+    "players": "1-4 players",
+    "tags": [
+      "flags",
+      "countries",
+      "quiz"
+    ],
+    "featured": false,
+    "rating": 4.6,
+    "playCount": 78901,
+    "releaseYear": 2024,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "edu-geo-5",
+    "title": "World Explorer",
+    "slug": "world-explorer",
+    "description": "Explore virtual continents, collecting landmarks and geography facts!",
+    "category": "Educational",
+    "players": "1 player",
+    "tags": [
+      "exploration",
+      "world",
+      "landmarks"
+    ],
+    "featured": false,
+    "rating": 4.5,
+    "playCount": 65432,
+    "releaseYear": 2024,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "edu-hist-1",
+    "title": "History Blitz",
+    "slug": "history-blitz",
+    "description": "Race through history — answer questions about key events to unlock new eras!",
+    "category": "Educational",
+    "players": "1-2 players",
+    "tags": [
+      "history",
+      "trivia",
+      "eras"
+    ],
+    "featured": true,
+    "rating": 4.6,
+    "playCount": 76543,
+    "releaseYear": 2024,
+    "thumbnailUrl": "/covers/history-blitz.png"
+  },
+  {
+    "id": "edu-hist-2",
+    "title": "Timeline Rush",
+    "slug": "timeline-rush",
+    "description": "Place historical events in chronological order before time runs out!",
+    "category": "Educational",
+    "players": "1-2 players",
+    "tags": [
+      "timeline",
+      "history",
+      "chronology"
+    ],
+    "featured": false,
+    "rating": 4.5,
+    "playCount": 65432,
+    "releaseYear": 2024,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "edu-hist-3",
+    "title": "Ancient Quest",
+    "slug": "ancient-quest",
+    "description": "Explore ancient civilizations — Egypt, Rome, Greece — in this historical adventure!",
+    "category": "Educational",
+    "players": "1 player",
+    "tags": [
+      "ancient",
+      "civilizations",
+      "adventure"
+    ],
+    "featured": false,
+    "rating": 4.7,
+    "playCount": 87654,
+    "releaseYear": 2024,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "edu-hist-4",
+    "title": "Revolution X",
+    "slug": "revolution-x",
+    "description": "Re-live pivotal historical revolutions by answering questions and making key decisions!",
+    "category": "Educational",
+    "players": "1 player",
+    "tags": [
+      "revolution",
+      "history",
+      "decisions"
+    ],
+    "featured": false,
+    "rating": 4.4,
+    "playCount": 54321,
+    "releaseYear": 2024,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "edu-hist-5",
+    "title": "Civics Storm",
+    "slug": "civics-storm",
+    "description": "Master civics and government concepts in this fast-paced civic literacy challenge!",
+    "category": "Educational",
+    "players": "1-4 players",
+    "tags": [
+      "civics",
+      "government",
+      "democracy"
+    ],
+    "featured": false,
+    "rating": 4.3,
+    "playCount": 43210,
+    "releaseYear": 2024,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "edu-code-1",
+    "title": "Code Logic",
+    "slug": "code-logic",
+    "description": "Solve coding puzzles by arranging logic blocks — learn the fundamentals of programming!",
+    "category": "Educational",
+    "players": "1 player",
+    "tags": [
+      "coding",
+      "logic",
+      "programming"
+    ],
+    "featured": true,
+    "rating": 4.9,
+    "playCount": 112345,
+    "releaseYear": 2024,
+    "thumbnailUrl": "/covers/code-logic.png"
+  },
+  {
+    "id": "edu-code-2",
+    "title": "Binary Blast",
+    "slug": "binary-blast",
+    "description": "Shoot down binary numbers to decode secret messages in this hacker-themed shooter!",
+    "category": "Educational",
+    "players": "1 player",
+    "tags": [
+      "binary",
+      "coding",
+      "shooter"
+    ],
+    "featured": false,
+    "rating": 4.6,
+    "playCount": 78901,
+    "releaseYear": 2024,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "edu-code-3",
+    "title": "Algo Quest",
+    "slug": "algo-quest",
+    "description": "Build algorithms step-by-step to guide your robot through ever-more complex mazes!",
+    "category": "Educational",
+    "players": "1-2 players",
+    "tags": [
+      "algorithms",
+      "robots",
+      "coding"
+    ],
+    "featured": false,
+    "rating": 4.7,
+    "playCount": 89012,
+    "releaseYear": 2024,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "edu-code-4",
+    "title": "Debug Dash",
+    "slug": "debug-dash",
+    "description": "Find and fix bugs in code snippets at breakneck speed — the clock is ticking!",
+    "category": "Educational",
+    "players": "1 player",
+    "tags": [
+      "debugging",
+      "coding",
+      "speed"
+    ],
+    "featured": false,
+    "rating": 4.5,
+    "playCount": 67890,
+    "releaseYear": 2024,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "edu-code-5",
+    "title": "Loop Storm",
+    "slug": "loop-storm",
+    "description": "Master loops, conditions, and functions by controlling a storm of code blocks!",
+    "category": "Educational",
+    "players": "1 player",
+    "tags": [
+      "loops",
+      "functions",
+      "coding"
+    ],
+    "featured": false,
+    "rating": 4.6,
+    "playCount": 76543,
+    "releaseYear": 2024,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "elite-race-1",
+    "title": "Neon Circuit Racer",
+    "slug": "neon-circuit-racer",
+    "description": "Top-down F1 racing with car selection! Choose VIPER, PHANTOM or CRUSHER. 3-lap neon city circuit with 3 AI opponents, speed meter, and live race rank.",
+    "category": "Racing",
+    "players": "1 player",
+    "tags": [
+      "racing",
+      "cars",
+      "neon",
+      "elite"
+    ],
+    "featured": true,
+    "rating": 4.9,
+    "playCount": 0,
+    "releaseYear": 2025,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "elite-race-2",
+    "title": "Drift King X",
+    "slug": "drift-king-x",
+    "description": "Master the art of drift! Wide sweeping tracks designed for drifting. Car select with stat bars, drift physics, and glowing tire trails.",
+    "category": "Racing",
+    "players": "1 player",
+    "tags": [
+      "racing",
+      "drift",
+      "cars",
+      "elite"
+    ],
+    "featured": true,
+    "rating": 4.9,
+    "playCount": 0,
+    "releaseYear": 2025,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "elite-race-3",
+    "title": "Space Racer",
+    "slug": "space-racer",
+    "description": "Anti-gravity racing through the cosmos. Neon purple space circuit, zero-G handling, 3 selectable ships with unique handling stats.",
+    "category": "Racing",
+    "players": "1 player",
+    "tags": [
+      "racing",
+      "space",
+      "antigravity",
+      "elite"
+    ],
+    "featured": true,
+    "rating": 4.8,
+    "playCount": 0,
+    "releaseYear": 2025,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "elite-race-4",
+    "title": "Cyber Highway",
+    "slug": "cyber-highway",
+    "description": "Infinite neon highway racer. Select your car, dodge AI traffic, hit turbos and race to the highest lap count!",
+    "category": "Racing",
+    "players": "1 player",
+    "tags": [
+      "racing",
+      "highway",
+      "neon",
+      "elite"
+    ],
+    "featured": false,
+    "rating": 4.7,
+    "playCount": 0,
+    "releaseYear": 2025,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "elite-race-5",
+    "title": "Desert Rally X",
+    "slug": "desert-rally",
+    "description": "Rally racing through harsh desert terrain. Wide sweeping S-bends, gravel physics, and intense AI rivals on the orange circuit.",
+    "category": "Racing",
+    "players": "1 player",
+    "tags": [
+      "racing",
+      "rally",
+      "desert",
+      "elite"
+    ],
+    "featured": false,
+    "rating": 4.7,
+    "playCount": 0,
+    "releaseYear": 2025,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "elite-fight-1",
+    "title": "Street Storm Fighter",
+    "slug": "street-storm-fighter",
+    "description": "4 selectable fighters! STORM, BLAZE, FROST or VOLT. Full health bars, special meter, punch/kick/special combos, AI rounds. Best-in-class 2D fighter!",
+    "category": "Fighting",
+    "players": "1-2 players",
+    "tags": [
+      "fighting",
+      "characters",
+      "combos",
+      "elite"
+    ],
+    "featured": true,
+    "rating": 5,
+    "playCount": 0,
+    "releaseYear": 2025,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "elite-fight-2",
+    "title": "Neon Kombat",
+    "slug": "neon-kombat",
+    "description": "Neon-drenched arena combat. Select your warrior, master lightning combos, unleash devastating specials. Brutal 2.5D fighter with round system.",
+    "category": "Fighting",
+    "players": "1-2 players",
+    "tags": [
+      "fighting",
+      "neon",
+      "combos",
+      "elite"
+    ],
+    "featured": true,
+    "rating": 4.9,
+    "playCount": 0,
+    "releaseYear": 2025,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "elite-fight-3",
+    "title": "Robot Rumble",
+    "slug": "robot-rumble",
+    "description": "Mech battle arena! Choose your robot warrior, smash with hydraulic fists, deploy EMP specials. Steel-plated combat at its finest.",
+    "category": "Fighting",
+    "players": "1-2 players",
+    "tags": [
+      "fighting",
+      "robots",
+      "mechs",
+      "elite"
+    ],
+    "featured": false,
+    "rating": 4.8,
+    "playCount": 0,
+    "releaseYear": 2025,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "elite-fight-4",
+    "title": "Shadow Duel",
+    "slug": "shadow-duel",
+    "description": "Ninja vs ninja in total darkness. Swift strikes, smoke bomb specials, and lightning-fast combos. The fastest fighter in the arcade.",
+    "category": "Fighting",
+    "players": "1-2 players",
+    "tags": [
+      "fighting",
+      "ninja",
+      "speed",
+      "elite"
+    ],
+    "featured": false,
+    "rating": 4.8,
+    "playCount": 0,
+    "releaseYear": 2025,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "elite-fight-5",
+    "title": "Arena Legends",
+    "slug": "arena-legends",
+    "description": "Gladiatorial arena combat. 4 legendary warriors clash in the colosseum. Epic special moves, crowd roar effects, and championship rounds.",
+    "category": "Fighting",
+    "players": "1-2 players",
+    "tags": [
+      "fighting",
+      "arena",
+      "gladiator",
+      "elite"
+    ],
+    "featured": false,
+    "rating": 4.7,
+    "playCount": 0,
+    "releaseYear": 2025,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "elite-shoot-1",
+    "title": "Dual Storm",
+    "slug": "dual-storm",
+    "description": "Elite twin-stick arcade shooter. Auto-aim + WASD movement. Enemy waves escalate every round with new enemy types, power-ups, and shield pickups.",
+    "category": "Shooters",
+    "players": "1 player",
+    "tags": [
+      "shooter",
+      "twin-stick",
+      "waves",
+      "elite"
+    ],
+    "featured": true,
+    "rating": 4.9,
+    "playCount": 0,
+    "releaseYear": 2025,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "elite-shoot-2",
+    "title": "Horde Rush",
+    "slug": "horde-rush",
+    "description": "Survive escalating waves of enemies. Dodge, auto-aim and blast everything. Shield pickups, health drops, wave bonuses. How long can you last?",
+    "category": "Shooters",
+    "players": "1 player",
+    "tags": [
+      "shooter",
+      "horde",
+      "survival",
+      "elite"
+    ],
+    "featured": false,
+    "rating": 4.8,
+    "playCount": 0,
+    "releaseYear": 2025,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "elite-shoot-3",
+    "title": "Bullet Hell X",
+    "slug": "bullet-hell-x",
+    "description": "True danmaku bullet hell. Enemy bullet spirals, waves, aimed volleys. Tiny hitbox, upgradeable firepower, and screen-filling boss fights.",
+    "category": "Shooters",
+    "players": "1 player",
+    "tags": [
+      "bullet-hell",
+      "danmaku",
+      "shooter",
+      "elite"
+    ],
+    "featured": true,
+    "rating": 4.9,
+    "playCount": 0,
+    "releaseYear": 2025,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "elite-shoot-4",
+    "title": "Tank Storm",
+    "slug": "tank-storm",
+    "description": "Command your tank on the battlefield! Rotate hull, aim turret independently, fire bouncing shells. Destructible walls, smart enemy tanks.",
+    "category": "Shooters",
+    "players": "1 player",
+    "tags": [
+      "tank",
+      "combat",
+      "strategy",
+      "elite"
+    ],
+    "featured": true,
+    "rating": 4.9,
+    "playCount": 0,
+    "releaseYear": 2025,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "elite-shoot-5",
+    "title": "Star Assault",
+    "slug": "star-assault",
+    "description": "Wave-based space shooter with twin-stick controls. Alien formations, powered-up enemies and boss waves in deep space.",
+    "category": "Shooters",
+    "players": "1 player",
+    "tags": [
+      "shooter",
+      "space",
+      "waves",
+      "elite"
+    ],
+    "featured": false,
+    "rating": 4.7,
+    "playCount": 0,
+    "releaseYear": 2025,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "elite-rhythm-1",
+    "title": "Rhythm Storm X",
+    "slug": "rhythm-storm-x",
+    "description": "4-lane neon rhythm game! Hit notes as they fall with A/S/D/F keys. PERFECT/GREAT/GOOD ratings, combo multiplier, and escalating BPM.",
+    "category": "Rhythm",
+    "players": "1 player",
+    "tags": [
+      "rhythm",
+      "music",
+      "timing",
+      "elite"
+    ],
+    "featured": true,
+    "rating": 4.9,
+    "playCount": 0,
+    "releaseYear": 2025,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "elite-rhythm-2",
+    "title": "Beat Blitz",
+    "slug": "beat-blitz",
+    "description": "High-tempo beat matching game. Synced note patterns, color-coded lanes, and max-combo chasing for top scores.",
+    "category": "Rhythm",
+    "players": "1 player",
+    "tags": [
+      "rhythm",
+      "beats",
+      "combo",
+      "elite"
+    ],
+    "featured": false,
+    "rating": 4.7,
+    "playCount": 0,
+    "releaseYear": 2025,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "elite-pinball-1",
+    "title": "Physics Pinball",
+    "slug": "physics-pinball",
+    "description": "Full physics pinball! Realistic ball, flippers (A/D), neon bumpers worth 100-300pts each, multiplier system, and satisfying launch mechanism.",
+    "category": "Arcade",
+    "players": "1 player",
+    "tags": [
+      "pinball",
+      "physics",
+      "classic",
+      "elite"
+    ],
+    "featured": true,
+    "rating": 4.9,
+    "playCount": 0,
+    "releaseYear": 2025,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "elite-td-1",
+    "title": "Tower Defense X",
+    "slug": "tower-defense-x",
+    "description": "Strategic tower defense with 4 tower types: CANNON, SNIPER, FREEZE, ROCKET. Place with arrow keys, send waves, upgrade as enemies swarm!",
+    "category": "Strategy",
+    "players": "1 player",
+    "tags": [
+      "tower-defense",
+      "strategy",
+      "waves",
+      "elite"
+    ],
+    "featured": true,
+    "rating": 4.9,
+    "playCount": 0,
+    "releaseYear": 2025,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "elite-td-2",
+    "title": "Neon Fortress",
+    "slug": "neon-fortress",
+    "description": "Defend your neon base from waves of cyber enemies. Advanced tower placements, freeze effects, and rocket splash damage. No base gets through!",
+    "category": "Strategy",
+    "players": "1 player",
+    "tags": [
+      "tower-defense",
+      "neon",
+      "strategy",
+      "elite"
+    ],
+    "featured": false,
+    "rating": 4.7,
+    "playCount": 0,
+    "releaseYear": 2025,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "elite-plat-1",
+    "title": "Gravity Flip X",
+    "slug": "gravity-flip-x",
+    "description": "Mind-bending gravity-flip platformer! Press S to flip gravity. Collect all coins, dodge hazards, and survive moving platforms across infinite levels.",
+    "category": "Platformer",
+    "players": "1 player",
+    "tags": [
+      "platformer",
+      "gravity",
+      "puzzle",
+      "elite"
+    ],
+    "featured": true,
+    "rating": 4.9,
+    "playCount": 0,
+    "releaseYear": 2025,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "elite-plat-2",
+    "title": "Neon Jumper",
+    "slug": "neon-jumper",
+    "description": "Precision neon platformer. Ultra-tight jump timing, moving platforms, coin collection, gravity manipulation and escalating level design.",
+    "category": "Platformer",
+    "players": "1 player",
+    "tags": [
+      "platformer",
+      "precision",
+      "neon",
+      "elite"
+    ],
+    "featured": false,
+    "rating": 4.8,
+    "playCount": 0,
+    "releaseYear": 2025,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "elite-plat-3",
+    "title": "Cyber Ninja",
+    "slug": "cyber-ninja",
+    "description": "Fast-paced cyberpunk platformer. Flip gravity to navigate multi-surface levels, collect glowing orbs and dodge energy blade hazards.",
+    "category": "Platformer",
+    "players": "1 player",
+    "tags": [
+      "platformer",
+      "ninja",
+      "cyberpunk",
+      "elite"
+    ],
+    "featured": false,
+    "rating": 4.7,
+    "playCount": 0,
+    "releaseYear": 2025,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "elite-sport-1",
+    "title": "Tennis Storm",
+    "slug": "tennis-storm",
+    "description": "Intense arcade tennis! Control your paddle with W/S, rally to build combos, and outlast the AI. Track your longest rally and total score.",
+    "category": "Sports",
+    "players": "1-2 players",
+    "tags": [
+      "tennis",
+      "sports",
+      "paddle",
+      "elite"
+    ],
+    "featured": true,
+    "rating": 4.8,
+    "playCount": 0,
+    "releaseYear": 2025,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "elite-sport-2",
+    "title": "Ice Hockey X",
+    "slug": "ice-hockey-x",
+    "description": "Full-field ice hockey arcade! Control your player with WASD, hit the puck, score goals. AI goalie adapts to your style. Fast and furious!",
+    "category": "Sports",
+    "players": "1-2 players",
+    "tags": [
+      "hockey",
+      "sports",
+      "ice",
+      "elite"
+    ],
+    "featured": true,
+    "rating": 4.9,
+    "playCount": 0,
+    "releaseYear": 2025,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "elite-sport-3",
+    "title": "Street Hoops",
+    "slug": "street-hoops",
+    "description": "Street basketball with real shot physics! Move, aim with arrow keys, charge your shot, release for a perfect arc. 2-pointer or 3-pointer scoring!",
+    "category": "Sports",
+    "players": "1 player",
+    "tags": [
+      "basketball",
+      "sports",
+      "hoops",
+      "elite"
+    ],
+    "featured": true,
+    "rating": 4.9,
+    "playCount": 0,
+    "releaseYear": 2025,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "elite-sport-4",
+    "title": "Cyber Soccer",
+    "slug": "cyber-soccer",
+    "description": "Neon soccer with puck-physics. Knock the ball into the goal, defend with WASD, fast AI challenge and satisfying goal explosions.",
+    "category": "Sports",
+    "players": "1-2 players",
+    "tags": [
+      "soccer",
+      "sports",
+      "neon",
+      "elite"
+    ],
+    "featured": false,
+    "rating": 4.7,
+    "playCount": 0,
+    "releaseYear": 2025,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "elite-strat-1",
+    "title": "Battle Ships X",
+    "slug": "battle-ships-x",
+    "description": "Classic naval strategy reimagined! 8×8 grid, place shots with arrows, hunt enemy ships. CPU uses smart targeting AI to track your fleet down.",
+    "category": "Strategy",
+    "players": "1 player",
+    "tags": [
+      "battleship",
+      "strategy",
+      "naval",
+      "elite"
+    ],
+    "featured": true,
+    "rating": 4.8,
+    "playCount": 0,
+    "releaseYear": 2025,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "elite-strat-2",
+    "title": "Maze Escape X",
+    "slug": "maze-escape-x",
+    "description": "Procedurally generated mazes every run! Navigate the neon labyrinth to the goal flag before time expires. Levels get bigger and harder.",
+    "category": "Puzzle",
+    "players": "1 player",
+    "tags": [
+      "maze",
+      "puzzle",
+      "procedural",
+      "elite"
+    ],
+    "featured": true,
+    "rating": 4.8,
+    "playCount": 0,
+    "releaseYear": 2025,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "elite-strat-3",
+    "title": "Neon Maze",
+    "slug": "neon-maze",
+    "description": "Stunning glowing mazes with a countdown clock. Every maze is unique, generated fresh each run. How many floors can you escape?",
+    "category": "Puzzle",
+    "players": "1 player",
+    "tags": [
+      "maze",
+      "neon",
+      "speed",
+      "elite"
+    ],
+    "featured": false,
+    "rating": 4.7,
+    "playCount": 0,
+    "releaseYear": 2025,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "elite-strat-4",
+    "title": "Dungeon Run",
+    "slug": "dungeon-run",
+    "description": "Race through procedural dungeons. Twist, turn, collect score gems and escape each level before the clock runs out in this neon maze adventure.",
+    "category": "Puzzle",
+    "players": "1 player",
+    "tags": [
+      "dungeon",
+      "maze",
+      "adventure",
+      "elite"
+    ],
+    "featured": false,
+    "rating": 4.6,
+    "playCount": 0,
+    "releaseYear": 2025,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "flagship-1",
+    "title": "Dungeon Crawler",
+    "slug": "dungeon-crawler",
+    "description": "Full top-down RPG! Choose sword, bow, or staff. Fight goblins, orcs, mages and bosses across procedurally generated dungeon floors. Level up, collect loot, upgrade stats.",
+    "category": "RPG",
+    "players": "1 player",
+    "tags": [
+      "rpg",
+      "dungeon",
+      "elite",
+      "weapons",
+      "boss"
+    ],
+    "featured": true,
+    "rating": 5,
+    "playCount": 0,
+    "releaseYear": 2025,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "flagship-2",
+    "title": "Dungeon Storm",
+    "slug": "dungeon-storm",
+    "description": "Elite dungeon RPG with sword/bow/staff combat, enemy AI, loot system, and 10+ procedural floors. Boss encounters scale with your level!",
+    "category": "RPG",
+    "players": "1 player",
+    "tags": [
+      "rpg",
+      "dungeon",
+      "elite",
+      "boss"
+    ],
+    "featured": false,
+    "rating": 4.9,
+    "playCount": 0,
+    "releaseYear": 2025,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "flagship-3",
+    "title": "Neon Dungeon",
+    "slug": "neon-dungeon",
+    "description": "Neon-lit dungeon crawler RPG. Explore dark corridors, slay enemies, collect items, and descend through increasingly deadly floors.",
+    "category": "RPG",
+    "players": "1 player",
+    "tags": [
+      "rpg",
+      "neon",
+      "dungeon",
+      "elite"
+    ],
+    "featured": false,
+    "rating": 4.8,
+    "playCount": 0,
+    "releaseYear": 2025,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "flagship-4",
+    "title": "Neon Chess",
+    "slug": "neon-chess",
+    "description": "Full chess with AI opponent using minimax algorithm! Glowing neon pieces, animated moves, legal move highlighting, check detection, and capture tracking.",
+    "category": "Strategy",
+    "players": "1 player",
+    "tags": [
+      "chess",
+      "strategy",
+      "elite",
+      "ai",
+      "classic"
+    ],
+    "featured": true,
+    "rating": 5,
+    "playCount": 0,
+    "releaseYear": 2025,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "flagship-5",
+    "title": "Chess Storm",
+    "slug": "chess-storm",
+    "description": "Elite neon chess with full AI, animated piece movement, captured piece tracking, and check/checkmate detection. Use arrow keys to navigate.",
+    "category": "Strategy",
+    "players": "1 player",
+    "tags": [
+      "chess",
+      "strategy",
+      "ai"
+    ],
+    "featured": false,
+    "rating": 4.9,
+    "playCount": 0,
+    "releaseYear": 2025,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "flagship-6",
+    "title": "Crypt Runner",
+    "slug": "crypt-runner",
+    "description": "Fast-paced dungeon RPG. Sprint through crypts, collect power-ups, defeat undead enemies. Weapon selection: blade, crossbow, or arcane staff.",
+    "category": "RPG",
+    "players": "1 player",
+    "tags": [
+      "rpg",
+      "fast",
+      "dungeon",
+      "weapons"
+    ],
+    "featured": false,
+    "rating": 4.7,
+    "playCount": 0,
+    "releaseYear": 2025,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "edu-1",
+    "title": "Typing Storm",
+    "slug": "typing-storm",
+    "description": "Words rain from the sky — type them before they hit the ground! 100 levels, 4 word tiers from 3-letter basics to expert 10-letter vocabulary. Track WPM and chain combos.",
+    "category": "Educational",
+    "players": "1 player",
+    "tags": [
+      "typing",
+      "educational",
+      "speed",
+      "combo",
+      "100-levels"
+    ],
+    "featured": true,
+    "rating": 4.9,
+    "playCount": 0,
+    "releaseYear": 2025,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "edu-2",
+    "title": "Speed Typer",
+    "slug": "speed-typer",
+    "description": "Push your typing speed to the limit! Words fall faster every level. Reach 100 WPM to unlock expert tier. Compete for the highest combo streak!",
+    "category": "Educational",
+    "players": "1 player",
+    "tags": [
+      "typing",
+      "educational",
+      "speed",
+      "wpm"
+    ],
+    "featured": false,
+    "rating": 4.7,
+    "playCount": 0,
+    "releaseYear": 2025,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "edu-3",
+    "title": "Word Blitz",
+    "slug": "word-blitz",
+    "description": "Lightning-fast typing challenge! Multiple words fall simultaneously at higher levels. Miss three and it's game over. 100 levels of escalating madness.",
+    "category": "Educational",
+    "players": "1 player",
+    "tags": [
+      "typing",
+      "blitz",
+      "educational",
+      "100-levels"
+    ],
+    "featured": false,
+    "rating": 4.6,
+    "playCount": 0,
+    "releaseYear": 2025,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "edu-4",
+    "title": "Math Storm",
+    "slug": "math-storm",
+    "description": "Battle monsters with math! Answer equations to deal damage — get it wrong and take a hit. 100 levels from simple addition to advanced algebra. Level up your wizard!",
+    "category": "Educational",
+    "players": "1 player",
+    "tags": [
+      "math",
+      "rpg",
+      "educational",
+      "100-levels",
+      "battle"
+    ],
+    "featured": true,
+    "rating": 4.9,
+    "playCount": 0,
+    "releaseYear": 2025,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "edu-5",
+    "title": "Number Battle",
+    "slug": "number-battle",
+    "description": "Epic RPG math battles. Face increasingly powerful enemies across 100 levels. Correct answers power up your attacks — combos multiply damage!",
+    "category": "Educational",
+    "players": "1 player",
+    "tags": [
+      "math",
+      "battle",
+      "educational",
+      "rpg"
+    ],
+    "featured": false,
+    "rating": 4.8,
+    "playCount": 0,
+    "releaseYear": 2025,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "edu-6",
+    "title": "Times Table Titan",
+    "slug": "times-table-titan",
+    "description": "Master multiplication through epic monster battles. 100 progressive levels targeting specific multiplication tables. Become a calculation titan!",
+    "category": "Educational",
+    "players": "1 player",
+    "tags": [
+      "math",
+      "multiplication",
+      "educational",
+      "battle"
+    ],
+    "featured": false,
+    "rating": 4.7,
+    "playCount": 0,
+    "releaseYear": 2025,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "edu-7",
+    "title": "Math Elite",
+    "slug": "math-elite",
+    "description": "Elite math battles: algebra, fractions, powers, and complex equations. 100 levels of the hardest math challenges. Only true geniuses reach the top!",
+    "category": "Educational",
+    "players": "1 player",
+    "tags": [
+      "math",
+      "elite",
+      "algebra",
+      "educational",
+      "hard"
+    ],
+    "featured": false,
+    "rating": 4.8,
+    "playCount": 0,
+    "releaseYear": 2025,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "edu-8",
+    "title": "Fraction Fighter",
+    "slug": "fraction-fighter",
+    "description": "Fractions, decimals, and percentages — master them all in battle! 100 levels progressing from simple halves to complex mixed fractions.",
+    "category": "Educational",
+    "players": "1 player",
+    "tags": [
+      "math",
+      "fractions",
+      "educational",
+      "battle"
+    ],
+    "featured": false,
+    "rating": 4.6,
+    "playCount": 0,
+    "releaseYear": 2025,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "edu-9",
+    "title": "Geography Quest",
+    "slug": "geography-quest",
+    "description": "Explore the world through trivia! Countries, capitals, oceans, continents. 100 quiz levels with timed pressure and enemy battles. Become a Geography master!",
+    "category": "Educational",
+    "players": "1 player",
+    "tags": [
+      "geography",
+      "quiz",
+      "educational",
+      "100-levels"
+    ],
+    "featured": true,
+    "rating": 4.8,
+    "playCount": 0,
+    "releaseYear": 2025,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "edu-11",
+    "title": "Science Quest",
+    "slug": "science-quest",
+    "description": "Physics, chemistry, biology, astronomy — tackle them all! 100 science quiz levels against themed enemies. Unlock knowledge badges!",
+    "category": "Educational",
+    "players": "1 player",
+    "tags": [
+      "science",
+      "quiz",
+      "educational",
+      "100-levels"
+    ],
+    "featured": true,
+    "rating": 4.8,
+    "playCount": 0,
+    "releaseYear": 2025,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "edu-12",
+    "title": "History Blast",
+    "slug": "history-blast",
+    "description": "Time-travel through history to battle historical quiz enemies! Ancient civilizations to modern era. 100 levels across all of human history.",
+    "category": "Educational",
+    "players": "1 player",
+    "tags": [
+      "history",
+      "quiz",
+      "educational",
+      "time-travel"
+    ],
+    "featured": false,
+    "rating": 4.7,
+    "playCount": 0,
+    "releaseYear": 2025,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "edu-13",
+    "title": "Vocab Blast",
+    "slug": "vocab-blast",
+    "description": "Master SAT-level vocabulary through epic battles. Definitions, synonyms, antonyms — fight your way through 100 levels of word mastery!",
+    "category": "Educational",
+    "players": "1 player",
+    "tags": [
+      "vocabulary",
+      "quiz",
+      "educational",
+      "words"
+    ],
+    "featured": false,
+    "rating": 4.6,
+    "playCount": 0,
+    "releaseYear": 2025,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "edu-14",
+    "title": "Brain Blitz",
+    "slug": "brain-blitz",
+    "description": "The ultimate mixed trivia battle game! Geography, science, history, math, vocabulary — all combined. 100 progressive levels testing every subject!",
+    "category": "Educational",
+    "players": "1 player",
+    "tags": [
+      "trivia",
+      "quiz",
+      "educational",
+      "mixed",
+      "100-levels"
+    ],
+    "featured": true,
+    "rating": 4.9,
+    "playCount": 0,
+    "releaseYear": 2025,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "edu-15",
+    "title": "Code Quest",
+    "slug": "code-quest",
+    "description": "Learn coding concepts through quiz battles! Variables, loops, arrays, algorithms. 100 levels introducing real programming knowledge.",
+    "category": "Educational",
+    "players": "1 player",
+    "tags": [
+      "coding",
+      "programming",
+      "quiz",
+      "educational"
+    ],
+    "featured": false,
+    "rating": 4.8,
+    "playCount": 0,
+    "releaseYear": 2025,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "edu-16",
+    "title": "Memory Matrix",
+    "slug": "memory-matrix",
+    "description": "The ultimate visual memory challenge! Watch the pattern light up, then reproduce it perfectly. 100 levels with increasing grid complexity and faster sequences.",
+    "category": "Educational",
+    "players": "1 player",
+    "tags": [
+      "memory",
+      "pattern",
+      "educational",
+      "100-levels"
+    ],
+    "featured": true,
+    "rating": 4.9,
+    "playCount": 0,
+    "releaseYear": 2025,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "edu-17",
+    "title": "Pattern Storm",
+    "slug": "pattern-storm",
+    "description": "Elite memory training. Patterns flash faster and grow longer each level. Can you keep up to level 100? Tests and trains working memory!",
+    "category": "Educational",
+    "players": "1 player",
+    "tags": [
+      "memory",
+      "pattern",
+      "brain",
+      "educational"
+    ],
+    "featured": false,
+    "rating": 4.7,
+    "playCount": 0,
+    "releaseYear": 2025,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "edu-18",
+    "title": "Word Scramble X",
+    "slug": "word-scramble-x",
+    "description": "Unscramble words before the timer runs out! 100 levels from 3-letter basics to 9-letter expert challenges. Use hints wisely — you only get 3 lives!",
+    "category": "Educational",
+    "players": "1 player",
+    "tags": [
+      "spelling",
+      "vocabulary",
+      "scramble",
+      "educational",
+      "100-levels"
+    ],
+    "featured": true,
+    "rating": 4.8,
+    "playCount": 0,
+    "releaseYear": 2025,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "edu-19",
+    "title": "Anagram Storm",
+    "slug": "anagram-storm",
+    "description": "Rearrange scrambled letters at lightning speed! Longer words, harder scrambles, faster timers. 100 levels of neon word-unscrambling action.",
+    "category": "Educational",
+    "players": "1 player",
+    "tags": [
+      "anagram",
+      "spelling",
+      "educational",
+      "words"
+    ],
+    "featured": false,
+    "rating": 4.6,
+    "playCount": 0,
+    "releaseYear": 2025,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "edu-20",
+    "title": "Spelling Quest",
+    "slug": "spelling-quest",
+    "description": "Unscramble words across every difficulty tier. English, science terms, geography words. Reach level 100 to become a Spelling Master!",
+    "category": "Educational",
+    "players": "1 player",
+    "tags": [
+      "spelling",
+      "scramble",
+      "educational",
+      "quest"
+    ],
+    "featured": false,
+    "rating": 4.7,
+    "playCount": 0,
+    "releaseYear": 2025,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "fun-1",
+    "title": "Snake Neon",
+    "slug": "snake-neon",
+    "description": "The legendary snake — reimagined in blazing neon! 100 levels: level 5 adds deadly walls, level 10 splits the maze, level 20 adds multi-apples. How long can your snake grow?",
+    "category": "Arcade",
+    "players": "1 player",
+    "tags": [
+      "snake",
+      "arcade",
+      "neon",
+      "100-levels",
+      "classic"
+    ],
+    "featured": true,
+    "rating": 5,
+    "playCount": 0,
+    "releaseYear": 2025,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "fun-2",
+    "title": "Python Pro",
+    "slug": "python-pro",
+    "description": "Advanced Snake with maze walls and speed challenges from level 1. Tight corridors, multiple targets. Only the best players reach level 100!",
+    "category": "Arcade",
+    "players": "1 player",
+    "tags": [
+      "snake",
+      "pro",
+      "arcade",
+      "neon",
+      "hard"
+    ],
+    "featured": false,
+    "rating": 4.8,
+    "playCount": 0,
+    "releaseYear": 2025,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "fun-3",
+    "title": "Neon Viper",
+    "slug": "neon-viper",
+    "description": "Elite snake experience with psychedelic neon trails and insane level-100 speed. The snake that eats everything in its path — except itself!",
+    "category": "Arcade",
+    "players": "1 player",
+    "tags": [
+      "snake",
+      "viper",
+      "neon",
+      "arcade",
+      "elite"
+    ],
+    "featured": false,
+    "rating": 4.7,
+    "playCount": 0,
+    "releaseYear": 2025,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "fun-4",
+    "title": "Neon Breakout",
+    "slug": "neon-breakout",
+    "description": "Classic brick-breaking with NEON power! 100 levels of escalating brick layouts — moving bricks (level 12), metal bricks (level 20). Grab power-ups: wide paddle, multi-ball, slow ball!",
+    "category": "Arcade",
+    "players": "1 player",
+    "tags": [
+      "breakout",
+      "arcade",
+      "neon",
+      "100-levels",
+      "powerups"
+    ],
+    "featured": true,
+    "rating": 4.9,
+    "playCount": 0,
+    "releaseYear": 2025,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "fun-5",
+    "title": "Brick Crusher",
+    "slug": "brick-crusher",
+    "description": "Smash through 100 levels of brick formations. Collect power-ups, avoid indestructible blocks, use multi-ball to chain massive combos!",
+    "category": "Arcade",
+    "players": "1 player",
+    "tags": [
+      "breakout",
+      "crusher",
+      "arcade",
+      "neon",
+      "combo"
+    ],
+    "featured": false,
+    "rating": 4.7,
+    "playCount": 0,
+    "releaseYear": 2025,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "fun-6",
+    "title": "Arkanoid X",
+    "slug": "arkanoid-x",
+    "description": "The ultimate breakout experience. 100 neon brick levels with randomized layouts, cascading power-ups, and boss brick formations!",
+    "category": "Arcade",
+    "players": "1 player",
+    "tags": [
+      "breakout",
+      "arkanoid",
+      "arcade",
+      "neon",
+      "100-levels"
+    ],
+    "featured": false,
+    "rating": 4.8,
+    "playCount": 0,
+    "releaseYear": 2025,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "fun-7",
+    "title": "Space Raiders",
+    "slug": "space-raiders",
+    "description": "100 waves of alien invasion! Aliens get faster, smarter, and more numerous. Shoot the UFO for massive bonuses. Use your bunkers wisely — they erode under fire!",
+    "category": "Arcade",
+    "players": "1 player",
+    "tags": [
+      "space-invaders",
+      "arcade",
+      "100-waves",
+      "ufo",
+      "aliens"
+    ],
+    "featured": true,
+    "rating": 5,
+    "playCount": 0,
+    "releaseYear": 2025,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "fun-8",
+    "title": "Galaxy Storm",
+    "slug": "galaxy-storm",
+    "description": "Elite alien invasion game! Formation patterns grow complex after wave 20. Alien AI becomes unpredictable by wave 50. The ultimate Space Invaders challenge!",
+    "category": "Arcade",
+    "players": "1 player",
+    "tags": [
+      "space-invaders",
+      "galaxy",
+      "arcade",
+      "100-waves"
+    ],
+    "featured": false,
+    "rating": 4.8,
+    "playCount": 0,
+    "releaseYear": 2025,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "fun-9",
+    "title": "Alien Blitz",
+    "slug": "alien-blitz",
+    "description": "Relentless alien assault — faster waves, more bullets, stronger formations. Survive 100 waves against the ultimate extraterrestrial army!",
+    "category": "Arcade",
+    "players": "1 player",
+    "tags": [
+      "space-invaders",
+      "blitz",
+      "arcade",
+      "aliens",
+      "hard"
+    ],
+    "featured": false,
+    "rating": 4.7,
+    "playCount": 0,
+    "releaseYear": 2025,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "fun-10",
+    "title": "Tetris Neon",
+    "slug": "tetris-neon",
+    "description": "The iconic block game — electrified with neon! 100 speed levels, ghost piece preview, next piece panel. Chain TETRIS clears for massive points. Reach level 100!",
+    "category": "Arcade",
+    "players": "1 player",
+    "tags": [
+      "tetris",
+      "arcade",
+      "neon",
+      "100-levels",
+      "classic"
+    ],
+    "featured": true,
+    "rating": 5,
+    "playCount": 0,
+    "releaseYear": 2025,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "fun-11",
+    "title": "Block Storm",
+    "slug": "block-storm",
+    "description": "Tetris at storm speed! Lines cascade at impossible rates by level 50. Ghost pieces and hard drop mastery required. Reach the top of the leaderboard!",
+    "category": "Arcade",
+    "players": "1 player",
+    "tags": [
+      "tetris",
+      "blocks",
+      "arcade",
+      "speed",
+      "hard"
+    ],
+    "featured": false,
+    "rating": 4.8,
+    "playCount": 0,
+    "releaseYear": 2025,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "fun-12",
+    "title": "Stack Attack",
+    "slug": "stack-attack",
+    "description": "Stack attack: fill lines at neon speed. 100 levels of escalating Tetris madness. Combos, T-spins, and blazing animations!",
+    "category": "Arcade",
+    "players": "1 player",
+    "tags": [
+      "tetris",
+      "stack",
+      "arcade",
+      "neon",
+      "combo"
+    ],
+    "featured": false,
+    "rating": 4.7,
+    "playCount": 0,
+    "releaseYear": 2025,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "fun-13",
+    "title": "Neon Jump",
+    "slug": "neon-jump",
+    "description": "100 hand-crafted platformer levels! Dodge spikes, bounce on springs, slide on ice, and navigate lava floors. Double jump, coin collect, and race to the flag!",
+    "category": "Platformer",
+    "players": "1 player",
+    "tags": [
+      "platformer",
+      "jump",
+      "neon",
+      "100-levels",
+      "coins"
+    ],
+    "featured": true,
+    "rating": 4.9,
+    "playCount": 0,
+    "releaseYear": 2025,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "fun-14",
+    "title": "Platform Storm",
+    "slug": "platform-storm",
+    "description": "Procedurally generated platformer stages with increasing complexity. Moving platforms, ice, lava, springs. 100 levels of extreme platforming!",
+    "category": "Platformer",
+    "players": "1 player",
+    "tags": [
+      "platformer",
+      "storm",
+      "neon",
+      "100-levels",
+      "procedural"
+    ],
+    "featured": false,
+    "rating": 4.8,
+    "playCount": 0,
+    "releaseYear": 2025,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "fun-15",
+    "title": "Sky Runner",
+    "slug": "sky-runner",
+    "description": "Sprint through the sky! Ultra-fast neon platforms, wall-jump mechanics, and brutal spike gauntlets. 100 levels from beginner to absolute nightmare!",
+    "category": "Platformer",
+    "players": "1 player",
+    "tags": [
+      "platformer",
+      "runner",
+      "sky",
+      "neon",
+      "speed"
+    ],
+    "featured": false,
+    "rating": 4.7,
+    "playCount": 0,
+    "releaseYear": 2025,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "fun-16",
+    "title": "Asteroid Storm",
+    "slug": "asteroid-storm",
+    "description": "100 waves of incoming asteroids! Your ship rotates and thrusts in true zero-gravity. Shoot rocks before they hit you. Bigger rocks split into smaller deadly fragments!",
+    "category": "Arcade",
+    "players": "1 player",
+    "tags": [
+      "asteroids",
+      "arcade",
+      "100-waves",
+      "space",
+      "zero-gravity"
+    ],
+    "featured": true,
+    "rating": 4.9,
+    "playCount": 0,
+    "releaseYear": 2025,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "fun-17",
+    "title": "Space Rock",
+    "slug": "space-rock",
+    "description": "Asteroid survival in deep space! Navigate through 100 waves of flying rocks. Collect shields, unleash rapid-fire, survive the asteroid apocalypse!",
+    "category": "Arcade",
+    "players": "1 player",
+    "tags": [
+      "asteroids",
+      "space",
+      "arcade",
+      "survival",
+      "100-waves"
+    ],
+    "featured": false,
+    "rating": 4.7,
+    "playCount": 0,
+    "releaseYear": 2025,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "fun-18",
+    "title": "Cosmic Blast",
+    "slug": "cosmic-blast",
+    "description": "Elite asteroid combat! Rock formations get denser and faster. UFOs appear for big bonuses. Reach wave 100 to become a Cosmic Legend!",
+    "category": "Arcade",
+    "players": "1 player",
+    "tags": [
+      "asteroids",
+      "cosmic",
+      "arcade",
+      "elite",
+      "ufo"
+    ],
+    "featured": false,
+    "rating": 4.8,
+    "playCount": 0,
+    "releaseYear": 2025,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "fun-19",
+    "title": "Grid Master",
+    "slug": "grid-master",
+    "description": "Master the Tetris grid! Lightning-fast block placement, neon cascades, and chain clear combos. 100 levels — only real strategists survive level 75+!",
+    "category": "Arcade",
+    "players": "1 player",
+    "tags": [
+      "tetris",
+      "grid",
+      "arcade",
+      "strategy",
+      "100-levels"
+    ],
+    "featured": false,
+    "rating": 4.8,
+    "playCount": 0,
+    "releaseYear": 2025,
+    "thumbnailUrl": ""
+  },
+  {
+    "id": "fun-20",
+    "title": "Neon Viper XL",
+    "slug": "neon-viper-xl",
+    "description": "The definitive snake experience — 100 levels, maze obstacles, multi-apple mode, hyper speed. The last snake game you'll ever need to play.",
+    "category": "Arcade",
+    "players": "1 player",
+    "tags": [
+      "snake",
+      "xl",
+      "neon",
+      "arcade",
+      "100-levels",
+      "elite"
+    ],
+    "featured": true,
+    "rating": 5,
+    "playCount": 0,
+    "releaseYear": 2025,
+    "thumbnailUrl": ""
+  }
+]

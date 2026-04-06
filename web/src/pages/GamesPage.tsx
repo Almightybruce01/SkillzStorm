@@ -10,6 +10,11 @@ const catColorMap: Record<string, string> = {
   StormQuick: '#ec4899',
   Storm3D: '#8b5cf6',
   StormVR: '#06b6d4',
+  StormNeon: '#22d3ee',
+  StormMario: '#f97316',
+  StormRetro: '#a855f7',
+  StormEduPlus: '#22c55e',
+  StormElite: '#f43f5e',
 };
 
 export function GamesPage() {
@@ -28,41 +33,41 @@ export function GamesPage() {
   });
 
   return (
-    <div className="pt-20 sm:pt-24 min-h-[100vh] w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20 page-enter">
+    <div className="pt-20 sm:pt-24 min-h-[100vh] w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20 page-enter text-slate-100">
       <TopBannerAd />
       {/* Header */}
       <div className="text-center mb-10 animate-slide-up">
-        <h1 className="text-5xl sm:text-6xl font-black text-gray-800 mb-3">
+        <h1 className="text-5xl sm:text-6xl font-black text-slate-100 mb-3">
           {selectedCategory !== 'all'
             ? <span style={{ color: catColorMap[selectedCategory] || '#3b82f6' }}>{categories.find(c => c.value === selectedCategory)?.label || 'Games'}</span>
             : (
               <span>
                 <span className="bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent">ALL</span>
                 {' '}
-                <span className="text-gray-800">GAMES</span>
+                <span className="text-slate-200">GAMES</span>
               </span>
             )}
         </h1>
-        <p className="text-gray-400 text-sm">
+        <p className="text-slate-400 text-sm">
           <span className="font-black text-lg" style={{ color: catColorMap[selectedCategory] || '#3b82f6' }}>{filteredGames.length}</span>
           <span className="ml-1">games available — all free to play</span>
         </p>
       </div>
 
       {/* Search */}
-      <div className="bg-white border border-gray-200 rounded-2xl flex items-center gap-3 p-4 mb-6 animate-slide-up delay-100 group focus-within:border-blue-300 focus-within:shadow-lg transition-all duration-300">
-        <span className="text-gray-300 group-focus-within:text-blue-500 transition-colors duration-300 text-lg">🔍</span>
+      <div className="game-card border border-cyan-500/20 rounded-2xl flex items-center gap-3 p-4 mb-6 animate-slide-up delay-100 group focus-within:border-cyan-400/50 focus-within:shadow-[0_0_24px_rgba(34,211,238,0.12)] transition-all duration-300">
+        <span className="text-slate-500 group-focus-within:text-cyan-400 transition-colors duration-300 text-lg">🔍</span>
         <input
           type="text"
           placeholder="Search games..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          className="bg-transparent text-gray-800 w-full outline-none placeholder-gray-300 text-sm font-medium"
+          className="bg-transparent text-slate-100 w-full outline-none placeholder-slate-500 text-sm font-medium"
         />
         {search && (
           <button
             onClick={() => setSearch('')}
-            className="text-gray-300 hover:text-gray-600 hover:bg-gray-100 w-7 h-7 rounded-full flex items-center justify-center transition-all duration-200 active:scale-90 text-sm"
+            className="text-slate-500 hover:text-cyan-200 hover:bg-white/5 w-7 h-7 rounded-full flex items-center justify-center transition-all duration-200 active:scale-90 text-sm"
           >
             ✕
           </button>
@@ -91,8 +96,8 @@ export function GamesPage() {
           {filteredGames.length === 0 ? (
             <div className="text-center py-24 animate-fade-in">
               <div className="text-7xl mb-4 animate-float">🔍</div>
-              <p className="text-gray-600 text-xl font-black mb-2">No games found</p>
-              <p className="text-gray-400 text-sm">Try a different filter or search term</p>
+              <p className="text-slate-300 text-xl font-black mb-2">No games found</p>
+              <p className="text-slate-500 text-sm">Try a different filter or search term</p>
             </div>
           ) : (
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5">
@@ -117,8 +122,8 @@ export function GamesPage() {
                       </div>
                     )}
 
-                    <h3 className="font-bold text-gray-800 text-sm mb-1 line-clamp-1 group-hover:text-blue-600 transition-colors duration-300">{game.name}</h3>
-                    <p className="text-gray-400 text-xs line-clamp-2 mb-3 group-hover:text-gray-500 transition-colors">{game.description}</p>
+                    <h3 className="font-bold text-slate-100 text-sm mb-1 line-clamp-1 group-hover:text-cyan-300 transition-colors duration-300">{game.name}</h3>
+                    <p className="text-slate-400 text-xs line-clamp-2 mb-3 group-hover:text-slate-300 transition-colors">{game.description}</p>
 
                     <div className="flex justify-center gap-1.5 flex-wrap mb-2">
                       {!game.isAvailable && <Badge text="SOON" bg="#9ca3af" />}
@@ -160,9 +165,9 @@ function FilterPill({ label, active, onClick, color }: { label: string; active: 
         backgroundColor: `${c}10`,
         boxShadow: `0 2px 8px ${c}15`,
       } : {
-        borderColor: '#e2e8f0',
+        borderColor: 'rgba(34, 211, 238, 0.15)',
         color: '#94a3b8',
-        backgroundColor: 'white',
+        backgroundColor: 'rgba(15, 23, 42, 0.5)',
       }}
     >
       {label}

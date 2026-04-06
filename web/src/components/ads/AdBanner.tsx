@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import { useLocation } from 'react-router-dom';
 import { ADSENSE_CONFIG, isAdFree } from './AdConfig';
 
 // ═══════════════════════════════════════════════════════════════
@@ -25,12 +26,18 @@ declare global {
 export function AdBanner({ slot, format = 'auto', className = '', responsive = true }: AdBannerProps) {
   const adRef = useRef<HTMLDivElement>(null);
   const adPushed = useRef(false);
+  const location = useLocation();
 
   useEffect(() => {
     // Don't show ads if user is ad-free
     if (isAdFree()) return;
 
-    // Push the ad unit
+    // On route or slot change, ask AdSense for a fresh fill.
+    // This keeps ads rotating as users move around the app
+    // without requiring manual timers or reload hacks.
+    adPushed.current = false;
+
+    // Push the ad unit once per mount / route change
     if (!adPushed.current) {
       try {
         (window.adsbygoogle = window.adsbygoogle || []).push({});
@@ -39,7 +46,7 @@ export function AdBanner({ slot, format = 'auto', className = '', responsive = t
         console.log('[AdBanner] Ad push error:', e);
       }
     }
-  }, []);
+  }, [slot, location.pathname]);
 
   // Don't render for ad-free users
   if (isAdFree()) return null;

@@ -292,6 +292,7 @@ struct MultiplayerLobbyView: View {
                 ParentalGateView(
                     title: "Multiplayer Access",
                     description: "Your child wants to play multiplayer. This uses Apple Game Center with anonymous player numbers only. No chat or personal data is shared.",
+                    style: .embeddedFullScreen,
                     onSuccess: {
                         parentalGatePassed = true
                         showParentalGate = false

@@ -1,13 +1,14 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { allGames, gradeLevels, type GradeLevel } from '../engine/gameData';
-import { InArticleAd, TopBannerAd } from '../components/ads/AdBanner';
-import { GameLauncher } from '../games/GameLauncher';
+import { InArticleAd, TopBannerAd, SidebarAd } from '../components/ads/AdBanner';
+import { GameSession } from '../games/GameSession';
 import type { Grade } from '../games/questionBank';
 
 const catColorMap: Record<string, string> = {
   StormBattle: '#3b82f6', StormDash: '#10b981', StormPuzzle: '#f59e0b',
-  StormQuick: '#ec4899', Storm3D: '#8b5cf6', StormVR: '#06b6d4',
+  StormQuick: '#ec4899', Storm3D: '#8b5cf6', StormVR: '#06b6d4', StormNeon: '#22d3ee',
+  StormMario: '#f97316', StormRetro: '#a855f7', StormEduPlus: '#22c55e', StormElite: '#f43f5e',
 };
 
 export function GameDetailPage() {
@@ -16,11 +17,35 @@ export function GameDetailPage() {
   const [playing, setPlaying] = useState(false);
   const [selectedGrade, setSelectedGrade] = useState<GradeLevel | null>(null);
 
+  // While a game is actively running, prevent arrow keys / space / page up/down
+  // from scrolling the whole document so gameplay feels locked-in.
+  useEffect(() => {
+    if (!playing) return;
+
+    const handler = (e: KeyboardEvent) => {
+      const k = e.key;
+      if (
+        k === 'ArrowUp' ||
+        k === 'ArrowDown' ||
+        k === 'ArrowLeft' ||
+        k === 'ArrowRight' ||
+        k === ' ' ||
+        k === 'PageUp' ||
+        k === 'PageDown'
+      ) {
+        e.preventDefault();
+      }
+    };
+
+    window.addEventListener('keydown', handler, { passive: false });
+    return () => window.removeEventListener('keydown', handler as EventListener);
+  }, [playing]);
+
   if (!game) {
     return (
-      <div className="pt-20 sm:pt-24 min-h-[100vh] w-full flex flex-col items-center justify-center text-center page-enter">
+      <div className="pt-20 sm:pt-24 min-h-[100vh] w-full flex flex-col items-center justify-center text-center page-enter text-slate-100">
         <div className="text-7xl mb-4 animate-float">🔍</div>
-        <h1 className="text-3xl font-black text-gray-800 mb-3">Game Not Found</h1>
+        <h1 className="text-3xl font-black text-slate-100 mb-3">Game Not Found</h1>
         <Link to="/games" className="btn-elite btn-elite-primary text-sm">← Back to Games</Link>
       </div>
     );
@@ -31,10 +56,10 @@ export function GameDetailPage() {
   const playGrade = (selectedGrade || game.supportedGrades[0]) as Grade;
 
   return (
-    <div className="pt-20 sm:pt-24 min-h-[100vh] w-full max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pb-20 page-enter">
+    <div className="pt-20 sm:pt-24 min-h-[100vh] w-full max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pb-20 page-enter text-slate-100">
       <TopBannerAd />
       {/* Back link */}
-      <Link to="/games" className="text-gray-400 text-sm hover:text-gray-600 transition-all duration-300 mb-8 inline-flex items-center gap-2 group">
+      <Link to="/games" className="text-slate-500 text-sm hover:text-cyan-300 transition-all duration-300 mb-8 inline-flex items-center gap-2 group">
         <span className="transition-transform duration-300 group-hover:-translate-x-1">←</span>
         <span>Back to Games</span>
       </Link>
@@ -52,7 +77,7 @@ export function GameDetailPage() {
             <div className="relative text-[100px] sm:text-[120px] mb-4 animate-float leading-none">{game.iconEmoji}</div>
           </div>
         )}
-        <h1 className="text-4xl sm:text-5xl font-black text-gray-800 mb-4 animate-slide-up delay-100">{game.name}</h1>
+        <h1 className="text-4xl sm:text-5xl font-black text-slate-100 mb-4 animate-slide-up delay-100">{game.name}</h1>
         <div className="flex justify-center gap-2 mb-2 animate-slide-up delay-200 flex-wrap">
           {game.isFeatured && (
             <span className="text-xs font-black bg-gradient-to-r from-red-500 to-pink-500 text-white px-4 py-1.5 rounded-lg shadow-sm">
@@ -122,8 +147,14 @@ export function GameDetailPage() {
           </span>
         </button>
       ) : (
-        <div className="mb-10">
-          <GameLauncher gameId={game.id} grade={playGrade} onClose={() => setPlaying(false)} />
+        <div className="mb-10 grid grid-cols-1 lg:grid-cols-[minmax(0,3fr)_minmax(260px,1fr)] gap-6 items-start">
+          <div>
+            <GameSession game={game} grade={playGrade} />
+          </div>
+          <div className="hidden lg:block">
+            {/* Always-visible sidebar ad while a game is running */}
+            <SidebarAd />
+          </div>
         </div>
       )}
 
@@ -133,7 +164,7 @@ export function GameDetailPage() {
           <span className="w-2 h-2 rounded-full" style={{ backgroundColor: accent }} />
           ABOUT THIS GAME
         </h3>
-        <p className="text-gray-600 leading-relaxed">{game.description}</p>
+        <p className="text-slate-400 leading-relaxed">{game.description}</p>
       </div>
 
       {/* Grade Levels */}

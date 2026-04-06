@@ -1,7 +1,5 @@
 @import "tailwindcss";
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Poppins:wght@600;700;800;900&display=swap');
-
 :root {
   --brand-blue: #3b82f6;
   --brand-purple: #8b5cf6;
@@ -36,7 +34,7 @@ html {
 }
 
 body {
-  background: var(--bg-white);
+  background: #020617;
   color: var(--text-primary);
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
   overflow-x: hidden;
@@ -47,7 +45,7 @@ body {
 #root {
   min-height: 100vh;
   width: 100%;
-  background: var(--bg-white);
+  background: #020617;
   position: relative;
 }
 
@@ -728,4 +726,52 @@ body {
   font-size: 11px;
   font-weight: 700;
   text-align: center;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   NEON SITE SHELL (SkillzStorm web — scoped)
+   ═══════════════════════════════════════════════════════════ */
+.skillzstorm-neon {
+  --neon-cyan: #22d3ee;
+  --neon-fuchsia: #e879f9;
+  --neon-amber: #fbbf24;
+  color: #e2e8f0;
+}
+.skillzstorm-neon #root {
+  background: #020617;
+}
+.skillzstorm-neon .bg-aurora-global {
+  background: #020617;
+}
+.skillzstorm-neon .bg-aurora-global::before {
+  background:
+    radial-gradient(ellipse 600px 500px at 20% 20%, rgba(34, 211, 238, 0.09) 0%, transparent 65%),
+    radial-gradient(ellipse 500px 450px at 85% 15%, rgba(232, 121, 249, 0.08) 0%, transparent 65%),
+    radial-gradient(ellipse 400px 400px at 50% 85%, rgba(251, 191, 36, 0.05) 0%, transparent 70%);
+  animation: aurora-drift 24s ease-in-out infinite alternate;
+}
+.skillzstorm-neon .bg-grid-overlay {
+  opacity: 0.35;
+  background-image:
+    linear-gradient(rgba(34, 211, 238, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(34, 211, 238, 0.06) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+.skillzstorm-neon .game-card {
+  background: rgba(15, 23, 42, 0.72);
+  border-color: rgba(34, 211, 238, 0.22);
+  color: #e2e8f0;
+}
+.skillzstorm-neon .game-card h3,
+.skillzstorm-neon .game-card .font-bold {
+  color: #f1f5f9;
+}
+.skillzstorm-neon .section-heading {
+  color: #94a3b8 !important;
+}
+.skillzstorm-neon .btn-elite-primary {
+  box-shadow: 0 4px 24px rgba(34, 211, 238, 0.2);
+}
+.neon-hero-glow {
+  background: radial-gradient(ellipse at center, rgba(34, 211, 238, 0.15) 0%, transparent 65%);
 }
