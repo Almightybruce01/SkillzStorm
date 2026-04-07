@@ -90,3 +90,32 @@ export function sfxEat(): void {
   tone(440, 0.05, { type: 'square', gain: 0.04, when: t0 });
   tone(660, 0.06, { type: 'square', gain: 0.03, when: t0 + 0.03 });
 }
+
+/** Flappy / runner — wing flap */
+export function sfxFlap(): void {
+  tone(320, 0.045, { type: 'triangle', gain: 0.06, freqEnd: 480 });
+}
+
+/** Pipe cleared — point */
+export function sfxFlappyPoint(): void {
+  const c = getCtx();
+  if (!c || c.state !== 'running') return;
+  const t0 = c.currentTime;
+  tone(523, 0.055, { type: 'square', gain: 0.042, when: t0 });
+  tone(784, 0.05, { type: 'square', gain: 0.032, when: t0 + 0.05 });
+}
+
+/** Hit obstacle but still alive */
+export function sfxFlappyHurt(): void {
+  tone(120, 0.11, { type: 'sawtooth', gain: 0.05, freqEnd: 55 });
+}
+
+/** Final game over sting */
+export function sfxFlappyGameOver(): void {
+  const c = getCtx();
+  if (!c || c.state !== 'running') return;
+  const t = c.currentTime;
+  [392, 349, 330, 262].forEach((f, i) => {
+    tone(f, 0.1, { type: 'square', gain: 0.034, when: t + i * 0.09, freqEnd: Math.max(30, f * 0.45) });
+  });
+}

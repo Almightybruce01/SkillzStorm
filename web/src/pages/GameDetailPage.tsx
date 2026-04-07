@@ -57,9 +57,11 @@ export function GameDetailPage() {
   const playGrade = (selectedGrade || game.supportedGrades[0]) as Grade;
 
   return (
-    <div className="pt-20 sm:pt-24 min-h-[100vh] w-full max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pb-20 page-enter text-slate-100">
-      <TopBannerAd />
-      <MidPageBannerAd />
+    <div
+      className={`pt-20 sm:pt-24 min-h-[100vh] w-full max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 page-enter text-slate-100 ${playing ? 'pb-32 sm:pb-36' : 'pb-20'}`}
+    >
+      <TopBannerAd refreshKey={gameId} />
+      <MidPageBannerAd refreshKey={gameId} />
       {/* Back link */}
       <Link to="/games" className="text-slate-500 text-sm hover:text-cyan-300 transition-all duration-300 mb-8 inline-flex items-center gap-2 group">
         <span className="transition-transform duration-300 group-hover:-translate-x-1">←</span>
@@ -220,8 +222,8 @@ export function GameDetailPage() {
         </div>
       </div>
 
-      <InArticleAd />
-      <InlineExtraAd />
+      <InArticleAd refreshKey={gameId} />
+      <InlineExtraAd refreshKey={gameId} />
 
       {/* Download CTA */}
       <div className="bg-gradient-to-r from-blue-50 to-purple-50 border border-blue-100 rounded-2xl p-8 text-center animate-slide-up" style={{ animationDelay: '0.6s' }}>

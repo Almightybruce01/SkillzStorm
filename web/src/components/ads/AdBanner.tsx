@@ -15,6 +15,8 @@ interface AdBannerProps {
   format?: 'auto' | 'horizontal' | 'vertical' | 'rectangle';
   className?: string;
   responsive?: boolean;
+  /** Extra key so ads remount when switching games or contexts (e.g. game id). */
+  refreshKey?: string;
 }
 
 declare global {
@@ -23,36 +25,27 @@ declare global {
   }
 }
 
-export function AdBanner({ slot, format = 'auto', className = '', responsive = true }: AdBannerProps) {
+export function AdBanner({ slot, format = 'auto', className = '', responsive = true, refreshKey }: AdBannerProps) {
   const adRef = useRef<HTMLDivElement>(null);
-  const adPushed = useRef(false);
   const location = useLocation();
+  const mountKey = `${slot}-${location.pathname}-${location.search}-${refreshKey ?? ''}`;
 
   useEffect(() => {
     // Don't show ads if user is ad-free
     if (isAdFree()) return;
 
-    // On route or slot change, ask AdSense for a fresh fill.
-    // This keeps ads rotating as users move around the app
-    // without requiring manual timers or reload hacks.
-    adPushed.current = false;
-
-    // Push the ad unit once per mount / route change
-    if (!adPushed.current) {
-      try {
-        (window.adsbygoogle = window.adsbygoogle || []).push({});
-        adPushed.current = true;
-      } catch (e) {
-        console.log('[AdBanner] Ad push error:', e);
-      }
+    try {
+      (window.adsbygoogle = window.adsbygoogle || []).push({});
+    } catch (e) {
+      console.log('[AdBanner] Ad push error:', e);
     }
-  }, [slot, location.pathname]);
+  }, [mountKey, slot]);
 
   // Don't render for ad-free users
   if (isAdFree()) return null;
 
   return (
-    <div ref={adRef} className={`ad-container ${className}`}>
+    <div key={mountKey} ref={adRef} className={`ad-container ${className}`}>
       <ins
         className="adsbygoogle"
         style={{ display: 'block' }}
@@ -70,40 +63,43 @@ export function AdBanner({ slot, format = 'auto', className = '', responsive = t
 // ── Preset Ad Components ────────────────────────────────────
 
 /** Leaderboard banner (top/bottom of page) */
-export function TopBannerAd() {
+export function TopBannerAd({ refreshKey }: { refreshKey?: string } = {}) {
   return (
     <AdBanner
       slot={ADSENSE_CONFIG.slots.topBanner}
       format="horizontal"
       className="w-full max-w-[728px] mx-auto my-4"
+      refreshKey={refreshKey}
     />
   );
 }
 
 /** Medium rectangle (sidebar, between content) */
-export function SidebarAd() {
+export function SidebarAd({ refreshKey }: { refreshKey?: string } = {}) {
   return (
     <AdBanner
       slot={ADSENSE_CONFIG.slots.sidebarRect}
       format="rectangle"
       className="w-[300px] mx-auto my-4"
+      refreshKey={refreshKey}
     />
   );
 }
 
 /** In-article native ad (blends with content) */
-export function InArticleAd() {
+export function InArticleAd({ refreshKey }: { refreshKey?: string } = {}) {
   return (
     <AdBanner
       slot={ADSENSE_CONFIG.slots.inArticle}
       format="auto"
       className="w-full my-6"
+      refreshKey={refreshKey}
     />
   );
 }
 
 /** Bottom sticky banner (matches dark neon shell) */
-export function BottomStickyAd() {
+export function BottomStickyAd({ refreshKey }: { refreshKey?: string } = {}) {
   if (isAdFree()) return null;
 
   return (
@@ -113,13 +109,14 @@ export function BottomStickyAd() {
         slot={ADSENSE_CONFIG.slots.bottomBanner}
         format="horizontal"
         className="max-w-[728px] w-full px-2"
+        refreshKey={refreshKey}
       />
     </div>
   );
 }
 
 /** Leaderboard directly under the global navbar (site-wide) */
-export function NavBelowAd() {
+export function NavBelowAd({ refreshKey }: { refreshKey?: string } = {}) {
   if (isAdFree()) return null;
   return (
     <div className="relative z-20 w-full border-b border-cyan-500/15 bg-slate-950/80 backdrop-blur-sm">
@@ -129,6 +126,7 @@ export function NavBelowAd() {
           slot={ADSENSE_CONFIG.slots.navBelow}
           format="horizontal"
           className="w-full max-w-[728px] mx-auto min-h-[50px]"
+          refreshKey={refreshKey}
         />
       </div>
     </div>
@@ -136,45 +134,49 @@ export function NavBelowAd() {
 }
 
 /** Between major sections (home, long pages) */
-export function MidPageBannerAd() {
+export function MidPageBannerAd({ refreshKey }: { refreshKey?: string } = {}) {
   return (
     <AdBanner
       slot={ADSENSE_CONFIG.slots.pageMid}
       format="horizontal"
       className="w-full max-w-[728px] mx-auto my-8 min-h-[60px]"
+      refreshKey={refreshKey}
     />
   );
 }
 
 /** Extra responsive block (multiplex-style placement) */
-export function InlineExtraAd() {
+export function InlineExtraAd({ refreshKey }: { refreshKey?: string } = {}) {
   return (
     <AdBanner
       slot={ADSENSE_CONFIG.slots.inlineExtra}
       format="auto"
       className="w-full max-w-[728px] mx-auto my-6"
+      refreshKey={refreshKey}
     />
   );
 }
 
 /** Footer banner */
-export function FooterAd() {
+export function FooterAd({ refreshKey }: { refreshKey?: string } = {}) {
   return (
     <AdBanner
       slot={ADSENSE_CONFIG.slots.footer}
       format="auto"
       className="w-full max-w-[728px] mx-auto my-6"
+      refreshKey={refreshKey}
     />
   );
 }
 
 /** Compact horizontal strip (e.g. arcade idle overlay) */
-export function CompactHorizontalAd() {
+export function CompactHorizontalAd({ refreshKey }: { refreshKey?: string } = {}) {
   return (
     <AdBanner
       slot={ADSENSE_CONFIG.slots.betweenGames}
       format="horizontal"
       className="w-full max-w-[320px] mx-auto min-h-[50px] my-1"
+      refreshKey={refreshKey}
     />
   );
 }

@@ -71,6 +71,8 @@ export function GameSession({ game, grade }: Props) {
               gameSlug={game.id}
               grade={grade}
               description={game.description}
+              milestoneEvery={neonKey === 'flappy' ? 5 : 0}
+              adRefreshKey={game.id}
               onClose={(s) => handleGameClose(s)}
             />
           )}

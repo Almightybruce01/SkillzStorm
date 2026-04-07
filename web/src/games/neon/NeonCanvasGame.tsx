@@ -5,6 +5,8 @@ import { getGameEngine } from './getGameEngine';
 import { getNeonHighScore } from './persistence/highScores';
 import type { NeonEngineInstance } from './types';
 import { CompactHorizontalAd } from '../../components/ads/AdBanner';
+import { BetweenRoundsAd } from '../../components/ads/BetweenRoundsAd';
+import { ExitGameAd } from '../../components/ads/ExitGameAd';
 
 function PlayIcon({ className }: { className?: string }) {
   return (
@@ -27,6 +29,10 @@ interface Props {
   rating?: number;
   /** e.g. "1–4 players" */
   playersLabel?: string;
+  /** Pause and show an interstitial every N points (0 = off). Used for flappy-style runners. */
+  milestoneEvery?: number;
+  /** Remounts idle / between-game ad units when switching titles */
+  adRefreshKey?: string;
 }
 
 /**
@@ -42,6 +48,8 @@ export function NeonCanvasGame({
   description,
   rating,
   playersLabel,
+  milestoneEvery = 0,
+  adRefreshKey,
 }: Props) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const engineRef = useRef<NeonEngineInstance | null>(null);
@@ -50,12 +58,20 @@ export function NeonCanvasGame({
   const rafRef = useRef(0);
   const lastRef = useRef(0);
   const endedRef = useRef(false);
+  const pausedRef = useRef(false);
   const onCloseRef = useRef(onClose);
   const sizeRef = useRef({ w: 400, h: 360 });
   const dprRef = useRef(1);
+  const lastMilestoneRef = useRef(0);
   const [gameStarted, setGameStarted] = useState(false);
+  const [milestone, setMilestone] = useState<{ score: number; round: number } | null>(null);
+  const [exitOpen, setExitOpen] = useState(false);
+  const [exitScore, setExitScore] = useState(0);
   const bestOnFile = useMemo(() => getNeonHighScore(gameSlug || 'game'), [gameSlug]);
-  onCloseRef.current = onClose;
+
+  useEffect(() => {
+    onCloseRef.current = onClose;
+  }, [onClose]);
 
   const resize = useCallback(() => {
     const canvas = canvasRef.current;
@@ -88,6 +104,8 @@ export function NeonCanvasGame({
     const engine = factory({ title: gameTitle, slug: gameSlug || 'game', grade });
     engineRef.current = engine;
     endedRef.current = false;
+    pausedRef.current = false;
+    lastMilestoneRef.current = 0;
     resize();
 
     const addKey = (e: KeyboardEvent) => {
@@ -122,8 +140,20 @@ export function NeonCanvasGame({
       lastRef.current = now;
       const keys = keysRef.current;
       const prev = prevKeysRef.current;
-      eng.update(dt, keys, prev);
-      prevKeysRef.current = new Set(keys);
+
+      if (!pausedRef.current) {
+        eng.update(dt, keys, prev);
+        prevKeysRef.current = new Set(keys);
+
+        if (!eng.isGameOver() && milestoneEvery > 0) {
+          const s = eng.getScore();
+          if (s > 0 && s % milestoneEvery === 0 && s > lastMilestoneRef.current) {
+            lastMilestoneRef.current = s;
+            pausedRef.current = true;
+            setMilestone({ score: s, round: s / milestoneEvery });
+          }
+        }
+      }
 
       const { w, h } = sizeRef.current;
       const dpr = dprRef.current;
@@ -148,13 +178,33 @@ export function NeonCanvasGame({
       ro.disconnect();
       engineRef.current = null;
     };
-  }, [engineKey, gameTitle, gameSlug, grade, resize, gameStarted]);
+  }, [engineKey, gameTitle, gameSlug, grade, resize, gameStarted, milestoneEvery]);
 
   const exit = () => {
     if (endedRef.current) return;
+    setExitScore(engineRef.current?.getScore() ?? 0);
+    pausedRef.current = true;
+    setExitOpen(true);
+  };
+
+  const confirmExit = () => {
+    if (endedRef.current) return;
     endedRef.current = true;
+    setExitOpen(false);
     const s = engineRef.current?.getScore() ?? 0;
     onCloseRef.current(s);
+  };
+
+  const cancelExit = () => {
+    pausedRef.current = false;
+    setExitOpen(false);
+    prevKeysRef.current = new Set(keysRef.current);
+  };
+
+  const continueMilestone = () => {
+    setMilestone(null);
+    pausedRef.current = false;
+    prevKeysRef.current = new Set(keysRef.current);
   };
 
   const startGame = () => {
@@ -249,7 +299,7 @@ export function NeonCanvasGame({
 
               {/* Ad below the start button so AdSense layers cannot sit on top of the primary CTA */}
               <div className="relative z-10 w-full max-w-[320px] max-h-[100px] overflow-hidden opacity-90 [&_.ad-container]:max-h-[90px]">
-                <CompactHorizontalAd />
+                <CompactHorizontalAd refreshKey={adRefreshKey ?? gameSlug} />
               </div>
 
               {(typeof rating === 'number' || playersLabel) && (
@@ -275,6 +325,23 @@ export function NeonCanvasGame({
           )}
         </p>
       )}
+
+      <ExitGameAd
+        show={exitOpen}
+        score={exitScore}
+        gameTitle={gameTitle}
+        onStay={cancelExit}
+        onLeave={confirmExit}
+      />
+
+      <BetweenRoundsAd
+        show={!!milestone}
+        level={milestone?.round ?? 0}
+        score={milestone?.score ?? 0}
+        title={milestone ? `Streak ${milestone.round}!` : undefined}
+        subtitle="Nice run — keep your rhythm!"
+        onContinue={continueMilestone}
+      />
     </div>
   );
 }
