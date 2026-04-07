@@ -16,6 +16,10 @@ Track progress toward depth (content, engines, polish, ops). Line-count targets 
 - [x] Expanded typing + scramble pools / per-subject heuristics from `game.id`
 - [x] `public/neon/content-manifest.json` placeholder for future JSON hot-load
 
+## Pass 2 — Status
+
+Banks expanded: more **math** rounds per grade, **quiz** items, **typing** pool words + geo/sports heuristics; `web/public/neon/content-manifest.json` documents the hook for future JSON loads.
+
 ## Pass 3 — Gameplay depth per engine
 
 - [ ] Feature flags in tuning (e.g. `powerUpsEnabled`) per slug

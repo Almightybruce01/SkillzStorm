@@ -1,4 +1,9 @@
 {
-  "bundled": true,
-  "note": "Neon math/quiz/typing content ships as TypeScript modules under src/games/neon/content/. This file is reserved for future hot-loaded JSON."
+  "version": 1,
+  "description": "Optional hook for future runtime-loaded neon content. Banks are compiled from web/src/games/neon/content/*.ts today.",
+  "banks": {
+    "math": "mathBank.ts — grade-keyed multiple-choice rounds",
+    "quiz": "quizBank.ts — grade-keyed trivia",
+    "typing": "typingPools.ts — slug + grade heuristics"
+  }
 }
