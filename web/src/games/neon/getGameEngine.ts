@@ -1,4 +1,5 @@
-import type { NeonEngineFactory, NeonEngineKey } from './types';
+import type { NeonEngineInstance, NeonEngineFactory, NeonEngineKey, NeonGameMetaInput } from './types';
+import { resolveNeonTuning } from './tuning/resolveNeonTuning';
 import {
   createAsteroidsEngine,
   createBreakoutEngine,
@@ -15,7 +16,7 @@ import {
   createTdEngine,
   createTetrisEngine,
   createTypingEngine,
-} from './engines/all';
+} from './engines';
 
 const registry: Record<NeonEngineKey, NeonEngineFactory> = {
   snake: createSnakeEngine,
@@ -35,7 +36,9 @@ const registry: Record<NeonEngineKey, NeonEngineFactory> = {
   placeholder: createPlaceholderEngine,
 };
 
-export function getGameEngine(key: string): NeonEngineFactory {
+/** Returns a launcher that merges `resolveNeonTuning(engineKey, slug)` into meta. */
+export function getGameEngine(key: string): (input: NeonGameMetaInput) => NeonEngineInstance {
   const k = key as NeonEngineKey;
-  return registry[k] ?? createPlaceholderEngine;
+  const factory = registry[k] ?? createPlaceholderEngine;
+  return (input: NeonGameMetaInput) => factory({ ...input, tuning: resolveNeonTuning(k, input.slug) });
 }
