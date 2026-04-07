@@ -20,7 +20,8 @@ import { EditorialPolicyPage } from './pages/EditorialPolicyPage'
 import { KidsAdsSafetyPage } from './pages/KidsAdsSafetyPage'
 import { Navbar } from './components/Navbar'
 import { Footer } from './components/Footer'
-import { BottomStickyAd } from './components/ads/AdBanner'
+import { BottomStickyAd, NavBelowAd } from './components/ads/AdBanner'
+import { RouteInterstitialHost } from './components/ads/RouteInterstitialHost'
 
 function App() {
   return (
@@ -37,7 +38,9 @@ function App() {
         </div>
 
         <Navbar />
-        <main className="flex-1 w-full relative z-10">
+        <NavBelowAd />
+        <RouteInterstitialHost />
+        <main className="flex-1 w-full relative z-10 pb-28 sm:pb-32">
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/games" element={<GamesPage />} />

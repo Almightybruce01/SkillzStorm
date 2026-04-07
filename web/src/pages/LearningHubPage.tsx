@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { learningTopics } from '../content/learningTopics';
-import { InArticleAd } from '../components/ads/AdBanner';
+import { InArticleAd, TopBannerAd, MidPageBannerAd, InlineExtraAd } from '../components/ads/AdBanner';
 
 const gradeLevels = ['K-2', '3-5', '6-8', '9-12'] as const;
 
@@ -26,6 +26,8 @@ export function LearningHubPage() {
   return (
     <div className="pt-20 sm:pt-24 w-full min-h-[100vh] page-enter">
       <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <TopBannerAd />
+        <MidPageBannerAd />
         <section className="text-center pt-10 pb-12">
           <h1 className="text-3xl sm:text-4xl font-black text-gray-800 mb-4">Learning Hub</h1>
           <p className="text-gray-500 text-base max-w-3xl mx-auto leading-relaxed">
@@ -72,6 +74,7 @@ export function LearningHubPage() {
         </section>
 
         <InArticleAd />
+        <InlineExtraAd />
 
         <section className="mb-16">
           <h2 className="section-heading text-lg font-black tracking-[0.15em] text-gray-700">

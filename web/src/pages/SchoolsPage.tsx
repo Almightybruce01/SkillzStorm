@@ -1,8 +1,10 @@
 import { Link } from 'react-router-dom';
+import { DensePageAds } from '../components/ads/StandardPageAds';
 
 export function SchoolsPage() {
   return (
     <div className="pt-20 sm:pt-24 page-enter min-h-[100vh] w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+      <DensePageAds />
       {/* Hero */}
       <section className="text-center py-14 animate-slide-up">
         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#8b5cf6]/10 border border-[#8b5cf6]/20 mb-6">

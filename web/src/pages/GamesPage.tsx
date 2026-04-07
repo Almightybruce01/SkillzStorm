@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link, useParams, useSearchParams } from 'react-router-dom';
 import { allGames, categories, gradeLevels, seedCatalogGames, type GameCategory, type GradeLevel } from '../engine/gameData';
-import { TopBannerAd, SidebarAd } from '../components/ads/AdBanner';
+import { TopBannerAd, SidebarAd, MidPageBannerAd, InArticleAd, InlineExtraAd } from '../components/ads/AdBanner';
 
 const catColorMap: Record<string, string> = {
   StormBattle: '#3b82f6',
@@ -132,6 +132,9 @@ export function GamesPage() {
         ))}
       </div>
 
+      <MidPageBannerAd />
+      <InArticleAd />
+
       <div className="flex gap-6">
         {/* Games Grid */}
         <div className="flex-1">
@@ -191,6 +194,8 @@ export function GamesPage() {
           </div>
         </div>
       </div>
+
+      <InlineExtraAd />
     </div>
   );
 }

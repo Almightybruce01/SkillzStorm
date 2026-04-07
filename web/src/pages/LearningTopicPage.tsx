@@ -1,6 +1,6 @@
 import { Link, Navigate, useParams } from 'react-router-dom';
 import { findTopicBySlug, learningTopics } from '../content/learningTopics';
-import { InArticleAd } from '../components/ads/AdBanner';
+import { InArticleAd, TopBannerAd, MidPageBannerAd, InlineExtraAd } from '../components/ads/AdBanner';
 
 export function LearningTopicPage() {
   const { slug } = useParams<{ slug: string }>();
@@ -14,6 +14,8 @@ export function LearningTopicPage() {
   return (
     <div className="pt-20 sm:pt-24 w-full min-h-[100vh] page-enter">
       <div className="relative z-10 w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <TopBannerAd />
+        <MidPageBannerAd />
         <section className="pt-10 pb-8">
           <Link to="/learn" className="text-sm font-bold text-blue-600 hover:text-blue-700">
             ← Back to Learning Hub
@@ -82,6 +84,7 @@ export function LearningTopicPage() {
         </section>
 
         <InArticleAd />
+        <InlineExtraAd />
 
         <section className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-16">
           <div className="bg-white rounded-2xl border border-gray-200 p-6">

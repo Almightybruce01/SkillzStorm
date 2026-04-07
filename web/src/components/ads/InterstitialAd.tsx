@@ -4,7 +4,16 @@ import { AdBanner } from './AdBanner';
 
 const COUNTDOWN = 5;
 
-export function InterstitialAd({ onClose, show }: { onClose: () => void; show: boolean }) {
+export function InterstitialAd({
+  onClose,
+  show,
+  slot,
+}: {
+  onClose: () => void;
+  show: boolean;
+  /** Defaults to inArticle slot; use routePopup for navigation popups */
+  slot?: string;
+}) {
   const [seconds, setSeconds] = useState(COUNTDOWN);
   const [canSkip, setCanSkip] = useState(false);
   const tracked = useRef(false);
@@ -37,7 +46,7 @@ export function InterstitialAd({ onClose, show }: { onClose: () => void; show: b
       <div className="relative w-full max-w-lg bg-white rounded-2xl shadow-xl border border-gray-200 p-6">
         <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4">Advertisement</p>
         <div className="min-h-[200px] flex items-center justify-center my-4">
-          <AdBanner slot={ADSENSE_CONFIG.slots.inArticle} format="auto" className="w-full" />
+          <AdBanner slot={slot ?? ADSENSE_CONFIG.slots.inArticle} format="auto" className="w-full" />
         </div>
         <div className="mt-4 flex justify-center">
           {canSkip ? (

@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { categories, getFeaturedGames, allGames, seedCatalogGames } from '../engine/gameData';
 import { arcadeGames } from '../games/arcade/arcadeData';
-import { InArticleAd, FooterAd, TopBannerAd } from '../components/ads/AdBanner';
+import { InArticleAd, InlineExtraAd, MidPageBannerAd, TopBannerAd } from '../components/ads/AdBanner';
 import type { GameCategory } from '../engine/gameData';
 
 const TICKER_ITEMS = [
@@ -147,6 +147,9 @@ export function HomePage() {
             <div className="font-display text-[9px] text-slate-500 uppercase tracking-widest mt-1">Avg vibe</div>
           </div>
         </div>
+
+        <MidPageBannerAd />
+        <InlineExtraAd />
 
         {/* Categories */}
         <section className="mb-16">
@@ -348,8 +351,6 @@ export function HomePage() {
             <Step num="03" title="Play & Learn" desc="Knowledge gates keep the challenge honest." color="#f97316" icon="🧠" delay="0.3s" />
           </div>
         </section>
-
-        <FooterAd />
 
         <section className="mb-12 text-center animate-fade-in">
           <div className="flex flex-wrap justify-center gap-x-4 gap-y-3">

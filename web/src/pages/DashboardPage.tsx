@@ -3,6 +3,7 @@
    Local analytics tracked via localStorage counters
    ═══════════════════════════════════════════════════════════ */
 import { useState, useEffect } from 'react';
+import { DensePageAds } from '../components/ads/StandardPageAds';
 import { allGames } from '../engine/gameData';
 import { arcadeGames } from '../games/arcade/arcadeData';
 
@@ -101,7 +102,8 @@ export function DashboardPage() {
   return (
     <div className="pt-20 sm:pt-24 page-enter min-h-[100vh] w-full">
       <div className="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
-        
+        <DensePageAds />
+
         {/* Header */}
         <div className="mb-8">
           <h1 className="text-3xl sm:text-4xl font-black text-gray-800 mb-2">Dashboard</h1>

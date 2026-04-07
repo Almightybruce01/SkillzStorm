@@ -1,8 +1,10 @@
 import { Link } from 'react-router-dom';
+import { SiteFooterAdStrip } from './ads/AdBanner';
 
 export function Footer() {
   return (
     <footer className="w-full border-t border-cyan-500/20 bg-slate-950/95">
+      <SiteFooterAdStrip />
       {/* Main Footer */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
         <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-5 gap-8">

@@ -1,10 +1,11 @@
 import { Link } from 'react-router-dom';
-import { TopBannerAd, InArticleAd } from '../components/ads/AdBanner';
+import { TopBannerAd, InArticleAd, MidPageBannerAd, InlineExtraAd } from '../components/ads/AdBanner';
 
 export function VRPage() {
   return (
     <div className="pt-20 sm:pt-24 page-enter min-h-[100vh] w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-32">
       <TopBannerAd />
+      <MidPageBannerAd />
 
       {/* ═══════ HERO ═══════ */}
       <section className="text-center py-16 animate-slide-up relative">
@@ -127,6 +128,7 @@ export function VRPage() {
       </section>
 
       <InArticleAd />
+      <InlineExtraAd />
 
       {/* ═══════ VR GAMES ═══════ */}
       <section className="mb-20">

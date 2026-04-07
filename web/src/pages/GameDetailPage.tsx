@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { allGames, gradeLevels, type GradeLevel } from '../engine/gameData';
-import { InArticleAd, TopBannerAd, SidebarAd } from '../components/ads/AdBanner';
+import { InArticleAd, TopBannerAd, SidebarAd, MidPageBannerAd, InlineExtraAd } from '../components/ads/AdBanner';
 import { GameSession } from '../games/GameSession';
 import type { Grade } from '../games/questionBank';
 
@@ -59,6 +59,7 @@ export function GameDetailPage() {
   return (
     <div className="pt-20 sm:pt-24 min-h-[100vh] w-full max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pb-20 page-enter text-slate-100">
       <TopBannerAd />
+      <MidPageBannerAd />
       {/* Back link */}
       <Link to="/games" className="text-slate-500 text-sm hover:text-cyan-300 transition-all duration-300 mb-8 inline-flex items-center gap-2 group">
         <span className="transition-transform duration-300 group-hover:-translate-x-1">←</span>
@@ -220,6 +221,7 @@ export function GameDetailPage() {
       </div>
 
       <InArticleAd />
+      <InlineExtraAd />
 
       {/* Download CTA */}
       <div className="bg-gradient-to-r from-blue-50 to-purple-50 border border-blue-100 rounded-2xl p-8 text-center animate-slide-up" style={{ animationDelay: '0.6s' }}>

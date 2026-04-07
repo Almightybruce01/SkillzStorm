@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { InArticleAd, TopBannerAd } from '../components/ads/AdBanner';
+import { InArticleAd, TopBannerAd, MidPageBannerAd, InlineExtraAd } from '../components/ads/AdBanner';
 
 interface StoreProduct {
   id: string;
@@ -71,6 +71,7 @@ export function StorePage() {
   return (
     <div className="pt-20 sm:pt-24 page-enter min-h-[100vh] w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-32">
       <TopBannerAd />
+      <MidPageBannerAd />
 
       {/* Header */}
       <div className="text-center mb-10 animate-slide-up relative">
@@ -165,6 +166,7 @@ export function StorePage() {
       </div>
 
       <InArticleAd />
+      <InlineExtraAd />
 
       {/* Shipping info */}
       <div className="glass-card p-8 mt-8 animate-slide-up">
