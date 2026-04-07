@@ -1,6 +1,14 @@
 import { useState } from 'react';
 import { Link, useParams, useSearchParams } from 'react-router-dom';
-import { allGames, categories, gradeLevels, seedCatalogGames, type GameCategory, type GradeLevel } from '../engine/gameData';
+import {
+  allGames,
+  aaaGames,
+  expandedLibraryGames,
+  categories,
+  gradeLevels,
+  type GameCategory,
+  type GradeLevel,
+} from '../engine/gameData';
 import { TopBannerAd, SidebarAd, MidPageBannerAd, InArticleAd, InlineExtraAd } from '../components/ads/AdBanner';
 
 const catColorMap: Record<string, string> = {
@@ -20,11 +28,14 @@ const catColorMap: Record<string, string> = {
 export function GamesPage() {
   const { category } = useParams<{ category?: string }>();
   const [searchParams, setSearchParams] = useSearchParams();
-  const catalogTab = searchParams.get('view') === 'new' ? 'new' : 'all';
+  const view = searchParams.get('view');
+  const catalogTab: 'all' | 'aaa' | 'library' =
+    view === 'new' ? 'aaa' : view === 'library' ? 'library' : 'all';
 
-  const setTab = (tab: 'all' | 'new') => {
+  const setTab = (tab: 'all' | 'aaa' | 'library') => {
     const next = new URLSearchParams(searchParams);
-    if (tab === 'new') next.set('view', 'new');
+    if (tab === 'aaa') next.set('view', 'new');
+    else if (tab === 'library') next.set('view', 'library');
     else next.delete('view');
     setSearchParams(next, { replace: true });
   };
@@ -35,7 +46,7 @@ export function GamesPage() {
   );
   const [search, setSearch] = useState('');
 
-  const baseList = catalogTab === 'new' ? seedCatalogGames : allGames;
+  const baseList = catalogTab === 'aaa' ? aaaGames : catalogTab === 'library' ? expandedLibraryGames : allGames;
 
   const filteredGames = baseList.filter((game) => {
     if (selectedCategory !== 'all' && game.category !== selectedCategory) return false;
@@ -62,7 +73,15 @@ export function GamesPage() {
         </h1>
         <p className="text-slate-400 text-sm mb-6">
           <span className="font-black text-lg" style={{ color: catColorMap[selectedCategory] || '#3b82f6' }}>{filteredGames.length}</span>
-          <span className="ml-1">games {catalogTab === 'new' ? 'in the new catalog' : 'available'} — all free to play</span>
+          <span className="ml-1">
+            games{' '}
+            {catalogTab === 'aaa'
+              ? 'in AAA / New'
+              : catalogTab === 'library'
+                ? 'in expanded library'
+                : 'available'}{' '}
+            — all free to play
+          </span>
         </p>
 
         <div className="flex flex-wrap justify-center gap-2 mb-2">
@@ -79,19 +98,35 @@ export function GamesPage() {
           </button>
           <button
             type="button"
-            onClick={() => setTab('new')}
+            onClick={() => setTab('aaa')}
             className={`font-display text-[11px] tracking-wider px-5 py-2.5 rounded-lg border transition-all ${
-              catalogTab === 'new'
+              catalogTab === 'aaa'
                 ? 'border-fuchsia-500/60 bg-fuchsia-500/15 text-fuchsia-200 shadow-[0_0_20px_rgba(232,121,249,0.15)]'
                 : 'border-slate-600/60 text-slate-400 hover:border-slate-500 hover:text-slate-300'
             }`}
           >
-            NEW GAMES ({seedCatalogGames.length})
+            NEW (AAA) ({aaaGames.length})
+          </button>
+          <button
+            type="button"
+            onClick={() => setTab('library')}
+            className={`font-display text-[11px] tracking-wider px-5 py-2.5 rounded-lg border transition-all ${
+              catalogTab === 'library'
+                ? 'border-amber-500/60 bg-amber-500/15 text-amber-200 shadow-[0_0_20px_rgba(245,158,11,0.12)]'
+                : 'border-slate-600/60 text-slate-400 hover:border-slate-500 hover:text-slate-300'
+            }`}
+          >
+            EXPANDED LIBRARY ({expandedLibraryGames.length})
           </button>
         </div>
-        {catalogTab === 'new' && (
+        {catalogTab === 'aaa' && (
           <p className="text-slate-500 text-xs max-w-xl mx-auto">
-            Titles from the expanded SkillzStorm library (seed catalog). Same neon engines map by game style — browse here so they are easy to find.
+            This tab lists <span className="text-fuchsia-300/90">AAA-flagship games only</span> (marked in catalog). No expanded-library or neon catalog filler — those live under Expanded Library.
+          </p>
+        )}
+        {catalogTab === 'library' && (
+          <p className="text-slate-500 text-xs max-w-xl mx-auto">
+            Full seed catalog — broad library entries mapped to shared neon engines by style.
           </p>
         )}
       </div>
@@ -173,6 +208,7 @@ export function GamesPage() {
                     <div className="flex justify-center gap-1.5 flex-wrap mb-2">
                       {!game.isAvailable && <Badge text="SOON" bg="#9ca3af" />}
                       {game.isPremium && <Badge text="PREMIUM" bg="linear-gradient(135deg, #f59e0b, #f97316)" />}
+                      {game.isAAA && <Badge text="AAA" bg="linear-gradient(135deg, #a855f7, #f43f5e)" />}
                       {game.isFeatured && <Badge text="HOT" bg="linear-gradient(135deg, #ef4444, #ec4899)" />}
                       {game.isAvailable && !game.isPremium && <Badge text="FREE" bg={color} />}
                     </div>

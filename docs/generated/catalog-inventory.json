@@ -1,0 +1,2040 @@
+{
+  "generatedAt": "2026-04-07T14:58:09.342Z",
+  "count": 237,
+  "games": [
+    {
+      "id": "algebra_blaster",
+      "name": "Algebra Blaster",
+      "category": "StormBattle",
+      "source": "core",
+      "inferredEngine": "math",
+      "purpose": "Playable route /game/algebra_blaster — core catalog title."
+    },
+    {
+      "id": "algebra-attack",
+      "name": "Algebra Attack",
+      "category": "StormEduPlus",
+      "source": "seed",
+      "seedCategory": "Educational",
+      "inferredEngine": "math",
+      "purpose": "Shoot the correct value of X to defeat waves of equation enemies!"
+    },
+    {
+      "id": "algebra-dash",
+      "name": "Geometry Dash Edu",
+      "category": "StormEduPlus",
+      "source": "seed",
+      "seedCategory": "Educational",
+      "inferredEngine": "math",
+      "purpose": "Learn geometry concepts while navigating through shape-based levels!"
+    },
+    {
+      "id": "algo-quest",
+      "name": "Algo Quest",
+      "category": "StormEduPlus",
+      "source": "seed",
+      "seedCategory": "Educational",
+      "inferredEngine": "quiz",
+      "purpose": "Build algorithms step-by-step to guide your robot through ever-more complex mazes!"
+    },
+    {
+      "id": "alien-blitz",
+      "name": "Alien Blitz",
+      "category": "StormNeon",
+      "source": "core",
+      "inferredEngine": "space",
+      "purpose": "Playable route /game/alien-blitz — core catalog title."
+    },
+    {
+      "id": "anagram-storm",
+      "name": "Anagram Storm",
+      "category": "StormNeon",
+      "source": "core",
+      "inferredEngine": "scramble",
+      "purpose": "Playable route /game/anagram-storm — core catalog title."
+    },
+    {
+      "id": "ancient-quest",
+      "name": "Ancient Quest",
+      "category": "StormEduPlus",
+      "source": "seed",
+      "seedCategory": "Educational",
+      "inferredEngine": "quiz",
+      "purpose": "Explore ancient civilizations — Egypt, Rome, Greece — in this historical adventure!"
+    },
+    {
+      "id": "arena-legends",
+      "name": "Arena Legends",
+      "category": "StormElite",
+      "source": "seed",
+      "seedCategory": "Fighting",
+      "inferredEngine": "placeholder",
+      "purpose": "Gladiatorial arena combat. 4 legendary warriors clash in the colosseum. Epic special moves, crowd roar effects, and championship rounds."
+    },
+    {
+      "id": "arkanoid-x",
+      "name": "Arkanoid X",
+      "category": "StormNeon",
+      "source": "core",
+      "inferredEngine": "breakout",
+      "purpose": "Playable route /game/arkanoid-x — core catalog title."
+    },
+    {
+      "id": "asteroid-storm",
+      "name": "Asteroid Storm",
+      "category": "StormNeon",
+      "source": "core",
+      "inferredEngine": "asteroids",
+      "purpose": "Playable route /game/asteroid-storm — core catalog title."
+    },
+    {
+      "id": "asteroids-blast",
+      "name": "Asteroids Blast",
+      "category": "StormRetro",
+      "source": "seed",
+      "seedCategory": "Arcade Classics",
+      "inferredEngine": "asteroids",
+      "purpose": "Blast through asteroid fields in your spacecraft in this iconic space shooter!"
+    },
+    {
+      "id": "astromath_wars",
+      "name": "AstroMath Wars",
+      "category": "StormBattle",
+      "source": "core",
+      "inferredEngine": "math",
+      "purpose": "Playable route /game/astromath_wars — core catalog title."
+    },
+    {
+      "id": "atom-smash",
+      "name": "Atom Smash",
+      "category": "StormEduPlus",
+      "source": "seed",
+      "seedCategory": "Educational",
+      "inferredEngine": "quiz",
+      "purpose": "Collide atoms to create elements — learn the periodic table through high-speed particle physics!"
+    },
+    {
+      "id": "battle-ships-x",
+      "name": "Battle Ships X",
+      "category": "StormElite",
+      "source": "seed",
+      "seedCategory": "Strategy",
+      "inferredEngine": "placeholder",
+      "purpose": "Classic naval strategy reimagined! 8×8 grid, place shots with arrows, hunt enemy ships. CPU uses smart targeting AI to track your fleet down."
+    },
+    {
+      "id": "battlezone-x",
+      "name": "Battlezone X",
+      "category": "StormElite",
+      "source": "seed",
+      "seedCategory": "Action",
+      "inferredEngine": "geometry",
+      "purpose": "First-person tank combat in a vector-graphics battlefield!"
+    },
+    {
+      "id": "beat-blitz",
+      "name": "Beat Blitz",
+      "category": "StormElite",
+      "source": "seed",
+      "seedCategory": "Rhythm",
+      "inferredEngine": "placeholder",
+      "purpose": "High-tempo beat matching game. Synced note patterns, color-coded lanes, and max-combo chasing for top scores."
+    },
+    {
+      "id": "binary-blast",
+      "name": "Binary Blast",
+      "category": "StormEduPlus",
+      "source": "seed",
+      "seedCategory": "Educational",
+      "inferredEngine": "math",
+      "purpose": "Shoot down binary numbers to decode secret messages in this hacker-themed shooter!"
+    },
+    {
+      "id": "bio-burst",
+      "name": "Bio Burst",
+      "category": "StormEduPlus",
+      "source": "seed",
+      "seedCategory": "Educational",
+      "inferredEngine": "quiz",
+      "purpose": "Navigate through human body systems, defeating viruses and learning biology along the way!"
+    },
+    {
+      "id": "block-storm",
+      "name": "Block Storm",
+      "category": "StormNeon",
+      "source": "core",
+      "inferredEngine": "tetris",
+      "purpose": "Playable route /game/block-storm — core catalog title."
+    },
+    {
+      "id": "brain_boost",
+      "name": "Brain Boost",
+      "category": "StormQuick",
+      "source": "core",
+      "inferredEngine": "geometry",
+      "purpose": "Playable route /game/brain_boost — core catalog title."
+    },
+    {
+      "id": "brain-blitz",
+      "name": "Brain Blitz",
+      "category": "StormNeon",
+      "source": "core",
+      "inferredEngine": "quiz",
+      "purpose": "Playable route /game/brain-blitz — core catalog title."
+    },
+    {
+      "id": "breakout-blitz",
+      "name": "Breakout Blitz",
+      "category": "StormRetro",
+      "source": "seed",
+      "seedCategory": "Arcade Classics",
+      "inferredEngine": "breakout",
+      "purpose": "Smash through rows of bricks with your paddle and ball in this addictive classic!"
+    },
+    {
+      "id": "brick-crusher",
+      "name": "Brick Crusher",
+      "category": "StormNeon",
+      "source": "core",
+      "inferredEngine": "breakout",
+      "purpose": "Playable route /game/brick-crusher — core catalog title."
+    },
+    {
+      "id": "brick-storm",
+      "name": "Brick Storm",
+      "category": "StormRetro",
+      "source": "seed",
+      "seedCategory": "Arcade Classics",
+      "inferredEngine": "breakout",
+      "purpose": "Advanced brick-breaking with special bricks, power-ups, and boss stages!"
+    },
+    {
+      "id": "bull_run_logic",
+      "name": "Bull Run Logic",
+      "category": "StormDash",
+      "source": "core",
+      "inferredEngine": "geometry",
+      "purpose": "Playable route /game/bull_run_logic — core catalog title."
+    },
+    {
+      "id": "bullet-hell-x",
+      "name": "Bullet Hell X",
+      "category": "StormElite",
+      "source": "seed",
+      "seedCategory": "Shooters",
+      "inferredEngine": "space",
+      "purpose": "True danmaku bullet hell. Enemy bullet spirals, waves, aimed volleys. Tiny hitbox, upgradeable firepower, and screen-filling boss fights."
+    },
+    {
+      "id": "burger-time-x",
+      "name": "Burger Time X",
+      "category": "StormRetro",
+      "source": "seed",
+      "seedCategory": "Arcade Classics",
+      "inferredEngine": "maze",
+      "purpose": "Build burgers by walking over ingredients while dodging angry hot dogs!"
+    },
+    {
+      "id": "capital-clash",
+      "name": "Capital Clash",
+      "category": "StormEduPlus",
+      "source": "seed",
+      "seedCategory": "Educational",
+      "inferredEngine": "quiz",
+      "purpose": "Match capitals to countries faster than your rivals in this global trivia showdown!"
+    },
+    {
+      "id": "castle-siege",
+      "name": "Castle Siege",
+      "category": "StormMario",
+      "source": "seed",
+      "seedCategory": "Mario & Kart",
+      "inferredEngine": "geometry",
+      "purpose": "Storm the castle! Vertical platformer with challenging enemies and a massive boss fight."
+    },
+    {
+      "id": "centipede-rush",
+      "name": "Centipede Rush",
+      "category": "StormRetro",
+      "source": "seed",
+      "seedCategory": "Arcade Classics",
+      "inferredEngine": "space",
+      "purpose": "Shoot the centipede as it winds down the screen in this frantic arcade shooter!"
+    },
+    {
+      "id": "chem_jump",
+      "name": "Chem Jump",
+      "category": "StormDash",
+      "source": "core",
+      "inferredEngine": "geometry",
+      "purpose": "Playable route /game/chem_jump — core catalog title."
+    },
+    {
+      "id": "chem_lab_chaos",
+      "name": "Chem Lab Chaos",
+      "category": "StormBattle",
+      "source": "core",
+      "inferredEngine": "geometry",
+      "purpose": "Playable route /game/chem_lab_chaos — core catalog title."
+    },
+    {
+      "id": "chemistry-quest",
+      "name": "Chemistry Quest",
+      "category": "StormEduPlus",
+      "source": "seed",
+      "seedCategory": "Educational",
+      "inferredEngine": "quiz",
+      "purpose": "Balance chemical equations and avoid dangerous reactions in this explosive puzzle game!"
+    },
+    {
+      "id": "chess-storm",
+      "name": "Chess Storm",
+      "category": "StormElite",
+      "source": "seed",
+      "seedCategory": "Strategy",
+      "inferredEngine": "placeholder",
+      "purpose": "Elite neon chess with full AI, animated piece movement, captured piece tracking, and check/checkmate detection. Use arrow keys to navigate."
+    },
+    {
+      "id": "civics-storm",
+      "name": "Civics Storm",
+      "category": "StormEduPlus",
+      "source": "seed",
+      "seedCategory": "Educational",
+      "inferredEngine": "quiz",
+      "purpose": "Master civics and government concepts in this fast-paced civic literacy challenge!"
+    },
+    {
+      "id": "code_breaker",
+      "name": "Code Breaker",
+      "category": "StormPuzzle",
+      "source": "core",
+      "inferredEngine": "breakout",
+      "purpose": "Playable route /game/code_breaker — core catalog title."
+    },
+    {
+      "id": "code-logic",
+      "name": "Code Logic",
+      "category": "StormEduPlus",
+      "source": "seed",
+      "seedCategory": "Educational",
+      "inferredEngine": "quiz",
+      "purpose": "Solve coding puzzles by arranging logic blocks — learn the fundamentals of programming!"
+    },
+    {
+      "id": "code-quest",
+      "name": "Code Quest",
+      "category": "StormNeon",
+      "source": "core",
+      "inferredEngine": "quiz",
+      "purpose": "Playable route /game/code-quest — core catalog title."
+    },
+    {
+      "id": "coin-blitz",
+      "name": "Coin Blitz",
+      "category": "StormMario",
+      "source": "seed",
+      "seedCategory": "Mario & Kart",
+      "inferredEngine": "geometry",
+      "purpose": "Race against the clock! Collect as many coins as possible before time runs out!"
+    },
+    {
+      "id": "color_equation",
+      "name": "Color Equation",
+      "category": "StormQuick",
+      "source": "core",
+      "inferredEngine": "geometry",
+      "purpose": "Playable route /game/color_equation — core catalog title."
+    },
+    {
+      "id": "color-match",
+      "name": "Color Match",
+      "category": "StormRetro",
+      "source": "seed",
+      "seedCategory": "Puzzle",
+      "inferredEngine": "tetris",
+      "purpose": "Match falling colored blocks as fast as possible in this addictive reflex game!"
+    },
+    {
+      "id": "color-rush",
+      "name": "Color Rush",
+      "category": "StormElite",
+      "source": "seed",
+      "seedCategory": "Action",
+      "inferredEngine": "quiz",
+      "purpose": "Guide the colored ball through matching colored gates at maximum speed!"
+    },
+    {
+      "id": "context_clue_hunt",
+      "name": "Context Clue Hunt",
+      "category": "StormPuzzle",
+      "source": "core",
+      "inferredEngine": "geometry",
+      "purpose": "Playable route /game/context_clue_hunt — core catalog title."
+    },
+    {
+      "id": "coordinate_conquest",
+      "name": "Coordinate Conquest",
+      "category": "StormBattle",
+      "source": "core",
+      "inferredEngine": "geometry",
+      "purpose": "Playable route /game/coordinate_conquest — core catalog title."
+    },
+    {
+      "id": "cosmic-blast",
+      "name": "Cosmic Blast",
+      "category": "StormNeon",
+      "source": "core",
+      "inferredEngine": "asteroids",
+      "purpose": "Playable route /game/cosmic-blast — core catalog title."
+    },
+    {
+      "id": "crypt-runner",
+      "name": "Crypt Runner",
+      "category": "StormElite",
+      "source": "seed",
+      "seedCategory": "RPG",
+      "inferredEngine": "maze",
+      "purpose": "Fast-paced dungeon RPG. Sprint through crypts, collect power-ups, defeat undead enemies. Weapon selection: blade, crossbow, or arcane staff."
+    },
+    {
+      "id": "crystal-castles-x",
+      "name": "Crystal Castles X",
+      "category": "StormRetro",
+      "source": "seed",
+      "seedCategory": "Arcade Classics",
+      "inferredEngine": "maze",
+      "purpose": "Collect gems across isometric crystal platforms while avoiding evil witches!"
+    },
+    {
+      "id": "cyber-highway",
+      "name": "Cyber Highway",
+      "category": "StormElite",
+      "source": "seed",
+      "seedCategory": "Racing",
+      "inferredEngine": "geometry",
+      "purpose": "Infinite neon highway racer. Select your car, dodge AI traffic, hit turbos and race to the highest lap count!"
+    },
+    {
+      "id": "cyber-ninja",
+      "name": "Cyber Ninja",
+      "category": "StormElite",
+      "source": "seed",
+      "seedCategory": "Platformer",
+      "inferredEngine": "geometry",
+      "purpose": "Fast-paced cyberpunk platformer. Flip gravity to navigate multi-surface levels, collect glowing orbs and dodge energy blade hazards."
+    },
+    {
+      "id": "cyber-soccer",
+      "name": "Cyber Soccer",
+      "category": "StormElite",
+      "source": "seed",
+      "seedCategory": "Sports",
+      "inferredEngine": "placeholder",
+      "purpose": "Neon soccer with puck-physics. Knock the ball into the goal, defend with WASD, fast AI challenge and satisfying goal explosions."
+    },
+    {
+      "id": "cyber-sprint",
+      "name": "Cyber Sprint",
+      "category": "StormElite",
+      "source": "seed",
+      "seedCategory": "Action",
+      "inferredEngine": "geometry",
+      "purpose": "Cyberpunk infinite runner — dodge obstacles and hack barriers at light speed!"
+    },
+    {
+      "id": "data_defender",
+      "name": "Data Defender",
+      "category": "StormBattle",
+      "source": "core",
+      "inferredEngine": "geometry",
+      "purpose": "Playable route /game/data_defender — core catalog title."
+    },
+    {
+      "id": "debate_dash",
+      "name": "Debate Dash",
+      "category": "StormDash",
+      "source": "core",
+      "inferredEngine": "geometry",
+      "purpose": "Playable route /game/debate_dash — core catalog title."
+    },
+    {
+      "id": "debug-dash",
+      "name": "Debug Dash",
+      "category": "StormEduPlus",
+      "source": "seed",
+      "seedCategory": "Educational",
+      "inferredEngine": "quiz",
+      "purpose": "Find and fix bugs in code snippets at breakneck speed — the clock is ticking!"
+    },
+    {
+      "id": "defender-wave",
+      "name": "Defender Wave",
+      "category": "StormElite",
+      "source": "seed",
+      "seedCategory": "Action",
+      "inferredEngine": "space",
+      "purpose": "Protect humans on the surface from alien abduction in this high-speed shooter!"
+    },
+    {
+      "id": "desert-rally",
+      "name": "Desert Rally X",
+      "category": "StormElite",
+      "source": "seed",
+      "seedCategory": "Racing",
+      "inferredEngine": "geometry",
+      "purpose": "Rally racing through harsh desert terrain. Wide sweeping S-bends, gravel physics, and intense AI rivals on the orange circuit."
+    },
+    {
+      "id": "dig-dug-x",
+      "name": "Dig Dug X",
+      "category": "StormRetro",
+      "source": "seed",
+      "seedCategory": "Arcade Classics",
+      "inferredEngine": "maze",
+      "purpose": "Dig underground tunnels and inflate enemies to defeat them!"
+    },
+    {
+      "id": "donkey-run",
+      "name": "Donkey Run",
+      "category": "StormRetro",
+      "source": "seed",
+      "seedCategory": "Arcade Classics",
+      "inferredEngine": "geometry",
+      "purpose": "Jump over barrels and climb ladders to rescue your friend from the gorilla!"
+    },
+    {
+      "id": "drift-king-x",
+      "name": "Drift King X",
+      "category": "StormElite",
+      "source": "seed",
+      "seedCategory": "Racing",
+      "inferredEngine": "geometry",
+      "purpose": "Master the art of drift! Wide sweeping tracks designed for drifting. Car select with stat bars, drift physics, and glowing tire trails."
+    },
+    {
+      "id": "dual-storm",
+      "name": "Dual Storm",
+      "category": "StormElite",
+      "source": "seed",
+      "seedCategory": "Shooters",
+      "inferredEngine": "space",
+      "purpose": "Elite twin-stick arcade shooter. Auto-aim + WASD movement. Enemy waves escalate every round with new enemy types, power-ups, and shield pickups."
+    },
+    {
+      "id": "dungeon-crawl",
+      "name": "Dungeon Crawl",
+      "category": "StormElite",
+      "source": "seed",
+      "seedCategory": "Action",
+      "inferredEngine": "maze",
+      "purpose": "Roguelike dungeon explorer — fight monsters, find loot, survive!"
+    },
+    {
+      "id": "dungeon-crawler",
+      "name": "Dungeon Crawler",
+      "category": "StormElite",
+      "source": "seed",
+      "seedCategory": "RPG",
+      "inferredEngine": "maze",
+      "purpose": "Full top-down RPG! Choose sword, bow, or staff. Fight goblins, orcs, mages and bosses across procedurally generated dungeon floors. Level up, collect loot, upgrade stats."
+    },
+    {
+      "id": "dungeon-run",
+      "name": "Dungeon Run",
+      "category": "StormRetro",
+      "source": "seed",
+      "seedCategory": "Puzzle",
+      "inferredEngine": "maze",
+      "purpose": "Race through procedural dungeons. Twist, turn, collect score gems and escape each level before the clock runs out in this neon maze adventure."
+    },
+    {
+      "id": "dungeon-storm",
+      "name": "Dungeon Storm",
+      "category": "StormElite",
+      "source": "seed",
+      "seedCategory": "RPG",
+      "inferredEngine": "maze",
+      "purpose": "Elite dungeon RPG with sword/bow/staff combat, enemy AI, loot system, and 10+ procedural floors. Boss encounters scale with your level!"
+    },
+    {
+      "id": "equation_escape",
+      "name": "Equation Escape",
+      "category": "StormDash",
+      "source": "core",
+      "inferredEngine": "geometry",
+      "purpose": "Playable route /game/equation_escape — core catalog title."
+    },
+    {
+      "id": "essay_builder_rush",
+      "name": "Essay Builder Rush",
+      "category": "StormDash",
+      "source": "core",
+      "inferredEngine": "geometry",
+      "purpose": "Playable route /game/essay_builder_rush — core catalog title."
+    },
+    {
+      "id": "financial_literacy_run",
+      "name": "Financial Literacy Run",
+      "category": "StormBattle",
+      "source": "core",
+      "inferredEngine": "geometry",
+      "purpose": "Playable route /game/financial_literacy_run — core catalog title."
+    },
+    {
+      "id": "flag-frenzy",
+      "name": "Flag Frenzy",
+      "category": "StormEduPlus",
+      "source": "seed",
+      "seedCategory": "Educational",
+      "inferredEngine": "quiz",
+      "purpose": "Identify country flags at lightning speed — over 195 flags to master!"
+    },
+    {
+      "id": "flappy-storm",
+      "name": "Flappy Storm",
+      "category": "StormRetro",
+      "source": "seed",
+      "seedCategory": "Arcade Classics",
+      "inferredEngine": "geometry",
+      "purpose": "Tap to flap through neon pipes in this addictive one-button classic!"
+    },
+    {
+      "id": "flash_fact_frenzy",
+      "name": "Flash Fact Frenzy",
+      "category": "StormQuick",
+      "source": "core",
+      "inferredEngine": "geometry",
+      "purpose": "Playable route /game/flash_fact_frenzy — core catalog title."
+    },
+    {
+      "id": "fraction_frenzy",
+      "name": "Fraction Frenzy",
+      "category": "StormBattle",
+      "source": "core",
+      "inferredEngine": "math",
+      "purpose": "Playable route /game/fraction_frenzy — core catalog title."
+    },
+    {
+      "id": "fraction-fighter",
+      "name": "Fraction Fighter",
+      "category": "StormNeon",
+      "source": "core",
+      "inferredEngine": "math",
+      "purpose": "Playable route /game/fraction-fighter — core catalog title."
+    },
+    {
+      "id": "fraction-frenzy",
+      "name": "Fraction Frenzy",
+      "category": "StormEduPlus",
+      "source": "seed",
+      "seedCategory": "Educational",
+      "inferredEngine": "math",
+      "purpose": "Match equivalent fractions before time runs out in this colorful fraction showdown!"
+    },
+    {
+      "id": "frogger-rush",
+      "name": "Frogger Rush",
+      "category": "StormRetro",
+      "source": "seed",
+      "seedCategory": "Arcade Classics",
+      "inferredEngine": "maze",
+      "purpose": "Cross busy roads and rushing rivers to get your frog home safely!"
+    },
+    {
+      "id": "galaga-storm",
+      "name": "Galaga Storm",
+      "category": "StormRetro",
+      "source": "seed",
+      "seedCategory": "Arcade Classics",
+      "inferredEngine": "space",
+      "purpose": "Face endless waves of alien formations in this intense space shooter!"
+    },
+    {
+      "id": "galaxian-x",
+      "name": "Galaxian X",
+      "category": "StormRetro",
+      "source": "seed",
+      "seedCategory": "Arcade Classics",
+      "inferredEngine": "space",
+      "purpose": "Shoot diving aliens in formation in this predecessor to Galaga!"
+    },
+    {
+      "id": "galaxy-storm",
+      "name": "Galaxy Storm",
+      "category": "StormNeon",
+      "source": "core",
+      "inferredEngine": "space",
+      "purpose": "Playable route /game/galaxy-storm — core catalog title."
+    },
+    {
+      "id": "geography-hero",
+      "name": "Geography Hero",
+      "category": "StormEduPlus",
+      "source": "seed",
+      "seedCategory": "Educational",
+      "inferredEngine": "quiz",
+      "purpose": "Race the clock to place countries on the world map — become the ultimate geography champion!"
+    },
+    {
+      "id": "geography-quest",
+      "name": "Geography Quest",
+      "category": "StormNeon",
+      "source": "core",
+      "inferredEngine": "quiz",
+      "purpose": "Playable route /game/geography-quest — core catalog title."
+    },
+    {
+      "id": "geometry_defender",
+      "name": "Geometry Defender",
+      "category": "StormBattle",
+      "source": "core",
+      "inferredEngine": "quiz",
+      "purpose": "Playable route /game/geometry_defender — core catalog title."
+    },
+    {
+      "id": "geometry_glide",
+      "name": "Geometry Glide",
+      "category": "StormDash",
+      "source": "core",
+      "inferredEngine": "quiz",
+      "purpose": "Playable route /game/geometry_glide — core catalog title."
+    },
+    {
+      "id": "geometry_runner_3d",
+      "name": "Geometry Runner 3D",
+      "category": "Storm3D",
+      "source": "core",
+      "inferredEngine": "quiz",
+      "purpose": "Playable route /game/geometry_runner_3d — core catalog title."
+    },
+    {
+      "id": "geometry-dash-storm",
+      "name": "Geometry Dash Storm",
+      "category": "StormElite",
+      "source": "seed",
+      "seedCategory": "Action",
+      "inferredEngine": "geometry",
+      "purpose": "Jump, dodge spikes, and ride orbs through mind-bending neon levels!"
+    },
+    {
+      "id": "grammar_clicker",
+      "name": "Grammar Clicker",
+      "category": "StormQuick",
+      "source": "core",
+      "inferredEngine": "quiz",
+      "purpose": "Playable route /game/grammar_clicker — core catalog title."
+    },
+    {
+      "id": "grammar_gladiator",
+      "name": "Grammar Gladiator",
+      "category": "StormBattle",
+      "source": "core",
+      "inferredEngine": "quiz",
+      "purpose": "Playable route /game/grammar_gladiator — core catalog title."
+    },
+    {
+      "id": "grammar-quest",
+      "name": "Grammar Quest",
+      "category": "StormEduPlus",
+      "source": "seed",
+      "seedCategory": "Educational",
+      "inferredEngine": "typing",
+      "purpose": "Fix grammar errors across enchanted sentences to free the language kingdom!"
+    },
+    {
+      "id": "gravity-flip-x",
+      "name": "Gravity Flip X",
+      "category": "StormElite",
+      "source": "seed",
+      "seedCategory": "Platformer",
+      "inferredEngine": "geometry",
+      "purpose": "Mind-bending gravity-flip platformer! Press S to flip gravity. Collect all coins, dodge hazards, and survive moving platforms across infinite levels."
+    },
+    {
+      "id": "gravity-well",
+      "name": "Gravity Well",
+      "category": "StormRetro",
+      "source": "seed",
+      "seedCategory": "Puzzle",
+      "inferredEngine": "geometry",
+      "purpose": "Navigate your ship using gravity wells — a unique physics-based space puzzle!"
+    },
+    {
+      "id": "grid-master",
+      "name": "Grid Master",
+      "category": "StormNeon",
+      "source": "core",
+      "inferredEngine": "tetris",
+      "purpose": "Playable route /game/grid-master — core catalog title."
+    },
+    {
+      "id": "history_dash",
+      "name": "History Dash",
+      "category": "StormDash",
+      "source": "core",
+      "inferredEngine": "quiz",
+      "purpose": "Playable route /game/history_dash — core catalog title."
+    },
+    {
+      "id": "history_timeline_rush",
+      "name": "History Timeline Rush",
+      "category": "StormBattle",
+      "source": "core",
+      "inferredEngine": "quiz",
+      "purpose": "Playable route /game/history_timeline_rush — core catalog title."
+    },
+    {
+      "id": "history-blast",
+      "name": "History Blast",
+      "category": "StormNeon",
+      "source": "core",
+      "inferredEngine": "quiz",
+      "purpose": "Playable route /game/history-blast — core catalog title."
+    },
+    {
+      "id": "history-blitz",
+      "name": "History Blitz",
+      "category": "StormEduPlus",
+      "source": "seed",
+      "seedCategory": "Educational",
+      "inferredEngine": "quiz",
+      "purpose": "Race through history — answer questions about key events to unlock new eras!"
+    },
+    {
+      "id": "horde-rush",
+      "name": "Horde Rush",
+      "category": "StormElite",
+      "source": "seed",
+      "seedCategory": "Shooters",
+      "inferredEngine": "space",
+      "purpose": "Survive escalating waves of enemies. Dodge, auto-aim and blast everything. Shield pickups, health drops, wave bonuses. How long can you last?"
+    },
+    {
+      "id": "ice-hockey-x",
+      "name": "Ice Hockey X",
+      "category": "StormElite",
+      "source": "seed",
+      "seedCategory": "Sports",
+      "inferredEngine": "placeholder",
+      "purpose": "Full-field ice hockey arcade! Control your player with WASD, hit the puck, score goals. AI goalie adapts to your style. Fast and furious!"
+    },
+    {
+      "id": "joust-fighter",
+      "name": "Joust Fighter",
+      "category": "StormElite",
+      "source": "seed",
+      "seedCategory": "Fighting",
+      "inferredEngine": "placeholder",
+      "purpose": "2D fighting game with aerial jousting mechanics — lance your opponents!"
+    },
+    {
+      "id": "joust-storm",
+      "name": "Joust Storm",
+      "category": "StormRetro",
+      "source": "seed",
+      "seedCategory": "Arcade Classics",
+      "inferredEngine": "maze",
+      "purpose": "Mount your flying ostrich and joust against enemy knights to claim their eggs!"
+    },
+    {
+      "id": "kart-storm",
+      "name": "Kart Storm",
+      "category": "StormMario",
+      "source": "seed",
+      "seedCategory": "Mario & Kart",
+      "inferredEngine": "geometry",
+      "purpose": "High-speed top-down kart racing with power-ups, drifting, and competitive lap racing!"
+    },
+    {
+      "id": "logic_tower",
+      "name": "Logic Tower",
+      "category": "StormPuzzle",
+      "source": "core",
+      "inferredEngine": "td",
+      "purpose": "Playable route /game/logic_tower — core catalog title."
+    },
+    {
+      "id": "logic_tunnel",
+      "name": "Logic Tunnel",
+      "category": "StormDash",
+      "source": "core",
+      "inferredEngine": "geometry",
+      "purpose": "Playable route /game/logic_tunnel — core catalog title."
+    },
+    {
+      "id": "logic-blast",
+      "name": "Logic Blast",
+      "category": "StormRetro",
+      "source": "seed",
+      "seedCategory": "Puzzle",
+      "inferredEngine": "quiz",
+      "purpose": "Solve logic puzzles under time pressure — deduction meets arcade action!"
+    },
+    {
+      "id": "loop-storm",
+      "name": "Loop Storm",
+      "category": "StormEduPlus",
+      "source": "seed",
+      "seedCategory": "Educational",
+      "inferredEngine": "math",
+      "purpose": "Master loops, conditions, and functions by controlling a storm of code blocks!"
+    },
+    {
+      "id": "lunar-lander-x",
+      "name": "Lunar Lander X",
+      "category": "StormRetro",
+      "source": "seed",
+      "seedCategory": "Puzzle",
+      "inferredEngine": "maze",
+      "purpose": "Carefully pilot your lunar module to a safe landing with limited fuel!"
+    },
+    {
+      "id": "map-master",
+      "name": "Map Master",
+      "category": "StormEduPlus",
+      "source": "seed",
+      "seedCategory": "Educational",
+      "inferredEngine": "quiz",
+      "purpose": "Conquer continents by correctly identifying geographic features under time pressure!"
+    },
+    {
+      "id": "market_mayhem",
+      "name": "Market Mayhem",
+      "category": "StormDash",
+      "source": "core",
+      "inferredEngine": "geometry",
+      "purpose": "Playable route /game/market_mayhem — core catalog title."
+    },
+    {
+      "id": "math_galaxy_3d",
+      "name": "Math Galaxy 3D",
+      "category": "Storm3D",
+      "source": "core",
+      "inferredEngine": "math",
+      "purpose": "Playable route /game/math_galaxy_3d — core catalog title."
+    },
+    {
+      "id": "math-elite",
+      "name": "Math Elite",
+      "category": "StormNeon",
+      "source": "core",
+      "inferredEngine": "math",
+      "purpose": "Playable route /game/math-elite — core catalog title."
+    },
+    {
+      "id": "math-quest",
+      "name": "Math Quest",
+      "category": "StormEduPlus",
+      "source": "seed",
+      "seedCategory": "Educational",
+      "inferredEngine": "math",
+      "purpose": "Solve math problems to defeat enemies and level up through magic kingdoms!"
+    },
+    {
+      "id": "math-storm",
+      "name": "Math Storm",
+      "category": "StormNeon",
+      "source": "core",
+      "inferredEngine": "math",
+      "purpose": "Playable route /game/math-storm — core catalog title."
+    },
+    {
+      "id": "maze_of_ratios",
+      "name": "Maze of Ratios",
+      "category": "StormDash",
+      "source": "core",
+      "inferredEngine": "maze",
+      "purpose": "Playable route /game/maze_of_ratios — core catalog title."
+    },
+    {
+      "id": "maze-escape-x",
+      "name": "Maze Escape X",
+      "category": "StormRetro",
+      "source": "seed",
+      "seedCategory": "Puzzle",
+      "inferredEngine": "maze",
+      "purpose": "Procedurally generated mazes every run! Navigate the neon labyrinth to the goal flag before time expires. Levels get bigger and harder."
+    },
+    {
+      "id": "maze-runner-x",
+      "name": "Maze Runner X",
+      "category": "StormRetro",
+      "source": "seed",
+      "seedCategory": "Puzzle",
+      "inferredEngine": "maze",
+      "purpose": "Find the exit through increasingly complex mazes before the timer runs out!"
+    },
+    {
+      "id": "memory_matrix",
+      "name": "Memory Matrix",
+      "category": "StormQuick",
+      "source": "core",
+      "inferredEngine": "memory",
+      "purpose": "Playable route /game/memory_matrix — core catalog title."
+    },
+    {
+      "id": "memory-flash",
+      "name": "Memory Flash",
+      "category": "StormRetro",
+      "source": "seed",
+      "seedCategory": "Puzzle",
+      "inferredEngine": "memory",
+      "purpose": "Watch the pattern, repeat it. How far can your memory take you?"
+    },
+    {
+      "id": "memory-matrix",
+      "name": "Memory Matrix (Neon)",
+      "category": "StormNeon",
+      "source": "core",
+      "inferredEngine": "memory",
+      "purpose": "Playable route /game/memory-matrix — core catalog title."
+    },
+    {
+      "id": "missile-command-x",
+      "name": "Missile Command X",
+      "category": "StormElite",
+      "source": "seed",
+      "seedCategory": "Action",
+      "inferredEngine": "space",
+      "purpose": "Defend your cities from incoming missiles with your ABM battery!"
+    },
+    {
+      "id": "moon-patrol-x",
+      "name": "Moon Patrol X",
+      "category": "StormElite",
+      "source": "seed",
+      "seedCategory": "Racing",
+      "inferredEngine": "maze",
+      "purpose": "Drive your buggy across the moon surface, shooting enemies and jumping craters!"
+    },
+    {
+      "id": "mr-do-x",
+      "name": "Mr Do X",
+      "category": "StormRetro",
+      "source": "seed",
+      "seedCategory": "Arcade Classics",
+      "inferredEngine": "maze",
+      "purpose": "Dig tunnels to collect cherries while throwing power balls at monsters!"
+    },
+    {
+      "id": "multiplication_meteors",
+      "name": "Multiplication Meteors",
+      "category": "StormBattle",
+      "source": "core",
+      "inferredEngine": "geometry",
+      "purpose": "Playable route /game/multiplication_meteors — core catalog title."
+    },
+    {
+      "id": "mushroom-dash",
+      "name": "Mushroom Dash",
+      "category": "StormMario",
+      "source": "seed",
+      "seedCategory": "Mario & Kart",
+      "inferredEngine": "geometry",
+      "purpose": "Endless side-scrolling madness with mushroom power-ups and escalating obstacles!"
+    },
+    {
+      "id": "neon-breakout",
+      "name": "Neon Breakout",
+      "category": "StormNeon",
+      "source": "core",
+      "inferredEngine": "breakout",
+      "purpose": "Playable route /game/neon-breakout — core catalog title."
+    },
+    {
+      "id": "neon-chess",
+      "name": "Neon Chess",
+      "category": "StormElite",
+      "source": "seed",
+      "seedCategory": "Strategy",
+      "inferredEngine": "placeholder",
+      "purpose": "Full chess with AI opponent using minimax algorithm! Glowing neon pieces, animated moves, legal move highlighting, check detection, and capture tracking."
+    },
+    {
+      "id": "neon-circuit-racer",
+      "name": "Neon Circuit Racer",
+      "category": "StormElite",
+      "source": "seed",
+      "seedCategory": "Racing",
+      "inferredEngine": "geometry",
+      "purpose": "Top-down F1 racing with car selection! Choose VIPER, PHANTOM or CRUSHER. 3-lap neon city circuit with 3 AI opponents, speed meter, and live race rank."
+    },
+    {
+      "id": "neon-dungeon",
+      "name": "Neon Dungeon",
+      "category": "StormElite",
+      "source": "seed",
+      "seedCategory": "RPG",
+      "inferredEngine": "maze",
+      "purpose": "Neon-lit dungeon crawler RPG. Explore dark corridors, slay enemies, collect items, and descend through increasingly deadly floors."
+    },
+    {
+      "id": "neon-fortress",
+      "name": "Neon Fortress",
+      "category": "StormElite",
+      "source": "seed",
+      "seedCategory": "Strategy",
+      "inferredEngine": "td",
+      "purpose": "Defend your neon base from waves of cyber enemies. Advanced tower placements, freeze effects, and rocket splash damage. No base gets through!"
+    },
+    {
+      "id": "neon-jump",
+      "name": "Neon Jump",
+      "category": "StormNeon",
+      "source": "core",
+      "inferredEngine": "geometry",
+      "purpose": "Playable route /game/neon-jump — core catalog title."
+    },
+    {
+      "id": "neon-jumper",
+      "name": "Neon Jumper",
+      "category": "StormElite",
+      "source": "seed",
+      "seedCategory": "Platformer",
+      "inferredEngine": "geometry",
+      "purpose": "Precision neon platformer. Ultra-tight jump timing, moving platforms, coin collection, gravity manipulation and escalating level design."
+    },
+    {
+      "id": "neon-kombat",
+      "name": "Neon Kombat",
+      "category": "StormElite",
+      "source": "seed",
+      "seedCategory": "Fighting",
+      "inferredEngine": "placeholder",
+      "purpose": "Neon-drenched arena combat. Select your warrior, master lightning combos, unleash devastating specials. Brutal 2.5D fighter with round system."
+    },
+    {
+      "id": "neon-maze",
+      "name": "Neon Maze",
+      "category": "StormRetro",
+      "source": "seed",
+      "seedCategory": "Puzzle",
+      "inferredEngine": "maze",
+      "purpose": "Stunning glowing mazes with a countdown clock. Every maze is unique, generated fresh each run. How many floors can you escape?"
+    },
+    {
+      "id": "neon-pong",
+      "name": "Neon Pong",
+      "category": "StormRetro",
+      "source": "seed",
+      "seedCategory": "Arcade Classics",
+      "inferredEngine": "breakout",
+      "purpose": "Pong reimagined with neon glow effects, power-ups, and speed escalation!"
+    },
+    {
+      "id": "neon-racer",
+      "name": "Neon Racer",
+      "category": "StormElite",
+      "source": "seed",
+      "seedCategory": "Racing",
+      "inferredEngine": "geometry",
+      "purpose": "Tron-inspired neon racing through futuristic circuits!"
+    },
+    {
+      "id": "neon-viper",
+      "name": "Neon Viper",
+      "category": "StormNeon",
+      "source": "core",
+      "inferredEngine": "snake",
+      "purpose": "Playable route /game/neon-viper — core catalog title."
+    },
+    {
+      "id": "neon-viper-xl",
+      "name": "Neon Viper XL",
+      "category": "StormNeon",
+      "source": "core",
+      "inferredEngine": "snake",
+      "purpose": "Playable route /game/neon-viper-xl — core catalog title."
+    },
+    {
+      "id": "number_catch",
+      "name": "Number Catch",
+      "category": "StormQuick",
+      "source": "core",
+      "inferredEngine": "math",
+      "purpose": "Playable route /game/number_catch — core catalog title."
+    },
+    {
+      "id": "number-battle",
+      "name": "Number Battle",
+      "category": "StormNeon",
+      "source": "core",
+      "inferredEngine": "math",
+      "purpose": "Playable route /game/number-battle — core catalog title."
+    },
+    {
+      "id": "number-ninja",
+      "name": "Number Ninja",
+      "category": "StormEduPlus",
+      "source": "seed",
+      "seedCategory": "Educational",
+      "inferredEngine": "math",
+      "purpose": "Slice the correct answer out of the air with ninja precision! Fast arithmetic action."
+    },
+    {
+      "id": "number-storm",
+      "name": "Number Storm",
+      "category": "StormRetro",
+      "source": "seed",
+      "seedCategory": "Puzzle",
+      "inferredEngine": "math",
+      "purpose": "Math meets arcade — solve equations and shoot the correct answers!"
+    },
+    {
+      "id": "pac-maze",
+      "name": "Pac Maze",
+      "category": "StormRetro",
+      "source": "seed",
+      "seedCategory": "Arcade Classics",
+      "inferredEngine": "maze",
+      "purpose": "Navigate the maze, eat pellets, dodge ghosts in this timeless arcade legend!"
+    },
+    {
+      "id": "pattern_blast",
+      "name": "Pattern Blast",
+      "category": "StormPuzzle",
+      "source": "core",
+      "inferredEngine": "space",
+      "purpose": "Playable route /game/pattern_blast — core catalog title."
+    },
+    {
+      "id": "pattern-match",
+      "name": "Pattern Match",
+      "category": "StormRetro",
+      "source": "seed",
+      "seedCategory": "Puzzle",
+      "inferredEngine": "memory",
+      "purpose": "A 6-round Wordle-style pattern matching game with retro visuals!"
+    },
+    {
+      "id": "pattern-storm",
+      "name": "Pattern Storm",
+      "category": "StormNeon",
+      "source": "core",
+      "inferredEngine": "quiz",
+      "purpose": "Playable route /game/pattern-storm — core catalog title."
+    },
+    {
+      "id": "phoenix-x",
+      "name": "Phoenix X",
+      "category": "StormRetro",
+      "source": "seed",
+      "seedCategory": "Arcade Classics",
+      "inferredEngine": "space",
+      "purpose": "Blast through five waves of alien birds in this Space Invaders cousin!"
+    },
+    {
+      "id": "physics_platform",
+      "name": "Physics Platform",
+      "category": "StormDash",
+      "source": "core",
+      "inferredEngine": "geometry",
+      "purpose": "Playable route /game/physics_platform — core catalog title."
+    },
+    {
+      "id": "physics-blast",
+      "name": "Physics Blast",
+      "category": "StormEduPlus",
+      "source": "seed",
+      "seedCategory": "Educational",
+      "inferredEngine": "quiz",
+      "purpose": "Solve physics puzzles using real-world forces, momentum, and gravity!"
+    },
+    {
+      "id": "physics-pinball",
+      "name": "Physics Pinball",
+      "category": "StormRetro",
+      "source": "seed",
+      "seedCategory": "Arcade",
+      "inferredEngine": "placeholder",
+      "purpose": "Full physics pinball! Realistic ball, flippers (A/D), neon bumpers worth 100-300pts each, multiplier system, and satisfying launch mechanism."
+    },
+    {
+      "id": "pipe-escape",
+      "name": "Pipe Escape",
+      "category": "StormMario",
+      "source": "seed",
+      "seedCategory": "Mario & Kart",
+      "inferredEngine": "geometry",
+      "purpose": "Navigate through a labyrinth of pipes. Think Pac-Man meets Mario in this maze classic!"
+    },
+    {
+      "id": "pixel-punch",
+      "name": "Pixel Punch",
+      "category": "StormElite",
+      "source": "seed",
+      "seedCategory": "Fighting",
+      "inferredEngine": "placeholder",
+      "purpose": "8-bit brawler with 4 characters, special moves, and a final boss!"
+    },
+    {
+      "id": "pixel-racer",
+      "name": "Pixel Racer",
+      "category": "StormElite",
+      "source": "seed",
+      "seedCategory": "Racing",
+      "inferredEngine": "geometry",
+      "purpose": "Top-down pixel art racing with drifting mechanics and turbo boosts!"
+    },
+    {
+      "id": "pixel-warfare",
+      "name": "Pixel Warfare",
+      "category": "StormElite",
+      "source": "seed",
+      "seedCategory": "Action",
+      "inferredEngine": "placeholder",
+      "purpose": "8-bit tactical combat — command pixel troops across battlefield maps!"
+    },
+    {
+      "id": "platform-storm",
+      "name": "Platform Storm",
+      "category": "StormNeon",
+      "source": "core",
+      "inferredEngine": "geometry",
+      "purpose": "Playable route /game/platform-storm — core catalog title."
+    },
+    {
+      "id": "pong-duel",
+      "name": "Pong Duel",
+      "category": "StormRetro",
+      "source": "seed",
+      "seedCategory": "Arcade Classics",
+      "inferredEngine": "breakout",
+      "purpose": "The original 2-player paddle battle! First to 11 points wins!"
+    },
+    {
+      "id": "princess-rescue",
+      "name": "Princess Rescue",
+      "category": "StormMario",
+      "source": "seed",
+      "seedCategory": "Mario & Kart",
+      "inferredEngine": "geometry",
+      "purpose": "Classic platformer adventure. Fight through 5 worlds to rescue the princess from the final boss!"
+    },
+    {
+      "id": "probability_quest",
+      "name": "Probability Quest",
+      "category": "StormPuzzle",
+      "source": "core",
+      "inferredEngine": "geometry",
+      "purpose": "Playable route /game/probability_quest — core catalog title."
+    },
+    {
+      "id": "proof_builder",
+      "name": "Proof Builder",
+      "category": "StormPuzzle",
+      "source": "core",
+      "inferredEngine": "geometry",
+      "purpose": "Playable route /game/proof_builder — core catalog title."
+    },
+    {
+      "id": "punch-arena",
+      "name": "Punch Arena",
+      "category": "StormElite",
+      "source": "seed",
+      "seedCategory": "Sports",
+      "inferredEngine": "placeholder",
+      "purpose": "Boxing simulation with realistic physics and stamina management!"
+    },
+    {
+      "id": "python-pro",
+      "name": "Python Pro",
+      "category": "StormNeon",
+      "source": "core",
+      "inferredEngine": "snake",
+      "purpose": "Playable route /game/python-pro — core catalog title."
+    },
+    {
+      "id": "qbert-jump",
+      "name": "Q*Bert Jump",
+      "category": "StormRetro",
+      "source": "seed",
+      "seedCategory": "Puzzle",
+      "inferredEngine": "maze",
+      "purpose": "Hop on cubes to change their color while avoiding enemies on this isometric puzzle board!"
+    },
+    {
+      "id": "quick_sat",
+      "name": "Quick SAT",
+      "category": "StormQuick",
+      "source": "core",
+      "inferredEngine": "geometry",
+      "purpose": "Playable route /game/quick_sat — core catalog title."
+    },
+    {
+      "id": "ratio_architect",
+      "name": "Ratio Architect",
+      "category": "StormPuzzle",
+      "source": "core",
+      "inferredEngine": "geometry",
+      "purpose": "Playable route /game/ratio_architect — core catalog title."
+    },
+    {
+      "id": "reaction-time",
+      "name": "Reaction Time",
+      "category": "StormElite",
+      "source": "seed",
+      "seedCategory": "Action",
+      "inferredEngine": "quiz",
+      "purpose": "The ultimate test — see how fast you can react to sudden color changes!"
+    },
+    {
+      "id": "reading-rush",
+      "name": "Reading Rush",
+      "category": "StormEduPlus",
+      "source": "seed",
+      "seedCategory": "Educational",
+      "inferredEngine": "typing",
+      "purpose": "Race through reading comprehension questions in this high-speed literary adventure!"
+    },
+    {
+      "id": "reflex-blitz",
+      "name": "Reflex Blitz",
+      "category": "StormElite",
+      "source": "seed",
+      "seedCategory": "Action",
+      "inferredEngine": "quiz",
+      "purpose": "Hit the targets as they appear — the fastest reflex wins!"
+    },
+    {
+      "id": "retro-soccer",
+      "name": "Retro Soccer",
+      "category": "StormElite",
+      "source": "seed",
+      "seedCategory": "Sports",
+      "inferredEngine": "placeholder",
+      "purpose": "Classic top-down soccer with power shots and bicycle kicks!"
+    },
+    {
+      "id": "revolution-x",
+      "name": "Revolution X",
+      "category": "StormEduPlus",
+      "source": "seed",
+      "seedCategory": "Educational",
+      "inferredEngine": "quiz",
+      "purpose": "Re-live pivotal historical revolutions by answering questions and making key decisions!"
+    },
+    {
+      "id": "rhythm-storm-x",
+      "name": "Rhythm Storm X",
+      "category": "StormElite",
+      "source": "seed",
+      "seedCategory": "Rhythm",
+      "inferredEngine": "placeholder",
+      "purpose": "4-lane neon rhythm game! Hit notes as they fall with A/S/D/F keys. PERFECT/GREAT/GOOD ratings, combo multiplier, and escalating BPM."
+    },
+    {
+      "id": "robot-rumble",
+      "name": "Robot Rumble",
+      "category": "StormElite",
+      "source": "seed",
+      "seedCategory": "Fighting",
+      "inferredEngine": "placeholder",
+      "purpose": "Mech battle arena! Choose your robot warrior, smash with hydraulic fists, deploy EMP specials. Steel-plated combat at its finest."
+    },
+    {
+      "id": "robotron-2084-x",
+      "name": "Robotron 2084 X",
+      "category": "StormElite",
+      "source": "seed",
+      "seedCategory": "Action",
+      "inferredEngine": "space",
+      "purpose": "Last human vs robot uprising — shoot in all directions to survive!"
+    },
+    {
+      "id": "sat_word_arena",
+      "name": "SAT Word Arena",
+      "category": "StormBattle",
+      "source": "core",
+      "inferredEngine": "typing",
+      "purpose": "Playable route /game/sat_word_arena — core catalog title."
+    },
+    {
+      "id": "science_defender",
+      "name": "Science Defender",
+      "category": "StormBattle",
+      "source": "core",
+      "inferredEngine": "quiz",
+      "purpose": "Playable route /game/science_defender — core catalog title."
+    },
+    {
+      "id": "science-lab",
+      "name": "Science Lab",
+      "category": "StormEduPlus",
+      "source": "seed",
+      "seedCategory": "Educational",
+      "inferredEngine": "quiz",
+      "purpose": "Mix elements, run experiments, and discover the laws of physics in this virtual lab!"
+    },
+    {
+      "id": "science-quest",
+      "name": "Science Quest",
+      "category": "StormNeon",
+      "source": "core",
+      "inferredEngine": "quiz",
+      "purpose": "Playable route /game/science-quest — core catalog title."
+    },
+    {
+      "id": "scramble-x",
+      "name": "Scramble X",
+      "category": "StormElite",
+      "source": "seed",
+      "seedCategory": "Action",
+      "inferredEngine": "space",
+      "purpose": "Horizontally-scrolling shooter — bomb fuel depots and fight waves of enemies!"
+    },
+    {
+      "id": "sentence_builder_pro",
+      "name": "Sentence Builder Pro",
+      "category": "StormPuzzle",
+      "source": "core",
+      "inferredEngine": "geometry",
+      "purpose": "Playable route /game/sentence_builder_pro — core catalog title."
+    },
+    {
+      "id": "sentence_sprint",
+      "name": "Sentence Sprint",
+      "category": "StormDash",
+      "source": "core",
+      "inferredEngine": "geometry",
+      "purpose": "Playable route /game/sentence_sprint — core catalog title."
+    },
+    {
+      "id": "sequence-storm",
+      "name": "Sequence Storm",
+      "category": "StormRetro",
+      "source": "seed",
+      "seedCategory": "Puzzle",
+      "inferredEngine": "memory",
+      "purpose": "Remember and repeat ever-growing sequences of lights and sounds!"
+    },
+    {
+      "id": "shadow-duel",
+      "name": "Shadow Duel",
+      "category": "StormElite",
+      "source": "seed",
+      "seedCategory": "Fighting",
+      "inferredEngine": "placeholder",
+      "purpose": "Ninja vs ninja in total darkness. Swift strikes, smoke bomb specials, and lightning-fast combos. The fastest fighter in the arcade."
+    },
+    {
+      "id": "shell-shock",
+      "name": "Shell Shock",
+      "category": "StormMario",
+      "source": "seed",
+      "seedCategory": "Mario & Kart",
+      "inferredEngine": "geometry",
+      "purpose": "Throw bouncing shells to eliminate all targets on each level. Timing is everything!"
+    },
+    {
+      "id": "skilldash",
+      "name": "SkillDash",
+      "category": "StormDash",
+      "source": "core",
+      "inferredEngine": "geometry",
+      "purpose": "Playable route /game/skilldash — core catalog title."
+    },
+    {
+      "id": "sky-assault",
+      "name": "Sky Assault",
+      "category": "StormElite",
+      "source": "seed",
+      "seedCategory": "Action",
+      "inferredEngine": "placeholder",
+      "purpose": "Vertical scrolling aerial combat — dogfight enemies and collect stars!"
+    },
+    {
+      "id": "sky-runner",
+      "name": "Sky Runner",
+      "category": "StormNeon",
+      "source": "core",
+      "inferredEngine": "geometry",
+      "purpose": "Playable route /game/sky-runner — core catalog title."
+    },
+    {
+      "id": "slam-dunk-x",
+      "name": "Slam Dunk X",
+      "category": "StormElite",
+      "source": "seed",
+      "seedCategory": "Sports",
+      "inferredEngine": "placeholder",
+      "purpose": "Pixel basketball with trick shots, dunks, and overtime drama!"
+    },
+    {
+      "id": "snake-neon",
+      "name": "Snake Neon",
+      "category": "StormNeon",
+      "source": "core",
+      "inferredEngine": "snake",
+      "purpose": "Playable route /game/snake-neon — core catalog title."
+    },
+    {
+      "id": "snake-xl",
+      "name": "Snake XL",
+      "category": "StormRetro",
+      "source": "seed",
+      "seedCategory": "Arcade Classics",
+      "inferredEngine": "snake",
+      "purpose": "Grow your snake by eating, but don't hit the walls or your own tail!"
+    },
+    {
+      "id": "space-invaders-x",
+      "name": "Space Invaders X",
+      "category": "StormRetro",
+      "source": "seed",
+      "seedCategory": "Arcade Classics",
+      "inferredEngine": "space",
+      "purpose": "The classic alien shooter reborn with neon visuals and modern powerups!"
+    },
+    {
+      "id": "space-racer",
+      "name": "Space Racer",
+      "category": "StormElite",
+      "source": "seed",
+      "seedCategory": "Racing",
+      "inferredEngine": "geometry",
+      "purpose": "Anti-gravity racing through the cosmos. Neon purple space circuit, zero-G handling, 3 selectable ships with unique handling stats."
+    },
+    {
+      "id": "space-raiders",
+      "name": "Space Raiders",
+      "category": "StormNeon",
+      "source": "core",
+      "inferredEngine": "space",
+      "purpose": "Playable route /game/space-raiders — core catalog title."
+    },
+    {
+      "id": "space-rock",
+      "name": "Space Rock",
+      "category": "StormNeon",
+      "source": "core",
+      "inferredEngine": "asteroids",
+      "purpose": "Playable route /game/space-rock — core catalog title."
+    },
+    {
+      "id": "speed_multiplication",
+      "name": "Speed Multiplication",
+      "category": "StormQuick",
+      "source": "core",
+      "inferredEngine": "geometry",
+      "purpose": "Playable route /game/speed_multiplication — core catalog title."
+    },
+    {
+      "id": "speed_reading_dash",
+      "name": "Speed Reading Dash",
+      "category": "StormDash",
+      "source": "core",
+      "inferredEngine": "typing",
+      "purpose": "Playable route /game/speed_reading_dash — core catalog title."
+    },
+    {
+      "id": "speed-typer",
+      "name": "Speed Typer",
+      "category": "StormNeon",
+      "source": "core",
+      "inferredEngine": "typing",
+      "purpose": "Playable route /game/speed-typer — core catalog title."
+    },
+    {
+      "id": "spell-storm",
+      "name": "Spell Storm",
+      "category": "StormEduPlus",
+      "source": "seed",
+      "seedCategory": "Educational",
+      "inferredEngine": "typing",
+      "purpose": "Letters rain from the sky — arrange them into words before the storm hits!"
+    },
+    {
+      "id": "spelling_sniper",
+      "name": "Spelling Sniper",
+      "category": "StormQuick",
+      "source": "core",
+      "inferredEngine": "quiz",
+      "purpose": "Playable route /game/spelling_sniper — core catalog title."
+    },
+    {
+      "id": "spelling-quest",
+      "name": "Spelling Quest",
+      "category": "StormNeon",
+      "source": "core",
+      "inferredEngine": "scramble",
+      "purpose": "Playable route /game/spelling-quest — core catalog title."
+    },
+    {
+      "id": "stack-attack",
+      "name": "Stack Attack",
+      "category": "StormNeon",
+      "source": "core",
+      "inferredEngine": "tetris",
+      "purpose": "Playable route /game/stack-attack — core catalog title."
+    },
+    {
+      "id": "star-assault",
+      "name": "Star Assault",
+      "category": "StormElite",
+      "source": "seed",
+      "seedCategory": "Shooters",
+      "inferredEngine": "space",
+      "purpose": "Wave-based space shooter with twin-stick controls. Alien formations, powered-up enemies and boss waves in deep space."
+    },
+    {
+      "id": "star-power",
+      "name": "Star Power",
+      "category": "StormMario",
+      "source": "seed",
+      "seedCategory": "Mario & Kart",
+      "inferredEngine": "geometry",
+      "purpose": "Race through levels while a limited star power makes you invincible — use it wisely!"
+    },
+    {
+      "id": "statistics_paintball",
+      "name": "Statistics Paintball",
+      "category": "StormBattle",
+      "source": "core",
+      "inferredEngine": "geometry",
+      "purpose": "Playable route /game/statistics_paintball — core catalog title."
+    },
+    {
+      "id": "storm_defenders",
+      "name": "Storm Defenders",
+      "category": "StormBattle",
+      "source": "core",
+      "inferredEngine": "geometry",
+      "purpose": "Playable route /game/storm_defenders — core catalog title."
+    },
+    {
+      "id": "storm_defenders_vr",
+      "name": "Storm Defenders VR",
+      "category": "Storm3D",
+      "source": "core",
+      "inferredEngine": "geometry",
+      "purpose": "Playable route /game/storm_defenders_vr — core catalog title."
+    },
+    {
+      "id": "storm-fighter",
+      "name": "Storm Fighter",
+      "category": "StormElite",
+      "source": "seed",
+      "seedCategory": "Fighting",
+      "inferredEngine": "placeholder",
+      "purpose": "Classic 2D street fighter with special moves and combos!"
+    },
+    {
+      "id": "street-hoops",
+      "name": "Street Hoops",
+      "category": "StormElite",
+      "source": "seed",
+      "seedCategory": "Sports",
+      "inferredEngine": "placeholder",
+      "purpose": "Street basketball with real shot physics! Move, aim with arrow keys, charge your shot, release for a perfect arc. 2-pointer or 3-pointer scoring!"
+    },
+    {
+      "id": "street-storm-fighter",
+      "name": "Street Storm Fighter",
+      "category": "StormElite",
+      "source": "seed",
+      "seedCategory": "Fighting",
+      "inferredEngine": "placeholder",
+      "purpose": "4 selectable fighters! STORM, BLAZE, FROST or VOLT. Full health bars, special meter, punch/kick/special combos, AI rounds. Best-in-class 2D fighter!"
+    },
+    {
+      "id": "super-skillz-bros",
+      "name": "Super Skillz Bros",
+      "category": "StormMario",
+      "source": "seed",
+      "seedCategory": "Mario & Kart",
+      "inferredEngine": "geometry",
+      "purpose": "Classic side-scrolling platformer. Run, jump, stomp enemies, collect coins across exciting levels!"
+    },
+    {
+      "id": "tank-storm",
+      "name": "Tank Storm",
+      "category": "StormElite",
+      "source": "seed",
+      "seedCategory": "Shooters",
+      "inferredEngine": "space",
+      "purpose": "Command your tank on the battlefield! Rotate hull, aim turret independently, fire bouncing shells. Destructible walls, smart enemy tanks."
+    },
+    {
+      "id": "tempest-blast",
+      "name": "Tempest Blast",
+      "category": "StormRetro",
+      "source": "seed",
+      "seedCategory": "Arcade Classics",
+      "inferredEngine": "maze",
+      "purpose": "Shoot enemies crawling up the edges of geometric shapes in this vector classic!"
+    },
+    {
+      "id": "tennis-storm",
+      "name": "Tennis Storm",
+      "category": "StormElite",
+      "source": "seed",
+      "seedCategory": "Sports",
+      "inferredEngine": "placeholder",
+      "purpose": "Intense arcade tennis! Control your paddle with W/S, rally to build combos, and outlast the AI. Track your longest rally and total score."
+    },
+    {
+      "id": "tetris-neon",
+      "name": "Tetris Neon",
+      "category": "StormNeon",
+      "source": "core",
+      "inferredEngine": "tetris",
+      "purpose": "Playable route /game/tetris-neon — core catalog title."
+    },
+    {
+      "id": "tetris-storm",
+      "name": "Tetris Storm",
+      "category": "StormRetro",
+      "source": "seed",
+      "seedCategory": "Puzzle",
+      "inferredEngine": "tetris",
+      "purpose": "Stack falling blocks and clear lines in this legendary puzzle game!"
+    },
+    {
+      "id": "timeline_builder",
+      "name": "Timeline Builder",
+      "category": "StormPuzzle",
+      "source": "core",
+      "inferredEngine": "geometry",
+      "purpose": "Playable route /game/timeline_builder — core catalog title."
+    },
+    {
+      "id": "timeline-rush",
+      "name": "Timeline Rush",
+      "category": "StormEduPlus",
+      "source": "seed",
+      "seedCategory": "Educational",
+      "inferredEngine": "quiz",
+      "purpose": "Place historical events in chronological order before time runs out!"
+    },
+    {
+      "id": "times-table-titan",
+      "name": "Times Table Titan",
+      "category": "StormNeon",
+      "source": "core",
+      "inferredEngine": "math",
+      "purpose": "Playable route /game/times-table-titan — core catalog title."
+    },
+    {
+      "id": "tower-blitz",
+      "name": "Tower Blitz",
+      "category": "StormRetro",
+      "source": "seed",
+      "seedCategory": "Puzzle",
+      "inferredEngine": "td",
+      "purpose": "Defend your tower from waves of enemies with strategic placement!"
+    },
+    {
+      "id": "tower-defense-x",
+      "name": "Tower Defense X",
+      "category": "StormElite",
+      "source": "seed",
+      "seedCategory": "Strategy",
+      "inferredEngine": "td",
+      "purpose": "Strategic tower defense with 4 tower types: CANNON, SNIPER, FREEZE, ROCKET. Place with arrow keys, send waves, upgrade as enemies swarm!"
+    },
+    {
+      "id": "trivia-blitz",
+      "name": "Trivia Blitz",
+      "category": "StormRetro",
+      "source": "seed",
+      "seedCategory": "Puzzle",
+      "inferredEngine": "quiz",
+      "purpose": "Fast-fire trivia questions across gaming, pop culture, and science categories!"
+    },
+    {
+      "id": "tron-cycles",
+      "name": "Tron Cycles",
+      "category": "StormElite",
+      "source": "seed",
+      "seedCategory": "Action",
+      "inferredEngine": "maze",
+      "purpose": "Light cycle battle — leave walls and trap opponents before they trap you!"
+    },
+    {
+      "id": "turbo-track",
+      "name": "Turbo Track",
+      "category": "StormElite",
+      "source": "seed",
+      "seedCategory": "Racing",
+      "inferredEngine": "geometry",
+      "purpose": "Overhead racing with nitro boosts, oil slicks, and dynamic weather!"
+    },
+    {
+      "id": "type-speed-x",
+      "name": "Type Speed X",
+      "category": "StormRetro",
+      "source": "seed",
+      "seedCategory": "Arcade Classics",
+      "inferredEngine": "typing",
+      "purpose": "Type the falling words before they reach the bottom! A typing game with high score chase!"
+    },
+    {
+      "id": "typing-storm",
+      "name": "Typing Storm",
+      "category": "StormNeon",
+      "source": "core",
+      "inferredEngine": "typing",
+      "purpose": "Playable route /game/typing-storm — core catalog title."
+    },
+    {
+      "id": "vector-maze",
+      "name": "Vector Maze",
+      "category": "StormRetro",
+      "source": "seed",
+      "seedCategory": "Puzzle",
+      "inferredEngine": "maze",
+      "purpose": "Navigate your vector ship through procedurally-generated maze corridors!"
+    },
+    {
+      "id": "vocab-blast",
+      "name": "Vocab Blast",
+      "category": "StormNeon",
+      "source": "core",
+      "inferredEngine": "quiz",
+      "purpose": "Playable route /game/vocab-blast — core catalog title."
+    },
+    {
+      "id": "vocab-blitz",
+      "name": "Vocab Blitz",
+      "category": "StormEduPlus",
+      "source": "seed",
+      "seedCategory": "Educational",
+      "inferredEngine": "typing",
+      "purpose": "Speed through vocabulary flashcards — match definitions faster than your opponent!"
+    },
+    {
+      "id": "vocabulary_sniper",
+      "name": "Vocabulary Sniper",
+      "category": "StormBattle",
+      "source": "core",
+      "inferredEngine": "quiz",
+      "purpose": "Playable route /game/vocabulary_sniper — core catalog title."
+    },
+    {
+      "id": "vr_history_explorer",
+      "name": "VR History Explorer",
+      "category": "StormVR",
+      "source": "core",
+      "inferredEngine": "quiz",
+      "purpose": "Playable route /game/vr_history_explorer — core catalog title."
+    },
+    {
+      "id": "vr_math_dojo",
+      "name": "VR Math Dojo",
+      "category": "StormVR",
+      "source": "core",
+      "inferredEngine": "math",
+      "purpose": "Playable route /game/vr_math_dojo — core catalog title."
+    },
+    {
+      "id": "vr_science_lab",
+      "name": "VR Science Lab",
+      "category": "StormVR",
+      "source": "core",
+      "inferredEngine": "quiz",
+      "purpose": "Playable route /game/vr_science_lab — core catalog title."
+    },
+    {
+      "id": "word_balloon_pop",
+      "name": "Word Balloon Pop",
+      "category": "StormQuick",
+      "source": "core",
+      "inferredEngine": "typing",
+      "purpose": "Playable route /game/word_balloon_pop — core catalog title."
+    },
+    {
+      "id": "word_connect_storm",
+      "name": "Word Connect Storm",
+      "category": "StormPuzzle",
+      "source": "core",
+      "inferredEngine": "typing",
+      "purpose": "Playable route /game/word_connect_storm — core catalog title."
+    },
+    {
+      "id": "word_rocket_run",
+      "name": "Word Rocket Run",
+      "category": "StormDash",
+      "source": "core",
+      "inferredEngine": "typing",
+      "purpose": "Playable route /game/word_rocket_run — core catalog title."
+    },
+    {
+      "id": "word_world_3d",
+      "name": "Word World 3D",
+      "category": "Storm3D",
+      "source": "core",
+      "inferredEngine": "typing",
+      "purpose": "Playable route /game/word_world_3d — core catalog title."
+    },
+    {
+      "id": "word-blitz",
+      "name": "Word Blitz",
+      "category": "StormNeon",
+      "source": "core",
+      "inferredEngine": "typing",
+      "purpose": "Playable route /game/word-blitz — core catalog title."
+    },
+    {
+      "id": "word-scramble-x",
+      "name": "Word Scramble X",
+      "category": "StormNeon",
+      "source": "core",
+      "inferredEngine": "scramble",
+      "purpose": "Playable route /game/word-scramble-x — core catalog title."
+    },
+    {
+      "id": "word-storm",
+      "name": "Word Storm",
+      "category": "StormRetro",
+      "source": "seed",
+      "seedCategory": "Puzzle",
+      "inferredEngine": "scramble",
+      "purpose": "Find as many words as possible from a set of scrambled letters before time runs out!"
+    },
+    {
+      "id": "word-wizard",
+      "name": "Word Wizard",
+      "category": "StormEduPlus",
+      "source": "seed",
+      "seedCategory": "Educational",
+      "inferredEngine": "typing",
+      "purpose": "Cast word spells by spelling correctly! Master vocabulary to defeat the word dragon."
+    },
+    {
+      "id": "wordwave_survival",
+      "name": "WordWave Survival",
+      "category": "StormBattle",
+      "source": "core",
+      "inferredEngine": "typing",
+      "purpose": "Playable route /game/wordwave_survival — core catalog title."
+    },
+    {
+      "id": "world-8-rush",
+      "name": "World 8 Rush",
+      "category": "StormMario",
+      "source": "seed",
+      "seedCategory": "Mario & Kart",
+      "inferredEngine": "geometry",
+      "purpose": "The ultimate speed run challenge. Navigate the hardest levels ever designed at max speed!"
+    },
+    {
+      "id": "world-explorer",
+      "name": "World Explorer",
+      "category": "StormNeon",
+      "source": "core",
+      "inferredEngine": "quiz",
+      "purpose": "Playable route /game/world-explorer — core catalog title."
+    },
+    {
+      "id": "zaxxon-x",
+      "name": "Zaxxon X",
+      "category": "StormElite",
+      "source": "seed",
+      "seedCategory": "Action",
+      "inferredEngine": "space",
+      "purpose": "Isometric space shooter — navigate through fortress walls and shoot everything!"
+    }
+  ]
+}

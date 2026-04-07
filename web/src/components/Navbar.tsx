@@ -4,7 +4,7 @@ import { Link, useLocation } from 'react-router-dom';
 function gamesNavActive(pathname: string, search: string) {
   if (pathname.startsWith('/game/')) return true;
   if (!pathname.startsWith('/games')) return false;
-  if (pathname === '/games' && search.includes('view=new')) return false;
+  if (pathname === '/games' && (search.includes('view=new') || search.includes('view=library'))) return false;
   return true;
 }
 
@@ -33,7 +33,14 @@ export function Navbar() {
               active={location.pathname === '/games' && location.search.includes('view=new')}
               icon="✨"
             >
-              New
+              AAA New
+            </NavLink>
+            <NavLink
+              to="/games?view=library"
+              active={location.pathname === '/games' && location.search.includes('view=library')}
+              icon="📚"
+            >
+              Library
             </NavLink>
             <NavLink to="/arcade" active={location.pathname === '/arcade'} icon="🕹️" highlight>Arcade</NavLink>
             <NavLink to="/learn" active={location.pathname === '/learn' || location.pathname.startsWith('/learn/')} icon="📘">Learn</NavLink>
@@ -72,7 +79,8 @@ export function Navbar() {
         <div className="px-4 pb-4 pt-2 space-y-1 bg-slate-950/98 backdrop-blur-xl border-t border-cyan-500/15">
           <MobileNavLink to="/" active={location.pathname === '/'} icon="🏠" onClick={() => setMobileOpen(false)}>Home</MobileNavLink>
           <MobileNavLink to="/games" active={gamesNavActive(location.pathname, location.search)} icon="🎮" onClick={() => setMobileOpen(false)}>Games</MobileNavLink>
-          <MobileNavLink to="/games?view=new" active={location.search.includes('view=new')} icon="✨" onClick={() => setMobileOpen(false)}>New games</MobileNavLink>
+          <MobileNavLink to="/games?view=new" active={location.search.includes('view=new')} icon="✨" onClick={() => setMobileOpen(false)}>AAA New</MobileNavLink>
+          <MobileNavLink to="/games?view=library" active={location.search.includes('view=library')} icon="📚" onClick={() => setMobileOpen(false)}>Expanded library</MobileNavLink>
           <MobileNavLink to="/arcade" active={location.pathname === '/arcade'} icon="🕹️" onClick={() => setMobileOpen(false)}>Arcade</MobileNavLink>
           <MobileNavLink to="/learn" active={location.pathname === '/learn' || location.pathname.startsWith('/learn/')} icon="📘" onClick={() => setMobileOpen(false)}>Learn</MobileNavLink>
           <MobileNavLink to="/schools" active={location.pathname === '/schools'} icon="🏫" onClick={() => setMobileOpen(false)}>For Schools</MobileNavLink>

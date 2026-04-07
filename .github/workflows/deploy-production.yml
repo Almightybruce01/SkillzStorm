@@ -1,0 +1,39 @@
+# Manual gate only — does NOT auto-deploy to kids on every push.
+# Use: Actions → "Deploy production (manual)" → Run workflow.
+# Then merge to `main` when ready, or click Promote in Vercel if Preview → Production.
+name: Deploy production (manual)
+
+on:
+  workflow_dispatch:
+    inputs:
+      confirm:
+        description: 'Type YES to run production build check'
+        required: true
+        default: ''
+
+jobs:
+  verify-build:
+    if: ${{ github.event.inputs.confirm == 'YES' }}
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: web
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: web/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Production build
+        run: npm run build
+
+      - name: Note
+        run: |
+          echo "Build passed. Next: merge to main if using Git-based production,"
+          echo "or promote the matching Vercel deployment manually."

@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { categories, getFeaturedGames, allGames, seedCatalogGames } from '../engine/gameData';
+import { categories, getFeaturedGames, allGames, aaaGames } from '../engine/gameData';
 import { arcadeGames } from '../games/arcade/arcadeData';
 import { InArticleAd, InlineExtraAd, MidPageBannerAd, TopBannerAd } from '../components/ads/AdBanner';
 import type { GameCategory } from '../engine/gameData';
@@ -9,7 +9,7 @@ const TICKER_ITEMS = [
   '🔥 178+ games in the library',
   '🥊 Fighting · Racing · Puzzle · Strategy',
   '🎓 K–12 learning gates in every title',
-  '⚡ New games tab — fresh catalog entries',
+  '⚡ AAA New tab — StormGrid Prix & flagships',
 ];
 
 const CATEGORY_HIGHLIGHTS: { icon: string; name: string; desc: string; category: GameCategory; borderHover: string }[] = [
@@ -26,7 +26,7 @@ const CATEGORY_HIGHLIGHTS: { icon: string; name: string; desc: string; category:
 export function HomePage() {
   const featured = getFeaturedGames();
   const trending = featured.slice(0, 6);
-  const newSpotlight = seedCatalogGames.slice(0, 8);
+  const newSpotlight = aaaGames.slice(0, 8);
 
   return (
     <div className="pt-6 sm:pt-8 w-full min-h-[100vh] page-enter">
@@ -63,7 +63,7 @@ export function HomePage() {
         <div className="relative z-20 max-w-5xl mx-auto flex flex-col items-center text-center gap-6 py-16 sm:py-24">
           <div className="flex items-center gap-2 px-4 py-2 border border-[#ff0066]/40 bg-[#ff0066]/10 font-display text-[10px] text-[#ff6699] animate-fade-in">
             <span aria-hidden>🔥</span>
-            {allGames.filter((g) => g.isAvailable).length}+ GAMES · NEW TAB FOR SEED CATALOG · K–12 GATES
+            {allGames.filter((g) => g.isAvailable).length}+ GAMES · AAA NEW TAB · K–12 GATES
             <span aria-hidden>🔥</span>
           </div>
 
@@ -84,7 +84,10 @@ export function HomePage() {
               ▶ PLAY NOW
             </Link>
             <Link to="/games?view=new" className="arcade-btn arcade-btn-secondary text-sm sm:text-base px-8 sm:px-10 py-3 sm:py-4">
-              ✨ NEW GAMES
+              ✨ AAA NEW
+            </Link>
+            <Link to="/games?view=library" className="arcade-btn arcade-btn-secondary text-sm sm:text-base px-6 sm:px-8 py-3 sm:py-4">
+              📚 EXPANDED LIBRARY
             </Link>
             <Link to="/arcade" className="arcade-btn arcade-btn-secondary text-sm sm:text-base px-8 sm:px-10 py-3 sm:py-4">
               🕹️ ARCADE
@@ -230,17 +233,17 @@ export function HomePage() {
             <div>
               <h2 className="text-2xl md:text-3xl font-display mb-2 text-fuchsia-300" style={{ textShadow: '0 0 24px rgba(232,121,249,0.35)' }}>
                 <span className="mr-2">✨</span>
-                NEW CATALOG GAMES
+                AAA NEW GAMES
               </h2>
               <p className="text-slate-500 text-sm">
-                Fresh entries from the expanded library — browse the full list in the New Games tab.
+                Flagship titles like StormGrid Prix — the seed catalog lives in Expanded Library.
               </p>
             </div>
             <Link
               to="/games?view=new"
               className="arcade-btn arcade-btn-secondary text-xs px-6 py-3 whitespace-nowrap"
             >
-              OPEN NEW TAB →
+              OPEN AAA NEW →
             </Link>
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">

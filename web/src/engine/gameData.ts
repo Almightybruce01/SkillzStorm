@@ -25,6 +25,8 @@ export interface GameInfo {
   isAvailable: boolean;
   isFeatured: boolean;
   isPremium: boolean;
+  /** Flagship AAA builds — listed under Games → New (AAA) only */
+  isAAA?: boolean;
   /** When set, overrides automatic neon canvas engine mapping */
   neonEngine?: string;
   /** Use legacy React GameLauncher instead of neon canvas (opt-in per game) */
@@ -165,15 +167,50 @@ const coreGames: GameInfo[] = [
   { id: 'cosmic-blast', name: 'Cosmic Blast', description: 'Cosmic blast — wrap screen, split asteroids, score big.', category: 'StormNeon', iconEmoji: '✨', supportedGrades: ['6-8','9-12'], isAvailable: true, isFeatured: false, isPremium: false },
 
   // Storm Defenders (Tower Defense)
-  { id: 'storm_defenders', name: 'Storm Defenders', description: 'Tower defense where you place Brain Turrets to fight zombie waves. Answer questions to place and upgrade 10 unique defenders. Survive endless waves, unlock new turrets, and outsmart boss zombies.', category: 'StormBattle', iconEmoji: '🛡️', coverArt: '/images/covers/cover-storm-defenders.png', supportedGrades: ['K-2','3-5','6-8','9-12'], isAvailable: true, isFeatured: true, isPremium: false },
+  {
+    id: 'storm_defenders',
+    name: 'Storm Defenders',
+    description:
+      'AAA flagship tower defense — Brain Turrets vs zombie waves; 10 defenders, bosses, deep rounds. Listed under AAA New only.',
+    category: 'StormBattle',
+    iconEmoji: '🛡️',
+    coverArt: '/images/covers/cover-storm-defenders.png',
+    supportedGrades: ['K-2', '3-5', '6-8', '9-12'],
+    isAvailable: true,
+    isFeatured: true,
+    isPremium: false,
+    isAAA: true,
+  },
   { id: 'storm_defenders_vr', name: 'Storm Defenders VR', description: 'Immersive 3D tower defense. Look down at the battlefield from above, place defenders by answering questions, and watch zombies march in real-time 3D.', category: 'Storm3D', iconEmoji: '🥽', supportedGrades: ['K-2','3-5','6-8','9-12'], isAvailable: true, isFeatured: true, isPremium: false },
+
+  // AAA flagship — React engine (see stormGridPrix/)
+  {
+    id: 'storm-grid-prix',
+    name: 'StormGrid Prix',
+    description:
+      'AAA flagship — Proximity Grand Prix: twelve circuits (incl. rainforest & coastal), engine & body garage, Elite multiplayer relay. Listed under AAA New only.',
+    category: 'StormElite',
+    iconEmoji: '🏎️',
+    coverArt: '/images/covers/storm-grid-prix-cover.svg',
+    supportedGrades: ['3-5', '6-8', '9-12'],
+    isAvailable: true,
+    isFeatured: true,
+    isPremium: false,
+    isAAA: true,
+  },
 ];
 
 /** SKILLZSTORM_COMPLETE.md seed (178) merged; skips slugs already in coreGames */
 const completeSeedOnly = getCompleteSeedGames().filter((g) => !coreGames.some((c) => c.id === g.id));
 
-/** Titles that only exist in the imported seed (shown under Games → New tab) */
+/** Expanded library (seed catalog) — Games → Expanded library tab */
 export const seedCatalogGames: GameInfo[] = completeSeedOnly;
+
+/** Alias for UI copy */
+export const expandedLibraryGames: GameInfo[] = seedCatalogGames;
+
+/** AAA / flagship titles only — Games → New (AAA) tab */
+export const aaaGames: GameInfo[] = coreGames.filter((g) => g.isAAA);
 
 export const allGames: GameInfo[] = [...coreGames, ...completeSeedOnly];
 

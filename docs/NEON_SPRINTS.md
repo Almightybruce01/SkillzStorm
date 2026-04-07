@@ -51,3 +51,10 @@ Banks expanded: more **math** rounds per grade, **quiz** items, **typing** pool 
 ---
 
 _Update this file as passes complete._
+
+## Related
+
+- **[DEPLOYMENT_WORKFLOW.md](./DEPLOYMENT_WORKFLOW.md)** — ship from `main` only when ready; branch strategy.
+- **[ELITE_ROADMAP.md](./ELITE_ROADMAP.md)** — flagship name (**StormGrid Prix**), phases, multiplayer reality check.
+- **[GAME_CATALOG_SPRINTS.md](./GAME_CATALOG_SPRINTS.md)** — 100 sprint slots.
+- **Generated inventory:** run `npm run catalog:inventory --prefix web` → `docs/generated/GAME_INVENTORY.md`

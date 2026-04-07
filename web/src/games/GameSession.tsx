@@ -7,6 +7,7 @@ import type { GameInfo } from '../engine/gameData';
 import { NeonCanvasGame } from './neon/NeonCanvasGame';
 import { mergeNeonHighScore } from './neon/persistence/highScores';
 import { resolveNeonEngine } from './neon/resolveEngine';
+import { StormGridPrixRoot } from './stormGridPrix/StormGridPrixRoot';
 
 interface Props {
   game: GameInfo;
@@ -62,7 +63,9 @@ export function GameSession({ game, grade }: Props) {
     <div className="relative">
       {readyToPlay && (
         <div key={reloadKey}>
-          {useLegacyReact ? (
+          {game.id === 'storm-grid-prix' ? (
+            <StormGridPrixRoot gameTitle={game.name} onFinish={(s) => handleGameClose(s)} />
+          ) : useLegacyReact ? (
             <GameLauncher gameId={game.id} grade={grade} onClose={() => handleGameClose()} />
           ) : (
             <NeonCanvasGame

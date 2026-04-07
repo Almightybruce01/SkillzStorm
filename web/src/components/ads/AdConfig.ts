@@ -1,31 +1,52 @@
-export const ADSENSE_CONFIG = {
-  publisherId: 'ca-pub-9418265198529416',
+/**
+ * Google AdSense — use real slot IDs from your AdSense dashboard.
+ *
+ * Production: set `VITE_ADSENSE_SLOT_DEFAULT` to one display ad unit ID and all
+ * placements will use it until you add per-placement env vars (see below).
+ * Optional: `VITE_ADSENSE_TEST=true` forces test ads (e.g. local QA).
+ */
+const PUB = 'ca-pub-9418265198529416';
 
-  // With Auto Ads enabled in AdSense dashboard, Google places ads
-  // automatically in optimal positions. No manual slot IDs needed.
-  // If you later create manual ad units, replace these with real slot IDs.
-  /** Replace each with a real ad unit ID from your AdSense dashboard (Ads → By ad unit). */
+const env = import.meta.env as Record<string, string | boolean | undefined>;
+
+/** Placeholder until you set VITE_ADSENSE_SLOT_DEFAULT in Vercel / hosting env. */
+const PLACEHOLDER_SLOT = '1234567890';
+
+function slot(envKey: string, fallbackChain: string[]): string {
+  const envVal = env[envKey];
+  const s = typeof envVal === 'string' ? envVal : '';
+  if (s && /^\d+$/.test(s)) return s;
+  for (const f of fallbackChain) {
+    if (f && /^\d+$/.test(f)) return f;
+  }
+  return PLACEHOLDER_SLOT;
+}
+
+const DEFAULT = (() => {
+  const v = env.VITE_ADSENSE_SLOT_DEFAULT;
+  return typeof v === 'string' && /^\d+$/.test(v) ? v : '';
+})();
+
+export const ADSENSE_CONFIG = {
+  publisherId: PUB,
+
   slots: {
-    topBanner: '1234567890',
-    sidebarRect: '2345678901',
-    inArticle: '3456789012',
-    bottomBanner: '4567890123',
-    betweenGames: '5678901234',
-    footer: '6789012345',
-    /** Full-width strip directly under the navbar (site-wide) */
-    navBelow: '7890123456',
-    /** Route-change modal / interstitial-style overlay */
-    routePopup: '8901234567',
-    /** Second leaderboard row in the site footer */
-    footerExtra: '9012345678',
-    /** Mid-page horizontal (between content sections) */
-    pageMid: '0123456789',
-    /** Extra rectangle / multiplex */
-    inlineExtra: '1029384756',
+    topBanner: slot('VITE_ADSENSE_SLOT_TOP_BANNER', [DEFAULT]),
+    sidebarRect: slot('VITE_ADSENSE_SLOT_SIDEBAR', [DEFAULT]),
+    inArticle: slot('VITE_ADSENSE_SLOT_IN_ARTICLE', [DEFAULT]),
+    bottomBanner: slot('VITE_ADSENSE_SLOT_BOTTOM', [DEFAULT]),
+    betweenGames: slot('VITE_ADSENSE_SLOT_BETWEEN', [DEFAULT]),
+    footer: slot('VITE_ADSENSE_SLOT_FOOTER', [DEFAULT]),
+    navBelow: slot('VITE_ADSENSE_SLOT_NAV', [DEFAULT]),
+    routePopup: slot('VITE_ADSENSE_SLOT_POPUP', [DEFAULT]),
+    footerExtra: slot('VITE_ADSENSE_SLOT_FOOTER_EXTRA', [DEFAULT]),
+    pageMid: slot('VITE_ADSENSE_SLOT_MID', [DEFAULT]),
+    inlineExtra: slot('VITE_ADSENSE_SLOT_INLINE', [DEFAULT]),
   },
 
   autoAds: true,
-  testMode: import.meta.env.DEV,
+  /** Production builds use live AdSense unless VITE_ADSENSE_TEST=true */
+  testMode: import.meta.env.VITE_ADSENSE_TEST === 'true',
   childDirected: true,
 };
 
