@@ -1,4 +1,6 @@
 import type { NeonEngineFactory } from '../types';
+import { drawStarfield, drawVignette, fillNeonBg } from './canvasFx';
+import { hueFromSlug, neonAccent, slug01, slugSeed } from './slugTheme';
 
 const CYAN = '#00ffcc';
 const MAG = '#ff00ff';
@@ -12,11 +14,13 @@ function aliveCount(enemies: { alive: boolean }[]) {
   return enemies.filter((e) => e.alive).length;
 }
 
-export const createPlaceholderEngine: NeonEngineFactory = (title) => {
+export const createPlaceholderEngine: NeonEngineFactory = (meta) => {
   let w = 400;
   let h = 300;
   let t = 0;
   let over = false;
+  const hue = hueFromSlug(meta.slug);
+  const [accent, accent2] = neonAccent(meta.slug);
   return {
     init(width, height) {
       w = width;
@@ -29,29 +33,30 @@ export const createPlaceholderEngine: NeonEngineFactory = (title) => {
     draw(ctx, width, height) {
       w = width;
       h = height;
-      ctx.fillStyle = '#0a0f18';
-      ctx.fillRect(0, 0, w, h);
-      ctx.strokeStyle = CYAN;
+      fillNeonBg(ctx, w, h, hue);
+      drawStarfield(ctx, w, h, t, slugSeed(meta.slug));
+      ctx.strokeStyle = accent;
       ctx.lineWidth = 2;
       ctx.strokeRect(4, 4, w - 8, h - 8);
       font(ctx, Math.max(10, w / 42));
-      ctx.fillStyle = CYAN;
+      ctx.fillStyle = accent2;
       ctx.textAlign = 'center';
-      ctx.shadowColor = MAG;
-      ctx.shadowBlur = 12;
-      ctx.fillText(title.slice(0, 28), w / 2, h / 2 - 20);
+      ctx.shadowColor = accent;
+      ctx.shadowBlur = 14;
+      ctx.fillText(meta.title.slice(0, 28), w / 2, h / 2 - 20);
       ctx.shadowBlur = 0;
       font(ctx, Math.max(8, w / 52));
-      ctx.fillStyle = '#8899aa';
+      ctx.fillStyle = '#aab8cc';
       ctx.fillText('TAP SPACE — NEON ARCADE', w / 2, h / 2 + 20);
       ctx.fillText('ESC TO FINISH', w / 2, h / 2 + 44);
+      drawVignette(ctx, w, h);
     },
     getScore: () => Math.floor(t * 10),
     isGameOver: () => over,
   };
 };
 
-export const createSnakeEngine: NeonEngineFactory = () => {
+export const createSnakeEngine: NeonEngineFactory = (meta) => {
   const gs = 18;
   let w = 400;
   let h = 300;
@@ -61,12 +66,36 @@ export const createSnakeEngine: NeonEngineFactory = () => {
   let acc = 0;
   let over = false;
   let score = 0;
+  let lives = 3;
+  let time = 0;
+  const hue = hueFromSlug(meta.slug);
+  const step = 0.1 + slug01(meta.slug, 2) * 0.05;
+  const [snakeC, headC, foodC] = neonAccent(meta.slug);
 
   function spawnFood() {
-    food = {
-      x: Math.floor(Math.random() * Math.floor(w / gs - 2)) + 1,
-      y: Math.floor(Math.random() * Math.floor(h / gs - 2)) + 1,
-    };
+    const gw = Math.max(1, Math.floor(w / gs) - 1);
+    const gh = Math.max(1, Math.floor(h / gs) - 1);
+    let attempts = 0;
+    do {
+      food = {
+        x: 1 + Math.floor(Math.random() * gw),
+        y: 1 + Math.floor(Math.random() * gh),
+      };
+      attempts++;
+    } while (snake.some((s) => s.x === food.x && s.y === food.y) && attempts < 120);
+  }
+
+  function loseLife() {
+    lives -= 1;
+    if (lives <= 0) {
+      over = true;
+      return;
+    }
+    const gw = Math.floor(w / gs) - 1;
+    const gh = Math.floor(h / gs) - 1;
+    snake = [{ x: Math.max(1, Math.floor(gw / 2)), y: Math.max(1, Math.floor(gh / 2)) }];
+    dir = { x: 1, y: 0 };
+    spawnFood();
   }
 
   return {
@@ -78,15 +107,17 @@ export const createSnakeEngine: NeonEngineFactory = () => {
       spawnFood();
       over = false;
       score = 0;
+      lives = 3;
+      time = 0;
     },
     update(dt, keys, _prev) {
       if (over) return;
+      time += dt;
       if (keys.has('ArrowUp') && dir.y === 0) dir = { x: 0, y: -1 };
       else if (keys.has('ArrowDown') && dir.y === 0) dir = { x: 0, y: 1 };
       else if (keys.has('ArrowLeft') && dir.x === 0) dir = { x: -1, y: 0 };
       else if (keys.has('ArrowRight') && dir.x === 0) dir = { x: 1, y: 0 };
       acc += dt;
-      const step = 0.12;
       while (acc >= step && !over) {
         acc -= step;
         const head = snake[0];
@@ -94,11 +125,11 @@ export const createSnakeEngine: NeonEngineFactory = () => {
         const gw = Math.floor(w / gs) - 1;
         const gh = Math.floor(h / gs) - 1;
         if (nh.x < 0 || nh.y < 0 || nh.x > gw || nh.y > gh) {
-          over = true;
+          loseLife();
           break;
         }
         if (snake.some((s) => s.x === nh.x && s.y === nh.y)) {
-          over = true;
+          loseLife();
           break;
         }
         snake.unshift(nh);
@@ -111,33 +142,34 @@ export const createSnakeEngine: NeonEngineFactory = () => {
     draw(ctx, width, height) {
       w = width;
       h = height;
-      ctx.fillStyle = '#070b12';
-      ctx.fillRect(0, 0, w, h);
-      ctx.fillStyle = CYAN;
-      ctx.shadowColor = CYAN;
+      fillNeonBg(ctx, w, h, hue);
+      drawStarfield(ctx, w, h, time, slugSeed(meta.slug));
+      ctx.fillStyle = snakeC;
+      ctx.shadowColor = snakeC;
       ctx.shadowBlur = 6;
       snake.forEach((s, i) => {
         ctx.fillRect(s.x * gs + 2, s.y * gs + 2, gs - 4, gs - 4);
         if (i === 0) {
-          ctx.fillStyle = MAG;
+          ctx.fillStyle = headC;
           ctx.fillRect(s.x * gs + 4, s.y * gs + 4, gs - 8, gs - 8);
-          ctx.fillStyle = CYAN;
+          ctx.fillStyle = snakeC;
         }
       });
       ctx.shadowBlur = 0;
-      ctx.fillStyle = AMBER;
+      ctx.fillStyle = foodC;
       ctx.fillRect(food.x * gs + 2, food.y * gs + 2, gs - 4, gs - 4);
       font(ctx, 10);
       ctx.fillStyle = '#aabbcc';
       ctx.textAlign = 'left';
-      ctx.fillText(`SCORE ${score}`, 8, 16);
+      ctx.fillText(`SCORE ${score}  ♥${lives}`, 8, 16);
+      drawVignette(ctx, w, h);
     },
     getScore: () => score,
     isGameOver: () => over,
   };
 };
 
-export const createBreakoutEngine: NeonEngineFactory = () => {
+export const createBreakoutEngine: NeonEngineFactory = (meta) => {
   let w = 400;
   let h = 300;
   let px = 0;
@@ -150,6 +182,9 @@ export const createBreakoutEngine: NeonEngineFactory = () => {
   let rows = 4;
   let over = false;
   let score = 0;
+  let lives = 3;
+  let time = 0;
+  const hue = hueFromSlug(meta.slug);
 
   function resetBall() {
     bx = w / 2;
@@ -167,9 +202,12 @@ export const createBreakoutEngine: NeonEngineFactory = () => {
       resetBall();
       over = false;
       score = 0;
+      lives = 3;
+      time = 0;
     },
     update(dt, keys) {
       if (over) return;
+      time += dt;
       const spd = 260;
       if (keys.has('ArrowLeft')) px -= spd * dt;
       if (keys.has('ArrowRight')) px += spd * dt;
@@ -178,7 +216,11 @@ export const createBreakoutEngine: NeonEngineFactory = () => {
       by += bvy * dt;
       if (bx < 8 || bx > w - 8) bvx *= -1;
       if (by < 8) bvy *= -1;
-      if (by > h - 4) over = true;
+      if (by > h - 4) {
+        lives -= 1;
+        if (lives <= 0) over = true;
+        else resetBall();
+      }
       const pw = 100;
       if (by > h - 48 && by < h - 38 && bx > px && bx < px + pw) {
         bvy = -Math.abs(bvy);
@@ -208,15 +250,16 @@ export const createBreakoutEngine: NeonEngineFactory = () => {
     draw(ctx, width, height) {
       w = width;
       h = height;
-      ctx.fillStyle = '#050810';
-      ctx.fillRect(0, 0, w, h);
+      fillNeonBg(ctx, w, h, hue);
+      drawStarfield(ctx, w, h, time, slugSeed(meta.slug));
       const bw = (w - 24) / cols;
       const bh = 16;
+      const baseHue = hueFromSlug(meta.slug + '-brick');
       bricks.forEach((on, i) => {
         if (!on) return;
         const c = i % cols;
         const r = (i / cols) | 0;
-        ctx.fillStyle = `hsl(${(c + r * 3) * 18}, 90%, 55%)`;
+        ctx.fillStyle = `hsl(${(baseHue + (c + r * 3) * 14) % 360}, 88%, 56%)`;
         ctx.fillRect(12 + c * bw, 40 + r * bh, bw - 4, bh - 2);
       });
       ctx.fillStyle = CYAN;
@@ -228,14 +271,15 @@ export const createBreakoutEngine: NeonEngineFactory = () => {
       font(ctx, 10);
       ctx.fillStyle = '#aab';
       ctx.textAlign = 'left';
-      ctx.fillText(`SCORE ${score}`, 8, 20);
+      ctx.fillText(`SCORE ${score}  ♥${lives}`, 8, 20);
+      drawVignette(ctx, w, h);
     },
     getScore: () => score,
     isGameOver: () => over,
   };
 };
 
-export const createTetrisEngine: NeonEngineFactory = () => {
+export const createTetrisEngine: NeonEngineFactory = (meta) => {
   let w = 300;
   let h = 400;
   const cols = 8;
@@ -245,6 +289,8 @@ export const createTetrisEngine: NeonEngineFactory = () => {
   let score = 0;
   let fall = 0;
   let piece = { x: 3, y: 0, c: CYAN };
+  let time = 0;
+  const hue = hueFromSlug(meta.slug);
 
   function newPiece() {
     piece = { x: 3, y: 0, c: [CYAN, MAG, AMBER, '#0ff'][Math.floor(Math.random() * 4)] };
@@ -259,15 +305,17 @@ export const createTetrisEngine: NeonEngineFactory = () => {
       over = false;
       score = 0;
       fall = 0;
+      time = 0;
       newPiece();
     },
     update(dt, keys, prev) {
       if (over) return;
+      time += dt;
       if (keys.has('ArrowLeft') && !prev.has('ArrowLeft')) piece.x = Math.max(0, piece.x - 1);
       if (keys.has('ArrowRight') && !prev.has('ArrowRight')) piece.x = Math.min(cols - 1, piece.x + 1);
       if (keys.has('ArrowDown')) fall += dt * 3;
       fall += dt;
-      const step = 0.45;
+      const step = 0.52;
       while (fall >= step && !over) {
         fall -= step;
         if (piece.y + 1 >= rows || grid[piece.y + 1][piece.x]) {
@@ -286,8 +334,8 @@ export const createTetrisEngine: NeonEngineFactory = () => {
     draw(ctx, width, height) {
       w = width;
       h = height;
-      ctx.fillStyle = '#060910';
-      ctx.fillRect(0, 0, w, h);
+      fillNeonBg(ctx, w, h, hue);
+      drawStarfield(ctx, w, h, time, slugSeed(meta.slug));
       const cw = Math.min(w / (cols + 1), 28);
       const ch = cw;
       const ox = (w - cols * cw) / 2;
@@ -307,13 +355,14 @@ export const createTetrisEngine: NeonEngineFactory = () => {
       ctx.fillStyle = '#aab';
       ctx.textAlign = 'left';
       ctx.fillText(`SCORE ${score}`, 8, 18);
+      drawVignette(ctx, w, h);
     },
     getScore: () => score,
     isGameOver: () => over,
   };
 };
 
-export const createSpaceEngine: NeonEngineFactory = () => {
+export const createSpaceEngine: NeonEngineFactory = (meta) => {
   let w = 400;
   let h = 300;
   let px = 0;
@@ -323,6 +372,9 @@ export const createSpaceEngine: NeonEngineFactory = () => {
   let score = 0;
   let fireCd = 0;
   let horizDir = 1;
+  let lives = 3;
+  let time = 0;
+  const hue = hueFromSlug(meta.slug);
 
   return {
     init(width, height) {
@@ -339,9 +391,12 @@ export const createSpaceEngine: NeonEngineFactory = () => {
       }
       over = false;
       score = 0;
+      lives = 3;
+      time = 0;
     },
     update(dt, keys, prev) {
       if (over) return;
+      time += dt;
       const spd = 200;
       if (keys.has('ArrowLeft')) px -= spd * dt;
       if (keys.has('ArrowRight')) px += spd * dt;
@@ -384,7 +439,12 @@ export const createSpaceEngine: NeonEngineFactory = () => {
         });
       });
       enemies.forEach((e) => {
-        if (e.alive && e.y > h - 80) over = true;
+        if (e.alive && e.y > h - 80) {
+          e.alive = false;
+          lives -= 1;
+          score = Math.max(0, score - 15);
+          if (lives <= 0) over = true;
+        }
       });
       if (!enemies.some((e) => e.alive)) {
         score += 200;
@@ -400,8 +460,8 @@ export const createSpaceEngine: NeonEngineFactory = () => {
     draw(ctx, width, height) {
       w = width;
       h = height;
-      ctx.fillStyle = '#020408';
-      ctx.fillRect(0, 0, w, h);
+      fillNeonBg(ctx, w, h, hue);
+      drawStarfield(ctx, w, h, time * 1.2, slugSeed(meta.slug));
       enemies.forEach((e) => {
         if (!e.alive) return;
         ctx.fillStyle = MAG;
@@ -416,7 +476,8 @@ export const createSpaceEngine: NeonEngineFactory = () => {
       font(ctx, 10);
       ctx.fillStyle = '#aab';
       ctx.textAlign = 'left';
-      ctx.fillText(`SCORE ${score}`, 8, 18);
+      ctx.fillText(`SCORE ${score}  ♥${lives}`, 8, 18);
+      drawVignette(ctx, w, h);
     },
     getScore: () => score,
     isGameOver: () => over,
@@ -425,20 +486,26 @@ export const createSpaceEngine: NeonEngineFactory = () => {
 
 const WORDS = ['SKILL', 'STORM', 'MATH', 'READ', 'LEARN', 'PLAY', 'QUIZ', 'CODE', 'STAR'];
 
-export const createTypingEngine: NeonEngineFactory = () => {
-  let word = WORDS[0];
+export const createTypingEngine: NeonEngineFactory = (meta) => {
+  const pool = WORDS;
+  let word = pool[0];
   let idx = 0;
   let w = 400;
   let h = 300;
   let y = 80;
-  const speed = 50;
+  const speed = 42 + slug01(meta.slug, 9) * 18;
   let over = false;
   let score = 0;
+  let lives = 3;
+  let time = 0;
+  const hue = hueFromSlug(meta.slug);
+  const [tw, glow] = neonAccent(meta.slug);
 
   function nextWord() {
-    word = WORDS[Math.floor(Math.random() * WORDS.length)];
+    const pick = pool[(slugSeed(meta.slug) + score) % pool.length];
+    word = pool[Math.floor(Math.random() * pool.length)] || pick;
     idx = 0;
-    y = 50;
+    y = 48 + (slugSeed(meta.slug + word) % 24);
   }
 
   return {
@@ -448,9 +515,12 @@ export const createTypingEngine: NeonEngineFactory = () => {
       nextWord();
       over = false;
       score = 0;
+      lives = 3;
+      time = 0;
     },
     update(dt, keys, prev) {
       if (over) return;
+      time += dt;
       y += speed * dt;
       const expect = word[idx]?.toUpperCase();
       if (expect && keys.has(expect) && !prev.has(expect)) {
@@ -461,31 +531,36 @@ export const createTypingEngine: NeonEngineFactory = () => {
           nextWord();
         }
       }
-      if (y > h - 50) over = true;
+      if (y > h - 50) {
+        lives -= 1;
+        if (lives <= 0) over = true;
+        else nextWord();
+      }
     },
     draw(ctx, width, height) {
       w = width;
       h = height;
-      ctx.fillStyle = '#050812';
-      ctx.fillRect(0, 0, w, h);
+      fillNeonBg(ctx, w, h, hue);
+      drawStarfield(ctx, w, h, time, slugSeed(meta.slug));
       font(ctx, 13);
-      ctx.fillStyle = CYAN;
+      ctx.fillStyle = tw;
       ctx.textAlign = 'center';
-      ctx.shadowColor = MAG;
-      ctx.shadowBlur = 8;
+      ctx.shadowColor = glow;
+      ctx.shadowBlur = 10;
       ctx.fillText(word, w / 2, y);
       ctx.shadowBlur = 0;
       font(ctx, 9);
       ctx.fillStyle = '#8899aa';
-      ctx.fillText(`TYPED ${idx}/${word.length}`, w / 2, h - 36);
+      ctx.fillText(`TYPED ${idx}/${word.length}  ♥${lives}`, w / 2, h - 36);
       ctx.fillText(`SCORE ${score}`, w / 2, h - 18);
+      drawVignette(ctx, w, h);
     },
     getScore: () => score,
     isGameOver: () => over,
   };
 };
 
-export const createMathEngine: NeonEngineFactory = () => {
+export const createMathEngine: NeonEngineFactory = (meta) => {
   let w = 400;
   let h = 300;
   let a = 3;
@@ -495,6 +570,10 @@ export const createMathEngine: NeonEngineFactory = () => {
   let over = false;
   let score = 0;
   let t = 0;
+  let lives = 3;
+  let time = 0;
+  const hue = hueFromSlug(meta.slug);
+  const limit = 18 + Math.floor(slug01(meta.slug, 11) * 8);
 
   function gen() {
     a = 2 + Math.floor(Math.random() * 10);
@@ -513,11 +592,19 @@ export const createMathEngine: NeonEngineFactory = () => {
       over = false;
       score = 0;
       t = 0;
+      lives = 3;
+      time = 0;
     },
     update(dt, keys, prev) {
       if (over) return;
+      time += dt;
       t += dt;
-      if (t > 12) over = true;
+      if (t > limit) {
+        lives -= 1;
+        t = 0;
+        gen();
+        if (lives <= 0) over = true;
+      }
       ;[1, 2, 3, 4].forEach((n) => {
         const k = String(n);
         if (keys.has(k) && !prev.has(k)) {
@@ -526,7 +613,8 @@ export const createMathEngine: NeonEngineFactory = () => {
             gen();
             t = 0;
           } else {
-            over = true;
+            lives -= 1;
+            if (lives <= 0) over = true;
           }
         }
       });
@@ -534,8 +622,8 @@ export const createMathEngine: NeonEngineFactory = () => {
     draw(ctx, width, height) {
       w = width;
       h = height;
-      ctx.fillStyle = '#060a12';
-      ctx.fillRect(0, 0, w, h);
+      fillNeonBg(ctx, w, h, hue);
+      drawStarfield(ctx, w, h, time, slugSeed(meta.slug));
       font(ctx, 12);
       ctx.fillStyle = CYAN;
       ctx.textAlign = 'center';
@@ -547,14 +635,15 @@ export const createMathEngine: NeonEngineFactory = () => {
       });
       font(ctx, 8);
       ctx.fillStyle = '#778899';
-      ctx.fillText(`KEYS 1-4  |  SCORE ${score}`, w / 2, h - 20);
+      ctx.fillText(`KEYS 1-4  ♥${lives}  ${Math.max(0, limit - t).toFixed(1)}s  SCORE ${score}`, w / 2, h - 20);
+      drawVignette(ctx, w, h);
     },
     getScore: () => score,
     isGameOver: () => over,
   };
 };
 
-export const createQuizEngine: NeonEngineFactory = () => {
+export const createQuizEngine: NeonEngineFactory = (meta) => {
   const qs = [
     { q: '2 + 2 = ?', a: 0, o: ['4', '3', '5', '22'] },
     { q: 'Capital of France?', a: 0, o: ['Paris', 'London', 'Berlin', 'Madrid'] },
@@ -565,6 +654,9 @@ export const createQuizEngine: NeonEngineFactory = () => {
   let h = 300;
   let over = false;
   let score = 0;
+  let lives = 3;
+  let time = 0;
+  const hue = hueFromSlug(meta.slug);
 
   return {
     init(width, height) {
@@ -573,9 +665,12 @@ export const createQuizEngine: NeonEngineFactory = () => {
       wi = 0;
       over = false;
       score = 0;
+      lives = 3;
+      time = 0;
     },
     update(_dt, keys, prev) {
       if (over) return;
+      time += _dt;
       ;[1, 2, 3, 4].forEach((n) => {
         const k = String(n);
         if (keys.has(k) && !prev.has(k)) {
@@ -584,15 +679,18 @@ export const createQuizEngine: NeonEngineFactory = () => {
             score += 100;
             wi++;
             if (wi >= qs.length) wi = 0;
-          } else over = true;
+          } else {
+            lives -= 1;
+            if (lives <= 0) over = true;
+          }
         }
       });
     },
     draw(ctx, width, height) {
       w = width;
       h = height;
-      ctx.fillStyle = '#070b14';
-      ctx.fillRect(0, 0, w, h);
+      fillNeonBg(ctx, w, h, hue);
+      drawStarfield(ctx, w, h, time, slugSeed(meta.slug));
       const q = qs[wi];
       font(ctx, 9);
       ctx.fillStyle = CYAN;
@@ -604,14 +702,15 @@ export const createQuizEngine: NeonEngineFactory = () => {
       });
       ctx.fillStyle = '#778899';
       font(ctx, 8);
-      ctx.fillText(`SCORE ${score}`, w / 2, h - 16);
+      ctx.fillText(`SCORE ${score}  ♥${lives}`, w / 2, h - 16);
+      drawVignette(ctx, w, h);
     },
     getScore: () => score,
     isGameOver: () => over,
   };
 };
 
-export const createMemoryEngine: NeonEngineFactory = () => {
+export const createMemoryEngine: NeonEngineFactory = (meta) => {
   let w = 400;
   let h = 300;
   const pairs = 6;
@@ -619,6 +718,9 @@ export const createMemoryEngine: NeonEngineFactory = () => {
   let first: number | null = null;
   let over = false;
   let score = 0;
+  let time = 0;
+  const hue = hueFromSlug(meta.slug);
+  const [c1, c2] = neonAccent(meta.slug);
 
   return {
     init(width, height) {
@@ -629,9 +731,11 @@ export const createMemoryEngine: NeonEngineFactory = () => {
       first = null;
       over = false;
       score = 0;
+      time = 0;
     },
     update(_dt, keys, prev) {
       if (over) return;
+      time += _dt;
       for (let i = 0; i < 12; i++) {
         const k = ['Digit1', 'Digit2', 'Digit3', 'Digit4', 'Digit5', 'Digit6', 'KeyQ', 'KeyW', 'KeyE', 'KeyR', 'KeyT', 'KeyY'][i];
         if (keys.has(k) && !prev.has(k)) {
@@ -654,8 +758,8 @@ export const createMemoryEngine: NeonEngineFactory = () => {
     draw(ctx, width, height) {
       w = width;
       h = height;
-      ctx.fillStyle = '#060910';
-      ctx.fillRect(0, 0, w, h);
+      fillNeonBg(ctx, w, h, hue);
+      drawStarfield(ctx, w, h, time * 0.6, slugSeed(meta.slug));
       const cols = 4;
       const cell = Math.min(w / 5, 56);
       const ox = (w - cols * cell) / 2;
@@ -665,11 +769,11 @@ export const createMemoryEngine: NeonEngineFactory = () => {
         const col = i % cols;
         const x = ox + col * cell;
         const y = oy + r * (cell * 0.85);
-        ctx.fillStyle = c.done ? '#1a3322' : c.flip ? MAG : '#223344';
+        ctx.fillStyle = c.done ? '#1a3322' : c.flip ? c2 : '#223344';
         ctx.fillRect(x, y, cell - 6, cell - 10);
         if (c.flip || c.done) {
           font(ctx, 12);
-          ctx.fillStyle = CYAN;
+          ctx.fillStyle = c1;
           ctx.textAlign = 'center';
           ctx.fillText(String(c.id), x + cell / 2 - 3, y + cell / 2);
         }
@@ -678,13 +782,14 @@ export const createMemoryEngine: NeonEngineFactory = () => {
       ctx.fillStyle = '#8899aa';
       ctx.textAlign = 'center';
       ctx.fillText(`1-6 Q-Y keys  SCORE ${score}`, w / 2, h - 12);
+      drawVignette(ctx, w, h);
     },
     getScore: () => score,
     isGameOver: () => cards.length > 0 && cards.every((c) => c.done),
   };
 };
 
-export const createScrambleEngine: NeonEngineFactory = () => {
+export const createScrambleEngine: NeonEngineFactory = (meta) => {
   const pool = ['LEARN', 'STORM', 'BRAIN', 'MATH', 'READ'];
   let word = 'LEARN';
   let scrambled = 'NRAEL';
@@ -693,6 +798,8 @@ export const createScrambleEngine: NeonEngineFactory = () => {
   let h = 300;
   let over = false;
   let score = 0;
+  let time = 0;
+  const hue = hueFromSlug(meta.slug);
 
   function pick() {
     word = pool[Math.floor(Math.random() * pool.length)];
@@ -707,9 +814,11 @@ export const createScrambleEngine: NeonEngineFactory = () => {
       pick();
       over = false;
       score = 0;
+      time = 0;
     },
     update(_dt, keys, prev) {
       if (over) return;
+      time += _dt;
       'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').forEach((L) => {
         if (keys.has(L) && !prev.has(L)) {
           buf += L;
@@ -724,25 +833,26 @@ export const createScrambleEngine: NeonEngineFactory = () => {
     draw(ctx, width, height) {
       w = width;
       h = height;
-      ctx.fillStyle = '#050812';
-      ctx.fillRect(0, 0, w, h);
+      fillNeonBg(ctx, w, h, hue);
+      drawStarfield(ctx, w, h, time, slugSeed(meta.slug + 'scr'));
       font(ctx, 11);
       ctx.fillStyle = AMBER;
       ctx.textAlign = 'center';
       ctx.fillText(scrambled, w / 2, h / 2 - 20);
       font(ctx, 9);
       ctx.fillStyle = CYAN;
-      ctx.fillText(`TYPE: ${word.length} LETTERS`, w / 2, h / 2 + 16);
+      ctx.fillText(`UNSCRAMBLE → ${word.length} LETTERS`, w / 2, h / 2 + 16);
       ctx.fillStyle = '#aab';
       ctx.fillText(buf.slice(-12), w / 2, h / 2 + 44);
       ctx.fillText(`SCORE ${score}`, w / 2, h - 20);
+      drawVignette(ctx, w, h);
     },
     getScore: () => score,
     isGameOver: () => over,
   };
 };
 
-export const createAsteroidsEngine: NeonEngineFactory = () => {
+export const createAsteroidsEngine: NeonEngineFactory = (meta) => {
   let w = 400;
   let h = 300;
   let x = 0;
@@ -754,6 +864,10 @@ export const createAsteroidsEngine: NeonEngineFactory = () => {
   let shots: { x: number; y: number; a: number }[] = [];
   let over = false;
   let score = 0;
+  let lives = 3;
+  let invuln = 0;
+  let time = 0;
+  const hue = hueFromSlug(meta.slug);
 
   return {
     init(width, height) {
@@ -770,9 +884,14 @@ export const createAsteroidsEngine: NeonEngineFactory = () => {
       }));
       over = false;
       score = 0;
+      lives = 3;
+      invuln = 2;
+      time = 0;
     },
     update(dt, keys, prev) {
       if (over) return;
+      time += dt;
+      invuln = Math.max(0, invuln - dt);
       if (keys.has('ArrowLeft')) ang -= 2.5 * dt;
       if (keys.has('ArrowRight')) ang += 2.5 * dt;
       if (keys.has('ArrowUp')) {
@@ -803,7 +922,14 @@ export const createAsteroidsEngine: NeonEngineFactory = () => {
       });
       rocks = rocks.filter((r) => r.s > 4);
       rocks.forEach((r) => {
-        if (Math.hypot(x - r.x, y - r.y) < r.s / 2 + 8) over = true;
+        if (Math.hypot(x - r.x, y - r.y) < r.s / 2 + 8 && invuln <= 0) {
+          lives -= 1;
+          invuln = 2.2;
+          vx = vy = 0;
+          x = w / 2;
+          y = h / 2;
+          if (lives <= 0) over = true;
+        }
       });
       if (rocks.length === 0) {
         rocks = Array.from({ length: 8 }, () => ({
@@ -817,8 +943,8 @@ export const createAsteroidsEngine: NeonEngineFactory = () => {
     draw(ctx, width, height) {
       w = width;
       h = height;
-      ctx.fillStyle = '#020308';
-      ctx.fillRect(0, 0, w, h);
+      fillNeonBg(ctx, w, h, hue);
+      drawStarfield(ctx, w, h, time * 0.4, slugSeed(meta.slug));
       rocks.forEach((r) => {
         if (r.s <= 0) return;
         ctx.strokeStyle = CYAN;
@@ -827,6 +953,7 @@ export const createAsteroidsEngine: NeonEngineFactory = () => {
         ctx.stroke();
       });
       ctx.save();
+      ctx.globalAlpha = invuln > 0 ? 0.4 + 0.5 * Math.sin(time * 20) : 1;
       ctx.translate(x, y);
       ctx.rotate(ang);
       ctx.strokeStyle = AMBER;
@@ -837,6 +964,7 @@ export const createAsteroidsEngine: NeonEngineFactory = () => {
       ctx.closePath();
       ctx.stroke();
       ctx.restore();
+      ctx.globalAlpha = 1;
       shots.forEach((s) => {
         ctx.fillStyle = '#fff';
         ctx.fillRect(s.x, s.y, 3, 3);
@@ -844,14 +972,15 @@ export const createAsteroidsEngine: NeonEngineFactory = () => {
       font(ctx, 9);
       ctx.fillStyle = '#aab';
       ctx.textAlign = 'left';
-      ctx.fillText(`SCORE ${score}  ARROWS+SPACE`, 8, 16);
+      ctx.fillText(`SCORE ${score}  ♥${lives}  ARROWS+SPACE`, 8, 16);
+      drawVignette(ctx, w, h);
     },
     getScore: () => score,
     isGameOver: () => over,
   };
 };
 
-export const createFlappyEngine: NeonEngineFactory = () => {
+export const createFlappyEngine: NeonEngineFactory = (meta) => {
   let w = 400;
   let h = 300;
   let y = 150;
@@ -860,6 +989,10 @@ export const createFlappyEngine: NeonEngineFactory = () => {
   let pipes: { x: number; gap: number }[] = [];
   let over = false;
   let score = 0;
+  let lives = 3;
+  let invuln = 0;
+  let time = 0;
+  const hue = hueFromSlug(meta.slug);
 
   return {
     init(width, height) {
@@ -874,9 +1007,14 @@ export const createFlappyEngine: NeonEngineFactory = () => {
       ];
       over = false;
       score = 0;
+      lives = 3;
+      invuln = 1.2;
+      time = 0;
     },
     update(dt, keys, prev) {
       if (over) return;
+      time += dt;
+      invuln = Math.max(0, invuln - dt);
       vy += 520 * dt;
       if (keys.has(' ') && !prev.has(' ')) vy = -240;
       y += vy * dt;
@@ -893,15 +1031,29 @@ export const createFlappyEngine: NeonEngineFactory = () => {
       pipes.forEach((p) => {
         const gh = p.gap;
         const gy = h / 2 + (p.gap % 80) - 40;
-        if (Math.abs(p.x - px) < 20 && (y < gy - gh / 2 || y > gy + gh / 2)) over = true;
+        const hit =
+          Math.abs(p.x - px) < 20 && (y < gy - gh / 2 || y > gy + gh / 2);
+        if (hit && invuln <= 0) {
+          lives -= 1;
+          invuln = 1.4;
+          y = h / 2;
+          vy = 0;
+          if (lives <= 0) over = true;
+        }
       });
-      if (y > h - 20 || y < 0) over = true;
+      if ((y > h - 20 || y < 0) && invuln <= 0) {
+        lives -= 1;
+        invuln = 1.4;
+        y = h / 2;
+        vy = 0;
+        if (lives <= 0) over = true;
+      }
     },
     draw(ctx, width, height) {
       w = width;
       h = height;
-      ctx.fillStyle = '#031018';
-      ctx.fillRect(0, 0, w, h);
+      fillNeonBg(ctx, w, h, hue);
+      drawStarfield(ctx, w, h, time * 0.8, slugSeed(meta.slug));
       pipes.forEach((p) => {
         const gy = h / 2 + (p.gap % 80) - 40;
         const gh = p.gap;
@@ -909,18 +1061,21 @@ export const createFlappyEngine: NeonEngineFactory = () => {
         ctx.fillRect(p.x, 0, 24, gy - gh / 2);
         ctx.fillRect(p.x, gy + gh / 2, 24, h);
       });
+      ctx.globalAlpha = invuln > 0 ? 0.45 + 0.45 * Math.sin(time * 18) : 1;
       ctx.fillStyle = CYAN;
       ctx.fillRect(68, y - 8, 24, 16);
+      ctx.globalAlpha = 1;
       font(ctx, 9);
       ctx.fillStyle = '#aab';
-      ctx.fillText(`SPACE  SCORE ${score}`, 8, 16);
+      ctx.fillText(`SPACE  SCORE ${score}  ♥${lives}`, 8, 16);
+      drawVignette(ctx, w, h);
     },
     getScore: () => score,
     isGameOver: () => over,
   };
 };
 
-export const createGeometryEngine: NeonEngineFactory = () => {
+export const createGeometryEngine: NeonEngineFactory = (meta) => {
   let w = 400;
   let h = 300;
   let py = 0;
@@ -928,6 +1083,10 @@ export const createGeometryEngine: NeonEngineFactory = () => {
   let obs: { x: number; h: number }[] = [];
   let over = false;
   let score = 0;
+  let lives = 3;
+  let invuln = 0;
+  let time = 0;
+  const hue = hueFromSlug(meta.slug + '-geo');
 
   return {
     init(width, height) {
@@ -941,9 +1100,14 @@ export const createGeometryEngine: NeonEngineFactory = () => {
       ];
       over = false;
       score = 0;
+      lives = 3;
+      invuln = 1;
+      time = 0;
     },
     update(dt, keys, prev) {
       if (over) return;
+      time += dt;
+      invuln = Math.max(0, invuln - dt);
       vy += 900 * dt;
       if (keys.has(' ') && !prev.has(' ')) vy = -420;
       py += vy * dt;
@@ -956,16 +1120,29 @@ export const createGeometryEngine: NeonEngineFactory = () => {
         }
         const ground = h - 50;
         const gapTop = ground - o.h;
-        if (o.x > 60 && o.x < 100 && (py < gapTop - 20 || py > ground - 18)) over = true;
+        const crush = o.x > 60 && o.x < 100 && (py < gapTop - 20 || py > ground - 18);
+        if (crush && invuln <= 0) {
+          lives -= 1;
+          invuln = 1.2;
+          py = h * 0.45;
+          vy = 0;
+          if (lives <= 0) over = true;
+        }
       });
-      if (py > h - 40) over = true;
+      if (py > h - 40 && invuln <= 0) {
+        lives -= 1;
+        invuln = 1.2;
+        py = h * 0.5;
+        vy = 0;
+        if (lives <= 0) over = true;
+      }
       if (py < 0) py = 0;
     },
     draw(ctx, width, height) {
       w = width;
       h = height;
-      ctx.fillStyle = '#04060c';
-      ctx.fillRect(0, 0, w, h);
+      fillNeonBg(ctx, w, h, hue);
+      drawStarfield(ctx, w, h, time * 0.5, slugSeed(meta.slug));
       ctx.strokeStyle = '#223344';
       ctx.beginPath();
       ctx.moveTo(0, h - 40);
@@ -976,18 +1153,21 @@ export const createGeometryEngine: NeonEngineFactory = () => {
         ctx.fillRect(o.x, 0, 22, o.h);
         ctx.fillRect(o.x, h - 40, 22, 40);
       });
+      ctx.globalAlpha = invuln > 0 ? 0.5 + 0.45 * Math.sin(time * 16) : 1;
       ctx.fillStyle = CYAN;
       ctx.fillRect(56, py - 10, 28, 20);
+      ctx.globalAlpha = 1;
       font(ctx, 9);
       ctx.fillStyle = '#aab';
-      ctx.fillText(`SPACE JUMP  ${score}`, 8, 16);
+      ctx.fillText(`SPACE JUMP  ${score}  ♥${lives}`, 8, 16);
+      drawVignette(ctx, w, h);
     },
     getScore: () => score,
     isGameOver: () => over,
   };
 };
 
-export const createMazeEngine: NeonEngineFactory = () => {
+export const createMazeEngine: NeonEngineFactory = (meta) => {
   let w = 400;
   let h = 300;
   const cols = 11;
@@ -997,6 +1177,8 @@ export const createMazeEngine: NeonEngineFactory = () => {
   let py = 1;
   let over = false;
   let score = 0;
+  let time = 0;
+  const hue = hueFromSlug(meta.slug + '-maze');
 
   function gen() {
     grid = Array.from({ length: rows }, (_, r) =>
@@ -1014,9 +1196,11 @@ export const createMazeEngine: NeonEngineFactory = () => {
       py = 1;
       over = false;
       score = 0;
+      time = 0;
     },
     update(_dt, keys, prev) {
       if (over) return;
+      time += _dt;
       const tryMove = (dx: number, dy: number) => {
         const nx = px + dx;
         const ny = py + dy;
@@ -1037,8 +1221,8 @@ export const createMazeEngine: NeonEngineFactory = () => {
     draw(ctx, width, height) {
       w = width;
       h = height;
-      ctx.fillStyle = '#050810';
-      ctx.fillRect(0, 0, w, h);
+      fillNeonBg(ctx, w, h, hue);
+      drawStarfield(ctx, w, h, time * 0.3, slugSeed(meta.slug));
       const cw = Math.min(w / (cols + 2), h / (rows + 3));
       const ox = (w - cols * cw) / 2;
       const oy = 36;
@@ -1060,13 +1244,14 @@ export const createMazeEngine: NeonEngineFactory = () => {
       font(ctx, 8);
       ctx.fillStyle = '#aab';
       ctx.fillText('ARROWS TO EXIT', 8, 16);
+      drawVignette(ctx, w, h);
     },
     getScore: () => score,
     isGameOver: () => over,
   };
 };
 
-export const createTdEngine: NeonEngineFactory = () => {
+export const createTdEngine: NeonEngineFactory = (meta) => {
   let w = 400;
   let h = 300;
   let enemies: { x: number; lane: number }[] = [];
@@ -1074,6 +1259,9 @@ export const createTdEngine: NeonEngineFactory = () => {
   let cd = 0;
   let over = false;
   let score = 0;
+  let lives = 12;
+  let time = 0;
+  const hue = hueFromSlug(meta.slug + '-td');
 
   return {
     init(width, height) {
@@ -1083,9 +1271,12 @@ export const createTdEngine: NeonEngineFactory = () => {
       cd = 0;
       over = false;
       score = 0;
+      lives = 12;
+      time = 0;
     },
     update(dt, keys, prev) {
       if (over) return;
+      time += dt;
       cd -= dt;
       if (Math.random() < 0.45 * dt) enemies.push({ x: w + 20, lane: Math.floor(Math.random() * 3) });
       enemies.forEach((e) => (e.x -= 70 * dt));
@@ -1099,16 +1290,21 @@ export const createTdEngine: NeonEngineFactory = () => {
         }
         cd = 0.2;
       }
-      enemies.forEach((e) => {
+      const kept: typeof enemies = [];
+      for (const e of enemies) {
         const tx = turrets[e.lane];
-        if (e.x < tx + 20 && e.x > tx - 20) over = true;
-      });
+        if (e.x < tx + 20 && e.x > tx - 20) {
+          lives -= 1;
+          if (lives <= 0) over = true;
+        } else kept.push(e);
+      }
+      enemies = kept;
     },
     draw(ctx, width, height) {
       w = width;
       h = height;
-      ctx.fillStyle = '#020508';
-      ctx.fillRect(0, 0, w, h);
+      fillNeonBg(ctx, w, h, hue);
+      drawStarfield(ctx, w, h, time * 0.7, slugSeed(meta.slug));
       turrets.forEach((tx) => {
         ctx.fillStyle = CYAN;
         ctx.fillRect(tx - 15, h - 50, 30, 24);
@@ -1120,7 +1316,8 @@ export const createTdEngine: NeonEngineFactory = () => {
       });
       font(ctx, 8);
       ctx.fillStyle = '#aab';
-      ctx.fillText(`SPACE FIRE  SCORE ${score}`, 8, 16);
+      ctx.fillText(`SPACE FIRE  SCORE ${score}  ♥${lives}`, 8, 16);
+      drawVignette(ctx, w, h);
     },
     getScore: () => score,
     isGameOver: () => over,

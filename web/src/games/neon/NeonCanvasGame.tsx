@@ -14,6 +14,8 @@ function PlayIcon({ className }: { className?: string }) {
 interface Props {
   engineKey: string;
   gameTitle: string;
+  /** Catalog id — drives per-title theme / tuning in shared neon engines */
+  gameSlug: string;
   onClose: (finalScore: number) => void;
   /** Shown on the idle / insert-coin screen */
   description?: string;
@@ -29,6 +31,7 @@ interface Props {
 export function NeonCanvasGame({
   engineKey,
   gameTitle,
+  gameSlug,
   onClose,
   description,
   rating,
@@ -74,7 +77,7 @@ export function NeonCanvasGame({
     if (!ctx) return;
 
     const factory = getGameEngine(engineKey);
-    const engine = factory(gameTitle);
+    const engine = factory({ title: gameTitle, slug: gameSlug || 'game' });
     engineRef.current = engine;
     endedRef.current = false;
     resize();
@@ -137,7 +140,7 @@ export function NeonCanvasGame({
       ro.disconnect();
       engineRef.current = null;
     };
-  }, [engineKey, gameTitle, resize, gameStarted]);
+  }, [engineKey, gameTitle, gameSlug, resize, gameStarted]);
 
   const exit = () => {
     if (endedRef.current) return;

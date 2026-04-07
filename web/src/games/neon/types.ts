@@ -19,6 +19,9 @@ export type NeonEngineKey =
   | 'td'
   | 'placeholder';
 
+/** Passed into every factory so visuals / tuning can vary by game id (slug). */
+export type NeonGameMeta = { title: string; slug: string };
+
 export interface NeonEngineInstance {
   /** Called when canvas size or DPR changes */
   init(width: number, height: number, dpr: number): void;
@@ -28,4 +31,4 @@ export interface NeonEngineInstance {
   isGameOver(): boolean;
 }
 
-export type NeonEngineFactory = (gameTitle: string) => NeonEngineInstance;
+export type NeonEngineFactory = (meta: NeonGameMeta) => NeonEngineInstance;
