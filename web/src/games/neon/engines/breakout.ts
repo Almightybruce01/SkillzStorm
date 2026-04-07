@@ -1,3 +1,5 @@
+import { sfxBrick, sfxLevelClear, sfxLoseBall, sfxMultiball, sfxPaddle } from '../audio/sfx';
+import { drawParticles, integrateParticles, spawnBurst, type NeonParticle } from '../fx/particles';
 import type { NeonEngineFactory } from '../types';
 import { drawStarfield, drawVignette, fillNeonBg } from './canvasFx';
 import { hueFromSlug, slugSeed } from './slugTheme';
@@ -23,6 +25,7 @@ export const createBreakoutEngine: NeonEngineFactory = (meta) => {
   let time = 0;
   const hue = hueFromSlug(meta.slug);
   const multiball = meta.tuning.breakoutMultiball;
+  let particles: NeonParticle[] = [];
 
   function resetBalls() {
     const s = meta.tuning.speedScale;
@@ -42,6 +45,7 @@ export const createBreakoutEngine: NeonEngineFactory = (meta) => {
       h = height;
       px = width / 2 - 50;
       bricks = Array(cols * rows).fill(true);
+      particles = [];
       resetBalls();
       over = false;
       score = 0;
@@ -51,6 +55,8 @@ export const createBreakoutEngine: NeonEngineFactory = (meta) => {
     update(dt, keys) {
       if (over) return;
       time += dt * meta.tuning.starfieldParallax;
+      integrateParticles(particles, dt, 320);
+
       const spd = 260 * meta.tuning.speedScale;
       if (keys.has('ArrowLeft')) px -= spd * dt;
       if (keys.has('ArrowRight')) px += spd * dt;
@@ -65,7 +71,10 @@ export const createBreakoutEngine: NeonEngineFactory = (meta) => {
         if (b.y < 8) b.vy *= -1;
       }
 
+      const nBefore = balls.length;
       balls = balls.filter((b) => b.y <= h - 4);
+      if (balls.length < nBefore) sfxLoseBall();
+
       if (balls.length === 0) {
         lives -= 1;
         if (lives <= 0) over = true;
@@ -75,14 +84,16 @@ export const createBreakoutEngine: NeonEngineFactory = (meta) => {
 
       const pw = 100;
       for (const b of balls) {
-        if (b.y > h - 48 && b.y < h - 38 && b.x > px && b.x < px + pw) {
+        if (b.vy > 0 && b.y > h - 48 && b.y < h - 38 && b.x > px && b.x < px + pw) {
           b.vy = -Math.abs(b.vy);
           score += 2;
+          sfxPaddle();
         }
       }
 
       const bw = (w - 24) / cols;
       const bh = 16;
+      const baseHue = hueFromSlug(meta.slug + '-brick');
       const spawn: Ball[] = [];
       for (const b of balls) {
         let hitAny = false;
@@ -97,6 +108,11 @@ export const createBreakoutEngine: NeonEngineFactory = (meta) => {
               b.vy *= -1;
               score += 15;
               hitAny = true;
+              sfxBrick();
+              const brickHue = (baseHue + (c + r * 3) * 14) % 360;
+              spawnBurst(particles, bx0 + (bw - 4) * 0.45, by0 + bh * 0.5, 10, `hsl(${brickHue}, 88%, 68%)`, {
+                spread: 0.85,
+              });
               if (
                 multiball &&
                 balls.length + spawn.length < MAX_BALLS &&
@@ -108,6 +124,7 @@ export const createBreakoutEngine: NeonEngineFactory = (meta) => {
                   vx: -b.vx * 0.85 + (Math.random() - 0.5) * 100 * meta.tuning.speedScale,
                   vy: -Math.abs(b.vy) * 0.92,
                 });
+                sfxMultiball();
               }
             }
           }
@@ -117,6 +134,7 @@ export const createBreakoutEngine: NeonEngineFactory = (meta) => {
 
       if (!bricks.some(Boolean)) {
         score += 500;
+        sfxLevelClear();
         bricks = Array(cols * rows).fill(true);
         resetBalls();
       }
@@ -144,6 +162,7 @@ export const createBreakoutEngine: NeonEngineFactory = (meta) => {
         ctx.fillStyle = '#fff';
         ctx.fill();
       }
+      drawParticles(ctx, particles);
       font(ctx, 10);
       ctx.fillStyle = '#aab';
       ctx.textAlign = 'left';

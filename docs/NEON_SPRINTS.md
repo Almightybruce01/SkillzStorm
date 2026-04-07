@@ -28,8 +28,9 @@ Banks expanded: more **math** rounds per grade, **quiz** items, **typing** pool 
 
 ## Pass 4 — Presentation
 
-- [ ] Shared particle helper built on Canvas 2D
-- [ ] Web Audio SFX layer (optional music stinger)
+- [x] Shared particle helper (`fx/particles.ts`) — bursts + integrate + draw
+- [x] Web Audio SFX (`audio/sfx.ts`) — unlock on PRESS START + rAF; breakout + snake wired
+- [ ] Optional short music stinger / ambient loop (deferred)
 
 ## Pass 5 — Meta-game
 

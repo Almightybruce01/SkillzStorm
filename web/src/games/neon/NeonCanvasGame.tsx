@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import type { Grade } from '../questionBank';
+import { unlockAudio } from './audio/sfx';
 import { getGameEngine } from './getGameEngine';
 import type { NeonEngineInstance } from './types';
 import { CompactHorizontalAd } from '../../components/ads/AdBanner';
@@ -75,6 +76,7 @@ export function NeonCanvasGame({
 
   useEffect(() => {
     if (!gameStarted) return;
+    unlockAudio();
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
@@ -153,7 +155,10 @@ export function NeonCanvasGame({
     onCloseRef.current(s);
   };
 
-  const startGame = () => setGameStarted(true);
+  const startGame = () => {
+    unlockAudio();
+    setGameStarted(true);
+  };
 
   const idle = !gameStarted;
 

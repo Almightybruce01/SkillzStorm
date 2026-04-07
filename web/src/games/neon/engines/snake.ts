@@ -1,3 +1,5 @@
+import { sfxEat } from '../audio/sfx';
+import { drawParticles, integrateParticles, spawnBurst, type NeonParticle } from '../fx/particles';
 import type { NeonEngineFactory } from '../types';
 import { drawStarfield, drawVignette, fillNeonBg } from './canvasFx';
 import { hueFromSlug, neonAccent, slug01, slugSeed } from './slugTheme';
@@ -17,6 +19,7 @@ export const createSnakeEngine: NeonEngineFactory = (meta) => {
   let lives = 3;
   let time = 0;
   let ghostRem = 0;
+  let particles: NeonParticle[] = [];
   const hue = hueFromSlug(meta.slug);
   const baseStep = 0.1 + slug01(meta.slug, 2) * 0.05;
   const [snakeC, headC, foodC] = neonAccent(meta.slug);
@@ -64,10 +67,12 @@ export const createSnakeEngine: NeonEngineFactory = (meta) => {
       lives = meta.tuning.lives;
       time = 0;
       ghostRem = meta.tuning.snakeGhostPasses;
+      particles = [];
     },
     update(dt, keys, _prev) {
       if (over) return;
       time += dt * meta.tuning.starfieldParallax;
+      integrateParticles(particles, dt, 180);
       if (keys.has('ArrowUp') && dir.y === 0) dir = { x: 0, y: -1 };
       else if (keys.has('ArrowDown') && dir.y === 0) dir = { x: 0, y: 1 };
       else if (keys.has('ArrowLeft') && dir.x === 0) dir = { x: -1, y: 0 };
@@ -95,6 +100,15 @@ export const createSnakeEngine: NeonEngineFactory = (meta) => {
         snake.unshift(nh);
         if (nh.x === food.x && nh.y === food.y) {
           score += 10;
+          sfxEat();
+          spawnBurst(
+            particles,
+            food.x * gs + gs * 0.5,
+            food.y * gs + gs * 0.5,
+            14,
+            foodC,
+            { spread: 0.9 }
+          );
           spawnFood();
         } else snake.pop();
       }
@@ -118,11 +132,12 @@ export const createSnakeEngine: NeonEngineFactory = (meta) => {
       ctx.shadowBlur = 0;
       ctx.fillStyle = foodC;
       ctx.fillRect(food.x * gs + 2, food.y * gs + 2, gs - 4, gs - 4);
+      drawParticles(ctx, particles);
       font(ctx, 10);
       ctx.fillStyle = '#aabbcc';
       ctx.textAlign = 'left';
-      const gh = ghostRem > 0 ? `  👻${ghostRem}` : '';
-      ctx.fillText(`SCORE ${score}  ♥${lives}${gh}`, 8, 16);
+      const ghostTag = ghostRem > 0 ? `  👻${ghostRem}` : '';
+      ctx.fillText(`SCORE ${score}  ♥${lives}${ghostTag}`, 8, 16);
       drawVignette(ctx, w, h);
     },
     getScore: () => score,
