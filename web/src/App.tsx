@@ -41,7 +41,7 @@ function AppRoutes() {
       </div>
 
       <Navbar />
-      <NavBelowAd refreshKey={loc.pathname} />
+      <NavBelowAd refreshKey={`${loc.pathname}${loc.search}-${loc.key}`} />
       <RouteInterstitialHost />
       <main className={`flex-1 w-full relative z-10 ${mainPad}`}>
           <Routes>
@@ -68,7 +68,7 @@ function AppRoutes() {
           </Routes>
       </main>
       <Footer />
-      <BottomStickyAd refreshKey={loc.pathname} />
+      <BottomStickyAd refreshKey={`${loc.pathname}${loc.search}-${loc.key}`} />
     </div>
   );
 }
