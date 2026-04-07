@@ -113,19 +113,17 @@ const CATEGORY_FALLBACK: Record<GameInfo['category'], NeonEngineKey> = {
   StormPuzzle: 'memory',
   StormQuick: 'quiz',
   Storm3D: 'geometry',
-  StormVR: 'placeholder',
+  StormVR: 'geometry',
   StormNeon: 'typing',
   StormMario: 'geometry',
   StormRetro: 'space',
   StormEduPlus: 'quiz',
-  StormElite: 'placeholder',
+  StormElite: 'geometry',
 };
 
 export function resolveNeonEngine(game: GameInfo): NeonEngineKey {
   if (game.neonEngine) return game.neonEngine as NeonEngineKey;
   const mapped = ENGINE_BY_ID[game.id];
   if (mapped) return mapped;
-  const inferred = inferNeonEngineFromSlug(game.id);
-  if (inferred) return inferred;
-  return CATEGORY_FALLBACK[game.category] ?? 'placeholder';
+  return inferNeonEngineFromSlug(game.id) ?? CATEGORY_FALLBACK[game.category] ?? 'geometry';
 }

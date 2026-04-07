@@ -196,10 +196,6 @@ export function NeonCanvasGame({
                 {gameTitle.toUpperCase() || 'LOADING...'}
               </h2>
 
-              <div className="w-full max-w-[320px]">
-                <CompactHorizontalAd />
-              </div>
-
               <div className="font-display text-[9px] text-[#ff0066]/80 flex items-center gap-2">
                 <PlayIcon className="w-3 h-3" /> INSERT COIN
               </div>
@@ -226,10 +222,15 @@ export function NeonCanvasGame({
               <button
                 type="button"
                 onClick={startGame}
-                className="arcade-btn arcade-btn-primary text-sm px-12 py-4 w-full justify-center flex items-center"
+                className="relative z-20 arcade-btn arcade-btn-primary text-sm px-12 py-4 w-full justify-center flex items-center cursor-pointer"
               >
                 <PlayIcon className="w-5 h-5 mr-2 shrink-0" /> PRESS START
               </button>
+
+              {/* Ad below the start button so AdSense layers cannot sit on top of the primary CTA */}
+              <div className="relative z-10 w-full max-w-[320px] max-h-[100px] overflow-hidden opacity-90 [&_.ad-container]:max-h-[90px]">
+                <CompactHorizontalAd />
+              </div>
 
               {(typeof rating === 'number' || playersLabel) && (
                 <div className="font-display text-[8px] text-slate-500 flex items-center gap-2 flex-wrap justify-center">

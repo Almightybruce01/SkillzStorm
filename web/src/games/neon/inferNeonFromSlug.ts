@@ -3,7 +3,7 @@ import type { NeonEngineKey } from './types';
 /**
  * Map SKILLZSTORM_COMPLETE seed slugs → bundled neon engine (first match wins).
  */
-export function inferNeonEngineFromSlug(slug: string): NeonEngineKey | undefined {
+export function inferNeonEngineFromSlug(slug: string): NeonEngineKey {
   const s = slug.toLowerCase();
 
   const rules: { re: RegExp; k: NeonEngineKey }[] = [
@@ -46,5 +46,20 @@ export function inferNeonEngineFromSlug(slug: string): NeonEngineKey | undefined
     if (re.test(s)) return k;
   }
 
-  return undefined;
+  // Broad fallbacks so seed-catalog slugs always get a playable engine
+  if (/(quiz|trivia|exam|spelling|vocab|grammar|science|history|geo|capital|learn|edu|school)/.test(s)) return 'quiz';
+  if (/(math|number|algebra|fraction|count|calc)/.test(s)) return 'math';
+  if (/(type|word|letter|spell|read)/.test(s)) return 'typing';
+  if (/(snake|worm|slither)/.test(s)) return 'snake';
+  if (/(break|brick|pong|paddle)/.test(s)) return 'breakout';
+  if (/(tetris|block|stack)/.test(s)) return 'tetris';
+  if (/(space|invader|galaga|shooter|blast|raid)/.test(s)) return 'space';
+  if (/(asteroid|cosmic)/.test(s)) return 'asteroids';
+  if (/(maze|dungeon|labyrinth|pac)/.test(s)) return 'maze';
+  if (/(tower|defense|td)/.test(s)) return 'td';
+  if (/(memory|match|card|flip)/.test(s)) return 'memory';
+  if (/(scramble|anagram|jumble)/.test(s)) return 'scramble';
+  if (/(race|kart|track|drift|car|drive|highway|rally|circuit)/.test(s)) return 'geometry';
+
+  return 'geometry';
 }

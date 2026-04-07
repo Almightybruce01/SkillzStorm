@@ -12,8 +12,9 @@ const catColorMap: Record<string, string> = {
 };
 
 export function GameDetailPage() {
-  const { gameId } = useParams<{ gameId: string }>();
-  const game = allGames.find(g => g.id === gameId);
+  const { gameId: rawId } = useParams<{ gameId: string }>();
+  const gameId = rawId ? decodeURIComponent(rawId) : '';
+  const game = allGames.find((g) => g.id === gameId);
   const [playing, setPlaying] = useState(false);
   const [selectedGrade, setSelectedGrade] = useState<GradeLevel | null>(null);
 

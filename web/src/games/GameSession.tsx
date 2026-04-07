@@ -19,8 +19,9 @@ interface Props {
  * - Uses neon canvas engines site-wide; set `game.neonEngine` or use legacy React engines via `useReactEngine`
  */
 export function GameSession({ game, grade }: Props) {
-  const [showPreAd, setShowPreAd] = useState(true);
-  const [readyToPlay, setReadyToPlay] = useState(false);
+  /** Pre-roll disabled: it stacked with INSERT COIN and AdSense often blocked real starts. Neon idle screen is enough. */
+  const [showPreAd, setShowPreAd] = useState(false);
+  const [readyToPlay, setReadyToPlay] = useState(true);
   const [showGameOverAd, setShowGameOverAd] = useState(false);
   const [reloadKey, setReloadKey] = useState(0);
   const [lastScore, setLastScore] = useState(0);
@@ -42,8 +43,8 @@ export function GameSession({ game, grade }: Props) {
 
   const handleRetry = useCallback(() => {
     setShowGameOverAd(false);
-    setReadyToPlay(false);
-    setShowPreAd(true);
+    setShowPreAd(false);
+    setReadyToPlay(true);
     setReloadKey((k) => k + 1);
   }, []);
 
