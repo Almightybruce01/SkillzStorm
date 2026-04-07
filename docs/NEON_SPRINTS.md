@@ -34,8 +34,9 @@ Banks expanded: more **math** rounds per grade, **quiz** items, **typing** pool 
 
 ## Pass 5 — Meta-game
 
-- [ ] Local stats persistence (per slug high score)
-- [ ] Hook quests to existing monetization surfaces (if desired)
+- [x] Local high scores: `persistence/highScores.ts` (`localStorage`, key per `game.id`)
+- [x] Idle + footer “best on device”; Game Over shows personal best + “New record!”
+- [ ] Quest hooks / battle pass wiring (optional product follow-up)
 
 ## Pass 6 — Quality
 

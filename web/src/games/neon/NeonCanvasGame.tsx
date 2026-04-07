@@ -1,7 +1,8 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import type { Grade } from '../questionBank';
 import { unlockAudio } from './audio/sfx';
 import { getGameEngine } from './getGameEngine';
+import { getNeonHighScore } from './persistence/highScores';
 import type { NeonEngineInstance } from './types';
 import { CompactHorizontalAd } from '../../components/ads/AdBanner';
 
@@ -53,6 +54,7 @@ export function NeonCanvasGame({
   const sizeRef = useRef({ w: 400, h: 360 });
   const dprRef = useRef(1);
   const [gameStarted, setGameStarted] = useState(false);
+  const bestOnFile = useMemo(() => getNeonHighScore(gameSlug || 'game'), [gameSlug]);
   onCloseRef.current = onClose;
 
   const resize = useCallback(() => {
@@ -212,6 +214,12 @@ export function NeonCanvasGame({
                 <PlayIcon className="w-3 h-3" /> INSERT COIN
               </div>
 
+              {bestOnFile > 0 && (
+                <p className="font-display text-[10px] text-amber-400/95 tracking-wide">
+                  BEST ON THIS DEVICE: <span className="text-amber-300 font-bold">{bestOnFile}</span>
+                </p>
+              )}
+
               {description && (
                 <p className="text-slate-400 text-xs text-center leading-relaxed max-w-xs">{description}</p>
               )}
@@ -260,8 +268,11 @@ export function NeonCanvasGame({
         )}
       </div>
       {!idle && (
-        <p className="text-[9px] text-slate-500 px-3 py-2 border-t border-cyan-500/15 font-display">
-          Arrows / Space · 1–4 for quizzes · letter keys for typing
+        <p className="text-[9px] text-slate-500 px-3 py-2 border-t border-cyan-500/15 font-display flex flex-wrap items-center justify-between gap-2">
+          <span>Arrows / Space · 1–4 for quizzes · letter keys for typing</span>
+          {bestOnFile > 0 && (
+            <span className="text-amber-500/90 shrink-0">Best: {bestOnFile}</span>
+          )}
         </p>
       )}
     </div>

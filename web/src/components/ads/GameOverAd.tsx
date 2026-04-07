@@ -2,8 +2,23 @@ import { useEffect, useState, useRef } from 'react';
 import { ADSENSE_CONFIG, isAdFree } from './AdConfig';
 import { AdBanner } from './AdBanner';
 
-export function GameOverAd({ show, score, onRetry, onClose, onRewardedAd }: {
-  show: boolean; score: number; onRetry: () => void; onClose: () => void; onRewardedAd?: () => void;
+export function GameOverAd({
+  show,
+  score,
+  personalBest = 0,
+  isNewRecord = false,
+  onRetry,
+  onClose,
+  onRewardedAd,
+}: {
+  show: boolean;
+  score: number;
+  /** Local best for this game (device), after merging this run. */
+  personalBest?: number;
+  isNewRecord?: boolean;
+  onRetry: () => void;
+  onClose: () => void;
+  onRewardedAd?: () => void;
 }) {
   const [seconds, setSeconds] = useState(3);
   const [canRetry, setCanRetry] = useState(false);
@@ -33,7 +48,13 @@ export function GameOverAd({ show, score, onRetry, onClose, onRewardedAd }: {
     <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm animate-fade-in">
       <div className="w-full max-w-md bg-white rounded-2xl shadow-xl border border-gray-200 p-6">
         <h2 className="text-2xl font-black text-gray-800 text-center mb-1">Game Over</h2>
-        <p className="text-center text-gray-500 mb-4">Score: <span className="font-bold text-gray-800">{score}</span></p>
+        <p className="text-center text-gray-500 mb-1">Score: <span className="font-bold text-gray-800">{score}</span></p>
+        {personalBest > 0 && (
+          <p className="text-center text-sm text-amber-700 mb-4">
+            Personal best: <span className="font-bold">{personalBest}</span>
+            {isNewRecord && <span className="ml-2 text-emerald-600 font-semibold">New record!</span>}
+          </p>
+        )}
         <div className="min-h-[120px] flex items-center justify-center my-4">
           <AdBanner slot={ADSENSE_CONFIG.slots.inArticle} format="auto" className="w-full" />
         </div>

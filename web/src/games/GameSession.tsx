@@ -5,6 +5,7 @@ import { GameOverAd } from '../components/ads/GameOverAd';
 import type { Grade } from './questionBank';
 import type { GameInfo } from '../engine/gameData';
 import { NeonCanvasGame } from './neon/NeonCanvasGame';
+import { mergeNeonHighScore } from './neon/persistence/highScores';
 import { resolveNeonEngine } from './neon/resolveEngine';
 
 interface Props {
@@ -25,6 +26,8 @@ export function GameSession({ game, grade }: Props) {
   const [showGameOverAd, setShowGameOverAd] = useState(false);
   const [reloadKey, setReloadKey] = useState(0);
   const [lastScore, setLastScore] = useState(0);
+  const [personalBest, setPersonalBest] = useState(0);
+  const [isNewRecord, setIsNewRecord] = useState(false);
 
   const neonKey = resolveNeonEngine(game);
   const useLegacyReact =
@@ -37,9 +40,16 @@ export function GameSession({ game, grade }: Props) {
 
   const handleGameClose = useCallback((finalScore?: number) => {
     setReadyToPlay(false);
-    if (typeof finalScore === 'number') setLastScore(finalScore);
+    if (typeof finalScore === 'number') {
+      setLastScore(finalScore);
+      const r = mergeNeonHighScore(game.id, finalScore);
+      setPersonalBest(r.best);
+      setIsNewRecord(r.isNew);
+    } else {
+      setIsNewRecord(false);
+    }
     setShowGameOverAd(true);
-  }, []);
+  }, [game.id]);
 
   const handleRetry = useCallback(() => {
     setShowGameOverAd(false);
@@ -72,6 +82,8 @@ export function GameSession({ game, grade }: Props) {
       <GameOverAd
         show={showGameOverAd}
         score={lastScore}
+        personalBest={personalBest}
+        isNewRecord={isNewRecord}
         onRetry={handleRetry}
         onClose={() => setShowGameOverAd(false)}
       />
