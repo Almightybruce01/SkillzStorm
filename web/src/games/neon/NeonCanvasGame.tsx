@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
+import type { Grade } from '../questionBank';
 import { getGameEngine } from './getGameEngine';
 import type { NeonEngineInstance } from './types';
 import { CompactHorizontalAd } from '../../components/ads/AdBanner';
@@ -16,6 +17,8 @@ interface Props {
   gameTitle: string;
   /** Catalog id — drives per-title theme / tuning in shared neon engines */
   gameSlug: string;
+  /** Optional grade band for math/quiz/typing content banks */
+  grade?: Grade;
   onClose: (finalScore: number) => void;
   /** Shown on the idle / insert-coin screen */
   description?: string;
@@ -32,6 +35,7 @@ export function NeonCanvasGame({
   engineKey,
   gameTitle,
   gameSlug,
+  grade,
   onClose,
   description,
   rating,
@@ -77,7 +81,7 @@ export function NeonCanvasGame({
     if (!ctx) return;
 
     const factory = getGameEngine(engineKey);
-    const engine = factory({ title: gameTitle, slug: gameSlug || 'game' });
+    const engine = factory({ title: gameTitle, slug: gameSlug || 'game', grade });
     engineRef.current = engine;
     endedRef.current = false;
     resize();
@@ -140,7 +144,7 @@ export function NeonCanvasGame({
       ro.disconnect();
       engineRef.current = null;
     };
-  }, [engineKey, gameTitle, gameSlug, resize, gameStarted]);
+  }, [engineKey, gameTitle, gameSlug, grade, resize, gameStarted]);
 
   const exit = () => {
     if (endedRef.current) return;

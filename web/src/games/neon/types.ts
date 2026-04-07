@@ -2,6 +2,7 @@
  * Canvas micro-engines for the neon arcade shell. Each factory builds a self-contained game loop
  * compatible with NeonCanvasGame (keyboard + score + game over).
  */
+import type { Grade } from '../questionBank';
 import type { ResolvedNeonTuning } from './tuning/types';
 
 export type NeonEngineKey =
@@ -22,7 +23,7 @@ export type NeonEngineKey =
   | 'placeholder';
 
 /** What the shell passes before tuning is merged (see getGameEngine). */
-export type NeonGameMetaInput = { title: string; slug: string };
+export type NeonGameMetaInput = { title: string; slug: string; grade?: Grade };
 
 /** Full meta passed into engine factories after tuning injection. */
 export type NeonGameMeta = NeonGameMetaInput & { tuning: ResolvedNeonTuning };

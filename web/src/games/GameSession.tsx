@@ -59,6 +59,7 @@ export function GameSession({ game, grade }: Props) {
               engineKey={neonKey}
               gameTitle={game.name}
               gameSlug={game.id}
+              grade={grade}
               description={game.description}
               onClose={(s) => handleGameClose(s)}
             />

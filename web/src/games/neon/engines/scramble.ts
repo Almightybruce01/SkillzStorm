@@ -1,3 +1,4 @@
+import { pickBankIndex, scramblePoolFor } from '../content';
 import type { NeonEngineFactory } from '../types';
 import { drawStarfield, drawVignette, fillNeonBg } from './canvasFx';
 import { hueFromSlug, slugSeed } from './slugTheme';
@@ -5,9 +6,10 @@ import { hueFromSlug, slugSeed } from './slugTheme';
 import { AMBER, CYAN, font } from './shared';
 
 export const createScrambleEngine: NeonEngineFactory = (meta) => {
-  const pool = ['LEARN', 'STORM', 'BRAIN', 'MATH', 'READ'];
-  let word = 'LEARN';
-  let scrambled = 'NRAEL';
+  const pool = scramblePoolFor(meta.slug, meta.grade);
+  let word = pool[0] ?? 'FUN';
+  let pickN = 0;
+  let scrambled = 'FUN';
   let buf = '';
   let w = 400;
   let h = 300;
@@ -17,7 +19,8 @@ export const createScrambleEngine: NeonEngineFactory = (meta) => {
   const hue = hueFromSlug(meta.slug);
 
   function pick() {
-    word = pool[Math.floor(Math.random() * pool.length)];
+    const i = pickBankIndex(meta.slug, 'scr', pickN++, pool.length);
+    word = pool[i] ?? word;
     scrambled = word.split('').sort(() => Math.random() - 0.5).join('');
     buf = '';
   }
@@ -26,6 +29,7 @@ export const createScrambleEngine: NeonEngineFactory = (meta) => {
     init(width, height) {
       w = width;
       h = height;
+      pickN = 0;
       pick();
       over = false;
       score = 0;

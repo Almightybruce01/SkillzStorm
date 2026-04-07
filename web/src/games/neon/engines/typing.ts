@@ -1,13 +1,14 @@
+import { pickBankIndex, typingWordsFor } from '../content';
 import type { NeonEngineFactory } from '../types';
 import { drawStarfield, drawVignette, fillNeonBg } from './canvasFx';
 import { hueFromSlug, neonAccent, slug01, slugSeed } from './slugTheme';
 
 import { font } from './shared';
-import { TYPING_WORD_POOL } from './typingWords';
 
 export const createTypingEngine: NeonEngineFactory = (meta) => {
-  const pool = TYPING_WORD_POOL;
-  let word = pool[0];
+  const pool = typingWordsFor(meta.slug, meta.grade);
+  let word = pool[0] ?? 'PLAY';
+  let wordPick = 0;
   let idx = 0;
   let w = 400;
   let h = 300;
@@ -24,8 +25,8 @@ export const createTypingEngine: NeonEngineFactory = (meta) => {
   }
 
   function nextWord() {
-    const pick = pool[(slugSeed(meta.slug) + score) % pool.length];
-    word = pool[Math.floor(Math.random() * pool.length)] || pick;
+    const i = pickBankIndex(meta.slug, 'type', wordPick++, pool.length);
+    word = pool[i] ?? word;
     idx = 0;
     y = 48 + (slugSeed(meta.slug + word) % 24);
   }
@@ -34,6 +35,7 @@ export const createTypingEngine: NeonEngineFactory = (meta) => {
     init(width, height) {
       w = width;
       h = height;
+      wordPick = 0;
       nextWord();
       over = false;
       score = 0;

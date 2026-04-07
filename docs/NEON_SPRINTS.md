@@ -12,9 +12,9 @@ Track progress toward depth (content, engines, polish, ops). Line-count targets 
 
 ## Pass 2 — Content at scale
 
-- [ ] Typed question bank (JSON or TS) for math / quiz by grade
-- [ ] Expand `TYPING_WORD_POOL` / per-subject word lists
-- [ ] Optional `public/` JSON tuning hot-load (or build-time import)
+- [x] Typed question bank (TS) for math / quiz by grade (`web/src/games/neon/content/`)
+- [x] Expanded typing + scramble pools / per-subject heuristics from `game.id`
+- [x] `public/neon/content-manifest.json` placeholder for future JSON hot-load
 
 ## Pass 3 — Gameplay depth per engine
 

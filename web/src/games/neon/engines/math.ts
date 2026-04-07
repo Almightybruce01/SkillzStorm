@@ -1,3 +1,4 @@
+import { mathRoundsForGrade, pickBankIndex, type NeonMathRound } from '../content';
 import type { NeonEngineFactory } from '../types';
 import { drawStarfield, drawVignette, fillNeonBg } from './canvasFx';
 import { hueFromSlug, slug01, slugSeed } from './slugTheme';
@@ -7,16 +8,15 @@ import { AMBER, CYAN, font } from './shared';
 export const createMathEngine: NeonEngineFactory = (meta) => {
   let w = 400;
   let h = 300;
-  let a = 3;
-  let b = 5;
-  let ans = 8;
-  let choices: number[] = [];
+  let round: NeonMathRound | null = null;
+  let roundCounter = 0;
   let over = false;
   let score = 0;
   let t = 0;
   let lives = 3;
   let time = 0;
   const hue = hueFromSlug(meta.slug);
+  const bank = mathRoundsForGrade(meta.grade);
 
   function timeLimit() {
     const base = meta.tuning.mathTimeLimitSeconds;
@@ -25,18 +25,15 @@ export const createMathEngine: NeonEngineFactory = (meta) => {
   }
 
   function gen() {
-    a = 2 + Math.floor(Math.random() * 10);
-    b = 2 + Math.floor(Math.random() * 10);
-    ans = a + b;
-    const set = new Set([ans]);
-    while (set.size < 4) set.add(ans + Math.floor(Math.random() * 7) - 3);
-    choices = [...set].sort(() => Math.random() - 0.5);
+    const i = pickBankIndex(meta.slug, 'math', roundCounter++, bank.length);
+    round = bank[i]!;
   }
 
   return {
     init(width, height) {
       w = width;
       h = height;
+      roundCounter = 0;
       gen();
       over = false;
       score = 0;
@@ -55,10 +52,12 @@ export const createMathEngine: NeonEngineFactory = (meta) => {
         gen();
         if (lives <= 0) over = true;
       }
+      const cur = round;
+      if (!cur) return;
       ;[1, 2, 3, 4].forEach((n) => {
         const k = String(n);
         if (keys.has(k) && !prev.has(k)) {
-          if (choices[n - 1] === ans) {
+          if (n - 1 === cur.correctIndex) {
             score += 50;
             gen();
             t = 0;
@@ -72,15 +71,16 @@ export const createMathEngine: NeonEngineFactory = (meta) => {
     draw(ctx, width, height) {
       w = width;
       h = height;
+      if (!round) return;
       const limit = timeLimit();
       fillNeonBg(ctx, w, h, hue);
       drawStarfield(ctx, w, h, time, slugSeed(meta.slug));
-      font(ctx, 12);
+      font(ctx, 11);
       ctx.fillStyle = CYAN;
       ctx.textAlign = 'center';
-      ctx.fillText(`${a} + ${b} = ?`, w / 2, h / 2 - 30);
+      ctx.fillText(round.prompt, w / 2, h / 2 - 30);
       font(ctx, 10);
-      choices.forEach((c, i) => {
+      round.choices.forEach((c, i) => {
         ctx.fillStyle = AMBER;
         ctx.fillText(`${i + 1}) ${c}`, w / 2, h / 2 + i * 18);
       });

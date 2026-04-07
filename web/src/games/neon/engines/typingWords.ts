@@ -1,1 +1,2 @@
-export const TYPING_WORD_POOL = ['SKILL', 'STORM', 'MATH', 'READ', 'LEARN', 'PLAY', 'QUIZ', 'CODE', 'STAR'];
+/** @deprecated Use `typingWordsFor` from `../content/typingPools`. */
+export { POOL_CORE as TYPING_WORD_POOL } from '../content/typingPools';

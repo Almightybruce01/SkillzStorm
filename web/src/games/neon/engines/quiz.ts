@@ -1,3 +1,4 @@
+import { pickBankIndex, quizItemsForGrade, type NeonQuizItem } from '../content';
 import type { NeonEngineFactory } from '../types';
 import { drawStarfield, drawVignette, fillNeonBg } from './canvasFx';
 import { hueFromSlug, slugSeed } from './slugTheme';
@@ -5,11 +6,7 @@ import { hueFromSlug, slugSeed } from './slugTheme';
 import { CYAN, font } from './shared';
 
 export const createQuizEngine: NeonEngineFactory = (meta) => {
-  const qs = [
-    { q: '2 + 2 = ?', a: 0, o: ['4', '3', '5', '22'] },
-    { q: 'Capital of France?', a: 0, o: ['Paris', 'London', 'Berlin', 'Madrid'] },
-    { q: 'H2O is?', a: 0, o: ['Water', 'Salt', 'Oxygen', 'Gold'] },
-  ];
+  const bank = quizItemsForGrade(meta.grade);
   let wi = 0;
   let w = 400;
   let h = 300;
@@ -18,6 +15,11 @@ export const createQuizEngine: NeonEngineFactory = (meta) => {
   let lives = 3;
   let time = 0;
   const hue = hueFromSlug(meta.slug);
+
+  function currentQ(): NeonQuizItem {
+    const idx = pickBankIndex(meta.slug, 'quiz', wi, bank.length);
+    return bank[idx]!;
+  }
 
   return {
     init(width, height) {
@@ -32,14 +34,13 @@ export const createQuizEngine: NeonEngineFactory = (meta) => {
     update(_dt, keys, prev) {
       if (over) return;
       time += _dt * meta.tuning.starfieldParallax;
+      const q = currentQ();
       ;[1, 2, 3, 4].forEach((n) => {
         const k = String(n);
         if (keys.has(k) && !prev.has(k)) {
-          const q = qs[wi];
-          if (n - 1 === q.a) {
+          if (n - 1 === q.correctIndex) {
             score += 100;
             wi++;
-            if (wi >= qs.length) wi = 0;
           } else {
             lives -= 1;
             if (lives <= 0) over = true;
@@ -50,14 +51,14 @@ export const createQuizEngine: NeonEngineFactory = (meta) => {
     draw(ctx, width, height) {
       w = width;
       h = height;
+      const q = currentQ();
       fillNeonBg(ctx, w, h, hue);
       drawStarfield(ctx, w, h, time, slugSeed(meta.slug));
-      const q = qs[wi];
       font(ctx, 9);
       ctx.fillStyle = CYAN;
       ctx.textAlign = 'center';
-      ctx.fillText(q.q, w / 2, h / 2 - 40);
-      q.o.forEach((t, i) => {
+      ctx.fillText(q.prompt, w / 2, h / 2 - 40);
+      q.choices.forEach((t, i) => {
         ctx.fillStyle = '#ddeeff';
         ctx.fillText(`${i + 1}) ${t}`, w / 2, h / 2 - 8 + i * 20);
       });
