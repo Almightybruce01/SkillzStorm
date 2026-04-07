@@ -45,8 +45,11 @@ export const ADSENSE_CONFIG = {
   },
 
   autoAds: true,
-  /** Production builds use live AdSense unless VITE_ADSENSE_TEST=true */
-  testMode: import.meta.env.VITE_ADSENSE_TEST === 'true',
+  /**
+   * Test creatives (data-adtest): ON in local `npm run dev` so you always see fill while building.
+   * Production: set `VITE_ADSENSE_SLOT_DEFAULT` to real ad unit IDs from AdSense; optional `VITE_ADSENSE_TEST=true` for QA builds only.
+   */
+  testMode: import.meta.env.DEV === true || import.meta.env.VITE_ADSENSE_TEST === 'true',
   childDirected: true,
 };
 

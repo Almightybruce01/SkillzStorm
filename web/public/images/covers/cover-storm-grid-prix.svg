@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450">
+  <defs>
+    <linearGradient id="sky" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a"/>
+      <stop offset="55%" style="stop-color:#1e1b4b"/>
+      <stop offset="100%" style="stop-color:#020617"/>
+    </linearGradient>
+    <linearGradient id="neon" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#22d3ee"/>
+      <stop offset="50%" style="stop-color:#a855f7"/>
+      <stop offset="100%" style="stop-color:#f43f5e"/>
+    </linearGradient>
+    <linearGradient id="track" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#334155"/>
+      <stop offset="100%" style="stop-color:#0f172a"/>
+    </linearGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="4" result="b"/>
+      <feMerge>
+        <feMergeNode in="b"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="2"/>
+    </filter>
+  </defs>
+  <rect width="800" height="450" fill="url(#sky)"/>
+  <!-- Grid floor -->
+  <g opacity="0.35" stroke="#22d3ee" stroke-width="0.5">
+    <path d="M0 380 L800 380 M400 200 L400 450"/>
+    <path d="M100 380 L200 200 M300 380 L500 200 M700 380 L600 200"/>
+  </g>
+  <!-- Aurora bands -->
+  <path d="M0 80 Q200 40 400 90 T800 70 L800 0 L0 0 Z" fill="#6366f1" opacity="0.25" filter="url(#soft)"/>
+  <path d="M0 120 Q300 60 600 130 T800 100 L800 0 L0 0 Z" fill="#a855f7" opacity="0.15" filter="url(#soft)"/>
+  <!-- Track ribbon -->
+  <path
+    d="M-40 420 Q180 300 400 340 T840 400 L840 450 L-40 450 Z"
+    fill="url(#track)"
+    stroke="url(#neon)"
+    stroke-width="3"
+    filter="url(#glow)"
+    opacity="0.95"
+  />
+  <path
+    d="M40 410 Q220 315 420 350 T780 395"
+    fill="none"
+    stroke="#22d3ee"
+    stroke-width="2"
+    opacity="0.6"
+    stroke-dasharray="12 8"
+  />
+  <!-- Car silhouette -->
+  <g transform="translate(420 318) rotate(-8)">
+    <ellipse cx="0" cy="8" rx="52" ry="18" fill="#0ea5e9" opacity="0.9"/>
+    <path d="M-45 -5 L45 -5 L38 -28 L-38 -28 Z" fill="#1e293b" stroke="#22d3ee" stroke-width="1.5"/>
+    <path d="M-20 -28 L20 -28 L12 -42 L-12 -42 Z" fill="#f43f5e" opacity="0.95"/>
+    <circle cx="-28" cy="10" r="9" fill="#0f172a" stroke="#64748b" stroke-width="2"/>
+    <circle cx="28" cy="10" r="9" fill="#0f172a" stroke="#64748b" stroke-width="2"/>
+  </g>
+  <!-- Title -->
+  <text x="48" y="96" font-family="system-ui,Segoe UI,sans-serif" font-weight="900" font-size="52" fill="#f8fafc" letter-spacing="-2">STORMGRID</text>
+  <text x="52" y="152" font-family="system-ui,Segoe UI,sans-serif" font-weight="900" font-size="52" fill="url(#neon)" letter-spacing="-2" filter="url(#glow)">PRIX</text>
+  <text x="52" y="188" font-family="system-ui,Segoe UI,sans-serif" font-size="14" fill="#94a3b8" letter-spacing="0.2em">VIRTUAL WORLD CHAMPIONSHIP</text>
+  <rect x="52" y="204" width="120" height="3" fill="url(#neon)" opacity="0.9"/>
+  <!-- Badge -->
+  <rect x="52" y="228" width="168" height="36" rx="6" fill="#0f172a" stroke="#22d3ee" stroke-width="1.5" opacity="0.9"/>
+  <text x="68" y="252" font-family="system-ui,sans-serif" font-size="13" font-weight="700" fill="#e2e8f0">10 TRACKS · AAA</text>
+</svg>

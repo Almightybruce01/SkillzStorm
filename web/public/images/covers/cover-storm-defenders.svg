@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450">
+  <defs>
+    <linearGradient id="sdSky" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#0c1220"/>
+      <stop offset="100%" style="stop-color:#1e1b4b"/>
+    </linearGradient>
+    <linearGradient id="sdGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#22d3ee"/>
+      <stop offset="100%" style="stop-color:#a855f7"/>
+    </linearGradient>
+    <filter id="sdBlur" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3"/>
+    </filter>
+  </defs>
+  <rect width="800" height="450" fill="url(#sdSky)"/>
+  <path d="M0 320 Q200 280 400 300 T800 290 L800 450 L0 450 Z" fill="#0f172a" opacity="0.9"/>
+  <path d="M0 340 Q180 310 400 325 T800 310 L800 450 L0 450 Z" fill="#1e293b" opacity="0.85"/>
+  <!-- Grid / storm -->
+  <g stroke="#22d3ee" stroke-width="0.6" opacity="0.25">
+    <line x1="0" y1="200" x2="800" y2="200"/>
+    <line x1="0" y1="250" x2="800" y2="250"/>
+    <line x1="200" y1="0" x2="200" y2="350"/>
+    <line x1="600" y1="0" x2="600" y2="350"/>
+  </g>
+  <!-- Turret -->
+  <g transform="translate(420 240)">
+    <ellipse cx="0" cy="40" rx="48" ry="14" fill="#334155" stroke="#64748b" stroke-width="2"/>
+    <path d="M-20 40 L-8 -35 L8 -35 L20 40 Z" fill="#475569" stroke="#94a3b8" stroke-width="1.5"/>
+    <circle cx="0" cy="-20" r="18" fill="url(#sdGlow)" opacity="0.9" filter="url(#sdBlur)"/>
+    <circle cx="0" cy="-20" r="10" fill="#22d3ee" opacity="0.95"/>
+  </g>
+  <!-- Zombie silhouettes -->
+  <g fill="#4c1d95" opacity="0.85">
+    <ellipse cx="180" cy="310" rx="12" ry="22"/>
+    <circle cx="180" cy="278" r="14"/>
+    <ellipse cx="250" cy="315" rx="11" ry="20"/>
+    <circle cx="250" cy="288" r="12"/>
+    <ellipse cx="620" cy="308" rx="13" ry="24"/>
+    <circle cx="620" cy="272" r="15"/>
+  </g>
+  <text x="40" y="72" font-family="system-ui,Segoe UI,sans-serif" font-weight="900" font-size="44" fill="#f8fafc">STORM</text>
+  <text x="44" y="118" font-family="system-ui,Segoe UI,sans-serif" font-weight="900" font-size="44" fill="url(#sdGlow)">DEFENDERS</text>
+  <text x="44" y="148" font-family="system-ui,sans-serif" font-size="13" fill="#94a3b8" letter-spacing="0.15em">AAA FLAGSHIP · TOWER DEFENSE</text>
+  <rect x="44" y="162" width="100" height="3" fill="url(#sdGlow)"/>
+  <text x="44" y="400" font-family="system-ui,sans-serif" font-size="11" fill="#64748b">Brain turrets · zombie waves · K12 gates</text>
+</svg>
