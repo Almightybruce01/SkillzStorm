@@ -3,7 +3,7 @@ import { TopBannerAd, InArticleAd, MidPageBannerAd, InlineExtraAd } from '../com
 
 export function VRPage() {
   return (
-    <div className="pt-20 sm:pt-24 page-enter min-h-[100vh] w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-32">
+    <div className="pt-6 sm:pt-8 page-enter min-h-[100vh] w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-32">
       <TopBannerAd />
       <MidPageBannerAd />
 

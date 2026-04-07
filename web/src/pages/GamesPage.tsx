@@ -45,7 +45,7 @@ export function GamesPage() {
   });
 
   return (
-    <div className="pt-20 sm:pt-24 min-h-[100vh] w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20 page-enter text-slate-100">
+    <div className="pt-6 sm:pt-8 min-h-[100vh] w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20 page-enter text-slate-100">
       <TopBannerAd />
       {/* Header */}
       <div className="text-center mb-8 animate-slide-up">

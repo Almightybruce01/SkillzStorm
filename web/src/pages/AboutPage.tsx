@@ -3,7 +3,7 @@ import { DensePageAds } from '../components/ads/StandardPageAds';
 
 export function AboutPage() {
   return (
-    <div className="pt-20 sm:pt-24 page-enter min-h-[100vh] w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+    <div className="pt-6 sm:pt-8 page-enter min-h-[100vh] w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
       <DensePageAds />
       {/* Hero */}
       <section className="text-center py-14 animate-slide-up">

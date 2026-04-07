@@ -93,7 +93,7 @@ export function CheckoutPage() {
 
   if (isSuccess) {
     return (
-      <div className="pt-20 sm:pt-24 page-enter min-h-[100vh] w-full flex flex-col items-center justify-center text-center px-4">
+      <div className="pt-6 sm:pt-8 page-enter min-h-[100vh] w-full flex flex-col items-center justify-center text-center px-4">
         <div className="text-8xl mb-6 animate-float">🎉</div>
         <h1 className="text-3xl font-black text-gray-800 mb-3">ORDER CONFIRMED!</h1>
         <p className="text-gray-600 mb-6 max-w-md">
@@ -108,7 +108,7 @@ export function CheckoutPage() {
   }
 
   return (
-    <div className="pt-20 sm:pt-24 page-enter min-h-[100vh] w-full max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pb-32">
+    <div className="pt-6 sm:pt-8 page-enter min-h-[100vh] w-full max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pb-32">
       <TopBannerAd />
 
       <div className="text-center mb-8">

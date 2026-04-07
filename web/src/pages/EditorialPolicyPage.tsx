@@ -2,7 +2,7 @@ import { StandardPageAds } from '../components/ads/StandardPageAds';
 
 export function EditorialPolicyPage() {
   return (
-    <div className="pt-20 sm:pt-24 w-full min-h-[100vh] page-enter">
+    <div className="pt-6 sm:pt-8 w-full min-h-[100vh] page-enter">
       <div className="relative z-10 w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
         <StandardPageAds />
         <h1 className="text-3xl sm:text-4xl font-black text-gray-800 mb-4">Editorial Policy</h1>

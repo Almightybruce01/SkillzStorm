@@ -3,7 +3,7 @@ import { StandardPageAds } from '../components/ads/StandardPageAds';
 
 export function AccessibilityPage() {
   return (
-    <div className="pt-20 sm:pt-24 page-enter min-h-[100vh] w-full max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+    <div className="pt-6 sm:pt-8 page-enter min-h-[100vh] w-full max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
       <StandardPageAds />
       <Link to="/" className="text-gray-400 text-sm hover:text-[#3b82f6] transition-colors mb-6 inline-flex items-center gap-1 group">
         <span className="transition-transform duration-300 group-hover:-translate-x-1">←</span> Back to Home

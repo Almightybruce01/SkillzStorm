@@ -24,7 +24,7 @@ export function LearningHubPage() {
   }, [focusArea, minutesPerDay]);
 
   return (
-    <div className="pt-20 sm:pt-24 w-full min-h-[100vh] page-enter">
+    <div className="pt-6 sm:pt-8 w-full min-h-[100vh] page-enter">
       <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <TopBannerAd />
         <MidPageBannerAd />

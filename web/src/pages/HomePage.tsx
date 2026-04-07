@@ -29,7 +29,7 @@ export function HomePage() {
   const newSpotlight = seedCatalogGames.slice(0, 8);
 
   return (
-    <div className="pt-20 sm:pt-24 w-full min-h-[100vh] page-enter">
+    <div className="pt-6 sm:pt-8 w-full min-h-[100vh] page-enter">
       <TopBannerAd />
 
       {/* ─── HERO (Replit-style) ─── */}

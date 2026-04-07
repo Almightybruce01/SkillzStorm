@@ -44,7 +44,7 @@ export function GameDetailPage() {
 
   if (!game) {
     return (
-      <div className="pt-20 sm:pt-24 min-h-[100vh] w-full flex flex-col items-center justify-center text-center page-enter text-slate-100">
+      <div className="pt-6 sm:pt-8 min-h-[100vh] w-full flex flex-col items-center justify-center text-center page-enter text-slate-100">
         <div className="text-7xl mb-4 animate-float">🔍</div>
         <h1 className="text-3xl font-black text-slate-100 mb-3">Game Not Found</h1>
         <Link to="/games" className="btn-elite btn-elite-primary text-sm">← Back to Games</Link>
@@ -58,7 +58,7 @@ export function GameDetailPage() {
 
   return (
     <div
-      className={`pt-20 sm:pt-24 min-h-[100vh] w-full max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 page-enter text-slate-100 ${playing ? 'pb-32 sm:pb-36' : 'pb-20'}`}
+      className={`pt-6 sm:pt-8 min-h-[100vh] w-full max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 page-enter text-slate-100 ${playing ? 'pb-32 sm:pb-36' : 'pb-20'}`}
     >
       <TopBannerAd refreshKey={gameId} />
       <MidPageBannerAd refreshKey={gameId} />
@@ -157,7 +157,7 @@ export function GameDetailPage() {
           </div>
           <div className="hidden lg:block">
             {/* Always-visible sidebar ad while a game is running */}
-            <SidebarAd />
+            <SidebarAd refreshKey={gameId} />
           </div>
         </div>
       )}

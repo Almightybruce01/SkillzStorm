@@ -35,7 +35,7 @@ export function ArcadePage() {
   };
 
   return (
-    <div className="pt-20 sm:pt-24 page-enter min-h-[100vh] w-full">
+    <div className="pt-6 sm:pt-8 page-enter min-h-[100vh] w-full">
       <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
         <DensePageAds />
 
