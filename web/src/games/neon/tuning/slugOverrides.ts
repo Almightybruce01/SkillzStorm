@@ -7,8 +7,15 @@ import type { NeonTuningPartial } from './types';
 export const SLUG_TUNING_OVERRIDES: Record<string, NeonTuningPartial> = {
   'math-elite': { mathTimeLimitSeconds: 14, speedScale: 1.06 },
   'times-table-titan': { mathTimeLimitSeconds: 18, speedScale: 1.04 },
-  'neon-viper-xl': { lives: 5, speedScale: 1.1 },
+  'neon-viper-xl': { lives: 5, speedScale: 1.1, snakeGhostPasses: 2 },
+  'neon-viper': { snakeGhostPasses: 1 },
+  'python-pro': { snakeGhostPasses: 1 },
+  'snake-neon': { snakeGhostPasses: 1 },
   'storm_defenders': { lives: 14 },
   sentence_sprint: { speedScale: 1.05, invulnSeconds: 1.6 },
   vr_math_dojo: { lives: 4, speedScale: 0.95 },
+  'neon-breakout': { breakoutMultiball: true },
+  'brick-crusher': { breakoutMultiball: true },
+  'arkanoid-x': { breakoutMultiball: true },
+  number_catch: { breakoutMultiball: true },
 };

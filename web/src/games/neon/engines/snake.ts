@@ -16,6 +16,7 @@ export const createSnakeEngine: NeonEngineFactory = (meta) => {
   let score = 0;
   let lives = 3;
   let time = 0;
+  let ghostRem = 0;
   const hue = hueFromSlug(meta.slug);
   const baseStep = 0.1 + slug01(meta.slug, 2) * 0.05;
   const [snakeC, headC, foodC] = neonAccent(meta.slug);
@@ -39,6 +40,7 @@ export const createSnakeEngine: NeonEngineFactory = (meta) => {
 
   function loseLife() {
     lives -= 1;
+    ghostRem = meta.tuning.snakeGhostPasses;
     if (lives <= 0) {
       over = true;
       return;
@@ -61,6 +63,7 @@ export const createSnakeEngine: NeonEngineFactory = (meta) => {
       score = 0;
       lives = meta.tuning.lives;
       time = 0;
+      ghostRem = meta.tuning.snakeGhostPasses;
     },
     update(dt, keys, _prev) {
       if (over) return;
@@ -82,6 +85,10 @@ export const createSnakeEngine: NeonEngineFactory = (meta) => {
           break;
         }
         if (snake.some((s) => s.x === nh.x && s.y === nh.y)) {
+          if (ghostRem > 0) {
+            ghostRem -= 1;
+            break;
+          }
           loseLife();
           break;
         }
@@ -114,7 +121,8 @@ export const createSnakeEngine: NeonEngineFactory = (meta) => {
       font(ctx, 10);
       ctx.fillStyle = '#aabbcc';
       ctx.textAlign = 'left';
-      ctx.fillText(`SCORE ${score}  ♥${lives}`, 8, 16);
+      const gh = ghostRem > 0 ? `  👻${ghostRem}` : '';
+      ctx.fillText(`SCORE ${score}  ♥${lives}${gh}`, 8, 16);
       drawVignette(ctx, w, h);
     },
     getScore: () => score,

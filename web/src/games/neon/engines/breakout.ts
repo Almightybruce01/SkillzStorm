@@ -4,14 +4,16 @@ import { hueFromSlug, slugSeed } from './slugTheme';
 
 import { CYAN, font } from './shared';
 
+type Ball = { x: number; y: number; vx: number; vy: number };
+
+const MAX_BALLS = 4;
+const SPLIT_CHANCE = 0.24;
+
 export const createBreakoutEngine: NeonEngineFactory = (meta) => {
   let w = 400;
   let h = 300;
   let px = 0;
-  let bx = 0;
-  let by = 0;
-  let bvx = 120;
-  let bvy = -140;
+  let balls: Ball[] = [];
   let bricks: boolean[] = [];
   let cols = 8;
   let rows = 4;
@@ -20,12 +22,18 @@ export const createBreakoutEngine: NeonEngineFactory = (meta) => {
   let lives = 3;
   let time = 0;
   const hue = hueFromSlug(meta.slug);
+  const multiball = meta.tuning.breakoutMultiball;
 
-  function resetBall() {
-    bx = w / 2;
-    by = h - 60;
-    bvx = (Math.random() > 0.5 ? 1 : -1) * 140 * meta.tuning.speedScale;
-    bvy = -160 * meta.tuning.speedScale;
+  function resetBalls() {
+    const s = meta.tuning.speedScale;
+    balls = [
+      {
+        x: w / 2,
+        y: h - 60,
+        vx: (Math.random() > 0.5 ? 1 : -1) * 140 * s,
+        vy: -160 * s,
+      },
+    ];
   }
 
   return {
@@ -34,7 +42,7 @@ export const createBreakoutEngine: NeonEngineFactory = (meta) => {
       h = height;
       px = width / 2 - 50;
       bricks = Array(cols * rows).fill(true);
-      resetBall();
+      resetBalls();
       over = false;
       score = 0;
       lives = meta.tuning.lives;
@@ -47,39 +55,70 @@ export const createBreakoutEngine: NeonEngineFactory = (meta) => {
       if (keys.has('ArrowLeft')) px -= spd * dt;
       if (keys.has('ArrowRight')) px += spd * dt;
       px = Math.max(20, Math.min(w - 120, px));
-      bx += bvx * dt;
-      by += bvy * dt;
-      if (bx < 8 || bx > w - 8) bvx *= -1;
-      if (by < 8) bvy *= -1;
-      if (by > h - 4) {
+
+      for (const b of balls) {
+        b.x += b.vx * dt;
+        b.y += b.vy * dt;
+      }
+      for (const b of balls) {
+        if (b.x < 8 || b.x > w - 8) b.vx *= -1;
+        if (b.y < 8) b.vy *= -1;
+      }
+
+      balls = balls.filter((b) => b.y <= h - 4);
+      if (balls.length === 0) {
         lives -= 1;
         if (lives <= 0) over = true;
-        else resetBall();
+        else resetBalls();
+        return;
       }
+
       const pw = 100;
-      if (by > h - 48 && by < h - 38 && bx > px && bx < px + pw) {
-        bvy = -Math.abs(bvy);
-        score += 2;
+      for (const b of balls) {
+        if (b.y > h - 48 && b.y < h - 38 && b.x > px && b.x < px + pw) {
+          b.vy = -Math.abs(b.vy);
+          score += 2;
+        }
       }
+
       const bw = (w - 24) / cols;
       const bh = 16;
-      for (let r = 0; r < rows; r++) {
-        for (let c = 0; c < cols; c++) {
-          const i = r * cols + c;
-          if (!bricks[i]) continue;
-          const bx0 = 12 + c * bw;
-          const by0 = 40 + r * bh;
-          if (bx > bx0 && bx < bx0 + bw - 4 && by > by0 && by < by0 + bh) {
-            bricks[i] = false;
-            bvy *= -1;
-            score += 15;
+      const spawn: Ball[] = [];
+      for (const b of balls) {
+        let hitAny = false;
+        for (let r = 0; r < rows && !hitAny; r++) {
+          for (let c = 0; c < cols && !hitAny; c++) {
+            const i = r * cols + c;
+            if (!bricks[i]) continue;
+            const bx0 = 12 + c * bw;
+            const by0 = 40 + r * bh;
+            if (b.x > bx0 && b.x < bx0 + bw - 4 && b.y > by0 && b.y < by0 + bh) {
+              bricks[i] = false;
+              b.vy *= -1;
+              score += 15;
+              hitAny = true;
+              if (
+                multiball &&
+                balls.length + spawn.length < MAX_BALLS &&
+                Math.random() < SPLIT_CHANCE
+              ) {
+                spawn.push({
+                  x: b.x,
+                  y: Math.min(b.y, by0 + bh + 2),
+                  vx: -b.vx * 0.85 + (Math.random() - 0.5) * 100 * meta.tuning.speedScale,
+                  vy: -Math.abs(b.vy) * 0.92,
+                });
+              }
+            }
           }
         }
       }
+      if (spawn.length) balls = balls.concat(spawn);
+
       if (!bricks.some(Boolean)) {
         score += 500;
         bricks = Array(cols * rows).fill(true);
-        resetBall();
+        resetBalls();
       }
     },
     draw(ctx, width, height) {
@@ -99,14 +138,17 @@ export const createBreakoutEngine: NeonEngineFactory = (meta) => {
       });
       ctx.fillStyle = CYAN;
       ctx.fillRect(px, h - 44, 100, 10);
-      ctx.beginPath();
-      ctx.arc(bx, by, 6, 0, Math.PI * 2);
-      ctx.fillStyle = '#fff';
-      ctx.fill();
+      for (const b of balls) {
+        ctx.beginPath();
+        ctx.arc(b.x, b.y, 6, 0, Math.PI * 2);
+        ctx.fillStyle = '#fff';
+        ctx.fill();
+      }
       font(ctx, 10);
       ctx.fillStyle = '#aab';
       ctx.textAlign = 'left';
-      ctx.fillText(`SCORE ${score}  ♥${lives}`, 8, 20);
+      const mb = multiball ? `  ×${balls.length}` : '';
+      ctx.fillText(`SCORE ${score}  ♥${lives}${mb}`, 8, 20);
       drawVignette(ctx, w, h);
     },
     getScore: () => score,

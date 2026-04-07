@@ -22,8 +22,9 @@ Banks expanded: more **math** rounds per grade, **quiz** items, **typing** pool 
 
 ## Pass 3 — Gameplay depth per engine
 
-- [ ] Feature flags in tuning (e.g. `powerUpsEnabled`) per slug
-- [ ] One pilot: breakout multiball OR snake power-ups
+- [x] Feature flags in `ResolvedNeonTuning`: `breakoutMultiball`, `snakeGhostPasses` (+ slug overrides)
+- [x] Breakout multiball pilot (split on brick break, max 4 balls; HUD shows `×n`)
+- [x] Snake pilot: ghost passes forgive self-collision (lose the tick, not a life); refills on respawn
 
 ## Pass 4 — Presentation
 

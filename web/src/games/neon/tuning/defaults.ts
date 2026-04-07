@@ -10,13 +10,15 @@ export const NEON_TUNING_BASE: ResolvedNeonTuning = {
   mathTimeLimitSeconds: 22,
   tetrisFallStep: 0.52,
   starfieldParallax: 1,
+  breakoutMultiball: false,
+  snakeGhostPasses: 0,
 };
 
 /** Per–engine-key tweaks (e.g. TD uses more base “base” hits). */
 export const ENGINE_TUNING_DEFAULTS: EngineTuningDefaults = {
   placeholder: {},
-  snake: { speedScale: 1 },
-  breakout: {},
+  snake: { snakeGhostPasses: 0 },
+  breakout: { breakoutMultiball: false },
   tetris: { tetrisFallStep: 0.52 },
   space: {},
   typing: { speedScale: 1 },

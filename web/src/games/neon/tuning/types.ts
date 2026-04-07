@@ -11,6 +11,10 @@ export type ResolvedNeonTuning = {
   tetrisFallStep: number;
   /** Visual: multiplier on starfield animation speed. */
   starfieldParallax: number;
+  /** Breakout pilot: bricks can split into an extra ball (capped). */
+  breakoutMultiball: boolean;
+  /** Snake pilot: ignore this many self-collisions (lose the move, not a life). */
+  snakeGhostPasses: number;
 };
 
 export type NeonTuningPartial = Partial<ResolvedNeonTuning>;
